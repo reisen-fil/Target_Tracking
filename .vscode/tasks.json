@@ -1,0 +1,28 @@
+{
+	"version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "make",
+            "args": [
+            ],
+            "group": "build"
+        },
+        {
+            "label": "download",
+            "type": "shell",
+            "command": "openocd",
+            "args": [
+                "-f",
+                "interface/cmsis-dap.cfg",
+                "-f",
+                "target/stm32g4x.cfg",
+                "-c",
+                // "program build/vs_OLED.elf -c reset -c halt -c shutdown"
+                "program build/Target_tracking.elf verify reset exit"
+            ],
+            "group": "build"
+        }
+    ]
+}

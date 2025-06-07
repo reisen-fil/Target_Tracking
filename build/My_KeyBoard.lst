@@ -1,0 +1,1277 @@
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"My_KeyBoard.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Key_Init,"ax",%progbits
+  20              		.align	1
+  21              		.global	Key_Init
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	Key_Init:
+  27              	.LFB132:
+  28              		.file 1 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard/My_KeyBoard.c"
+   1:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** #include "My_KeyBoard.h"
+   2:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 
+   3:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 
+   4:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** void Key_Init(void)
+   5:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** {
+  29              		.loc 1 5 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 10B5     		push	{r4, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 4, -8
+  37              		.cfi_offset 14, -4
+   6:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_SET);
+  38              		.loc 1 6 3 view .LVU1
+  39 0002 0C4C     		ldr	r4, .L3
+  40 0004 0122     		movs	r2, #1
+  41 0006 0221     		movs	r1, #2
+  42 0008 2046     		mov	r0, r4
+  43 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  44              	.LVL0:
+   7:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_2,GPIO_PIN_SET);
+  45              		.loc 1 7 3 view .LVU2
+  46 000e 0122     		movs	r2, #1
+  47 0010 0421     		movs	r1, #4
+  48 0012 2046     		mov	r0, r4
+  49 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  50              	.LVL1:
+   8:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		HAL_GPIO_WritePin(GPIOC,GPIO_PIN_4,GPIO_PIN_SET);
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 2
+
+
+  51              		.loc 1 8 3 view .LVU3
+  52 0018 04F58064 		add	r4, r4, #1024
+  53 001c 0122     		movs	r2, #1
+  54 001e 1021     		movs	r1, #16
+  55 0020 2046     		mov	r0, r4
+  56 0022 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  57              	.LVL2:
+   9:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		HAL_GPIO_WritePin(GPIOC,GPIO_PIN_5,GPIO_PIN_SET);
+  58              		.loc 1 9 3 view .LVU4
+  59 0026 0122     		movs	r2, #1
+  60 0028 2021     		movs	r1, #32
+  61 002a 2046     		mov	r0, r4
+  62 002c FFF7FEFF 		bl	HAL_GPIO_WritePin
+  63              	.LVL3:
+  10:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** }
+  64              		.loc 1 10 1 is_stmt 0 view .LVU5
+  65 0030 10BD     		pop	{r4, pc}
+  66              	.L4:
+  67 0032 00BF     		.align	2
+  68              	.L3:
+  69 0034 00040048 		.word	1207960576
+  70              		.cfi_endproc
+  71              	.LFE132:
+  73              		.section	.text.Key_Scan,"ax",%progbits
+  74              		.align	1
+  75              		.global	Key_Scan
+  76              		.syntax unified
+  77              		.thumb
+  78              		.thumb_func
+  80              	Key_Scan:
+  81              	.LVL4:
+  82              	.LFB133:
+  11:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 
+  12:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 
+  13:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 
+  14:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** /* 循环延时消抖按键扫描 */
+  15:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** void Key_Scan(uint8_t* key)
+  16:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** {
+  83              		.loc 1 16 1 is_stmt 1 view -0
+  84              		.cfi_startproc
+  85              		@ args = 0, pretend = 0, frame = 0
+  86              		@ frame_needed = 0, uses_anonymous_args = 0
+  87              		.loc 1 16 1 is_stmt 0 view .LVU7
+  88 0000 38B5     		push	{r3, r4, r5, lr}
+  89              	.LCFI1:
+  90              		.cfi_def_cfa_offset 16
+  91              		.cfi_offset 3, -16
+  92              		.cfi_offset 4, -12
+  93              		.cfi_offset 5, -8
+  94              		.cfi_offset 14, -4
+  95 0002 0446     		mov	r4, r0
+  17:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		*key=0;		/* 对未按下时默认为0 */
+  96              		.loc 1 17 3 is_stmt 1 view .LVU8
+  97              		.loc 1 17 7 is_stmt 0 view .LVU9
+  98 0004 0022     		movs	r2, #0
+  99 0006 0270     		strb	r2, [r0]
+  18:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 3
+
+
+  19:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_RESET);
+ 100              		.loc 1 19 3 is_stmt 1 view .LVU10
+ 101 0008 0221     		movs	r1, #2
+ 102 000a B548     		ldr	r0, .L55
+ 103              	.LVL5:
+ 104              		.loc 1 19 3 is_stmt 0 view .LVU11
+ 105 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 106              	.LVL6:
+  20:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 	
+  21:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		if((!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_6))||(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_7))
+ 107              		.loc 1 21 3 is_stmt 1 view .LVU12
+ 108              		.loc 1 21 8 is_stmt 0 view .LVU13
+ 109 0010 4021     		movs	r1, #64
+ 110 0012 4FF09040 		mov	r0, #1207959552
+ 111 0016 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 112              	.LVL7:
+ 113              		.loc 1 21 5 view .LVU14
+ 114 001a 30B1     		cbz	r0, .L6
+ 115              		.loc 1 21 47 discriminator 1 view .LVU15
+ 116 001c 8021     		movs	r1, #128
+ 117 001e 4FF09040 		mov	r0, #1207959552
+ 118 0022 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 119              	.LVL8:
+ 120              		.loc 1 21 43 discriminator 1 view .LVU16
+ 121 0026 0028     		cmp	r0, #0
+ 122 0028 7AD1     		bne	.L47
+ 123              	.L6:
+  22:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 			||(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0))||(!HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_3)))
+  23:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+  24:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				Key_GetCntFlag=1;			/* 消抖计数使能 */
+ 124              		.loc 1 24 5 is_stmt 1 view .LVU17
+ 125              		.loc 1 24 19 is_stmt 0 view .LVU18
+ 126 002a AE4B     		ldr	r3, .L55+4
+ 127 002c 0122     		movs	r2, #1
+ 128 002e 1A70     		strb	r2, [r3]
+  25:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 			
+  26:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				HAL_TIM_Base_Start_IT(&htim7);
+ 129              		.loc 1 26 5 is_stmt 1 view .LVU19
+ 130 0030 AD48     		ldr	r0, .L55+8
+ 131 0032 FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
+ 132              	.LVL9:
+  27:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 			
+  28:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				if(Key_Start)
+ 133              		.loc 1 28 5 view .LVU20
+ 134              		.loc 1 28 8 is_stmt 0 view .LVU21
+ 135 0036 AD4B     		ldr	r3, .L55+12
+ 136 0038 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 137              		.loc 1 28 7 view .LVU22
+ 138 003a 002B     		cmp	r3, #0
+ 139 003c 7FD1     		bne	.L48
+ 140              	.L7:
+  29:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				{			
+  30:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						HAL_TIM_Base_Stop_IT(&htim7);
+  31:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 					
+  32:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						if(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_6))
+  33:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+  34:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									while(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_6));
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 4
+
+
+  35:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=1;
+  36:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+  37:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						else if(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_7))
+  38:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+  39:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									while(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_7));
+  40:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=2;
+  41:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+  42:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						else if(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0))
+  43:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+  44:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									while(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0));
+  45:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=3;
+  46:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+  47:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						else if(!HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_3))
+  48:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+  49:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									while(!HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_3));
+  50:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=4;
+  51:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+  52:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						
+  53:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						Key_Start=0;
+  54:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				}
+  55:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		}
+  56:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_SET);
+ 141              		.loc 1 56 3 is_stmt 1 view .LVU23
+ 142 003e A84D     		ldr	r5, .L55
+ 143 0040 0122     		movs	r2, #1
+ 144 0042 0221     		movs	r1, #2
+ 145 0044 2846     		mov	r0, r5
+ 146 0046 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 147              	.LVL10:
+  57:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		
+  58:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_2,GPIO_PIN_RESET);
+ 148              		.loc 1 58 3 view .LVU24
+ 149 004a 0022     		movs	r2, #0
+ 150 004c 0421     		movs	r1, #4
+ 151 004e 2846     		mov	r0, r5
+ 152 0050 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 153              	.LVL11:
+  59:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 	
+  60:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		/* 四个按键分别用于记录铅笔框的四个点对应的舵机角度值 */
+  61:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		if((!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_6))||(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_7))
+ 154              		.loc 1 61 3 view .LVU25
+ 155              		.loc 1 61 8 is_stmt 0 view .LVU26
+ 156 0054 4021     		movs	r1, #64
+ 157 0056 4FF09040 		mov	r0, #1207959552
+ 158 005a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 159              	.LVL12:
+ 160              		.loc 1 61 5 view .LVU27
+ 161 005e 38B1     		cbz	r0, .L16
+ 162              		.loc 1 61 47 discriminator 1 view .LVU28
+ 163 0060 8021     		movs	r1, #128
+ 164 0062 4FF09040 		mov	r0, #1207959552
+ 165 0066 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 166              	.LVL13:
+ 167              		.loc 1 61 43 discriminator 1 view .LVU29
+ 168 006a 0028     		cmp	r0, #0
+ 169 006c 40F0AC80 		bne	.L49
+ 170              	.L16:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 5
+
+
+  62:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 			||(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0))||(!HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_3)))
+  63:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+  64:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				Key_GetCntFlag=1;			/* 消抖计数使能 */
+ 171              		.loc 1 64 5 is_stmt 1 view .LVU30
+ 172              		.loc 1 64 19 is_stmt 0 view .LVU31
+ 173 0070 9C4B     		ldr	r3, .L55+4
+ 174 0072 0122     		movs	r2, #1
+ 175 0074 1A70     		strb	r2, [r3]
+  65:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 			
+  66:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				HAL_TIM_Base_Start_IT(&htim7);
+ 176              		.loc 1 66 5 is_stmt 1 view .LVU32
+ 177 0076 9C48     		ldr	r0, .L55+8
+ 178 0078 FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
+ 179              	.LVL14:
+  67:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 			
+  68:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				if(Key_Start)
+ 180              		.loc 1 68 5 view .LVU33
+ 181              		.loc 1 68 8 is_stmt 0 view .LVU34
+ 182 007c 9B4B     		ldr	r3, .L55+12
+ 183 007e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 184              		.loc 1 68 7 view .LVU35
+ 185 0080 002B     		cmp	r3, #0
+ 186 0082 40F0B180 		bne	.L50
+ 187              	.L17:
+  69:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				{	
+  70:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						HAL_TIM_Base_Stop_IT(&htim7);
+  71:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 					
+  72:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						if(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_6))
+  73:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+  74:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 								
+  75:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									while(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_6));
+  76:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=5;
+  77:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+  78:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						else if(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_7))
+  79:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+  80:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									while(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_7));
+  81:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=6;
+  82:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+  83:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						else if(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0))
+  84:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+  85:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									while(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0));
+  86:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=7;
+  87:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+  88:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						else if(!HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_3))
+  89:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+  90:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									while(!HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_3));
+  91:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=8;
+  92:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+  93:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						
+  94:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						Key_Start=0;
+  95:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				}
+  96:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		}
+  97:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_2,GPIO_PIN_SET);		
+ 188              		.loc 1 97 3 is_stmt 1 view .LVU36
+ 189 0086 0122     		movs	r2, #1
+ 190 0088 0421     		movs	r1, #4
+ 191 008a 9548     		ldr	r0, .L55
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 6
+
+
+ 192 008c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 193              	.LVL15:
+  98:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 
+  99:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		HAL_GPIO_WritePin(GPIOC,GPIO_PIN_4,GPIO_PIN_RESET);
+ 194              		.loc 1 99 3 view .LVU37
+ 195 0090 0022     		movs	r2, #0
+ 196 0092 1021     		movs	r1, #16
+ 197 0094 9648     		ldr	r0, .L55+16
+ 198 0096 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 199              	.LVL16:
+ 100:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 	
+ 101:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		if((!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_6))||(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_7))
+ 200              		.loc 1 101 3 view .LVU38
+ 201              		.loc 1 101 8 is_stmt 0 view .LVU39
+ 202 009a 4021     		movs	r1, #64
+ 203 009c 4FF09040 		mov	r0, #1207959552
+ 204 00a0 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 205              	.LVL17:
+ 206              		.loc 1 101 5 view .LVU40
+ 207 00a4 38B1     		cbz	r0, .L26
+ 208              		.loc 1 101 47 discriminator 1 view .LVU41
+ 209 00a6 8021     		movs	r1, #128
+ 210 00a8 4FF09040 		mov	r0, #1207959552
+ 211 00ac FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 212              	.LVL18:
+ 213              		.loc 1 101 43 discriminator 1 view .LVU42
+ 214 00b0 0028     		cmp	r0, #0
+ 215 00b2 40F0DE80 		bne	.L51
+ 216              	.L26:
+ 102:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 			||(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0))||(!HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_3)))
+ 103:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 104:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				Key_GetCntFlag=1;			/* 消抖计数使能 */				
+ 217              		.loc 1 104 5 is_stmt 1 view .LVU43
+ 218              		.loc 1 104 19 is_stmt 0 view .LVU44
+ 219 00b6 8B4B     		ldr	r3, .L55+4
+ 220 00b8 0122     		movs	r2, #1
+ 221 00ba 1A70     		strb	r2, [r3]
+ 105:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 
+ 106:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				HAL_TIM_Base_Start_IT(&htim7);
+ 222              		.loc 1 106 5 is_stmt 1 view .LVU45
+ 223 00bc 8A48     		ldr	r0, .L55+8
+ 224 00be FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
+ 225              	.LVL19:
+ 107:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 			
+ 108:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				if(Key_Start)
+ 226              		.loc 1 108 5 view .LVU46
+ 227              		.loc 1 108 8 is_stmt 0 view .LVU47
+ 228 00c2 8A4B     		ldr	r3, .L55+12
+ 229 00c4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 230              		.loc 1 108 7 view .LVU48
+ 231 00c6 002B     		cmp	r3, #0
+ 232 00c8 40F0E380 		bne	.L52
+ 233              	.L27:
+ 109:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				{
+ 110:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						HAL_TIM_Base_Stop_IT(&htim7);					
+ 111:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 					
+ 112:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						if(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_6))
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 7
+
+
+ 113:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 114:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										while(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_6));
+ 115:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=9;
+ 116:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 117:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						else if(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_7))
+ 118:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 119:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 							
+ 120:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										while(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_7));
+ 121:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=10;	
+ 122:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 123:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						else if(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0))
+ 124:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 125:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		
+ 126:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										while(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0));
+ 127:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=11;
+ 128:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 129:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						else if(!HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_3))
+ 130:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 131:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 							
+ 132:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										while(!HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_3));
+ 133:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=12;
+ 134:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										
+ 135:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 136:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				
+ 137:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				Key_Start=0;		
+ 138:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				
+ 139:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				}
+ 140:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		}
+ 141:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		HAL_GPIO_WritePin(GPIOC,GPIO_PIN_4,GPIO_PIN_SET);	
+ 234              		.loc 1 141 3 is_stmt 1 view .LVU49
+ 235 00cc 884D     		ldr	r5, .L55+16
+ 236 00ce 0122     		movs	r2, #1
+ 237 00d0 1021     		movs	r1, #16
+ 238 00d2 2846     		mov	r0, r5
+ 239 00d4 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 240              	.LVL20:
+ 142:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 
+ 143:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 
+ 144:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		
+ 145:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		HAL_GPIO_WritePin(GPIOC,GPIO_PIN_5,GPIO_PIN_RESET);
+ 241              		.loc 1 145 3 view .LVU50
+ 242 00d8 0022     		movs	r2, #0
+ 243 00da 2021     		movs	r1, #32
+ 244 00dc 2846     		mov	r0, r5
+ 245 00de FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 246              	.LVL21:
+ 146:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 	
+ 147:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		if((!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_6))||(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_7))
+ 247              		.loc 1 147 3 view .LVU51
+ 248              		.loc 1 147 8 is_stmt 0 view .LVU52
+ 249 00e2 4021     		movs	r1, #64
+ 250 00e4 4FF09040 		mov	r0, #1207959552
+ 251 00e8 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 252              	.LVL22:
+ 253              		.loc 1 147 5 view .LVU53
+ 254 00ec 38B1     		cbz	r0, .L36
+ 255              		.loc 1 147 47 discriminator 1 view .LVU54
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 8
+
+
+ 256 00ee 8021     		movs	r1, #128
+ 257 00f0 4FF09040 		mov	r0, #1207959552
+ 258 00f4 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 259              	.LVL23:
+ 260              		.loc 1 147 43 discriminator 1 view .LVU55
+ 261 00f8 0028     		cmp	r0, #0
+ 262 00fa 40F01A81 		bne	.L53
+ 263              	.L36:
+ 148:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 			||(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0))||(!HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_3)))
+ 149:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 150:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				Key_GetCntFlag=1;			/* 消抖计数使能 */
+ 264              		.loc 1 150 5 is_stmt 1 view .LVU56
+ 265              		.loc 1 150 19 is_stmt 0 view .LVU57
+ 266 00fe 794B     		ldr	r3, .L55+4
+ 267 0100 0122     		movs	r2, #1
+ 268 0102 1A70     		strb	r2, [r3]
+ 151:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 
+ 152:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				HAL_TIM_Base_Start_IT(&htim7);
+ 269              		.loc 1 152 5 is_stmt 1 view .LVU58
+ 270 0104 7848     		ldr	r0, .L55+8
+ 271 0106 FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
+ 272              	.LVL24:
+ 153:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 			
+ 154:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				if(Key_Start)
+ 273              		.loc 1 154 5 view .LVU59
+ 274              		.loc 1 154 8 is_stmt 0 view .LVU60
+ 275 010a 784B     		ldr	r3, .L55+12
+ 276 010c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 277              		.loc 1 154 7 view .LVU61
+ 278 010e 002B     		cmp	r3, #0
+ 279 0110 40F01F81 		bne	.L54
+ 280              	.L37:
+ 155:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				{	
+ 156:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						HAL_TIM_Base_Stop_IT(&htim7);
+ 157:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 					
+ 158:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						if(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_6))
+ 159:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 160:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 							
+ 161:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										while(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_6));
+ 162:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=13;
+ 163:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									
+ 164:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 165:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						else if(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_7))
+ 166:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{				
+ 167:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									
+ 168:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										while(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_7));
+ 169:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=14;
+ 170:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 													
+ 171:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 172:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						else if(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0))
+ 173:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 174:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 							
+ 175:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										while(!HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0));
+ 176:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=15;
+ 177:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 							
+ 178:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 179:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						else if(!HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_3))
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 9
+
+
+ 180:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{				
+ 181:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						
+ 182:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										while(!HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_3));
+ 183:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=16;						
+ 184:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 185:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						
+ 186:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						Key_Start=0;			/* 启动位清零 */				
+ 187:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				}
+ 188:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		}
+ 189:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		HAL_GPIO_WritePin(GPIOC,GPIO_PIN_5,GPIO_PIN_SET);	
+ 281              		.loc 1 189 3 is_stmt 1 view .LVU62
+ 282 0114 0122     		movs	r2, #1
+ 283 0116 2021     		movs	r1, #32
+ 284 0118 7548     		ldr	r0, .L55+16
+ 285 011a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 286              	.LVL25:
+ 190:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		
+ 191:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** }
+ 287              		.loc 1 191 1 is_stmt 0 view .LVU63
+ 288 011e 38BD     		pop	{r3, r4, r5, pc}
+ 289              	.LVL26:
+ 290              	.L47:
+  22:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 291              		.loc 1 22 8 view .LVU64
+ 292 0120 0121     		movs	r1, #1
+ 293 0122 4FF09040 		mov	r0, #1207959552
+ 294 0126 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 295              	.LVL27:
+  22:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 296              		.loc 1 22 4 view .LVU65
+ 297 012a 0028     		cmp	r0, #0
+ 298 012c 3FF47DAF 		beq	.L6
+  22:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 299              		.loc 1 22 47 discriminator 1 view .LVU66
+ 300 0130 0821     		movs	r1, #8
+ 301 0132 6F48     		ldr	r0, .L55+16
+ 302 0134 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 303              	.LVL28:
+  22:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 304              		.loc 1 22 43 discriminator 1 view .LVU67
+ 305 0138 0028     		cmp	r0, #0
+ 306 013a 80D1     		bne	.L7
+ 307 013c 75E7     		b	.L6
+ 308              	.L48:
+  30:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 					
+ 309              		.loc 1 30 7 is_stmt 1 view .LVU68
+ 310 013e 6A48     		ldr	r0, .L55+8
+ 311 0140 FFF7FEFF 		bl	HAL_TIM_Base_Stop_IT
+ 312              	.LVL29:
+  32:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 313              		.loc 1 32 7 view .LVU69
+  32:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 314              		.loc 1 32 11 is_stmt 0 view .LVU70
+ 315 0144 4021     		movs	r1, #64
+ 316 0146 4FF09040 		mov	r0, #1207959552
+ 317 014a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 318              	.LVL30:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 10
+
+
+  32:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 319              		.loc 1 32 9 view .LVU71
+ 320 014e 60B9     		cbnz	r0, .L8
+ 321              	.L9:
+  34:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=1;
+ 322              		.loc 1 34 52 is_stmt 1 discriminator 1 view .LVU72
+  34:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=1;
+ 323              		.loc 1 34 15 discriminator 1 view .LVU73
+  34:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=1;
+ 324              		.loc 1 34 17 is_stmt 0 discriminator 1 view .LVU74
+ 325 0150 4021     		movs	r1, #64
+ 326 0152 4FF09040 		mov	r0, #1207959552
+ 327 0156 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 328              	.LVL31:
+  34:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=1;
+ 329              		.loc 1 34 15 discriminator 1 view .LVU75
+ 330 015a 0028     		cmp	r0, #0
+ 331 015c F8D0     		beq	.L9
+  35:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 332              		.loc 1 35 10 is_stmt 1 view .LVU76
+  35:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 333              		.loc 1 35 14 is_stmt 0 view .LVU77
+ 334 015e 0123     		movs	r3, #1
+ 335 0160 2370     		strb	r3, [r4]
+ 336              	.L10:
+  53:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				}
+ 337              		.loc 1 53 7 is_stmt 1 view .LVU78
+  53:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				}
+ 338              		.loc 1 53 16 is_stmt 0 view .LVU79
+ 339 0162 624B     		ldr	r3, .L55+12
+ 340 0164 0022     		movs	r2, #0
+ 341 0166 1A70     		strb	r2, [r3]
+ 342 0168 69E7     		b	.L7
+ 343              	.L8:
+  37:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 344              		.loc 1 37 12 is_stmt 1 view .LVU80
+  37:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 345              		.loc 1 37 16 is_stmt 0 view .LVU81
+ 346 016a 8021     		movs	r1, #128
+ 347 016c 4FF09040 		mov	r0, #1207959552
+ 348 0170 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 349              	.LVL32:
+  37:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 350              		.loc 1 37 14 view .LVU82
+ 351 0174 48B9     		cbnz	r0, .L11
+ 352              	.L12:
+  39:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=2;
+ 353              		.loc 1 39 52 is_stmt 1 discriminator 1 view .LVU83
+  39:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=2;
+ 354              		.loc 1 39 15 discriminator 1 view .LVU84
+  39:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=2;
+ 355              		.loc 1 39 17 is_stmt 0 discriminator 1 view .LVU85
+ 356 0176 8021     		movs	r1, #128
+ 357 0178 4FF09040 		mov	r0, #1207959552
+ 358 017c FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 359              	.LVL33:
+  39:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=2;
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 11
+
+
+ 360              		.loc 1 39 15 discriminator 1 view .LVU86
+ 361 0180 0028     		cmp	r0, #0
+ 362 0182 F8D0     		beq	.L12
+  40:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 363              		.loc 1 40 10 is_stmt 1 view .LVU87
+  40:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 364              		.loc 1 40 14 is_stmt 0 view .LVU88
+ 365 0184 0223     		movs	r3, #2
+ 366 0186 2370     		strb	r3, [r4]
+ 367 0188 EBE7     		b	.L10
+ 368              	.L11:
+  42:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 369              		.loc 1 42 12 is_stmt 1 view .LVU89
+  42:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 370              		.loc 1 42 16 is_stmt 0 view .LVU90
+ 371 018a 0121     		movs	r1, #1
+ 372 018c 4FF09040 		mov	r0, #1207959552
+ 373 0190 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 374              	.LVL34:
+  42:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 375              		.loc 1 42 14 view .LVU91
+ 376 0194 48B9     		cbnz	r0, .L13
+ 377              	.L14:
+  44:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=3;
+ 378              		.loc 1 44 52 is_stmt 1 discriminator 1 view .LVU92
+  44:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=3;
+ 379              		.loc 1 44 15 discriminator 1 view .LVU93
+  44:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=3;
+ 380              		.loc 1 44 17 is_stmt 0 discriminator 1 view .LVU94
+ 381 0196 0121     		movs	r1, #1
+ 382 0198 4FF09040 		mov	r0, #1207959552
+ 383 019c FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 384              	.LVL35:
+  44:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=3;
+ 385              		.loc 1 44 15 discriminator 1 view .LVU95
+ 386 01a0 0028     		cmp	r0, #0
+ 387 01a2 F8D0     		beq	.L14
+  45:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 388              		.loc 1 45 10 is_stmt 1 view .LVU96
+  45:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 389              		.loc 1 45 14 is_stmt 0 view .LVU97
+ 390 01a4 0323     		movs	r3, #3
+ 391 01a6 2370     		strb	r3, [r4]
+ 392 01a8 DBE7     		b	.L10
+ 393              	.L13:
+  47:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 394              		.loc 1 47 12 is_stmt 1 view .LVU98
+  47:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 395              		.loc 1 47 16 is_stmt 0 view .LVU99
+ 396 01aa 0821     		movs	r1, #8
+ 397 01ac 5048     		ldr	r0, .L55+16
+ 398 01ae FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 399              	.LVL36:
+  47:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 400              		.loc 1 47 14 view .LVU100
+ 401 01b2 0028     		cmp	r0, #0
+ 402 01b4 D5D1     		bne	.L10
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 12
+
+
+ 403              	.L15:
+  49:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=4;
+ 404              		.loc 1 49 52 is_stmt 1 discriminator 1 view .LVU101
+  49:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=4;
+ 405              		.loc 1 49 15 discriminator 1 view .LVU102
+  49:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=4;
+ 406              		.loc 1 49 17 is_stmt 0 discriminator 1 view .LVU103
+ 407 01b6 0821     		movs	r1, #8
+ 408 01b8 4D48     		ldr	r0, .L55+16
+ 409 01ba FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 410              	.LVL37:
+  49:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=4;
+ 411              		.loc 1 49 15 discriminator 1 view .LVU104
+ 412 01be 0028     		cmp	r0, #0
+ 413 01c0 F9D0     		beq	.L15
+  50:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 414              		.loc 1 50 10 is_stmt 1 view .LVU105
+  50:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 415              		.loc 1 50 14 is_stmt 0 view .LVU106
+ 416 01c2 0423     		movs	r3, #4
+ 417 01c4 2370     		strb	r3, [r4]
+ 418 01c6 CCE7     		b	.L10
+ 419              	.L49:
+  62:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 420              		.loc 1 62 8 view .LVU107
+ 421 01c8 0121     		movs	r1, #1
+ 422 01ca 4FF09040 		mov	r0, #1207959552
+ 423 01ce FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 424              	.LVL38:
+  62:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 425              		.loc 1 62 4 view .LVU108
+ 426 01d2 0028     		cmp	r0, #0
+ 427 01d4 3FF44CAF 		beq	.L16
+  62:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 428              		.loc 1 62 47 discriminator 1 view .LVU109
+ 429 01d8 0821     		movs	r1, #8
+ 430 01da 4548     		ldr	r0, .L55+16
+ 431 01dc FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 432              	.LVL39:
+  62:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 433              		.loc 1 62 43 discriminator 1 view .LVU110
+ 434 01e0 0028     		cmp	r0, #0
+ 435 01e2 7FF450AF 		bne	.L17
+ 436 01e6 43E7     		b	.L16
+ 437              	.L50:
+  70:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 					
+ 438              		.loc 1 70 7 is_stmt 1 view .LVU111
+ 439 01e8 3F48     		ldr	r0, .L55+8
+ 440 01ea FFF7FEFF 		bl	HAL_TIM_Base_Stop_IT
+ 441              	.LVL40:
+  72:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 442              		.loc 1 72 7 view .LVU112
+  72:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 443              		.loc 1 72 11 is_stmt 0 view .LVU113
+ 444 01ee 4021     		movs	r1, #64
+ 445 01f0 4FF09040 		mov	r0, #1207959552
+ 446 01f4 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 13
+
+
+ 447              	.LVL41:
+  72:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 448              		.loc 1 72 9 view .LVU114
+ 449 01f8 60B9     		cbnz	r0, .L18
+ 450              	.L19:
+  75:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=5;
+ 451              		.loc 1 75 52 is_stmt 1 discriminator 1 view .LVU115
+  75:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=5;
+ 452              		.loc 1 75 15 discriminator 1 view .LVU116
+  75:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=5;
+ 453              		.loc 1 75 17 is_stmt 0 discriminator 1 view .LVU117
+ 454 01fa 4021     		movs	r1, #64
+ 455 01fc 4FF09040 		mov	r0, #1207959552
+ 456 0200 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 457              	.LVL42:
+  75:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=5;
+ 458              		.loc 1 75 15 discriminator 1 view .LVU118
+ 459 0204 0028     		cmp	r0, #0
+ 460 0206 F8D0     		beq	.L19
+  76:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 461              		.loc 1 76 10 is_stmt 1 view .LVU119
+  76:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 462              		.loc 1 76 14 is_stmt 0 view .LVU120
+ 463 0208 0523     		movs	r3, #5
+ 464 020a 2370     		strb	r3, [r4]
+ 465              	.L20:
+  94:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				}
+ 466              		.loc 1 94 7 is_stmt 1 view .LVU121
+  94:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				}
+ 467              		.loc 1 94 16 is_stmt 0 view .LVU122
+ 468 020c 374B     		ldr	r3, .L55+12
+ 469 020e 0022     		movs	r2, #0
+ 470 0210 1A70     		strb	r2, [r3]
+ 471 0212 38E7     		b	.L17
+ 472              	.L18:
+  78:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 473              		.loc 1 78 12 is_stmt 1 view .LVU123
+  78:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 474              		.loc 1 78 16 is_stmt 0 view .LVU124
+ 475 0214 8021     		movs	r1, #128
+ 476 0216 4FF09040 		mov	r0, #1207959552
+ 477 021a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 478              	.LVL43:
+  78:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 479              		.loc 1 78 14 view .LVU125
+ 480 021e 48B9     		cbnz	r0, .L21
+ 481              	.L22:
+  80:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=6;
+ 482              		.loc 1 80 52 is_stmt 1 discriminator 1 view .LVU126
+  80:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=6;
+ 483              		.loc 1 80 15 discriminator 1 view .LVU127
+  80:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=6;
+ 484              		.loc 1 80 17 is_stmt 0 discriminator 1 view .LVU128
+ 485 0220 8021     		movs	r1, #128
+ 486 0222 4FF09040 		mov	r0, #1207959552
+ 487 0226 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 488              	.LVL44:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 14
+
+
+  80:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=6;
+ 489              		.loc 1 80 15 discriminator 1 view .LVU129
+ 490 022a 0028     		cmp	r0, #0
+ 491 022c F8D0     		beq	.L22
+  81:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 492              		.loc 1 81 10 is_stmt 1 view .LVU130
+  81:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 493              		.loc 1 81 14 is_stmt 0 view .LVU131
+ 494 022e 0623     		movs	r3, #6
+ 495 0230 2370     		strb	r3, [r4]
+ 496 0232 EBE7     		b	.L20
+ 497              	.L21:
+  83:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 498              		.loc 1 83 12 is_stmt 1 view .LVU132
+  83:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 499              		.loc 1 83 16 is_stmt 0 view .LVU133
+ 500 0234 0121     		movs	r1, #1
+ 501 0236 4FF09040 		mov	r0, #1207959552
+ 502 023a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 503              	.LVL45:
+  83:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 504              		.loc 1 83 14 view .LVU134
+ 505 023e 48B9     		cbnz	r0, .L23
+ 506              	.L24:
+  85:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=7;
+ 507              		.loc 1 85 52 is_stmt 1 discriminator 1 view .LVU135
+  85:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=7;
+ 508              		.loc 1 85 15 discriminator 1 view .LVU136
+  85:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=7;
+ 509              		.loc 1 85 17 is_stmt 0 discriminator 1 view .LVU137
+ 510 0240 0121     		movs	r1, #1
+ 511 0242 4FF09040 		mov	r0, #1207959552
+ 512 0246 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 513              	.LVL46:
+  85:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=7;
+ 514              		.loc 1 85 15 discriminator 1 view .LVU138
+ 515 024a 0028     		cmp	r0, #0
+ 516 024c F8D0     		beq	.L24
+  86:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 517              		.loc 1 86 10 is_stmt 1 view .LVU139
+  86:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 518              		.loc 1 86 14 is_stmt 0 view .LVU140
+ 519 024e 0723     		movs	r3, #7
+ 520 0250 2370     		strb	r3, [r4]
+ 521 0252 DBE7     		b	.L20
+ 522              	.L23:
+  88:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 523              		.loc 1 88 12 is_stmt 1 view .LVU141
+  88:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 524              		.loc 1 88 16 is_stmt 0 view .LVU142
+ 525 0254 0821     		movs	r1, #8
+ 526 0256 2648     		ldr	r0, .L55+16
+ 527 0258 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 528              	.LVL47:
+  88:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 529              		.loc 1 88 14 view .LVU143
+ 530 025c 0028     		cmp	r0, #0
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 15
+
+
+ 531 025e D5D1     		bne	.L20
+ 532              	.L25:
+  90:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=8;
+ 533              		.loc 1 90 52 is_stmt 1 discriminator 1 view .LVU144
+  90:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=8;
+ 534              		.loc 1 90 15 discriminator 1 view .LVU145
+  90:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=8;
+ 535              		.loc 1 90 17 is_stmt 0 discriminator 1 view .LVU146
+ 536 0260 0821     		movs	r1, #8
+ 537 0262 2348     		ldr	r0, .L55+16
+ 538 0264 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 539              	.LVL48:
+  90:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									*key=8;
+ 540              		.loc 1 90 15 discriminator 1 view .LVU147
+ 541 0268 0028     		cmp	r0, #0
+ 542 026a F9D0     		beq	.L25
+  91:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 543              		.loc 1 91 10 is_stmt 1 view .LVU148
+  91:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 544              		.loc 1 91 14 is_stmt 0 view .LVU149
+ 545 026c 0823     		movs	r3, #8
+ 546 026e 2370     		strb	r3, [r4]
+ 547 0270 CCE7     		b	.L20
+ 548              	.L51:
+ 102:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 549              		.loc 1 102 8 view .LVU150
+ 550 0272 0121     		movs	r1, #1
+ 551 0274 4FF09040 		mov	r0, #1207959552
+ 552 0278 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 553              	.LVL49:
+ 102:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 554              		.loc 1 102 4 view .LVU151
+ 555 027c 0028     		cmp	r0, #0
+ 556 027e 3FF41AAF 		beq	.L26
+ 102:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 557              		.loc 1 102 47 discriminator 1 view .LVU152
+ 558 0282 0821     		movs	r1, #8
+ 559 0284 1A48     		ldr	r0, .L55+16
+ 560 0286 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 561              	.LVL50:
+ 102:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 562              		.loc 1 102 43 discriminator 1 view .LVU153
+ 563 028a 0028     		cmp	r0, #0
+ 564 028c 7FF41EAF 		bne	.L27
+ 565 0290 11E7     		b	.L26
+ 566              	.L52:
+ 110:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 					
+ 567              		.loc 1 110 7 is_stmt 1 view .LVU154
+ 568 0292 1548     		ldr	r0, .L55+8
+ 569 0294 FFF7FEFF 		bl	HAL_TIM_Base_Stop_IT
+ 570              	.LVL51:
+ 112:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 571              		.loc 1 112 7 view .LVU155
+ 112:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 572              		.loc 1 112 11 is_stmt 0 view .LVU156
+ 573 0298 4021     		movs	r1, #64
+ 574 029a 4FF09040 		mov	r0, #1207959552
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 16
+
+
+ 575 029e FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 576              	.LVL52:
+ 112:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 577              		.loc 1 112 9 view .LVU157
+ 578 02a2 60B9     		cbnz	r0, .L28
+ 579              	.L29:
+ 114:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=9;
+ 580              		.loc 1 114 53 is_stmt 1 discriminator 1 view .LVU158
+ 114:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=9;
+ 581              		.loc 1 114 16 discriminator 1 view .LVU159
+ 114:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=9;
+ 582              		.loc 1 114 18 is_stmt 0 discriminator 1 view .LVU160
+ 583 02a4 4021     		movs	r1, #64
+ 584 02a6 4FF09040 		mov	r0, #1207959552
+ 585 02aa FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 586              	.LVL53:
+ 114:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=9;
+ 587              		.loc 1 114 16 discriminator 1 view .LVU161
+ 588 02ae 0028     		cmp	r0, #0
+ 589 02b0 F8D0     		beq	.L29
+ 115:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 590              		.loc 1 115 11 is_stmt 1 view .LVU162
+ 115:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 591              		.loc 1 115 15 is_stmt 0 view .LVU163
+ 592 02b2 0923     		movs	r3, #9
+ 593 02b4 2370     		strb	r3, [r4]
+ 594              	.L30:
+ 137:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				
+ 595              		.loc 1 137 5 is_stmt 1 view .LVU164
+ 137:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				
+ 596              		.loc 1 137 14 is_stmt 0 view .LVU165
+ 597 02b6 0D4B     		ldr	r3, .L55+12
+ 598 02b8 0022     		movs	r2, #0
+ 599 02ba 1A70     		strb	r2, [r3]
+ 600 02bc 06E7     		b	.L27
+ 601              	.L28:
+ 117:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 602              		.loc 1 117 12 is_stmt 1 view .LVU166
+ 117:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 603              		.loc 1 117 16 is_stmt 0 view .LVU167
+ 604 02be 8021     		movs	r1, #128
+ 605 02c0 4FF09040 		mov	r0, #1207959552
+ 606 02c4 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 607              	.LVL54:
+ 117:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 608              		.loc 1 117 14 view .LVU168
+ 609 02c8 A0B9     		cbnz	r0, .L31
+ 610              	.L32:
+ 120:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=10;	
+ 611              		.loc 1 120 53 is_stmt 1 discriminator 1 view .LVU169
+ 120:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=10;	
+ 612              		.loc 1 120 16 discriminator 1 view .LVU170
+ 120:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=10;	
+ 613              		.loc 1 120 18 is_stmt 0 discriminator 1 view .LVU171
+ 614 02ca 8021     		movs	r1, #128
+ 615 02cc 4FF09040 		mov	r0, #1207959552
+ 616 02d0 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 17
+
+
+ 617              	.LVL55:
+ 120:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=10;	
+ 618              		.loc 1 120 16 discriminator 1 view .LVU172
+ 619 02d4 0028     		cmp	r0, #0
+ 620 02d6 F8D0     		beq	.L32
+ 121:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 621              		.loc 1 121 11 is_stmt 1 view .LVU173
+ 121:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 622              		.loc 1 121 15 is_stmt 0 view .LVU174
+ 623 02d8 0A23     		movs	r3, #10
+ 624 02da 2370     		strb	r3, [r4]
+ 625 02dc EBE7     		b	.L30
+ 626              	.L56:
+ 627 02de 00BF     		.align	2
+ 628              	.L55:
+ 629 02e0 00040048 		.word	1207960576
+ 630 02e4 00000000 		.word	Key_GetCntFlag
+ 631 02e8 00000000 		.word	htim7
+ 632 02ec 00000000 		.word	Key_Start
+ 633 02f0 00080048 		.word	1207961600
+ 634              	.L31:
+ 123:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 635              		.loc 1 123 12 is_stmt 1 view .LVU175
+ 123:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 636              		.loc 1 123 16 is_stmt 0 view .LVU176
+ 637 02f4 0121     		movs	r1, #1
+ 638 02f6 4FF09040 		mov	r0, #1207959552
+ 639 02fa FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 640              	.LVL56:
+ 123:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 641              		.loc 1 123 14 view .LVU177
+ 642 02fe 48B9     		cbnz	r0, .L33
+ 643              	.L34:
+ 126:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=11;
+ 644              		.loc 1 126 53 is_stmt 1 discriminator 1 view .LVU178
+ 126:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=11;
+ 645              		.loc 1 126 16 discriminator 1 view .LVU179
+ 126:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=11;
+ 646              		.loc 1 126 18 is_stmt 0 discriminator 1 view .LVU180
+ 647 0300 0121     		movs	r1, #1
+ 648 0302 4FF09040 		mov	r0, #1207959552
+ 649 0306 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 650              	.LVL57:
+ 126:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=11;
+ 651              		.loc 1 126 16 discriminator 1 view .LVU181
+ 652 030a 0028     		cmp	r0, #0
+ 653 030c F8D0     		beq	.L34
+ 127:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 654              		.loc 1 127 11 is_stmt 1 view .LVU182
+ 127:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 655              		.loc 1 127 15 is_stmt 0 view .LVU183
+ 656 030e 0B23     		movs	r3, #11
+ 657 0310 2370     		strb	r3, [r4]
+ 658 0312 D0E7     		b	.L30
+ 659              	.L33:
+ 129:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 660              		.loc 1 129 12 is_stmt 1 view .LVU184
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 18
+
+
+ 129:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 661              		.loc 1 129 16 is_stmt 0 view .LVU185
+ 662 0314 0821     		movs	r1, #8
+ 663 0316 3148     		ldr	r0, .L57
+ 664 0318 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 665              	.LVL58:
+ 129:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 666              		.loc 1 129 14 view .LVU186
+ 667 031c 0028     		cmp	r0, #0
+ 668 031e CAD1     		bne	.L30
+ 669              	.L35:
+ 132:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=12;
+ 670              		.loc 1 132 53 is_stmt 1 discriminator 1 view .LVU187
+ 132:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=12;
+ 671              		.loc 1 132 16 discriminator 1 view .LVU188
+ 132:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=12;
+ 672              		.loc 1 132 18 is_stmt 0 discriminator 1 view .LVU189
+ 673 0320 0821     		movs	r1, #8
+ 674 0322 2E48     		ldr	r0, .L57
+ 675 0324 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 676              	.LVL59:
+ 132:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=12;
+ 677              		.loc 1 132 16 discriminator 1 view .LVU190
+ 678 0328 0028     		cmp	r0, #0
+ 679 032a F9D0     		beq	.L35
+ 133:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										
+ 680              		.loc 1 133 11 is_stmt 1 view .LVU191
+ 133:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										
+ 681              		.loc 1 133 15 is_stmt 0 view .LVU192
+ 682 032c 0C23     		movs	r3, #12
+ 683 032e 2370     		strb	r3, [r4]
+ 684 0330 C1E7     		b	.L30
+ 685              	.L53:
+ 148:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 686              		.loc 1 148 8 view .LVU193
+ 687 0332 0121     		movs	r1, #1
+ 688 0334 4FF09040 		mov	r0, #1207959552
+ 689 0338 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 690              	.LVL60:
+ 148:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 691              		.loc 1 148 4 view .LVU194
+ 692 033c 0028     		cmp	r0, #0
+ 693 033e 3FF4DEAE 		beq	.L36
+ 148:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 694              		.loc 1 148 47 discriminator 1 view .LVU195
+ 695 0342 0821     		movs	r1, #8
+ 696 0344 2846     		mov	r0, r5
+ 697 0346 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 698              	.LVL61:
+ 148:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 		{
+ 699              		.loc 1 148 43 discriminator 1 view .LVU196
+ 700 034a 0028     		cmp	r0, #0
+ 701 034c 7FF4E2AE 		bne	.L37
+ 702 0350 D5E6     		b	.L36
+ 703              	.L54:
+ 156:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 					
+ 704              		.loc 1 156 7 is_stmt 1 view .LVU197
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 19
+
+
+ 705 0352 2348     		ldr	r0, .L57+4
+ 706 0354 FFF7FEFF 		bl	HAL_TIM_Base_Stop_IT
+ 707              	.LVL62:
+ 158:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 708              		.loc 1 158 7 view .LVU198
+ 158:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 709              		.loc 1 158 11 is_stmt 0 view .LVU199
+ 710 0358 4021     		movs	r1, #64
+ 711 035a 4FF09040 		mov	r0, #1207959552
+ 712 035e FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 713              	.LVL63:
+ 158:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 714              		.loc 1 158 9 view .LVU200
+ 715 0362 60B9     		cbnz	r0, .L38
+ 716              	.L39:
+ 161:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=13;
+ 717              		.loc 1 161 53 is_stmt 1 discriminator 1 view .LVU201
+ 161:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=13;
+ 718              		.loc 1 161 16 discriminator 1 view .LVU202
+ 161:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=13;
+ 719              		.loc 1 161 18 is_stmt 0 discriminator 1 view .LVU203
+ 720 0364 4021     		movs	r1, #64
+ 721 0366 4FF09040 		mov	r0, #1207959552
+ 722 036a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 723              	.LVL64:
+ 161:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=13;
+ 724              		.loc 1 161 16 discriminator 1 view .LVU204
+ 725 036e 0028     		cmp	r0, #0
+ 726 0370 F8D0     		beq	.L39
+ 162:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									
+ 727              		.loc 1 162 11 is_stmt 1 view .LVU205
+ 162:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 									
+ 728              		.loc 1 162 15 is_stmt 0 view .LVU206
+ 729 0372 0D23     		movs	r3, #13
+ 730 0374 2370     		strb	r3, [r4]
+ 731              	.L40:
+ 186:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				}
+ 732              		.loc 1 186 7 is_stmt 1 view .LVU207
+ 186:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 				}
+ 733              		.loc 1 186 16 is_stmt 0 view .LVU208
+ 734 0376 1B4B     		ldr	r3, .L57+8
+ 735 0378 0022     		movs	r2, #0
+ 736 037a 1A70     		strb	r2, [r3]
+ 737 037c CAE6     		b	.L37
+ 738              	.L38:
+ 165:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{				
+ 739              		.loc 1 165 12 is_stmt 1 view .LVU209
+ 165:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{				
+ 740              		.loc 1 165 16 is_stmt 0 view .LVU210
+ 741 037e 8021     		movs	r1, #128
+ 742 0380 4FF09040 		mov	r0, #1207959552
+ 743 0384 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 744              	.LVL65:
+ 165:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{				
+ 745              		.loc 1 165 14 view .LVU211
+ 746 0388 48B9     		cbnz	r0, .L41
+ 747              	.L42:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 20
+
+
+ 168:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=14;
+ 748              		.loc 1 168 53 is_stmt 1 discriminator 1 view .LVU212
+ 168:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=14;
+ 749              		.loc 1 168 16 discriminator 1 view .LVU213
+ 168:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=14;
+ 750              		.loc 1 168 18 is_stmt 0 discriminator 1 view .LVU214
+ 751 038a 8021     		movs	r1, #128
+ 752 038c 4FF09040 		mov	r0, #1207959552
+ 753 0390 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 754              	.LVL66:
+ 168:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=14;
+ 755              		.loc 1 168 16 discriminator 1 view .LVU215
+ 756 0394 0028     		cmp	r0, #0
+ 757 0396 F8D0     		beq	.L42
+ 169:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 													
+ 758              		.loc 1 169 11 is_stmt 1 view .LVU216
+ 169:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 													
+ 759              		.loc 1 169 15 is_stmt 0 view .LVU217
+ 760 0398 0E23     		movs	r3, #14
+ 761 039a 2370     		strb	r3, [r4]
+ 762 039c EBE7     		b	.L40
+ 763              	.L41:
+ 172:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 764              		.loc 1 172 12 is_stmt 1 view .LVU218
+ 172:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 765              		.loc 1 172 16 is_stmt 0 view .LVU219
+ 766 039e 0121     		movs	r1, #1
+ 767 03a0 4FF09040 		mov	r0, #1207959552
+ 768 03a4 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 769              	.LVL67:
+ 172:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{
+ 770              		.loc 1 172 14 view .LVU220
+ 771 03a8 48B9     		cbnz	r0, .L43
+ 772              	.L44:
+ 175:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=15;
+ 773              		.loc 1 175 53 is_stmt 1 discriminator 1 view .LVU221
+ 175:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=15;
+ 774              		.loc 1 175 16 discriminator 1 view .LVU222
+ 175:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=15;
+ 775              		.loc 1 175 18 is_stmt 0 discriminator 1 view .LVU223
+ 776 03aa 0121     		movs	r1, #1
+ 777 03ac 4FF09040 		mov	r0, #1207959552
+ 778 03b0 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 779              	.LVL68:
+ 175:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=15;
+ 780              		.loc 1 175 16 discriminator 1 view .LVU224
+ 781 03b4 0028     		cmp	r0, #0
+ 782 03b6 F8D0     		beq	.L44
+ 176:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 							
+ 783              		.loc 1 176 11 is_stmt 1 view .LVU225
+ 176:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 							
+ 784              		.loc 1 176 15 is_stmt 0 view .LVU226
+ 785 03b8 0F23     		movs	r3, #15
+ 786 03ba 2370     		strb	r3, [r4]
+ 787 03bc DBE7     		b	.L40
+ 788              	.L43:
+ 179:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{				
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 21
+
+
+ 789              		.loc 1 179 12 is_stmt 1 view .LVU227
+ 179:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{				
+ 790              		.loc 1 179 16 is_stmt 0 view .LVU228
+ 791 03be 0821     		movs	r1, #8
+ 792 03c0 0648     		ldr	r0, .L57
+ 793 03c2 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 794              	.LVL69:
+ 179:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						{				
+ 795              		.loc 1 179 14 view .LVU229
+ 796 03c6 0028     		cmp	r0, #0
+ 797 03c8 D5D1     		bne	.L40
+ 798              	.L45:
+ 182:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=16;						
+ 799              		.loc 1 182 53 is_stmt 1 discriminator 1 view .LVU230
+ 182:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=16;						
+ 800              		.loc 1 182 16 discriminator 1 view .LVU231
+ 182:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=16;						
+ 801              		.loc 1 182 18 is_stmt 0 discriminator 1 view .LVU232
+ 802 03ca 0821     		movs	r1, #8
+ 803 03cc 0348     		ldr	r0, .L57
+ 804 03ce FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 805              	.LVL70:
+ 182:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 										*key=16;						
+ 806              		.loc 1 182 16 discriminator 1 view .LVU233
+ 807 03d2 0028     		cmp	r0, #0
+ 808 03d4 F9D0     		beq	.L45
+ 183:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 809              		.loc 1 183 11 is_stmt 1 view .LVU234
+ 183:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard\My_KeyBoard.c **** 						}
+ 810              		.loc 1 183 15 is_stmt 0 view .LVU235
+ 811 03d6 1023     		movs	r3, #16
+ 812 03d8 2370     		strb	r3, [r4]
+ 813 03da CCE7     		b	.L40
+ 814              	.L58:
+ 815              		.align	2
+ 816              	.L57:
+ 817 03dc 00080048 		.word	1207961600
+ 818 03e0 00000000 		.word	htim7
+ 819 03e4 00000000 		.word	Key_Start
+ 820              		.cfi_endproc
+ 821              	.LFE133:
+ 823              		.text
+ 824              	.Letext0:
+ 825              		.file 2 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 826              		.file 3 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 827              		.file 4 "Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g431xx.h"
+ 828              		.file 5 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_def.h"
+ 829              		.file 6 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_gpio.h"
+ 830              		.file 7 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_dma.h"
+ 831              		.file 8 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim.h"
+ 832              		.file 9 "Core/Inc/main.h"
+ 833              		.file 10 "Core/Inc/tim.h"
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s 			page 22
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 My_KeyBoard.c
+C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s:20     .text.Key_Init:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s:26     .text.Key_Init:00000000 Key_Init
+C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s:69     .text.Key_Init:00000034 $d
+C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s:74     .text.Key_Scan:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s:80     .text.Key_Scan:00000000 Key_Scan
+C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s:629    .text.Key_Scan:000002e0 $d
+C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s:637    .text.Key_Scan:000002f4 $t
+C:\Users\86390\AppData\Local\Temp\ccbWSdQ0.s:817    .text.Key_Scan:000003dc $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+HAL_GPIO_ReadPin
+HAL_TIM_Base_Start_IT
+HAL_TIM_Base_Stop_IT
+Key_GetCntFlag
+htim7
+Key_Start

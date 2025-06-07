@@ -1,0 +1,361 @@
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cczHChzk.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"Tick.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Tick_Wait,"ax",%progbits
+  20              		.align	1
+  21              		.global	Tick_Wait
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	Tick_Wait:
+  27              	.LFB132:
+  28              		.file 1 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo/Tick.c"
+   1:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** #include "Tick.h"
+   2:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** 
+   3:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c ****  __IO uint32_t TickCnt;
+   4:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** //等待计时完成
+   5:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** void Tick_Wait(){
+  29              		.loc 1 5 17 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+   6:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c ****     HAL_TIM_Base_Start_IT(&htim6);
+  38              		.loc 1 6 5 view .LVU1
+  39 0002 0548     		ldr	r0, .L4
+  40 0004 FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
+  41              	.LVL0:
+   7:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c ****     while (TickCnt > 0);
+  42              		.loc 1 7 5 view .LVU2
+  43              	.L2:
+  44              		.loc 1 7 24 discriminator 1 view .LVU3
+  45              		.loc 1 7 11 discriminator 1 view .LVU4
+  46              		.loc 1 7 20 is_stmt 0 discriminator 1 view .LVU5
+  47 0008 044B     		ldr	r3, .L4+4
+  48 000a 1B68     		ldr	r3, [r3]
+  49              		.loc 1 7 11 discriminator 1 view .LVU6
+  50 000c 002B     		cmp	r3, #0
+  51 000e FBD1     		bne	.L2
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cczHChzk.s 			page 2
+
+
+   8:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c ****     HAL_TIM_Base_Stop_IT(&htim6);
+  52              		.loc 1 8 5 is_stmt 1 view .LVU7
+  53 0010 0148     		ldr	r0, .L4
+  54 0012 FFF7FEFF 		bl	HAL_TIM_Base_Stop_IT
+  55              	.LVL1:
+   9:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** }
+  56              		.loc 1 9 1 is_stmt 0 view .LVU8
+  57 0016 08BD     		pop	{r3, pc}
+  58              	.L5:
+  59              		.align	2
+  60              	.L4:
+  61 0018 00000000 		.word	htim6
+  62 001c 00000000 		.word	.LANCHOR0
+  63              		.cfi_endproc
+  64              	.LFE132:
+  66              		.section	.text.Tick_DelayUs,"ax",%progbits
+  67              		.align	1
+  68              		.global	Tick_DelayUs
+  69              		.syntax unified
+  70              		.thumb
+  71              		.thumb_func
+  73              	Tick_DelayUs:
+  74              	.LVL2:
+  75              	.LFB133:
+  10:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** //延时us
+  11:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** void Tick_DelayUs(__IO uint32_t nTime){
+  76              		.loc 1 11 39 is_stmt 1 view -0
+  77              		.cfi_startproc
+  78              		@ args = 0, pretend = 0, frame = 8
+  79              		@ frame_needed = 0, uses_anonymous_args = 0
+  80              		.loc 1 11 39 is_stmt 0 view .LVU10
+  81 0000 00B5     		push	{lr}
+  82              	.LCFI1:
+  83              		.cfi_def_cfa_offset 4
+  84              		.cfi_offset 14, -4
+  85 0002 83B0     		sub	sp, sp, #12
+  86              	.LCFI2:
+  87              		.cfi_def_cfa_offset 16
+  88 0004 0190     		str	r0, [sp, #4]
+  12:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c ****     uint32_t nTime_us = nTime / 1000;
+  89              		.loc 1 12 5 is_stmt 1 view .LVU11
+  90              		.loc 1 12 31 is_stmt 0 view .LVU12
+  91 0006 019B     		ldr	r3, [sp, #4]
+  92              		.loc 1 12 14 view .LVU13
+  93 0008 054A     		ldr	r2, .L8
+  94 000a A2FB0323 		umull	r2, r3, r2, r3
+  95 000e 9B09     		lsrs	r3, r3, #6
+  96              	.LVL3:
+  13:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c ****     TickCnt = nTime_us;
+  97              		.loc 1 13 5 is_stmt 1 view .LVU14
+  98              		.loc 1 13 13 is_stmt 0 view .LVU15
+  99 0010 044A     		ldr	r2, .L8+4
+ 100 0012 1360     		str	r3, [r2]
+  14:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c ****     Tick_Wait();
+ 101              		.loc 1 14 5 is_stmt 1 view .LVU16
+ 102 0014 FFF7FEFF 		bl	Tick_Wait
+ 103              	.LVL4:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cczHChzk.s 			page 3
+
+
+  15:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** }
+ 104              		.loc 1 15 1 is_stmt 0 view .LVU17
+ 105 0018 03B0     		add	sp, sp, #12
+ 106              	.LCFI3:
+ 107              		.cfi_def_cfa_offset 4
+ 108              		@ sp needed
+ 109 001a 5DF804FB 		ldr	pc, [sp], #4
+ 110              	.L9:
+ 111 001e 00BF     		.align	2
+ 112              	.L8:
+ 113 0020 D34D6210 		.word	274877907
+ 114 0024 00000000 		.word	.LANCHOR0
+ 115              		.cfi_endproc
+ 116              	.LFE133:
+ 118              		.section	.text.Tick_DelayMs,"ax",%progbits
+ 119              		.align	1
+ 120              		.global	Tick_DelayMs
+ 121              		.syntax unified
+ 122              		.thumb
+ 123              		.thumb_func
+ 125              	Tick_DelayMs:
+ 126              	.LVL5:
+ 127              	.LFB134:
+  16:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** //延时ms
+  17:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** void Tick_DelayMs(__IO uint32_t nTime){
+ 128              		.loc 1 17 39 is_stmt 1 view -0
+ 129              		.cfi_startproc
+ 130              		@ args = 0, pretend = 0, frame = 8
+ 131              		@ frame_needed = 0, uses_anonymous_args = 0
+ 132              		.loc 1 17 39 is_stmt 0 view .LVU19
+ 133 0000 00B5     		push	{lr}
+ 134              	.LCFI4:
+ 135              		.cfi_def_cfa_offset 4
+ 136              		.cfi_offset 14, -4
+ 137 0002 83B0     		sub	sp, sp, #12
+ 138              	.LCFI5:
+ 139              		.cfi_def_cfa_offset 16
+ 140 0004 0190     		str	r0, [sp, #4]
+  18:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c ****     TickCnt = nTime;
+ 141              		.loc 1 18 5 is_stmt 1 view .LVU20
+ 142              		.loc 1 18 13 is_stmt 0 view .LVU21
+ 143 0006 019A     		ldr	r2, [sp, #4]
+ 144 0008 034B     		ldr	r3, .L12
+ 145 000a 1A60     		str	r2, [r3]
+  19:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c ****     Tick_Wait();
+ 146              		.loc 1 19 5 is_stmt 1 view .LVU22
+ 147 000c FFF7FEFF 		bl	Tick_Wait
+ 148              	.LVL6:
+  20:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** }
+ 149              		.loc 1 20 1 is_stmt 0 view .LVU23
+ 150 0010 03B0     		add	sp, sp, #12
+ 151              	.LCFI6:
+ 152              		.cfi_def_cfa_offset 4
+ 153              		@ sp needed
+ 154 0012 5DF804FB 		ldr	pc, [sp], #4
+ 155              	.L13:
+ 156 0016 00BF     		.align	2
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cczHChzk.s 			page 4
+
+
+ 157              	.L12:
+ 158 0018 00000000 		.word	.LANCHOR0
+ 159              		.cfi_endproc
+ 160              	.LFE134:
+ 162              		.section	.text.Tick_CountdownBegin,"ax",%progbits
+ 163              		.align	1
+ 164              		.global	Tick_CountdownBegin
+ 165              		.syntax unified
+ 166              		.thumb
+ 167              		.thumb_func
+ 169              	Tick_CountdownBegin:
+ 170              	.LVL7:
+ 171              	.LFB135:
+  21:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** //设置倒计时（非阻塞式）
+  22:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** void Tick_CountdownBegin(__IO uint32_t nTime){
+ 172              		.loc 1 22 46 is_stmt 1 view -0
+ 173              		.cfi_startproc
+ 174              		@ args = 0, pretend = 0, frame = 8
+ 175              		@ frame_needed = 0, uses_anonymous_args = 0
+ 176              		.loc 1 22 46 is_stmt 0 view .LVU25
+ 177 0000 00B5     		push	{lr}
+ 178              	.LCFI7:
+ 179              		.cfi_def_cfa_offset 4
+ 180              		.cfi_offset 14, -4
+ 181 0002 83B0     		sub	sp, sp, #12
+ 182              	.LCFI8:
+ 183              		.cfi_def_cfa_offset 16
+ 184 0004 0190     		str	r0, [sp, #4]
+  23:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c ****     TickCnt = nTime;
+ 185              		.loc 1 23 5 is_stmt 1 view .LVU26
+ 186              		.loc 1 23 13 is_stmt 0 view .LVU27
+ 187 0006 019A     		ldr	r2, [sp, #4]
+ 188 0008 034B     		ldr	r3, .L16
+ 189 000a 1A60     		str	r2, [r3]
+  24:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c ****     HAL_TIM_Base_Start_IT(&htim6);
+ 190              		.loc 1 24 5 is_stmt 1 view .LVU28
+ 191 000c 0348     		ldr	r0, .L16+4
+ 192              	.LVL8:
+ 193              		.loc 1 24 5 is_stmt 0 view .LVU29
+ 194 000e FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
+ 195              	.LVL9:
+  25:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** }
+ 196              		.loc 1 25 1 view .LVU30
+ 197 0012 03B0     		add	sp, sp, #12
+ 198              	.LCFI9:
+ 199              		.cfi_def_cfa_offset 4
+ 200              		@ sp needed
+ 201 0014 5DF804FB 		ldr	pc, [sp], #4
+ 202              	.L17:
+ 203              		.align	2
+ 204              	.L16:
+ 205 0018 00000000 		.word	.LANCHOR0
+ 206 001c 00000000 		.word	htim6
+ 207              		.cfi_endproc
+ 208              	.LFE135:
+ 210              		.section	.text.Tick_CountdownCancel,"ax",%progbits
+ 211              		.align	1
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cczHChzk.s 			page 5
+
+
+ 212              		.global	Tick_CountdownCancel
+ 213              		.syntax unified
+ 214              		.thumb
+ 215              		.thumb_func
+ 217              	Tick_CountdownCancel:
+ 218              	.LFB136:
+  26:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** //撤销倒计时
+  27:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** void Tick_CountdownCancel(){
+ 219              		.loc 1 27 28 is_stmt 1 view -0
+ 220              		.cfi_startproc
+ 221              		@ args = 0, pretend = 0, frame = 0
+ 222              		@ frame_needed = 0, uses_anonymous_args = 0
+ 223 0000 08B5     		push	{r3, lr}
+ 224              	.LCFI10:
+ 225              		.cfi_def_cfa_offset 8
+ 226              		.cfi_offset 3, -8
+ 227              		.cfi_offset 14, -4
+  28:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c ****     TickCnt = 0;
+ 228              		.loc 1 28 5 view .LVU32
+ 229              		.loc 1 28 13 is_stmt 0 view .LVU33
+ 230 0002 034B     		ldr	r3, .L20
+ 231 0004 0022     		movs	r2, #0
+ 232 0006 1A60     		str	r2, [r3]
+  29:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c ****     HAL_TIM_Base_Stop_IT(&htim6);
+ 233              		.loc 1 29 5 is_stmt 1 view .LVU34
+ 234 0008 0248     		ldr	r0, .L20+4
+ 235 000a FFF7FEFF 		bl	HAL_TIM_Base_Stop_IT
+ 236              	.LVL10:
+  30:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** }
+ 237              		.loc 1 30 1 is_stmt 0 view .LVU35
+ 238 000e 08BD     		pop	{r3, pc}
+ 239              	.L21:
+ 240              		.align	2
+ 241              	.L20:
+ 242 0010 00000000 		.word	.LANCHOR0
+ 243 0014 00000000 		.word	htim6
+ 244              		.cfi_endproc
+ 245              	.LFE136:
+ 247              		.section	.text.Tick_CountdownIsTimeout,"ax",%progbits
+ 248              		.align	1
+ 249              		.global	Tick_CountdownIsTimeout
+ 250              		.syntax unified
+ 251              		.thumb
+ 252              		.thumb_func
+ 254              	Tick_CountdownIsTimeout:
+ 255              	.LFB137:
+  31:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** //判断倒计时是超时
+  32:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** uint8_t Tick_CountdownIsTimeout(){
+ 256              		.loc 1 32 34 is_stmt 1 view -0
+ 257              		.cfi_startproc
+ 258              		@ args = 0, pretend = 0, frame = 0
+ 259              		@ frame_needed = 0, uses_anonymous_args = 0
+ 260              		@ link register save eliminated.
+  33:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c ****     return TickCnt == 0;
+ 261              		.loc 1 33 5 view .LVU37
+ 262              		.loc 1 33 20 is_stmt 0 view .LVU38
+ 263 0000 024B     		ldr	r3, .L23
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cczHChzk.s 			page 6
+
+
+ 264 0002 1868     		ldr	r0, [r3]
+  34:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\Tick.c **** }
+ 265              		.loc 1 34 1 view .LVU39
+ 266 0004 B0FA80F0 		clz	r0, r0
+ 267 0008 4009     		lsrs	r0, r0, #5
+ 268 000a 7047     		bx	lr
+ 269              	.L24:
+ 270              		.align	2
+ 271              	.L23:
+ 272 000c 00000000 		.word	.LANCHOR0
+ 273              		.cfi_endproc
+ 274              	.LFE137:
+ 276              		.global	TickCnt
+ 277              		.section	.bss.TickCnt,"aw",%nobits
+ 278              		.align	2
+ 279              		.set	.LANCHOR0,. + 0
+ 282              	TickCnt:
+ 283 0000 00000000 		.space	4
+ 284              		.text
+ 285              	.Letext0:
+ 286              		.file 2 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 287              		.file 3 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 288              		.file 4 "Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g431xx.h"
+ 289              		.file 5 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_def.h"
+ 290              		.file 6 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_dma.h"
+ 291              		.file 7 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim.h"
+ 292              		.file 8 "Core/Inc/tim.h"
+ 293              		.file 9 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo/Tick.h"
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cczHChzk.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 Tick.c
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:20     .text.Tick_Wait:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:26     .text.Tick_Wait:00000000 Tick_Wait
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:61     .text.Tick_Wait:00000018 $d
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:67     .text.Tick_DelayUs:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:73     .text.Tick_DelayUs:00000000 Tick_DelayUs
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:113    .text.Tick_DelayUs:00000020 $d
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:119    .text.Tick_DelayMs:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:125    .text.Tick_DelayMs:00000000 Tick_DelayMs
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:158    .text.Tick_DelayMs:00000018 $d
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:163    .text.Tick_CountdownBegin:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:169    .text.Tick_CountdownBegin:00000000 Tick_CountdownBegin
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:205    .text.Tick_CountdownBegin:00000018 $d
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:211    .text.Tick_CountdownCancel:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:217    .text.Tick_CountdownCancel:00000000 Tick_CountdownCancel
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:242    .text.Tick_CountdownCancel:00000010 $d
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:248    .text.Tick_CountdownIsTimeout:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:254    .text.Tick_CountdownIsTimeout:00000000 Tick_CountdownIsTimeout
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:272    .text.Tick_CountdownIsTimeout:0000000c $d
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:282    .bss.TickCnt:00000000 TickCnt
+C:\Users\86390\AppData\Local\Temp\cczHChzk.s:278    .bss.TickCnt:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_TIM_Base_Start_IT
+HAL_TIM_Base_Stop_IT
+htim6

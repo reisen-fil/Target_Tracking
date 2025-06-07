@@ -1,0 +1,124 @@
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"Variable.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	PID_Mode
+  20              		.global	Car_on_off
+  21              		.global	Get_On_or_off
+  22              		.global	Get_Vofa_RxData
+  23              		.global	PID_index_2
+  24              		.global	PID_index_1
+  25              		.global	On_or_off_RxFlag
+  26              		.global	PID_RxFlag
+  27              		.global	id_Flag_2
+  28              		.global	id_Flag_1
+  29              		.global	Data_BitNum
+  30              		.global	Rx_Byte
+  31              		.section	.bss.Car_on_off,"aw",%nobits
+  34              	Car_on_off:
+  35 0000 00       		.space	1
+  36              		.section	.bss.Data_BitNum,"aw",%nobits
+  39              	Data_BitNum:
+  40 0000 00       		.space	1
+  41              		.section	.bss.Get_On_or_off,"aw",%nobits
+  42              		.align	2
+  45              	Get_On_or_off:
+  46 0000 00000000 		.space	100
+  46      00000000 
+  46      00000000 
+  46      00000000 
+  46      00000000 
+  47              		.section	.bss.Get_Vofa_RxData,"aw",%nobits
+  48              		.align	2
+  51              	Get_Vofa_RxData:
+  52 0000 00000000 		.space	100
+  52      00000000 
+  52      00000000 
+  52      00000000 
+  52      00000000 
+  53              		.section	.bss.On_or_off_RxFlag,"aw",%nobits
+  56              	On_or_off_RxFlag:
+  57 0000 00       		.space	1
+  58              		.section	.bss.PID_Mode,"aw",%nobits
+  59              		.align	2
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s 			page 2
+
+
+  62              	PID_Mode:
+  63 0000 00000000 		.space	32
+  63      00000000 
+  63      00000000 
+  63      00000000 
+  63      00000000 
+  64              		.section	.bss.PID_RxFlag,"aw",%nobits
+  67              	PID_RxFlag:
+  68 0000 00       		.space	1
+  69              		.section	.bss.PID_index_1,"aw",%nobits
+  72              	PID_index_1:
+  73 0000 00       		.space	1
+  74              		.section	.bss.PID_index_2,"aw",%nobits
+  77              	PID_index_2:
+  78 0000 00       		.space	1
+  79              		.section	.bss.Rx_Byte,"aw",%nobits
+  82              	Rx_Byte:
+  83 0000 00       		.space	1
+  84              		.section	.bss.id_Flag_1,"aw",%nobits
+  87              	id_Flag_1:
+  88 0000 00       		.space	1
+  89              		.section	.bss.id_Flag_2,"aw",%nobits
+  92              	id_Flag_2:
+  93 0000 00       		.space	1
+  94              		.text
+  95              	.Letext0:
+  96              		.file 1 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\machine\\_default_types.h"
+  97              		.file 2 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\sys\\_stdint.h"
+  98              		.file 3 "E:/MCU_Project/stm32/Target_tracking/user/vofa_test/Variable.h"
+  99              		.file 4 "E:/MCU_Project/stm32/Target_tracking/user/vofa_test/Variable.c"
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 Variable.c
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:62     .bss.PID_Mode:00000000 PID_Mode
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:34     .bss.Car_on_off:00000000 Car_on_off
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:45     .bss.Get_On_or_off:00000000 Get_On_or_off
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:51     .bss.Get_Vofa_RxData:00000000 Get_Vofa_RxData
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:77     .bss.PID_index_2:00000000 PID_index_2
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:72     .bss.PID_index_1:00000000 PID_index_1
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:56     .bss.On_or_off_RxFlag:00000000 On_or_off_RxFlag
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:67     .bss.PID_RxFlag:00000000 PID_RxFlag
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:92     .bss.id_Flag_2:00000000 id_Flag_2
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:87     .bss.id_Flag_1:00000000 id_Flag_1
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:39     .bss.Data_BitNum:00000000 Data_BitNum
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:82     .bss.Rx_Byte:00000000 Rx_Byte
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:35     .bss.Car_on_off:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:40     .bss.Data_BitNum:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:42     .bss.Get_On_or_off:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:48     .bss.Get_Vofa_RxData:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:57     .bss.On_or_off_RxFlag:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:59     .bss.PID_Mode:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:68     .bss.PID_RxFlag:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:73     .bss.PID_index_1:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:78     .bss.PID_index_2:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:83     .bss.Rx_Byte:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:88     .bss.id_Flag_1:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccm4W2Xd.s:93     .bss.id_Flag_2:00000000 $d
+
+NO UNDEFINED SYMBOLS

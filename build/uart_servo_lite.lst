@@ -1,0 +1,1623 @@
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"uart_servo_lite.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Usart_SendAll,"ax",%progbits
+  20              		.align	1
+  21              		.global	Usart_SendAll
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	Usart_SendAll:
+  27              	.LVL0:
+  28              	.LFB135:
+  29              		.file 1 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo/uart_servo_lite.c"
+   1:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** /**
+   2:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** JOHO UART舵机操作_发送与接收
+   3:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 轻SDK
+   4:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** ***/
+   5:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+   6:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** #include "uart_servo_lite.h"
+   7:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+   8:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** uint8_t usart1SendBuf[USART_SEND_BUF_SIZE+1];
+   9:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** uint8_t usart1RecvBuf[USART_RECV_BUF_SIZE+1];
+  10:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** RingBufferTypeDef usart1SendRingBuf;
+  11:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** RingBufferTypeDef usart1RecvRingBuf;
+  12:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** Usart_DataTypeDef usart1;
+  13:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+  14:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** Usart_DataTypeDef* servoUsart = &usart1;
+  15:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+  16:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+  17:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** // 将串口发送缓冲区的内容全部发出去
+  18:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** void Usart_SendAll(Usart_DataTypeDef *usart){
+  30              		.loc 1 18 45 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 8
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 18 45 is_stmt 0 view .LVU1
+  35 0000 10B5     		push	{r4, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 4, -8
+  39              		.cfi_offset 14, -4
+  40 0002 82B0     		sub	sp, sp, #8
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 2
+
+
+  41              	.LCFI1:
+  42              		.cfi_def_cfa_offset 16
+  43 0004 0446     		mov	r4, r0
+  19:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	uint8_t value;
+  44              		.loc 1 19 2 is_stmt 1 view .LVU2
+  20:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	while(RingBuffer_GetByteUsed(usart->sendBuf)){
+  45              		.loc 1 20 2 view .LVU3
+  46              		.loc 1 20 7 is_stmt 0 view .LVU4
+  47 0006 0CE0     		b	.L2
+  48              	.LVL1:
+  49              	.L3:
+  21:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		value = RingBuffer_Pop(usart->sendBuf);
+  50              		.loc 1 21 3 is_stmt 1 view .LVU5
+  51              		.loc 1 21 11 is_stmt 0 view .LVU6
+  52 0008 6068     		ldr	r0, [r4, #4]
+  53 000a FFF7FEFF 		bl	RingBuffer_Pop
+  54              	.LVL2:
+  55              		.loc 1 21 9 view .LVU7
+  56 000e 8DF80700 		strb	r0, [sp, #7]
+  22:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		// printf("Usart_SendAll pop: %d", value);
+  23:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****         HAL_UART_Transmit(usart->pUSARTx,&value, sizeof(value),HAL_MAX_DELAY);
+  57              		.loc 1 23 9 is_stmt 1 view .LVU8
+  58 0012 4FF0FF33 		mov	r3, #-1
+  59 0016 0122     		movs	r2, #1
+  60 0018 0DF10701 		add	r1, sp, #7
+  61 001c 2068     		ldr	r0, [r4]
+  62 001e FFF7FEFF 		bl	HAL_UART_Transmit
+  63              	.LVL3:
+  64              	.L2:
+  20:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		value = RingBuffer_Pop(usart->sendBuf);
+  65              		.loc 1 20 7 view .LVU9
+  20:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		value = RingBuffer_Pop(usart->sendBuf);
+  66              		.loc 1 20 8 is_stmt 0 view .LVU10
+  67 0022 6068     		ldr	r0, [r4, #4]
+  68 0024 FFF7FEFF 		bl	RingBuffer_GetByteUsed
+  69              	.LVL4:
+  20:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		value = RingBuffer_Pop(usart->sendBuf);
+  70              		.loc 1 20 7 view .LVU11
+  71 0028 0028     		cmp	r0, #0
+  72 002a EDD1     		bne	.L3
+  24:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	}
+  25:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** }
+  73              		.loc 1 25 1 view .LVU12
+  74 002c 02B0     		add	sp, sp, #8
+  75              	.LCFI2:
+  76              		.cfi_def_cfa_offset 8
+  77              		@ sp needed
+  78 002e 10BD     		pop	{r4, pc}
+  79              		.loc 1 25 1 view .LVU13
+  80              		.cfi_endproc
+  81              	.LFE135:
+  83              		.section	.text.USL_Send_HEX,"ax",%progbits
+  84              		.align	1
+  85              		.global	USL_Send_HEX
+  86              		.syntax unified
+  87              		.thumb
+  88              		.thumb_func
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 3
+
+
+  90              	USL_Send_HEX:
+  91              	.LVL5:
+  92              	.LFB137:
+  26:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+  27:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+  28:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** //构造并发送需要的数据帧 【字头	ID号	数据长度	指令类型	参数	数据校验】
+  29:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** void JOHO_PackageBuild_Send(Usart_DataTypeDef *usart, uint8_t usId, uint8_t size,uint8_t cmdType, u
+  30:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****   // 可以通过申请内存，获得动态数据包大小，此处数据包大小固定
+  31:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     PackageTypeDef pkg;
+  32:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	
+  33:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     // 设置帧头
+  34:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     pkg.header = JOHO_PACK_REQUEST_HEADER;
+  35:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     // 设置ID号
+  36:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     pkg.usId = usId;
+  37:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     // 数据长度		
+  38:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     pkg.size = size;
+  39:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	
+  40:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	  //指令类型
+  41:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		pkg.sstat = cmdType;
+  42:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		// 逐一拷贝数组里面的内容
+  43:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		for(int i=0; i<size-2; i++){
+  44:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			pkg.content[i] = content[i];
+  45:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		}
+  46:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     // 将pkg发送到发送缓冲区sendBuf里面
+  47:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     JOHO_Package2RingBuffer(&pkg, usart->sendBuf);
+  48:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		// 通过串口将数据发送出去
+  49:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     Usart_SendAll(usart);
+  50:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** }
+  51:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+  52:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+  53:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+  54:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+  55:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** // 发送数据帧-HEX
+  56:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** void USL_Send_HEX(Usart_DataTypeDef *usart, uint8_t size, uint8_t *content){
+  93              		.loc 1 56 76 is_stmt 1 view -0
+  94              		.cfi_startproc
+  95              		@ args = 0, pretend = 0, frame = 0
+  96              		@ frame_needed = 0, uses_anonymous_args = 0
+  97              		.loc 1 56 76 is_stmt 0 view .LVU15
+  98 0000 10B5     		push	{r4, lr}
+  99              	.LCFI3:
+ 100              		.cfi_def_cfa_offset 8
+ 101              		.cfi_offset 4, -8
+ 102              		.cfi_offset 14, -4
+ 103 0002 0446     		mov	r4, r0
+ 104 0004 1346     		mov	r3, r2
+  57:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+  58:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	
+  59:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	RingBuffer_WriteByteArray( usart->sendBuf,content,size);
+ 105              		.loc 1 59 2 is_stmt 1 view .LVU16
+ 106 0006 0A46     		mov	r2, r1
+ 107              	.LVL6:
+ 108              		.loc 1 59 2 is_stmt 0 view .LVU17
+ 109 0008 1946     		mov	r1, r3
+ 110              	.LVL7:
+ 111              		.loc 1 59 2 view .LVU18
+ 112 000a 4068     		ldr	r0, [r0, #4]
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 4
+
+
+ 113              	.LVL8:
+ 114              		.loc 1 59 2 view .LVU19
+ 115 000c FFF7FEFF 		bl	RingBuffer_WriteByteArray
+ 116              	.LVL9:
+  60:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	
+  61:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	// 通过串口将数据发送出去
+  62:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     Usart_SendAll(usart);
+ 117              		.loc 1 62 5 is_stmt 1 view .LVU20
+ 118 0010 2046     		mov	r0, r4
+ 119 0012 FFF7FEFF 		bl	Usart_SendAll
+ 120              	.LVL10:
+  63:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** }
+ 121              		.loc 1 63 1 is_stmt 0 view .LVU21
+ 122 0016 10BD     		pop	{r4, pc}
+ 123              		.loc 1 63 1 view .LVU22
+ 124              		.cfi_endproc
+ 125              	.LFE137:
+ 127              		.section	.text.JOHO_Package2RingBuffer,"ax",%progbits
+ 128              		.align	1
+ 129              		.global	JOHO_Package2RingBuffer
+ 130              		.syntax unified
+ 131              		.thumb
+ 132              		.thumb_func
+ 134              	JOHO_Package2RingBuffer:
+ 135              	.LVL11:
+ 136              	.LFB139:
+  64:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+  65:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+  66:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** //接收数据帧
+  67:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** JOHO_STATUS USL_RecvPackage(Usart_DataTypeDef *usart,PackageTypeDef *pkg){
+  68:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	
+  69:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		pkg->status = 0; // Package状态初始化	
+  70:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     uint8_t bIdx = 0; // 接收的参数字节索引号
+  71:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     uint16_t header = 0; // 帧头
+  72:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	
+  73:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	
+  74:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		// 倒计时开始,100
+  75:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     Tick_CountdownBegin(JOHO_TIMEOUT_MS);
+  76:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		// 如果没有超时
+  77:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     while (!Tick_CountdownIsTimeout()){
+  78:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			if (RingBuffer_GetByteUsed(usart->recvBuf) == 0){
+  79:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			// 没有新的字节读进来, 继续等待
+  80:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             continue;
+  81:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****         }
+  82:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+  83:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****         if(pkg->status == JOHO_RECV_FLAG_CONTENT){
+  84:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 参数内容接收完成
+  85:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 接收校验码
+  86:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             pkg->checksum = RingBuffer_ReadByte(usart->recvBuf);
+  87:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 设置状态码-校验码已经接收
+  88:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             pkg->status = pkg->status | JOHO_RECV_FLAG_CHECKSUM;
+  89:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 直接进行校验码检查
+  90:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             if (JOHO_CalcChecksum(pkg) != pkg->checksum){
+  91:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 撤销倒计时
+  92:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 Tick_CountdownCancel();
+  93:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 校验码错误
+  94:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 return JOHO_STATUS_CHECKSUM_ERROR;
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 5
+
+
+  95:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }else{
+  96:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 撤销倒计时
+  97:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 Tick_CountdownCancel();
+  98:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 数据帧接收成功
+  99:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 return JOHO_STATUS_SUCCESS;
+ 100:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 101:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****         }else if(pkg->status == JOHO_RECV_FLAG_SSTAT){
+ 102:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 状态已经接收完成
+ 103:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 接收参数字节
+ 104:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 				
+ 105:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             pkg->content[bIdx] = RingBuffer_ReadByte(usart->recvBuf);
+ 106:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             bIdx ++;
+ 107:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 判断是否接收完成
+ 108:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             if (bIdx == (pkg->size-2)){
+ 109:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 标记为参数接收完成
+ 110:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 pkg->status = JOHO_RECV_FLAG_CONTENT;
+ 111:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 112:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****         }
+ 113:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 				else if(pkg->status == JOHO_RECV_FLAG_SIZE){
+ 114:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 				// Size已经接收完成
+ 115:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 					//接收状态
+ 116:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 					pkg->sstat = RingBuffer_ReadByte(usart->recvBuf);
+ 117:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 					pkg->status = JOHO_RECV_FLAG_SSTAT;
+ 118:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 119:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 					if((pkg->size-2)==0)
+ 120:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 					{// 标记为参数接收完成
+ 121:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 pkg->status = JOHO_RECV_FLAG_CONTENT;}
+ 122:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 				}
+ 123:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 				else if(pkg->status == JOHO_RECV_FLAG_US_ID){
+ 124:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 舵机ID接收完成
+ 125:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 接收尺寸信息
+ 126:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             pkg->size = RingBuffer_ReadByte(usart->recvBuf);
+ 127:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 判断长度size是否合法
+ 128:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 参数的size大于JOHO_PACK_RESPONSE_MAX_SIZE里面的限制
+ 129:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             if (pkg->size > (JOHO_PACK_RESPONSE_MAX_SIZE - 5)){
+ 130:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 撤销倒计时
+ 131:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 Tick_CountdownCancel();
+ 132:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 return JOHO_STATUS_SIZE_TOO_BIG;
+ 133:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 134:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 设置尺寸接收完成的标志位
+ 135:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             pkg->status = JOHO_RECV_FLAG_SIZE;
+ 136:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****         }else if(pkg->status == JOHO_RECV_FLAG_HEADER){
+ 137:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 帧头已接收 
+ 138:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 接收舵机ID
+ 139:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             pkg->usId = RingBuffer_ReadByte(usart->recvBuf);
+ 140:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 判断指令是否合法
+ 141:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 判断控制指令是否有效 指令范围超出
+ 142:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             if (pkg->usId > JOHO_US_NUM){
+ 143:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 撤销倒计时
+ 144:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 Tick_CountdownCancel();
+ 145:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 return JOHO_STATUS_UNKOWN_US_ID;
+ 146:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 147:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 设置usId已经接收到标志位
+ 148:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             pkg->status = JOHO_RECV_FLAG_US_ID;
+ 149:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****         }else{
+ 150:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 接收帧头
+ 151:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             if (header == 0){
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 6
+
+
+ 152:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 接收第一个字节
+ 153:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 header = RingBuffer_ReadByte(usart->recvBuf);
+ 154:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 155:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 判断接收的第一个字节是否正确
+ 156:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 if (header != (JOHO_PACK_RESPONSE_HEADER&0xff)){
+ 157:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 										// 如果第一个字节错误 header重置为0
+ 158:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                     header = 0;
+ 159:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 }
+ 160:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }else if(header == (JOHO_PACK_RESPONSE_HEADER&0xFF)){
+ 161:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 接收帧头第二个字节
+ 162:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 header =  header | (RingBuffer_ReadByte(usart->recvBuf) << 8);
+ 163:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 								// 检查第二个字节是否正确
+ 164:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 if(header != JOHO_PACK_RESPONSE_HEADER){
+ 165:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                     header = 0;
+ 166:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 }else{
+ 167:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                     pkg->header = header;
+ 168:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                     // 帧头接收成功
+ 169:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                     pkg->status = JOHO_RECV_FLAG_HEADER; 
+ 170:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 }
+ 171:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }else{
+ 172:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 header = 0;
+ 173:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 174:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****         }
+ 175:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			
+ 176:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		}
+ 177:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	// 等待超时
+ 178:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     return JOHO_STATUS_TIMEOUT;
+ 179:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 180:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** }
+ 181:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 182:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 183:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** // 数据帧转换为字节数组
+ 184:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** void JOHO_Package2RingBuffer(PackageTypeDef *pkg,  RingBufferTypeDef *ringBuf){
+ 137              		.loc 1 184 79 is_stmt 1 view -0
+ 138              		.cfi_startproc
+ 139              		@ args = 0, pretend = 0, frame = 0
+ 140              		@ frame_needed = 0, uses_anonymous_args = 0
+ 141              		.loc 1 184 79 is_stmt 0 view .LVU24
+ 142 0000 38B5     		push	{r3, r4, r5, lr}
+ 143              	.LCFI4:
+ 144              		.cfi_def_cfa_offset 16
+ 145              		.cfi_offset 3, -16
+ 146              		.cfi_offset 4, -12
+ 147              		.cfi_offset 5, -8
+ 148              		.cfi_offset 14, -4
+ 149 0002 0546     		mov	r5, r0
+ 150 0004 0C46     		mov	r4, r1
+ 185:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     uint8_t checksum; // 校验和
+ 151              		.loc 1 185 5 is_stmt 1 view .LVU25
+ 186:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** //    // 写入帧头 不参与校验，在计算校验时体现
+ 187:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     RingBuffer_WriteUShort(ringBuf, pkg->header);
+ 152              		.loc 1 187 5 view .LVU26
+ 153 0006 0188     		ldrh	r1, [r0]
+ 154              	.LVL12:
+ 155              		.loc 1 187 5 is_stmt 0 view .LVU27
+ 156 0008 2046     		mov	r0, r4
+ 157              	.LVL13:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 7
+
+
+ 158              		.loc 1 187 5 view .LVU28
+ 159 000a FFF7FEFF 		bl	RingBuffer_WriteUShort
+ 160              	.LVL14:
+ 188:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     // 写入舵机ID
+ 189:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     RingBuffer_WriteByte(ringBuf, pkg->usId);
+ 161              		.loc 1 189 5 is_stmt 1 view .LVU29
+ 162 000e A978     		ldrb	r1, [r5, #2]	@ zero_extendqisi2
+ 163 0010 2046     		mov	r0, r4
+ 164 0012 FFF7FEFF 		bl	RingBuffer_WriteByte
+ 165              	.LVL15:
+ 190:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     // 写入包的长度
+ 191:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     RingBuffer_WriteByte(ringBuf, pkg->size);
+ 166              		.loc 1 191 5 view .LVU30
+ 167 0016 E978     		ldrb	r1, [r5, #3]	@ zero_extendqisi2
+ 168 0018 2046     		mov	r0, r4
+ 169 001a FFF7FEFF 		bl	RingBuffer_WriteByte
+ 170              	.LVL16:
+ 192:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	//写入状态（or 指令类型）
+ 193:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	RingBuffer_WriteByte(ringBuf, pkg->sstat);
+ 171              		.loc 1 193 2 view .LVU31
+ 172 001e 2979     		ldrb	r1, [r5, #4]	@ zero_extendqisi2
+ 173 0020 2046     		mov	r0, r4
+ 174 0022 FFF7FEFF 		bl	RingBuffer_WriteByte
+ 175              	.LVL17:
+ 194:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     // 写入内容主题
+ 195:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	if(pkg->size != 2)
+ 176              		.loc 1 195 2 view .LVU32
+ 177              		.loc 1 195 8 is_stmt 0 view .LVU33
+ 178 0026 EA78     		ldrb	r2, [r5, #3]	@ zero_extendqisi2
+ 179              		.loc 1 195 4 view .LVU34
+ 180 0028 022A     		cmp	r2, #2
+ 181 002a 07D1     		bne	.L10
+ 182              	.L8:
+ 196:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     RingBuffer_WriteByteArray(ringBuf, pkg->content, pkg->size-2);
+ 197:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     // 计算校验和
+ 198:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     checksum = RingBuffer_GetChecksum(ringBuf);
+ 183              		.loc 1 198 5 is_stmt 1 view .LVU35
+ 184              		.loc 1 198 16 is_stmt 0 view .LVU36
+ 185 002c 2046     		mov	r0, r4
+ 186 002e FFF7FEFF 		bl	RingBuffer_GetChecksum
+ 187              	.LVL18:
+ 188 0032 0146     		mov	r1, r0
+ 189              	.LVL19:
+ 199:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     // 写入校验和
+ 200:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     RingBuffer_WriteByte(ringBuf, checksum);
+ 190              		.loc 1 200 5 is_stmt 1 view .LVU37
+ 191 0034 2046     		mov	r0, r4
+ 192 0036 FFF7FEFF 		bl	RingBuffer_WriteByte
+ 193              	.LVL20:
+ 201:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	
+ 202:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** //	
+ 203:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** //	printf("Auto get ServoID usId %d \r\n", pkg->usId);
+ 204:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** //	printf("Auto get ServoID pkg->size %d \r\n", pkg->size);
+ 205:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** //	printf("Auto get ServoID pkg->sstat %d \r\n", pkg->sstat);
+ 206:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** //	printf("Auto get ServoID pkg->content %d \r\n", pkg->content[0]);
+ 207:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** //	printf("Auto get ServoID checksum %d \r\n", checksum);
+ 208:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 8
+
+
+ 209:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** }
+ 194              		.loc 1 209 1 is_stmt 0 view .LVU38
+ 195 003a 38BD     		pop	{r3, r4, r5, pc}
+ 196              	.LVL21:
+ 197              	.L10:
+ 196:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     // 计算校验和
+ 198              		.loc 1 196 5 is_stmt 1 view .LVU39
+ 199 003c 023A     		subs	r2, r2, #2
+ 200 003e 92B2     		uxth	r2, r2
+ 201 0040 691D     		adds	r1, r5, #5
+ 202 0042 2046     		mov	r0, r4
+ 203 0044 FFF7FEFF 		bl	RingBuffer_WriteByteArray
+ 204              	.LVL22:
+ 205 0048 F0E7     		b	.L8
+ 206              		.cfi_endproc
+ 207              	.LFE139:
+ 209              		.section	.text.JOHO_PackageBuild_Send,"ax",%progbits
+ 210              		.align	1
+ 211              		.global	JOHO_PackageBuild_Send
+ 212              		.syntax unified
+ 213              		.thumb
+ 214              		.thumb_func
+ 216              	JOHO_PackageBuild_Send:
+ 217              	.LVL23:
+ 218              	.LFB136:
+  29:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****   // 可以通过申请内存，获得动态数据包大小，此处数据包大小固定
+ 219              		.loc 1 29 116 view -0
+ 220              		.cfi_startproc
+ 221              		@ args = 4, pretend = 0, frame = 64
+ 222              		@ frame_needed = 0, uses_anonymous_args = 0
+  29:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****   // 可以通过申请内存，获得动态数据包大小，此处数据包大小固定
+ 223              		.loc 1 29 116 is_stmt 0 view .LVU41
+ 224 0000 30B5     		push	{r4, r5, lr}
+ 225              	.LCFI5:
+ 226              		.cfi_def_cfa_offset 12
+ 227              		.cfi_offset 4, -12
+ 228              		.cfi_offset 5, -8
+ 229              		.cfi_offset 14, -4
+ 230 0002 91B0     		sub	sp, sp, #68
+ 231              	.LCFI6:
+ 232              		.cfi_def_cfa_offset 80
+ 233 0004 0546     		mov	r5, r0
+ 234 0006 149C     		ldr	r4, [sp, #80]
+  31:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	
+ 235              		.loc 1 31 5 is_stmt 1 view .LVU42
+  34:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     // 设置ID号
+ 236              		.loc 1 34 5 view .LVU43
+  34:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     // 设置ID号
+ 237              		.loc 1 34 16 is_stmt 0 view .LVU44
+ 238 0008 4FF6FF70 		movw	r0, #65535
+ 239              	.LVL24:
+  34:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     // 设置ID号
+ 240              		.loc 1 34 16 view .LVU45
+ 241 000c ADF80400 		strh	r0, [sp, #4]	@ movhi
+  36:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     // 数据长度		
+ 242              		.loc 1 36 5 is_stmt 1 view .LVU46
+  36:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     // 数据长度		
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 9
+
+
+ 243              		.loc 1 36 14 is_stmt 0 view .LVU47
+ 244 0010 8DF80610 		strb	r1, [sp, #6]
+  38:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	
+ 245              		.loc 1 38 5 is_stmt 1 view .LVU48
+  38:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	
+ 246              		.loc 1 38 14 is_stmt 0 view .LVU49
+ 247 0014 8DF80720 		strb	r2, [sp, #7]
+  41:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		// 逐一拷贝数组里面的内容
+ 248              		.loc 1 41 3 is_stmt 1 view .LVU50
+  41:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		// 逐一拷贝数组里面的内容
+ 249              		.loc 1 41 13 is_stmt 0 view .LVU51
+ 250 0018 8DF80830 		strb	r3, [sp, #8]
+  43:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			pkg.content[i] = content[i];
+ 251              		.loc 1 43 3 is_stmt 1 view .LVU52
+ 252              	.LBB2:
+  43:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			pkg.content[i] = content[i];
+ 253              		.loc 1 43 7 view .LVU53
+ 254              	.LVL25:
+  43:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			pkg.content[i] = content[i];
+ 255              		.loc 1 43 11 is_stmt 0 view .LVU54
+ 256 001c 0023     		movs	r3, #0
+ 257              	.LVL26:
+  43:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			pkg.content[i] = content[i];
+ 258              		.loc 1 43 3 view .LVU55
+ 259 001e 07E0     		b	.L12
+ 260              	.LVL27:
+ 261              	.L13:
+  44:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		}
+ 262              		.loc 1 44 4 is_stmt 1 discriminator 3 view .LVU56
+  44:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		}
+ 263              		.loc 1 44 28 is_stmt 0 discriminator 3 view .LVU57
+ 264 0020 14F803C0 		ldrb	ip, [r4, r3]	@ zero_extendqisi2
+  44:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		}
+ 265              		.loc 1 44 19 discriminator 3 view .LVU58
+ 266 0024 03F14001 		add	r1, r3, #64
+ 267 0028 6944     		add	r1, sp, r1
+ 268 002a 01F837CC 		strb	ip, [r1, #-55]
+  43:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			pkg.content[i] = content[i];
+ 269              		.loc 1 43 26 is_stmt 1 discriminator 3 view .LVU59
+  43:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			pkg.content[i] = content[i];
+ 270              		.loc 1 43 27 is_stmt 0 discriminator 3 view .LVU60
+ 271 002e 0133     		adds	r3, r3, #1
+ 272              	.LVL28:
+ 273              	.L12:
+  43:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			pkg.content[i] = content[i];
+ 274              		.loc 1 43 16 is_stmt 1 discriminator 1 view .LVU61
+  43:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			pkg.content[i] = content[i];
+ 275              		.loc 1 43 22 is_stmt 0 discriminator 1 view .LVU62
+ 276 0030 911E     		subs	r1, r2, #2
+  43:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			pkg.content[i] = content[i];
+ 277              		.loc 1 43 3 discriminator 1 view .LVU63
+ 278 0032 9942     		cmp	r1, r3
+ 279 0034 F4DC     		bgt	.L13
+ 280              	.LBE2:
+  47:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		// 通过串口将数据发送出去
+ 281              		.loc 1 47 5 is_stmt 1 view .LVU64
+ 282 0036 6968     		ldr	r1, [r5, #4]
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 10
+
+
+ 283 0038 01A8     		add	r0, sp, #4
+ 284 003a FFF7FEFF 		bl	JOHO_Package2RingBuffer
+ 285              	.LVL29:
+  49:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** }
+ 286              		.loc 1 49 5 view .LVU65
+ 287 003e 2846     		mov	r0, r5
+ 288 0040 FFF7FEFF 		bl	Usart_SendAll
+ 289              	.LVL30:
+  50:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 290              		.loc 1 50 1 is_stmt 0 view .LVU66
+ 291 0044 11B0     		add	sp, sp, #68
+ 292              	.LCFI7:
+ 293              		.cfi_def_cfa_offset 12
+ 294              		@ sp needed
+ 295 0046 30BD     		pop	{r4, r5, pc}
+  50:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 296              		.loc 1 50 1 view .LVU67
+ 297              		.cfi_endproc
+ 298              	.LFE136:
+ 300              		.section	.text.JOHO_CalcChecksum,"ax",%progbits
+ 301              		.align	1
+ 302              		.global	JOHO_CalcChecksum
+ 303              		.syntax unified
+ 304              		.thumb
+ 305              		.thumb_func
+ 307              	JOHO_CalcChecksum:
+ 308              	.LVL31:
+ 309              	.LFB140:
+ 210:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 211:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 212:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 213:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** // 计算Package的校验和
+ 214:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** uint8_t JOHO_CalcChecksum(PackageTypeDef *pkg){
+ 310              		.loc 1 214 47 is_stmt 1 view -0
+ 311              		.cfi_startproc
+ 312              		@ args = 0, pretend = 0, frame = 64
+ 313              		@ frame_needed = 0, uses_anonymous_args = 0
+ 314              		.loc 1 214 47 is_stmt 0 view .LVU69
+ 315 0000 10B5     		push	{r4, lr}
+ 316              	.LCFI8:
+ 317              		.cfi_def_cfa_offset 8
+ 318              		.cfi_offset 4, -8
+ 319              		.cfi_offset 14, -4
+ 320 0002 90B0     		sub	sp, sp, #64
+ 321              	.LCFI9:
+ 322              		.cfi_def_cfa_offset 72
+ 323 0004 0446     		mov	r4, r0
+ 215:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     uint8_t checksum;
+ 324              		.loc 1 215 5 is_stmt 1 view .LVU70
+ 216:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	// 初始化环形队列
+ 217:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	RingBufferTypeDef ringBuf;
+ 325              		.loc 1 217 2 view .LVU71
+ 218:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	uint8_t pkgBuf[JOHO_PACK_RESPONSE_MAX_SIZE+1];
+ 326              		.loc 1 218 2 view .LVU72
+ 219:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	RingBuffer_Init(&ringBuf, JOHO_PACK_RESPONSE_MAX_SIZE, pkgBuf);
+ 327              		.loc 1 219 2 view .LVU73
+ 328 0006 6A46     		mov	r2, sp
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 11
+
+
+ 329 0008 3221     		movs	r1, #50
+ 330 000a 0DA8     		add	r0, sp, #52
+ 331              	.LVL32:
+ 332              		.loc 1 219 2 is_stmt 0 view .LVU74
+ 333 000c FFF7FEFF 		bl	RingBuffer_Init
+ 334              	.LVL33:
+ 220:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     // 将Package转换为ringbuffer
+ 221:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	// 在转换的时候,会自动的计算checksum
+ 222:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     JOHO_Package2RingBuffer(pkg, &ringBuf);
+ 335              		.loc 1 222 5 is_stmt 1 view .LVU75
+ 336 0010 0DA9     		add	r1, sp, #52
+ 337 0012 2046     		mov	r0, r4
+ 338 0014 FFF7FEFF 		bl	JOHO_Package2RingBuffer
+ 339              	.LVL34:
+ 223:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	// 获取环形队列队尾的元素(即校验和的位置)
+ 224:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	checksum = RingBuffer_GetValueByIndex(&ringBuf, RingBuffer_GetByteUsed(&ringBuf)-1);
+ 340              		.loc 1 224 2 view .LVU76
+ 341              		.loc 1 224 50 is_stmt 0 view .LVU77
+ 342 0018 0DA8     		add	r0, sp, #52
+ 343 001a FFF7FEFF 		bl	RingBuffer_GetByteUsed
+ 344              	.LVL35:
+ 345              		.loc 1 224 13 view .LVU78
+ 346 001e 411E     		subs	r1, r0, #1
+ 347 0020 89B2     		uxth	r1, r1
+ 348 0022 0DA8     		add	r0, sp, #52
+ 349 0024 FFF7FEFF 		bl	RingBuffer_GetValueByIndex
+ 350              	.LVL36:
+ 225:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     return checksum;
+ 351              		.loc 1 225 5 is_stmt 1 view .LVU79
+ 226:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** }
+ 352              		.loc 1 226 1 is_stmt 0 view .LVU80
+ 353 0028 10B0     		add	sp, sp, #64
+ 354              	.LCFI10:
+ 355              		.cfi_def_cfa_offset 8
+ 356              		@ sp needed
+ 357 002a 10BD     		pop	{r4, pc}
+ 358              		.loc 1 226 1 view .LVU81
+ 359              		.cfi_endproc
+ 360              	.LFE140:
+ 362              		.section	.text.USL_RecvPackage,"ax",%progbits
+ 363              		.align	1
+ 364              		.global	USL_RecvPackage
+ 365              		.syntax unified
+ 366              		.thumb
+ 367              		.thumb_func
+ 369              	USL_RecvPackage:
+ 370              	.LVL37:
+ 371              	.LFB138:
+  67:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	
+ 372              		.loc 1 67 74 is_stmt 1 view -0
+ 373              		.cfi_startproc
+ 374              		@ args = 0, pretend = 0, frame = 0
+ 375              		@ frame_needed = 0, uses_anonymous_args = 0
+  67:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	
+ 376              		.loc 1 67 74 is_stmt 0 view .LVU83
+ 377 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 378              	.LCFI11:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 12
+
+
+ 379              		.cfi_def_cfa_offset 24
+ 380              		.cfi_offset 3, -24
+ 381              		.cfi_offset 4, -20
+ 382              		.cfi_offset 5, -16
+ 383              		.cfi_offset 6, -12
+ 384              		.cfi_offset 7, -8
+ 385              		.cfi_offset 14, -4
+ 386 0002 0546     		mov	r5, r0
+ 387 0004 0C46     		mov	r4, r1
+  69:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     uint8_t bIdx = 0; // 接收的参数字节索引号
+ 388              		.loc 1 69 3 is_stmt 1 view .LVU84
+  69:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     uint8_t bIdx = 0; // 接收的参数字节索引号
+ 389              		.loc 1 69 15 is_stmt 0 view .LVU85
+ 390 0006 0026     		movs	r6, #0
+ 391 0008 81F83860 		strb	r6, [r1, #56]
+  70:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****     uint16_t header = 0; // 帧头
+ 392              		.loc 1 70 5 is_stmt 1 view .LVU86
+ 393              	.LVL38:
+  71:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	
+ 394              		.loc 1 71 5 view .LVU87
+  75:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		// 如果没有超时
+ 395              		.loc 1 75 5 view .LVU88
+ 396 000c 6420     		movs	r0, #100
+ 397              	.LVL39:
+  75:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		// 如果没有超时
+ 398              		.loc 1 75 5 is_stmt 0 view .LVU89
+ 399 000e FFF7FEFF 		bl	Tick_CountdownBegin
+ 400              	.LVL40:
+  77:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			if (RingBuffer_GetByteUsed(usart->recvBuf) == 0){
+ 401              		.loc 1 77 5 is_stmt 1 view .LVU90
+  71:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	
+ 402              		.loc 1 71 14 is_stmt 0 view .LVU91
+ 403 0012 3746     		mov	r7, r6
+ 404              	.LBB3:
+  77:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			if (RingBuffer_GetByteUsed(usart->recvBuf) == 0){
+ 405              		.loc 1 77 11 view .LVU92
+ 406 0014 24E0     		b	.L18
+ 407              	.LVL41:
+ 408              	.L36:
+  86:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 设置状态码-校验码已经接收
+ 409              		.loc 1 86 13 is_stmt 1 view .LVU93
+  86:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 设置状态码-校验码已经接收
+ 410              		.loc 1 86 29 is_stmt 0 view .LVU94
+ 411 0016 A868     		ldr	r0, [r5, #8]
+ 412 0018 FFF7FEFF 		bl	RingBuffer_ReadByte
+ 413              	.LVL42:
+  86:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 设置状态码-校验码已经接收
+ 414              		.loc 1 86 27 view .LVU95
+ 415 001c 84F83700 		strb	r0, [r4, #55]
+  88:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 直接进行校验码检查
+ 416              		.loc 1 88 13 is_stmt 1 view .LVU96
+  88:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 直接进行校验码检查
+ 417              		.loc 1 88 30 is_stmt 0 view .LVU97
+ 418 0020 94F83830 		ldrb	r3, [r4, #56]	@ zero_extendqisi2
+  88:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 直接进行校验码检查
+ 419              		.loc 1 88 25 view .LVU98
+ 420 0024 43F01003 		orr	r3, r3, #16
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 13
+
+
+ 421 0028 84F83830 		strb	r3, [r4, #56]
+  90:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 撤销倒计时
+ 422              		.loc 1 90 13 is_stmt 1 view .LVU99
+  90:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 撤销倒计时
+ 423              		.loc 1 90 17 is_stmt 0 view .LVU100
+ 424 002c 2046     		mov	r0, r4
+ 425 002e FFF7FEFF 		bl	JOHO_CalcChecksum
+ 426              	.LVL43:
+  90:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 撤销倒计时
+ 427              		.loc 1 90 46 view .LVU101
+ 428 0032 94F83730 		ldrb	r3, [r4, #55]	@ zero_extendqisi2
+  90:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 撤销倒计时
+ 429              		.loc 1 90 16 view .LVU102
+ 430 0036 9842     		cmp	r0, r3
+ 431 0038 03D0     		beq	.L21
+ 432              	.LBB4:
+  92:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 校验码错误
+ 433              		.loc 1 92 17 is_stmt 1 view .LVU103
+ 434 003a FFF7FEFF 		bl	Tick_CountdownCancel
+ 435              	.LVL44:
+  94:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }else{
+ 436              		.loc 1 94 17 view .LVU104
+  94:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }else{
+ 437              		.loc 1 94 24 is_stmt 0 view .LVU105
+ 438 003e 0620     		movs	r0, #6
+ 439 0040 70E0     		b	.L22
+ 440              	.L21:
+ 441              	.LBE4:
+ 442              	.LBB5:
+  97:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 数据帧接收成功
+ 443              		.loc 1 97 17 is_stmt 1 view .LVU106
+ 444 0042 FFF7FEFF 		bl	Tick_CountdownCancel
+ 445              	.LVL45:
+  99:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 446              		.loc 1 99 17 view .LVU107
+  99:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 447              		.loc 1 99 24 is_stmt 0 view .LVU108
+ 448 0046 0020     		movs	r0, #0
+ 449 0048 6CE0     		b	.L22
+ 450              	.L37:
+  99:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 451              		.loc 1 99 24 view .LVU109
+ 452              	.LBE5:
+ 105:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             bIdx ++;
+ 453              		.loc 1 105 13 is_stmt 1 view .LVU110
+ 105:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             bIdx ++;
+ 454              		.loc 1 105 34 is_stmt 0 view .LVU111
+ 455 004a A868     		ldr	r0, [r5, #8]
+ 456 004c FFF7FEFF 		bl	RingBuffer_ReadByte
+ 457              	.LVL46:
+ 105:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             bIdx ++;
+ 458              		.loc 1 105 32 view .LVU112
+ 459 0050 A319     		adds	r3, r4, r6
+ 460 0052 5871     		strb	r0, [r3, #5]
+ 106:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 判断是否接收完成
+ 461              		.loc 1 106 13 is_stmt 1 view .LVU113
+ 106:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 判断是否接收完成
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 14
+
+
+ 462              		.loc 1 106 18 is_stmt 0 view .LVU114
+ 463 0054 0136     		adds	r6, r6, #1
+ 464              	.LVL47:
+ 106:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 判断是否接收完成
+ 465              		.loc 1 106 18 view .LVU115
+ 466 0056 F6B2     		uxtb	r6, r6
+ 467              	.LVL48:
+ 108:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 标记为参数接收完成
+ 468              		.loc 1 108 13 is_stmt 1 view .LVU116
+ 108:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 标记为参数接收完成
+ 469              		.loc 1 108 29 is_stmt 0 view .LVU117
+ 470 0058 E378     		ldrb	r3, [r4, #3]	@ zero_extendqisi2
+ 108:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 标记为参数接收完成
+ 471              		.loc 1 108 35 view .LVU118
+ 472 005a 023B     		subs	r3, r3, #2
+ 108:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 标记为参数接收完成
+ 473              		.loc 1 108 16 view .LVU119
+ 474 005c 9E42     		cmp	r6, r3
+ 475 005e 19D0     		beq	.L34
+ 476              	.LVL49:
+ 477              	.L18:
+  77:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			if (RingBuffer_GetByteUsed(usart->recvBuf) == 0){
+ 478              		.loc 1 77 11 is_stmt 1 view .LVU120
+  77:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			if (RingBuffer_GetByteUsed(usart->recvBuf) == 0){
+ 479              		.loc 1 77 13 is_stmt 0 view .LVU121
+ 480 0060 FFF7FEFF 		bl	Tick_CountdownIsTimeout
+ 481              	.LVL50:
+  77:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			if (RingBuffer_GetByteUsed(usart->recvBuf) == 0){
+ 482              		.loc 1 77 11 view .LVU122
+ 483 0064 0028     		cmp	r0, #0
+ 484 0066 5CD1     		bne	.L35
+  78:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			// 没有新的字节读进来, 继续等待
+ 485              		.loc 1 78 4 is_stmt 1 view .LVU123
+  78:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			// 没有新的字节读进来, 继续等待
+ 486              		.loc 1 78 8 is_stmt 0 view .LVU124
+ 487 0068 A868     		ldr	r0, [r5, #8]
+ 488 006a FFF7FEFF 		bl	RingBuffer_GetByteUsed
+ 489              	.LVL51:
+  78:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			// 没有新的字节读进来, 继续等待
+ 490              		.loc 1 78 7 view .LVU125
+ 491 006e 0028     		cmp	r0, #0
+ 492 0070 F6D0     		beq	.L18
+  83:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 参数内容接收完成
+ 493              		.loc 1 83 9 is_stmt 1 view .LVU126
+  83:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 参数内容接收完成
+ 494              		.loc 1 83 15 is_stmt 0 view .LVU127
+ 495 0072 94F83830 		ldrb	r3, [r4, #56]	@ zero_extendqisi2
+  83:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 参数内容接收完成
+ 496              		.loc 1 83 11 view .LVU128
+ 497 0076 082B     		cmp	r3, #8
+ 498 0078 CDD0     		beq	.L36
+ 101:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 状态已经接收完成
+ 499              		.loc 1 101 15 is_stmt 1 view .LVU129
+ 101:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 状态已经接收完成
+ 500              		.loc 1 101 17 is_stmt 0 view .LVU130
+ 501 007a 062B     		cmp	r3, #6
+ 502 007c E5D0     		beq	.L37
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 15
+
+
+ 113:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 				// Size已经接收完成
+ 503              		.loc 1 113 10 is_stmt 1 view .LVU131
+ 113:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 				// Size已经接收完成
+ 504              		.loc 1 113 12 is_stmt 0 view .LVU132
+ 505 007e 042B     		cmp	r3, #4
+ 506 0080 0CD0     		beq	.L38
+ 123:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 舵机ID接收完成
+ 507              		.loc 1 123 10 is_stmt 1 view .LVU133
+ 123:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 舵机ID接收完成
+ 508              		.loc 1 123 12 is_stmt 0 view .LVU134
+ 509 0082 022B     		cmp	r3, #2
+ 510 0084 18D0     		beq	.L39
+ 136:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 帧头已接收 
+ 511              		.loc 1 136 15 is_stmt 1 view .LVU135
+ 136:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 帧头已接收 
+ 512              		.loc 1 136 17 is_stmt 0 view .LVU136
+ 513 0086 012B     		cmp	r3, #1
+ 514 0088 24D0     		beq	.L40
+ 151:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 接收第一个字节
+ 515              		.loc 1 151 13 is_stmt 1 view .LVU137
+ 151:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 接收第一个字节
+ 516              		.loc 1 151 16 is_stmt 0 view .LVU138
+ 517 008a 8FB3     		cbz	r7, .L41
+ 160:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 接收帧头第二个字节
+ 518              		.loc 1 160 19 is_stmt 1 view .LVU139
+ 160:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 接收帧头第二个字节
+ 519              		.loc 1 160 21 is_stmt 0 view .LVU140
+ 520 008c FF2F     		cmp	r7, #255
+ 521 008e 37D0     		beq	.L42
+ 172:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 522              		.loc 1 172 24 view .LVU141
+ 523 0090 0027     		movs	r7, #0
+ 524              	.LVL52:
+ 172:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 525              		.loc 1 172 24 view .LVU142
+ 526 0092 E5E7     		b	.L18
+ 527              	.LVL53:
+ 528              	.L34:
+ 110:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 529              		.loc 1 110 17 is_stmt 1 view .LVU143
+ 110:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 530              		.loc 1 110 29 is_stmt 0 view .LVU144
+ 531 0094 0823     		movs	r3, #8
+ 532 0096 84F83830 		strb	r3, [r4, #56]
+ 533 009a E1E7     		b	.L18
+ 534              	.L38:
+ 116:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 					pkg->status = JOHO_RECV_FLAG_SSTAT;
+ 535              		.loc 1 116 6 is_stmt 1 view .LVU145
+ 116:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 					pkg->status = JOHO_RECV_FLAG_SSTAT;
+ 536              		.loc 1 116 19 is_stmt 0 view .LVU146
+ 537 009c A868     		ldr	r0, [r5, #8]
+ 538 009e FFF7FEFF 		bl	RingBuffer_ReadByte
+ 539              	.LVL54:
+ 116:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 					pkg->status = JOHO_RECV_FLAG_SSTAT;
+ 540              		.loc 1 116 17 view .LVU147
+ 541 00a2 2071     		strb	r0, [r4, #4]
+ 117:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 16
+
+
+ 542              		.loc 1 117 6 is_stmt 1 view .LVU148
+ 117:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 543              		.loc 1 117 18 is_stmt 0 view .LVU149
+ 544 00a4 0623     		movs	r3, #6
+ 545 00a6 84F83830 		strb	r3, [r4, #56]
+ 119:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 					{// 标记为参数接收完成
+ 546              		.loc 1 119 6 is_stmt 1 view .LVU150
+ 119:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 					{// 标记为参数接收完成
+ 547              		.loc 1 119 13 is_stmt 0 view .LVU151
+ 548 00aa E378     		ldrb	r3, [r4, #3]	@ zero_extendqisi2
+ 119:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 					{// 标记为参数接收完成
+ 549              		.loc 1 119 8 view .LVU152
+ 550 00ac 022B     		cmp	r3, #2
+ 551 00ae D7D1     		bne	.L18
+ 121:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 				}
+ 552              		.loc 1 121 17 is_stmt 1 view .LVU153
+ 121:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 				}
+ 553              		.loc 1 121 29 is_stmt 0 view .LVU154
+ 554 00b0 0823     		movs	r3, #8
+ 555 00b2 84F83830 		strb	r3, [r4, #56]
+ 556 00b6 D3E7     		b	.L18
+ 557              	.L39:
+ 126:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 判断长度size是否合法
+ 558              		.loc 1 126 13 is_stmt 1 view .LVU155
+ 126:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 判断长度size是否合法
+ 559              		.loc 1 126 25 is_stmt 0 view .LVU156
+ 560 00b8 A868     		ldr	r0, [r5, #8]
+ 561 00ba FFF7FEFF 		bl	RingBuffer_ReadByte
+ 562              	.LVL55:
+ 126:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 判断长度size是否合法
+ 563              		.loc 1 126 23 view .LVU157
+ 564 00be E070     		strb	r0, [r4, #3]
+ 129:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 撤销倒计时
+ 565              		.loc 1 129 13 is_stmt 1 view .LVU158
+ 129:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 撤销倒计时
+ 566              		.loc 1 129 16 is_stmt 0 view .LVU159
+ 567 00c0 2D28     		cmp	r0, #45
+ 568 00c2 03D8     		bhi	.L43
+ 135:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****         }else if(pkg->status == JOHO_RECV_FLAG_HEADER){
+ 569              		.loc 1 135 13 is_stmt 1 view .LVU160
+ 135:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****         }else if(pkg->status == JOHO_RECV_FLAG_HEADER){
+ 570              		.loc 1 135 25 is_stmt 0 view .LVU161
+ 571 00c4 0423     		movs	r3, #4
+ 572 00c6 84F83830 		strb	r3, [r4, #56]
+ 573 00ca C9E7     		b	.L18
+ 574              	.L43:
+ 575              	.LBB6:
+ 131:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 return JOHO_STATUS_SIZE_TOO_BIG;
+ 576              		.loc 1 131 17 is_stmt 1 view .LVU162
+ 577 00cc FFF7FEFF 		bl	Tick_CountdownCancel
+ 578              	.LVL56:
+ 132:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 579              		.loc 1 132 17 view .LVU163
+ 132:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 580              		.loc 1 132 24 is_stmt 0 view .LVU164
+ 581 00d0 0520     		movs	r0, #5
+ 582 00d2 27E0     		b	.L22
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 17
+
+
+ 583              	.L40:
+ 132:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 584              		.loc 1 132 24 view .LVU165
+ 585              	.LBE6:
+ 139:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 判断指令是否合法
+ 586              		.loc 1 139 13 is_stmt 1 view .LVU166
+ 139:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 判断指令是否合法
+ 587              		.loc 1 139 25 is_stmt 0 view .LVU167
+ 588 00d4 A868     		ldr	r0, [r5, #8]
+ 589 00d6 FFF7FEFF 		bl	RingBuffer_ReadByte
+ 590              	.LVL57:
+ 139:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             // 判断指令是否合法
+ 591              		.loc 1 139 23 view .LVU168
+ 592 00da A070     		strb	r0, [r4, #2]
+ 142:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 撤销倒计时
+ 593              		.loc 1 142 13 is_stmt 1 view .LVU169
+ 142:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 // 撤销倒计时
+ 594              		.loc 1 142 16 is_stmt 0 view .LVU170
+ 595 00dc FF28     		cmp	r0, #255
+ 596 00de 03D0     		beq	.L44
+ 148:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****         }else{
+ 597              		.loc 1 148 13 is_stmt 1 view .LVU171
+ 148:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****         }else{
+ 598              		.loc 1 148 25 is_stmt 0 view .LVU172
+ 599 00e0 0223     		movs	r3, #2
+ 600 00e2 84F83830 		strb	r3, [r4, #56]
+ 601 00e6 BBE7     		b	.L18
+ 602              	.L44:
+ 603              	.LBB7:
+ 144:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 return JOHO_STATUS_UNKOWN_US_ID;
+ 604              		.loc 1 144 17 is_stmt 1 view .LVU173
+ 605 00e8 FFF7FEFF 		bl	Tick_CountdownCancel
+ 606              	.LVL58:
+ 145:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 607              		.loc 1 145 17 view .LVU174
+ 145:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 608              		.loc 1 145 24 is_stmt 0 view .LVU175
+ 609 00ec 0420     		movs	r0, #4
+ 610 00ee 19E0     		b	.L22
+ 611              	.L41:
+ 145:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****             }
+ 612              		.loc 1 145 24 view .LVU176
+ 613              	.LBE7:
+ 153:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 614              		.loc 1 153 17 is_stmt 1 view .LVU177
+ 153:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 615              		.loc 1 153 26 is_stmt 0 view .LVU178
+ 616 00f0 A868     		ldr	r0, [r5, #8]
+ 617 00f2 FFF7FEFF 		bl	RingBuffer_ReadByte
+ 618              	.LVL59:
+ 153:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 619              		.loc 1 153 24 view .LVU179
+ 620 00f6 80B2     		uxth	r0, r0
+ 621              	.LVL60:
+ 156:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 										// 如果第一个字节错误 header重置为0
+ 622              		.loc 1 156 17 is_stmt 1 view .LVU180
+ 156:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 										// 如果第一个字节错误 header重置为0
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 18
+
+
+ 623              		.loc 1 156 20 is_stmt 0 view .LVU181
+ 624 00f8 FF28     		cmp	r0, #255
+ 625 00fa B1D1     		bne	.L18
+ 153:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 626              		.loc 1 153 24 view .LVU182
+ 627 00fc 0746     		mov	r7, r0
+ 628 00fe AFE7     		b	.L18
+ 629              	.LVL61:
+ 630              	.L42:
+ 162:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 								// 检查第二个字节是否正确
+ 631              		.loc 1 162 17 is_stmt 1 view .LVU183
+ 162:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 								// 检查第二个字节是否正确
+ 632              		.loc 1 162 37 is_stmt 0 view .LVU184
+ 633 0100 A868     		ldr	r0, [r5, #8]
+ 634 0102 FFF7FEFF 		bl	RingBuffer_ReadByte
+ 635              	.LVL62:
+ 162:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 								// 检查第二个字节是否正确
+ 636              		.loc 1 162 34 view .LVU185
+ 637 0106 47EA0027 		orr	r7, r7, r0, lsl #8
+ 638              	.LVL63:
+ 162:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 								// 检查第二个字节是否正确
+ 639              		.loc 1 162 24 view .LVU186
+ 640 010a BFB2     		uxth	r7, r7
+ 641              	.LVL64:
+ 164:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                     header = 0;
+ 642              		.loc 1 164 17 is_stmt 1 view .LVU187
+ 164:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                     header = 0;
+ 643              		.loc 1 164 19 is_stmt 0 view .LVU188
+ 644 010c 4FF2FF53 		movw	r3, #62975
+ 645 0110 9F42     		cmp	r7, r3
+ 646 0112 01D0     		beq	.L45
+ 165:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 }else{
+ 647              		.loc 1 165 28 view .LVU189
+ 648 0114 0027     		movs	r7, #0
+ 649              	.LVL65:
+ 165:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 }else{
+ 650              		.loc 1 165 28 view .LVU190
+ 651 0116 A3E7     		b	.L18
+ 652              	.LVL66:
+ 653              	.L45:
+ 167:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                     // 帧头接收成功
+ 654              		.loc 1 167 21 is_stmt 1 view .LVU191
+ 167:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                     // 帧头接收成功
+ 655              		.loc 1 167 33 is_stmt 0 view .LVU192
+ 656 0118 2780     		strh	r7, [r4]	@ movhi
+ 169:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 }
+ 657              		.loc 1 169 21 is_stmt 1 view .LVU193
+ 169:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 }
+ 658              		.loc 1 169 33 is_stmt 0 view .LVU194
+ 659 011a 0123     		movs	r3, #1
+ 660 011c 84F83830 		strb	r3, [r4, #56]
+ 661 0120 9EE7     		b	.L18
+ 662              	.L35:
+ 169:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c ****                 }
+ 663              		.loc 1 169 33 view .LVU195
+ 664              	.LBE3:
+ 178:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 19
+
+
+ 665              		.loc 1 178 12 view .LVU196
+ 666 0122 0220     		movs	r0, #2
+ 667              	.L22:
+ 180:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 668              		.loc 1 180 1 view .LVU197
+ 669 0124 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 180:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 670              		.loc 1 180 1 view .LVU198
+ 671              		.cfi_endproc
+ 672              	.LFE138:
+ 674              		.section	.text.US_Ping,"ax",%progbits
+ 675              		.align	1
+ 676              		.global	US_Ping
+ 677              		.syntax unified
+ 678              		.thumb
+ 679              		.thumb_func
+ 681              	US_Ping:
+ 682              	.LVL67:
+ 683              	.LFB141:
+ 227:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 228:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 229:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 230:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** /**
+ 231:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 发送内容SDK
+ 232:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** **/
+ 233:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 234:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** //Ping 舵机 状态查询
+ 235:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** JOHO_STATUS US_Ping(Usart_DataTypeDef *usart, uint8_t servo_id){
+ 684              		.loc 1 235 64 is_stmt 1 view -0
+ 685              		.cfi_startproc
+ 686              		@ args = 0, pretend = 0, frame = 64
+ 687              		@ frame_needed = 0, uses_anonymous_args = 0
+ 688              		.loc 1 235 64 is_stmt 0 view .LVU200
+ 689 0000 30B5     		push	{r4, r5, lr}
+ 690              	.LCFI12:
+ 691              		.cfi_def_cfa_offset 12
+ 692              		.cfi_offset 4, -12
+ 693              		.cfi_offset 5, -8
+ 694              		.cfi_offset 14, -4
+ 695 0002 93B0     		sub	sp, sp, #76
+ 696              	.LCFI13:
+ 697              		.cfi_def_cfa_offset 88
+ 698 0004 0446     		mov	r4, r0
+ 699 0006 0D46     		mov	r5, r1
+ 236:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	uint8_t statusCode; // 状态码
+ 700              		.loc 1 236 2 is_stmt 1 view .LVU201
+ 237:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	uint8_t ehcoServoId; // PING得到的舵机ID
+ 701              		.loc 1 237 2 view .LVU202
+ 238:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** //	printf("[PING]Send Ping Package\r\n");
+ 239:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	// 发送请求包
+ 240:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	JOHO_PackageBuild_Send(usart, servo_id, 2,CMDType_Ping, NULL);
+ 702              		.loc 1 240 2 view .LVU203
+ 703 0008 0023     		movs	r3, #0
+ 704 000a 0093     		str	r3, [sp]
+ 705 000c 0123     		movs	r3, #1
+ 706 000e 0222     		movs	r2, #2
+ 707 0010 FFF7FEFF 		bl	JOHO_PackageBuild_Send
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 20
+
+
+ 708              	.LVL68:
+ 241:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	// 接收返回的Ping
+ 242:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	PackageTypeDef pkg;
+ 709              		.loc 1 242 2 view .LVU204
+ 243:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	statusCode = USL_RecvPackage(usart, &pkg);
+ 710              		.loc 1 243 2 view .LVU205
+ 711              		.loc 1 243 15 is_stmt 0 view .LVU206
+ 712 0014 03A9     		add	r1, sp, #12
+ 713 0016 2046     		mov	r0, r4
+ 714 0018 FFF7FEFF 		bl	USL_RecvPackage
+ 715              	.LVL69:
+ 244:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	if(statusCode == JOHO_STATUS_SUCCESS){
+ 716              		.loc 1 244 2 is_stmt 1 view .LVU207
+ 717              		.loc 1 244 4 is_stmt 0 view .LVU208
+ 718 001c 18B9     		cbnz	r0, .L47
+ 245:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		// 进一步检查ID号是否匹配
+ 246:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		ehcoServoId = (uint8_t)pkg.usId;
+ 719              		.loc 1 246 3 is_stmt 1 view .LVU209
+ 720              		.loc 1 246 15 is_stmt 0 view .LVU210
+ 721 001e 9DF80E30 		ldrb	r3, [sp, #14]	@ zero_extendqisi2
+ 722              	.LVL70:
+ 247:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		
+ 248:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		if (ehcoServoId != servo_id){
+ 723              		.loc 1 248 3 is_stmt 1 view .LVU211
+ 724              		.loc 1 248 6 is_stmt 0 view .LVU212
+ 725 0022 9D42     		cmp	r5, r3
+ 726 0024 01D1     		bne	.L50
+ 727              	.LVL71:
+ 728              	.L47:
+ 249:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			// 反馈得到的舵机ID号不匹配
+ 250:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			return JOHO_STATUS_ID_NOT_MATCH;
+ 251:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		}
+ 252:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** //		printf("[succ]Auto get ServoID %d \r\n", ehcoServoId);
+ 253:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	}
+ 254:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	return statusCode;
+ 255:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** }
+ 729              		.loc 1 255 1 view .LVU213
+ 730 0026 13B0     		add	sp, sp, #76
+ 731              	.LCFI14:
+ 732              		.cfi_remember_state
+ 733              		.cfi_def_cfa_offset 12
+ 734              		@ sp needed
+ 735 0028 30BD     		pop	{r4, r5, pc}
+ 736              	.LVL72:
+ 737              	.L50:
+ 738              	.LCFI15:
+ 739              		.cfi_restore_state
+ 250:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 		}
+ 740              		.loc 1 250 11 view .LVU214
+ 741 002a 0720     		movs	r0, #7
+ 742 002c FBE7     		b	.L47
+ 743              		.cfi_endproc
+ 744              	.LFE141:
+ 746              		.section	.text.USL_SetServoAngle,"ax",%progbits
+ 747              		.align	1
+ 748              		.global	USL_SetServoAngle
+ 749              		.syntax unified
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 21
+
+
+ 750              		.thumb
+ 751              		.thumb_func
+ 753              	USL_SetServoAngle:
+ 754              	.LVL73:
+ 755              	.LFB142:
+ 256:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 257:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 258:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** //控制舵机变换位置
+ 259:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** void USL_SetServoAngle(Usart_DataTypeDef *usart, uint8_t servo_id, \
+ 260:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 				float posi, uint16_t interval){
+ 756              		.loc 1 260 35 is_stmt 1 view -0
+ 757              		.cfi_startproc
+ 758              		@ args = 0, pretend = 0, frame = 8
+ 759              		@ frame_needed = 0, uses_anonymous_args = 0
+ 760              		.loc 1 260 35 is_stmt 0 view .LVU216
+ 761 0000 00B5     		push	{lr}
+ 762              	.LCFI16:
+ 763              		.cfi_def_cfa_offset 4
+ 764              		.cfi_offset 14, -4
+ 765 0002 85B0     		sub	sp, sp, #20
+ 766              	.LCFI17:
+ 767              		.cfi_def_cfa_offset 24
+ 261:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** //数据校验
+ 262:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** if(posi > 4095)posi = 4095;
+ 768              		.loc 1 262 1 is_stmt 1 view .LVU217
+ 769              		.loc 1 262 3 is_stmt 0 view .LVU218
+ 770 0004 DFED167A 		vldr.32	s15, .L58
+ 771 0008 B4EEE70A 		vcmpe.f32	s0, s15
+ 772 000c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 773 0010 01DD     		ble	.L52
+ 774              		.loc 1 262 21 view .LVU219
+ 775 0012 B0EE670A 		vmov.f32	s0, s15
+ 776              	.LVL74:
+ 777              	.L52:
+ 263:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** if(posi <0 )		posi  = 0;			
+ 778              		.loc 1 263 1 is_stmt 1 view .LVU220
+ 779              		.loc 1 263 3 is_stmt 0 view .LVU221
+ 780 0016 B5EEC00A 		vcmpe.f32	s0, #0
+ 781 001a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 782 001e 1BD4     		bmi	.L57
+ 783              	.LVL75:
+ 784              	.L53:
+ 264:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 265:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** uint16_t posit = posi;
+ 785              		.loc 1 265 1 is_stmt 1 view .LVU222
+ 786              		.loc 1 265 10 is_stmt 0 view .LVU223
+ 787 0020 FCEEC07A 		vcvt.u32.f32	s15, s0
+ 788 0024 17EE903A 		vmov	r3, s15	@ int
+ 789              	.LVL76:
+ 266:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** uint16_t time;			
+ 790              		.loc 1 266 1 is_stmt 1 view .LVU224
+ 267:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** uint8_t content[5];
+ 791              		.loc 1 267 1 view .LVU225
+ 268:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 					//例子，舵机1，-180度 FF FF 01 07 03 2A 00 00 03 E8 DF
+ 269:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** content[0] =0x2A;
+ 792              		.loc 1 269 1 view .LVU226
+ 793              		.loc 1 269 12 is_stmt 0 view .LVU227
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 22
+
+
+ 794 0028 4FF02A0C 		mov	ip, #42
+ 795 002c 8DF808C0 		strb	ip, [sp, #8]
+ 270:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** content[1] = posit	>> 8&0XFF;			
+ 796              		.loc 1 270 1 is_stmt 1 view .LVU228
+ 797              		.loc 1 270 12 is_stmt 0 view .LVU229
+ 798 0030 C3F3072C 		ubfx	ip, r3, #8, #8
+ 799 0034 8DF809C0 		strb	ip, [sp, #9]
+ 271:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** content[2] = posit	&0XFF;						
+ 800              		.loc 1 271 1 is_stmt 1 view .LVU230
+ 801              		.loc 1 271 12 is_stmt 0 view .LVU231
+ 802 0038 8DF80A30 		strb	r3, [sp, #10]
+ 272:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** content[3] = interval	>> 8&0XFF;			
+ 803              		.loc 1 272 1 is_stmt 1 view .LVU232
+ 804              		.loc 1 272 12 is_stmt 0 view .LVU233
+ 805 003c 130A     		lsrs	r3, r2, #8
+ 806              	.LVL77:
+ 807              		.loc 1 272 12 view .LVU234
+ 808 003e 8DF80B30 		strb	r3, [sp, #11]
+ 273:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** content[4] = interval	&0XFF;	
+ 809              		.loc 1 273 1 is_stmt 1 view .LVU235
+ 810              		.loc 1 273 12 is_stmt 0 view .LVU236
+ 811 0042 8DF80C20 		strb	r2, [sp, #12]
+ 274:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	/// 发送请求包
+ 275:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	JOHO_PackageBuild_Send(usart, servo_id, 7,CMDType_Write,content);
+ 812              		.loc 1 275 2 is_stmt 1 view .LVU237
+ 813 0046 02AB     		add	r3, sp, #8
+ 814 0048 0093     		str	r3, [sp]
+ 815 004a 0323     		movs	r3, #3
+ 816 004c 0722     		movs	r2, #7
+ 817              	.LVL78:
+ 818              		.loc 1 275 2 is_stmt 0 view .LVU238
+ 819 004e FFF7FEFF 		bl	JOHO_PackageBuild_Send
+ 820              	.LVL79:
+ 276:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	
+ 277:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 278:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** }
+ 821              		.loc 1 278 1 view .LVU239
+ 822 0052 05B0     		add	sp, sp, #20
+ 823              	.LCFI18:
+ 824              		.cfi_remember_state
+ 825              		.cfi_def_cfa_offset 4
+ 826              		@ sp needed
+ 827 0054 5DF804FB 		ldr	pc, [sp], #4
+ 828              	.LVL80:
+ 829              	.L57:
+ 830              	.LCFI19:
+ 831              		.cfi_restore_state
+ 263:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 832              		.loc 1 263 21 view .LVU240
+ 833 0058 9FED020A 		vldr.32	s0, .L58+4
+ 834              	.LVL81:
+ 263:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 835              		.loc 1 263 21 view .LVU241
+ 836 005c E0E7     		b	.L53
+ 837              	.L59:
+ 838 005e 00BF     		.align	2
+ 839              	.L58:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 23
+
+
+ 840 0060 00F07F45 		.word	1166012416
+ 841 0064 00000000 		.word	0
+ 842              		.cfi_endproc
+ 843              	.LFE142:
+ 845              		.section	.text.USL_GETPositionVal,"ax",%progbits
+ 846              		.align	1
+ 847              		.global	USL_GETPositionVal
+ 848              		.syntax unified
+ 849              		.thumb
+ 850              		.thumb_func
+ 852              	USL_GETPositionVal:
+ 853              	.LVL82:
+ 854              	.LFB143:
+ 279:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 280:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** //角度查询  返回值为0-4096 为正常值
+ 281:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** uint16_t USL_GETPositionVal(Usart_DataTypeDef *usart, uint8_t servo_id){
+ 855              		.loc 1 281 72 is_stmt 1 view -0
+ 856              		.cfi_startproc
+ 857              		@ args = 0, pretend = 0, frame = 64
+ 858              		@ frame_needed = 0, uses_anonymous_args = 0
+ 859              		.loc 1 281 72 is_stmt 0 view .LVU243
+ 860 0000 10B5     		push	{r4, lr}
+ 861              	.LCFI20:
+ 862              		.cfi_def_cfa_offset 8
+ 863              		.cfi_offset 4, -8
+ 864              		.cfi_offset 14, -4
+ 865 0002 92B0     		sub	sp, sp, #72
+ 866              	.LCFI21:
+ 867              		.cfi_def_cfa_offset 80
+ 868 0004 0446     		mov	r4, r0
+ 282:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** uint16_t value = 0xffff; 
+ 869              		.loc 1 282 1 is_stmt 1 view .LVU244
+ 870              	.LVL83:
+ 283:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	uint8_t statusCode;// 状态码
+ 871              		.loc 1 283 2 view .LVU245
+ 284:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	uint8_t content[2];
+ 872              		.loc 1 284 2 view .LVU246
+ 285:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 					//舵机1，-180度 FF FF 01 07 03 2A 00 00 03 E8 DF
+ 286:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	content[0] =0x38;
+ 873              		.loc 1 286 2 view .LVU247
+ 874              		.loc 1 286 13 is_stmt 0 view .LVU248
+ 875 0006 3823     		movs	r3, #56
+ 876 0008 8DF84430 		strb	r3, [sp, #68]
+ 287:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	content[1] =0x02;
+ 877              		.loc 1 287 2 is_stmt 1 view .LVU249
+ 878              		.loc 1 287 13 is_stmt 0 view .LVU250
+ 879 000c 0223     		movs	r3, #2
+ 880 000e 8DF84530 		strb	r3, [sp, #69]
+ 288:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	/// 发送请求包
+ 289:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	JOHO_PackageBuild_Send(usart, servo_id, 4,CMDType_Read,content);
+ 881              		.loc 1 289 2 is_stmt 1 view .LVU251
+ 882 0012 11AA     		add	r2, sp, #68
+ 883 0014 0092     		str	r2, [sp]
+ 884 0016 0422     		movs	r2, #4
+ 885 0018 FFF7FEFF 		bl	JOHO_PackageBuild_Send
+ 886              	.LVL84:
+ 290:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	// 接收返回的pkg
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 24
+
+
+ 291:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	PackageTypeDef pkg;
+ 887              		.loc 1 291 2 view .LVU252
+ 292:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	statusCode = USL_RecvPackage(usart, &pkg);
+ 888              		.loc 1 292 2 view .LVU253
+ 889              		.loc 1 292 15 is_stmt 0 view .LVU254
+ 890 001c 02A9     		add	r1, sp, #8
+ 891 001e 2046     		mov	r0, r4
+ 892 0020 FFF7FEFF 		bl	USL_RecvPackage
+ 893              	.LVL85:
+ 293:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	if(statusCode==0){
+ 894              		.loc 1 293 2 is_stmt 1 view .LVU255
+ 895              		.loc 1 293 4 is_stmt 0 view .LVU256
+ 896 0024 38B9     		cbnz	r0, .L61
+ 294:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** //			printf("[succ]position %d \r\n", pkg.content[1]|(pkg.content[0]<<8));
+ 295:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 			value = pkg.content[1]|(pkg.content[0]<<8);
+ 897              		.loc 1 295 4 is_stmt 1 view .LVU257
+ 898              		.loc 1 295 23 is_stmt 0 view .LVU258
+ 899 0026 9DF80E00 		ldrb	r0, [sp, #14]	@ zero_extendqisi2
+ 900              	.LVL86:
+ 901              		.loc 1 295 39 view .LVU259
+ 902 002a 9DF80D30 		ldrb	r3, [sp, #13]	@ zero_extendqisi2
+ 903              		.loc 1 295 10 view .LVU260
+ 904 002e 40EA0320 		orr	r0, r0, r3, lsl #8
+ 905              	.LVL87:
+ 906              	.L62:
+ 296:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	}
+ 297:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	else {value = value - statusCode;}
+ 298:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	return value;
+ 907              		.loc 1 298 2 is_stmt 1 view .LVU261
+ 299:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** }
+ 908              		.loc 1 299 1 is_stmt 0 view .LVU262
+ 909 0032 12B0     		add	sp, sp, #72
+ 910              	.LCFI22:
+ 911              		.cfi_remember_state
+ 912              		.cfi_def_cfa_offset 8
+ 913              		@ sp needed
+ 914 0034 10BD     		pop	{r4, pc}
+ 915              	.LVL88:
+ 916              	.L61:
+ 917              	.LCFI23:
+ 918              		.cfi_restore_state
+ 297:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	return value;
+ 919              		.loc 1 297 8 is_stmt 1 view .LVU263
+ 297:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	return value;
+ 920              		.loc 1 297 22 is_stmt 0 view .LVU264
+ 921 0036 80B2     		uxth	r0, r0
+ 922              	.LVL89:
+ 297:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	return value;
+ 923              		.loc 1 297 14 view .LVU265
+ 924 0038 C043     		mvns	r0, r0
+ 925 003a 80B2     		uxth	r0, r0
+ 926              	.LVL90:
+ 297:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	return value;
+ 927              		.loc 1 297 14 view .LVU266
+ 928 003c F9E7     		b	.L62
+ 929              		.cfi_endproc
+ 930              	.LFE143:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 25
+
+
+ 932              		.section	.text.SET_Torque,"ax",%progbits
+ 933              		.align	1
+ 934              		.global	SET_Torque
+ 935              		.syntax unified
+ 936              		.thumb
+ 937              		.thumb_func
+ 939              	SET_Torque:
+ 940              	.LVL91:
+ 941              	.LFB144:
+ 300:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 301:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** //控制扭矩开关 0关闭 1打开
+ 302:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** void SET_Torque(Usart_DataTypeDef *usart, uint8_t servo_id,uint8_t isopen){
+ 942              		.loc 1 302 75 is_stmt 1 view -0
+ 943              		.cfi_startproc
+ 944              		@ args = 0, pretend = 0, frame = 8
+ 945              		@ frame_needed = 0, uses_anonymous_args = 0
+ 946              		.loc 1 302 75 is_stmt 0 view .LVU268
+ 947 0000 00B5     		push	{lr}
+ 948              	.LCFI24:
+ 949              		.cfi_def_cfa_offset 4
+ 950              		.cfi_offset 14, -4
+ 951 0002 85B0     		sub	sp, sp, #20
+ 952              	.LCFI25:
+ 953              		.cfi_def_cfa_offset 24
+ 303:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	uint8_t statusCode; // 状态码
+ 954              		.loc 1 303 2 is_stmt 1 view .LVU269
+ 304:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	uint8_t content[2];
+ 955              		.loc 1 304 2 view .LVU270
+ 305:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	content[0] =0x28;content[1] =0x01;
+ 956              		.loc 1 305 2 view .LVU271
+ 957              		.loc 1 305 13 is_stmt 0 view .LVU272
+ 958 0004 2823     		movs	r3, #40
+ 959 0006 8DF80C30 		strb	r3, [sp, #12]
+ 960              		.loc 1 305 19 is_stmt 1 view .LVU273
+ 961              		.loc 1 305 30 is_stmt 0 view .LVU274
+ 962 000a 0123     		movs	r3, #1
+ 963 000c 8DF80D30 		strb	r3, [sp, #13]
+ 306:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	if(isopen == 0){content[1] =0x00;}
+ 964              		.loc 1 306 2 is_stmt 1 view .LVU275
+ 965              		.loc 1 306 4 is_stmt 0 view .LVU276
+ 966 0010 12B9     		cbnz	r2, .L65
+ 967              		.loc 1 306 18 is_stmt 1 discriminator 1 view .LVU277
+ 968              		.loc 1 306 29 is_stmt 0 discriminator 1 view .LVU278
+ 969 0012 0023     		movs	r3, #0
+ 970 0014 8DF80D30 		strb	r3, [sp, #13]
+ 971              	.L65:
+ 307:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	// 发送请求包-例子：FF FF 01 04 03 28 01 CE
+ 308:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 	JOHO_PackageBuild_Send(usart, servo_id, 4,CMDType_Write, content);
+ 972              		.loc 1 308 2 is_stmt 1 view .LVU279
+ 973 0018 03AB     		add	r3, sp, #12
+ 974 001a 0093     		str	r3, [sp]
+ 975 001c 0323     		movs	r3, #3
+ 976 001e 0422     		movs	r2, #4
+ 977              	.LVL92:
+ 978              		.loc 1 308 2 is_stmt 0 view .LVU280
+ 979 0020 FFF7FEFF 		bl	JOHO_PackageBuild_Send
+ 980              	.LVL93:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 26
+
+
+ 309:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** 
+ 310:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\uart_servo_lite.c **** }
+ 981              		.loc 1 310 1 view .LVU281
+ 982 0024 05B0     		add	sp, sp, #20
+ 983              	.LCFI26:
+ 984              		.cfi_def_cfa_offset 4
+ 985              		@ sp needed
+ 986 0026 5DF804FB 		ldr	pc, [sp], #4
+ 987              		.cfi_endproc
+ 988              	.LFE144:
+ 990              		.global	servoUsart
+ 991              		.global	usart1
+ 992              		.global	usart1RecvRingBuf
+ 993              		.global	usart1SendRingBuf
+ 994              		.global	usart1RecvBuf
+ 995              		.global	usart1SendBuf
+ 996              		.section	.bss.usart1,"aw",%nobits
+ 997              		.align	2
+ 1000              	usart1:
+ 1001 0000 00000000 		.space	12
+ 1001      00000000 
+ 1001      00000000 
+ 1002              		.section	.bss.usart1RecvBuf,"aw",%nobits
+ 1003              		.align	2
+ 1006              	usart1RecvBuf:
+ 1007 0000 00000000 		.space	501
+ 1007      00000000 
+ 1007      00000000 
+ 1007      00000000 
+ 1007      00000000 
+ 1008              		.section	.bss.usart1RecvRingBuf,"aw",%nobits
+ 1009              		.align	2
+ 1012              	usart1RecvRingBuf:
+ 1013 0000 00000000 		.space	12
+ 1013      00000000 
+ 1013      00000000 
+ 1014              		.section	.bss.usart1SendBuf,"aw",%nobits
+ 1015              		.align	2
+ 1018              	usart1SendBuf:
+ 1019 0000 00000000 		.space	501
+ 1019      00000000 
+ 1019      00000000 
+ 1019      00000000 
+ 1019      00000000 
+ 1020              		.section	.bss.usart1SendRingBuf,"aw",%nobits
+ 1021              		.align	2
+ 1024              	usart1SendRingBuf:
+ 1025 0000 00000000 		.space	12
+ 1025      00000000 
+ 1025      00000000 
+ 1026              		.section	.data.servoUsart,"aw"
+ 1027              		.align	2
+ 1030              	servoUsart:
+ 1031 0000 00000000 		.word	usart1
+ 1032              		.text
+ 1033              	.Letext0:
+ 1034              		.file 2 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\machine\\_default_types.h"
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 27
+
+
+ 1035              		.file 3 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1036              		.file 4 "Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g431xx.h"
+ 1037              		.file 5 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_def.h"
+ 1038              		.file 6 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_dma.h"
+ 1039              		.file 7 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h"
+ 1040              		.file 8 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo/ring_buffer.h"
+ 1041              		.file 9 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo/uart_servo_lite.h"
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s 			page 28
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 uart_servo_lite.c
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:20     .text.Usart_SendAll:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:26     .text.Usart_SendAll:00000000 Usart_SendAll
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:84     .text.USL_Send_HEX:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:90     .text.USL_Send_HEX:00000000 USL_Send_HEX
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:128    .text.JOHO_Package2RingBuffer:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:134    .text.JOHO_Package2RingBuffer:00000000 JOHO_Package2RingBuffer
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:210    .text.JOHO_PackageBuild_Send:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:216    .text.JOHO_PackageBuild_Send:00000000 JOHO_PackageBuild_Send
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:301    .text.JOHO_CalcChecksum:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:307    .text.JOHO_CalcChecksum:00000000 JOHO_CalcChecksum
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:363    .text.USL_RecvPackage:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:369    .text.USL_RecvPackage:00000000 USL_RecvPackage
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:675    .text.US_Ping:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:681    .text.US_Ping:00000000 US_Ping
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:747    .text.USL_SetServoAngle:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:753    .text.USL_SetServoAngle:00000000 USL_SetServoAngle
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:840    .text.USL_SetServoAngle:00000060 $d
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:846    .text.USL_GETPositionVal:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:852    .text.USL_GETPositionVal:00000000 USL_GETPositionVal
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:933    .text.SET_Torque:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:939    .text.SET_Torque:00000000 SET_Torque
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:1030   .data.servoUsart:00000000 servoUsart
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:1000   .bss.usart1:00000000 usart1
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:1012   .bss.usart1RecvRingBuf:00000000 usart1RecvRingBuf
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:1024   .bss.usart1SendRingBuf:00000000 usart1SendRingBuf
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:1006   .bss.usart1RecvBuf:00000000 usart1RecvBuf
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:1018   .bss.usart1SendBuf:00000000 usart1SendBuf
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:997    .bss.usart1:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:1003   .bss.usart1RecvBuf:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:1009   .bss.usart1RecvRingBuf:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:1015   .bss.usart1SendBuf:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:1021   .bss.usart1SendRingBuf:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccp8IRJD.s:1027   .data.servoUsart:00000000 $d
+
+UNDEFINED SYMBOLS
+RingBuffer_Pop
+HAL_UART_Transmit
+RingBuffer_GetByteUsed
+RingBuffer_WriteByteArray
+RingBuffer_WriteUShort
+RingBuffer_WriteByte
+RingBuffer_GetChecksum
+RingBuffer_Init
+RingBuffer_GetValueByIndex
+Tick_CountdownBegin
+RingBuffer_ReadByte
+Tick_CountdownCancel
+Tick_CountdownIsTimeout

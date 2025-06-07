@@ -49,7 +49,7 @@ extern uint8_t Data_FinishGet,Data_StartGet;			/* 接收完成标志位  启动接收标志位
 
 extern uint8_t Monitor_Flag,MovingReset_flag;				/* 在任意位置均可复位部分 */
 extern uint16_t My_CoordinateData[10];						/* 传过来的计算坐标值 */
-extern uint8_t ShijueRecv_Buffer[20];
+extern uint8_t ShijueRecv_Buffer[20],FinishRectangle_Flag;
 
 /* USER CODE END ET */
 

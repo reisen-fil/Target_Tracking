@@ -28,13 +28,16 @@ extern uint16_t MoveStop_Flag,MoveStart_Flag;
 
 extern uint16_t Servo_ZeroXY[2];
 extern uint16_t Servo_OriginXY[2];
-extern int rectangle_XY[8],Set_rectangle_XY[24];
+extern int rectangle_XY[8],Set_rectangle_XY[32];
 
 extern uint16_t Servo_OriginAngle[2];
 
-extern uint8_t Tracking_CNT,Tracking_Start_Flag,Tracking_Enable;
+extern uint16_t Tracking_CNT,Tracking_Start_Flag,Tracking_Enable;
 
 extern int RelaServo_Angle[2];
+
+extern int Laser_XY[2];		/* ¼¤¹âµã×ø±ê */
+
 
 /////////////////////////////////
 

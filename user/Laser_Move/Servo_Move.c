@@ -71,16 +71,17 @@ void Penstring_Moving_1(void)
 
 /* ¶æ»úÎ»ÖÃ»·pid */
 int Servo_Position_PID(int current_position, int target_position,float posi_kp,float posi_ki,float posi_kd) {
-    static int last_error = 0; // ÉÏÒ»´ÎµÄÎó²î
+    static int last_error = 0;
+	// ÉÏÒ»´ÎµÄÎó²î
     static int integral = 0;  // »ı·ÖÏî
     int error = target_position - current_position; // µ±Ç°Îó²î
     integral += error;                              // »ı·ÖÏîÀÛ¼Ó
     int derivative = error - last_error;            // Î¢·ÖÏî
     last_error = error;                             // ¸üĞÂÉÏÒ»´ÎÎó²î
-    int output = posi_kp * error + posi_ki * integral + posi_kd * derivative; // PIDÊä³ö
+    int output = posi_kp * error + posi_ki * integral - posi_kd * derivative; // PIDÊä³ö
 		
-		if(output>800) output=800;				/* ÏŞ·ù²¿·Ö */
-		else if(output<-800) output=-800;
+		if(output>300) output=300;				/* ÏŞ·ù²¿·Ö */
+		else if(output<-300) output=-300;
 		
     return output;
 }
@@ -89,7 +90,7 @@ uint16_t Servo_ZeroXY[2];
 uint16_t Servo_OriginXY[2];
 
 
-int rectangle_XY[8],Set_rectangle_XY[24];		/* ¾ØĞÎ¿ò×ø±ê(×óÉÏ¡¢ÓÒÉÏ¡¢×óÏÂ¡¢ÓÒÏÂ)  Ï¸·Ö³öµÄ12¸öµã */
+int rectangle_XY[8],Set_rectangle_XY[32];		/* ¾ØĞÎ¿ò×ø±ê(×óÉÏ¡¢ÓÒÉÏ¡¢×óÏÂ¡¢ÓÒÏÂ)  Ï¸·Ö³öµÄ12¸öµã */
 
 
 int Laser_XY[2];		/* ¼¤¹âµã×ø±ê */
@@ -168,47 +169,59 @@ void Get_RectangleXY(int* RectangleXY)			/* »ñÈ¡Ò»´Î¾ØĞÎ¿òËÄµãµÄ×ø±ê */
 void Set_RectangleXY(int* RectangleXY,int* Set_RectangleXY)			/* ¾ØĞÎ¿ò±ß¿ò×ö×ø±êÏ¸·Ö(Á½µã¼ä·Ö¶àÈı¸öµã) */
 {
 		/* ¶ÔÉÏ±ß¿ò */
-		Set_RectangleXY[2] = (rectangle_XY[0]+rectangle_XY[2])/2;				/* ÆğÊ¼ÖĞ¼äµãX */
-		Set_RectangleXY[3] = (rectangle_XY[1]+rectangle_XY[3])/2;				/* ÆğÊ¼ÖĞ¼äµãY */
+		Set_RectangleXY[0] = rectangle_XY[0];				/* ÆğÊ¼µÚÒ»¸öµãX */
+		Set_RectangleXY[1] = rectangle_XY[1];				/* ÆğÊ¼µÚÒ»¸öµãY */
+	
+		Set_RectangleXY[4] = (rectangle_XY[0]+rectangle_XY[2])/2;				/* ÆğÊ¼ÖĞ¼äµãX */
+		Set_RectangleXY[5] = (rectangle_XY[1]+rectangle_XY[3])/2;				/* ÆğÊ¼ÖĞ¼äµãY */
 
-		Set_RectangleXY[0] = (rectangle_XY[0]+Set_RectangleXY[2])/2;		/* Æğ×óµãÖĞ¼äµãX */
-		Set_RectangleXY[1] = (rectangle_XY[1]+Set_RectangleXY[3])/2;		/* Æğ×óµãÖĞ¼äµãY */
+		Set_RectangleXY[2] = (rectangle_XY[0]+Set_RectangleXY[4])/2;		/* Æğ×óµãÖĞ¼äµãX */
+		Set_RectangleXY[3] = (rectangle_XY[1]+Set_RectangleXY[5])/2;		/* Æğ×óµãÖĞ¼äµãY */
 
-		Set_RectangleXY[4] = (rectangle_XY[2]+Set_RectangleXY[2])/2;		/* ÆğÓÒµãÖĞ¼äµãX */
-		Set_RectangleXY[5] = (rectangle_XY[3]+Set_RectangleXY[3])/2;		/* ÆğÓÒµãÖĞ¼äµãY */
+		Set_RectangleXY[6] = (rectangle_XY[2]+Set_RectangleXY[4])/2;		/* ÆğÓÒµãÖĞ¼äµãX */
+		Set_RectangleXY[7] = (rectangle_XY[3]+Set_RectangleXY[5])/2;		/* ÆğÓÒµãÖĞ¼äµãY */
 
 	
-		/* ¶ÔÓÒ±ß¿ò */
-		Set_RectangleXY[8] = (rectangle_XY[2]+rectangle_XY[6])/2;				/* ÆğÊ¼ÖĞ¼äµãX */
-		Set_RectangleXY[9] = (rectangle_XY[3]+rectangle_XY[7])/2;				/* ÆğÊ¼ÖĞ¼äµãY */
+		/* ¶ÔÓÒ±ß¿ò */	
+		Set_RectangleXY[8] = rectangle_XY[2];				/* ÆğÊ¼µÚ¶ş¸öµãX */
+		Set_RectangleXY[9] = rectangle_XY[3];				/* ÆğÊ¼µÚ¶ş¸öµãY */	
+	
+		Set_RectangleXY[12] = (rectangle_XY[2]+rectangle_XY[6])/2;				/* ÆğÊ¼ÖĞ¼äµãX */
+		Set_RectangleXY[13] = (rectangle_XY[3]+rectangle_XY[7])/2;				/* ÆğÊ¼ÖĞ¼äµãY */
 
-		Set_RectangleXY[6] = (rectangle_XY[2]+Set_RectangleXY[8])/2;		/* Æğ×óµãÖĞ¼äµãX */
-		Set_RectangleXY[7] = (rectangle_XY[3]+Set_RectangleXY[9])/2;		/* Æğ×óµãÖĞ¼äµãY */
+		Set_RectangleXY[10] = (rectangle_XY[2]+Set_RectangleXY[12])/2;		/* Æğ×óµãÖĞ¼äµãX */
+		Set_RectangleXY[11] = (rectangle_XY[3]+Set_RectangleXY[13])/2;		/* Æğ×óµãÖĞ¼äµãY */
 
-		Set_RectangleXY[10] = (rectangle_XY[6]+Set_RectangleXY[8])/2;		/* ÆğÓÒµãÖĞ¼äµãX */
-		Set_RectangleXY[11] = (rectangle_XY[7]+Set_RectangleXY[9])/2;		/* ÆğÓÒµãÖĞ¼äµãY */
+		Set_RectangleXY[14] = (rectangle_XY[6]+Set_RectangleXY[12])/2;		/* ÆğÓÒµãÖĞ¼äµãX */
+		Set_RectangleXY[15] = (rectangle_XY[7]+Set_RectangleXY[13])/2;		/* ÆğÓÒµãÖĞ¼äµãY */
 
 
 		/* ¶ÔÏÂ±ß¿ò */
-		Set_RectangleXY[14] = (rectangle_XY[6]+rectangle_XY[4])/2;				/* ÆğÊ¼ÖĞ¼äµãX */
-		Set_RectangleXY[15] = (rectangle_XY[7]+rectangle_XY[5])/2;				/* ÆğÊ¼ÖĞ¼äµãY */
+		Set_RectangleXY[16] = rectangle_XY[4];				/* ÆğÊ¼µÚÈı¸öµãX */
+		Set_RectangleXY[17] = rectangle_XY[5];				/* ÆğÊ¼µÚÈı¸öµãY */					
+		
+		Set_RectangleXY[20] = (rectangle_XY[6]+rectangle_XY[4])/2;				/* ÆğÊ¼ÖĞ¼äµãX */
+		Set_RectangleXY[21] = (rectangle_XY[7]+rectangle_XY[5])/2;				/* ÆğÊ¼ÖĞ¼äµãY */
 
-		Set_RectangleXY[12] = (rectangle_XY[6]+Set_RectangleXY[14])/2;		/* Æğ×óµãÖĞ¼äµãX */
-		Set_RectangleXY[13] = (rectangle_XY[7]+Set_RectangleXY[15])/2;		/* Æğ×óµãÖĞ¼äµãY */
+		Set_RectangleXY[18] = (rectangle_XY[6]+Set_RectangleXY[20])/2;		/* Æğ×óµãÖĞ¼äµãX */
+		Set_RectangleXY[19] = (rectangle_XY[7]+Set_RectangleXY[21])/2;		/* Æğ×óµãÖĞ¼äµãY */
 
-		Set_RectangleXY[16] = (rectangle_XY[4]+Set_RectangleXY[14])/2;		/* ÆğÓÒµãÖĞ¼äµãX */
-		Set_RectangleXY[17] = (rectangle_XY[5]+Set_RectangleXY[15])/2;		/* ÆğÓÒµãÖĞ¼äµãY */		
+		Set_RectangleXY[22] = (rectangle_XY[4]+Set_RectangleXY[20])/2;		/* ÆğÓÒµãÖĞ¼äµãX */
+		Set_RectangleXY[23] = (rectangle_XY[5]+Set_RectangleXY[21])/2;		/* ÆğÓÒµãÖĞ¼äµãY */		
 
 
 		/* ¶Ô×ó±ß¿ò */
-		Set_RectangleXY[20] = (rectangle_XY[4]+rectangle_XY[0])/2;				/* ÆğÊ¼ÖĞ¼äµãX */
-		Set_RectangleXY[21] = (rectangle_XY[5]+rectangle_XY[1])/2;				/* ÆğÊ¼ÖĞ¼äµãY */
+		Set_RectangleXY[24] = rectangle_XY[6];				/* ÆğÊ¼µÚËÄ¸öµãX */
+		Set_RectangleXY[25] = rectangle_XY[7];				/* ÆğÊ¼µÚËÄ¸öµãY */			
+		
+		Set_RectangleXY[28] = (rectangle_XY[4]+rectangle_XY[0])/2;				/* ÆğÊ¼ÖĞ¼äµãX */
+		Set_RectangleXY[29] = (rectangle_XY[5]+rectangle_XY[1])/2;				/* ÆğÊ¼ÖĞ¼äµãY */
 
-		Set_RectangleXY[18] = (rectangle_XY[4]+Set_RectangleXY[20])/2;		/* Æğ×óµãÖĞ¼äµãX */
-		Set_RectangleXY[19] = (rectangle_XY[5]+Set_RectangleXY[21])/2;		/* Æğ×óµãÖĞ¼äµãY */
+		Set_RectangleXY[26] = (rectangle_XY[4]+Set_RectangleXY[28])/2;		/* Æğ×óµãÖĞ¼äµãX */
+		Set_RectangleXY[27] = (rectangle_XY[5]+Set_RectangleXY[29])/2;		/* Æğ×óµãÖĞ¼äµãY */
 
-		Set_RectangleXY[22] = (rectangle_XY[0]+Set_RectangleXY[20])/2;		/* ÆğÓÒµãÖĞ¼äµãX */
-		Set_RectangleXY[23] = (rectangle_XY[1]+Set_RectangleXY[21])/2;		/* ÆğÓÒµãÖĞ¼äµãY */	
+		Set_RectangleXY[30] = (rectangle_XY[0]+Set_RectangleXY[28])/2;		/* ÆğÓÒµãÖĞ¼äµãX */
+		Set_RectangleXY[31] = (rectangle_XY[1]+Set_RectangleXY[29])/2;		/* ÆğÓÒµãÖĞ¼äµãY */	
 
 }
 
@@ -216,7 +229,7 @@ void Set_RectangleXY(int* RectangleXY,int* Set_RectangleXY)			/* ¾ØĞÎ¿ò±ß¿ò×ö×ø±
 /* ÊµÊ±»ñÈ¡¼¤¹âµã×ø±ê */
 void Get_LaserXY_ALLtime(int* MyXY)
 {
-		if(Data_FinishGet)			/* ´®¿ÚÍê³ÉÁËÒ»´Î½ÓÊÕºó */
+		if(Data_FinishGet==1 && FinishRectangle_Flag==1)			/* ´®¿ÚÍê³ÉÁËÒ»´Î½ÓÊÕºó */
 		{
 				/* 16Î»Êı¾İ´¦Àí(ºÏ³É×ø±êÖµ) */
 				for(uint8_t time=0;time<2;time++)
@@ -229,20 +242,31 @@ void Get_LaserXY_ALLtime(int* MyXY)
 		}
 }
 
-uint8_t Tracking_CNT,Tracking_Start_Flag,Tracking_Enable;			/* ½øÈë¸ú×Ù²¿·ÖµÄ¼ÆÊ± */
+uint16_t Tracking_CNT,Tracking_Start_Flag,Tracking_Enable;			/* ½øÈë¸ú×Ù²¿·ÖµÄ¼ÆÊ± */
+
+
+int limit_SetAngle(int Now_Angle)
+{
+		if(Now_Angle<1948) Now_Angle=1948;
+		else if(Now_Angle>2248) Now_Angle=2248;
+	
+		return Now_Angle;
+}
 
 
 /* ¼¤¹â¸ú×Ù¾ØĞÎ¿ò²¿·Ö */
+
 void Set_LaserTracking(int RECTANG_X,int RECTANG_Y)
 {
-		while(1)
-		{
+//		while(1)
+//		{
 				static uint16_t Now_OriginAngle[2];
 			
-				if(Tracking_Enable==1 && Data_FinishGet==1)			/* 100ms¼ÆÊ±µ½ºó */
+//				if(Tracking_Enable==1 && Data_FinishGet==1)			/* 100ms¼ÆÊ±µ½ºó */
+				if(Data_FinishGet==1)			/* 100ms¼ÆÊ±µ½ºó */
 				{
 					
-						HAL_TIM_Base_Stop_IT(&htim7);			/* ¶¨Ê±ÖĞ¶ÏÊ§ÄÜ */
+//						HAL_TIM_Base_Stop_IT(&htim7);			/* ¶¨Ê±ÖĞ¶ÏÊ§ÄÜ */
 					
 						Get_LaserXY_ALLtime(Laser_XY);		/* ÊµÊ±½ÓÊÕ¼¤¹â×ø±ê */
 
@@ -256,14 +280,21 @@ void Set_LaserTracking(int RECTANG_X,int RECTANG_Y)
 								PID_Mode[PID_index_1-1].PID[PID_index_2]=RxPacket_Data_Handle(Get_Vofa_RxData);
 						}
 						
-						X_Pid.Kp = PID_Mode[0].PID[0];
-						X_Pid.Ki = PID_Mode[0].PID[1];
-						X_Pid.Kd = PID_Mode[0].PID[2];
+//						X_Pid.Kp = PID_Mode[0].PID[0];
+//						X_Pid.Ki = PID_Mode[0].PID[1];
+//						X_Pid.Kd = PID_Mode[0].PID[2];
+//						
+//						Y_Pid.Kp = PID_Mode[1].PID[0];
+//						Y_Pid.Ki = PID_Mode[1].PID[1];
+//						Y_Pid.Kd = PID_Mode[1].PID[2];
 						
-						Y_Pid.Kp = PID_Mode[1].PID[0];
-						Y_Pid.Ki = PID_Mode[1].PID[1];
-						Y_Pid.Kd = PID_Mode[1].PID[2];
-						
+						X_Pid.Kp = 0.06;
+						X_Pid.Ki = 0.00;
+						X_Pid.Kd = 0.114;
+//						
+//						Y_Pid.Kp = 0.9;
+//						Y_Pid.Ki = 0;
+//						Y_Pid.Kd = 0.12;
 						
 						/* ½øĞĞÎ»ÖÃ»·pidÔËËã */
 						RelaServo_Angle[0] = Servo_Position_PID(Laser_XY[0],RECTANG_X,X_Pid.Kp,X_Pid.Ki,X_Pid.Kd);
@@ -274,14 +305,16 @@ void Set_LaserTracking(int RECTANG_X,int RECTANG_Y)
 					
 						HAL_Delay(100);
 					
-						USL_SetServoAngle(servoUsart,sid_1,Now_OriginAngle[0]-RelaServo_Angle[0],0);
-						USL_SetServoAngle(servoUsart,sid_2,Now_OriginAngle[1]-RelaServo_Angle[1],0);
+						USL_SetServoAngle(servoUsart,sid_1,limit_SetAngle(Now_OriginAngle[0]-RelaServo_Angle[0]),0);
+						USL_SetServoAngle(servoUsart,sid_2,limit_SetAngle(Now_OriginAngle[1]-RelaServo_Angle[1]),0);
 						
-						Tracking_Enable=0;
-						TIM7->CNT=0;		/* ¼ÆÊı¼Ä´æÆ÷ÇåÁã */
-						HAL_TIM_Base_Start_IT(&htim7);		/* ÖØĞÂÊ¹ÄÜ¶¨Ê±ÖĞ¶Ï */
+
+						
+//						Tracking_Enable=0;
+//						TIM7->CNT=0;		/* ¼ÆÊı¼Ä´æÆ÷ÇåÁã */
+//						HAL_TIM_Base_Start_IT(&htim7);		/* ÖØĞÂÊ¹ÄÜ¶¨Ê±ÖĞ¶Ï */
 											
-				}
+//				}
 		}
 }
 

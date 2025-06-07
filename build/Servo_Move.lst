@@ -1,0 +1,2602 @@
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"Servo_Move.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Penstring_Locate,"ax",%progbits
+  20              		.align	1
+  21              		.global	Penstring_Locate
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	Penstring_Locate:
+  27              	.LFB135:
+  28              		.file 1 "E:/MCU_Project/stm32/Target_tracking/user/Laser_Move/Servo_Move.c"
+   1:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** #include "Servo_Move.h"
+   2:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+   3:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+   4:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** uint16_t Locate_angleX[4],Locate_angleY[4];
+   5:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+   6:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** uint16_t CenterLocate_angleX[4],CenterLocate_angleY[4];
+   7:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+   8:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** uint16_t Delay_time,MoveStop_Flag=0,MoveStart_Flag=0;
+   9:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+  10:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** posi_pid X_Pid;		/* ÏÂ¶æ»úpid */
+  11:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** posi_pid Y_Pid;		/* ÉÏ¶æ»úpid */
+  12:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+  13:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** int RelaServo_Angle[2];
+  14:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+  15:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+  16:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** /* Ç¦±ÊÏß¿òËÄµã¼ÇÂ¼ */
+  17:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** void Penstring_Locate(void)
+  18:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** {
+  29              		.loc 1 18 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 38B5     		push	{r3, r4, r5, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 16
+  36              		.cfi_offset 3, -16
+  37              		.cfi_offset 4, -12
+  38              		.cfi_offset 5, -8
+  39              		.cfi_offset 14, -4
+  19:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //		Key_Scan(&KeyNum);			/* »ñÈ¡¼üÂëÖµ */
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 2
+
+
+  20:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		
+  21:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		if(KeyNum>=5 && KeyNum<=8)		
+  40              		.loc 1 21 3 view .LVU1
+  41              		.loc 1 21 16 is_stmt 0 view .LVU2
+  42 0002 1D4B     		ldr	r3, .L7
+  43 0004 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  44 0006 531F     		subs	r3, r2, #5
+  45 0008 DBB2     		uxtb	r3, r3
+  46              		.loc 1 21 5 view .LVU3
+  47 000a 032B     		cmp	r3, #3
+  48 000c 07D9     		bls	.L5
+  49              	.L2:
+  22:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		{
+  23:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				Locate_angleX[KeyNum-5] = USL_GETPositionVal(servoUsart,sid_1);		/* ÏÂ¶æ»úÐý×ª½Ç¶È»ñÈ¡ */
+  24:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				Locate_angleY[KeyNum-5] = USL_GETPositionVal(servoUsart,sid_2);		/* ÉÏ¶æ»úÐý×ª½Ç¶È»ñÈ¡ */
+  25:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		}
+  26:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		
+  27:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		if(KeyNum>=13 && KeyNum<=16)
+  50              		.loc 1 27 3 is_stmt 1 view .LVU4
+  51              		.loc 1 27 17 is_stmt 0 view .LVU5
+  52 000e 1A4B     		ldr	r3, .L7
+  53 0010 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  54 0012 A2F10D03 		sub	r3, r2, #13
+  55 0016 DBB2     		uxtb	r3, r3
+  56              		.loc 1 27 5 view .LVU6
+  57 0018 032B     		cmp	r3, #3
+  58 001a 16D9     		bls	.L6
+  59              	.L1:
+  28:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		{
+  29:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				CenterLocate_angleX[KeyNum-13] = USL_GETPositionVal(servoUsart,sid_1);		/* ÏÂ¶æ»úÐý×ª½Ç¶È»ñÈ¡ *
+  30:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				CenterLocate_angleY[KeyNum-13] = USL_GETPositionVal(servoUsart,sid_2);		/* ÉÏ¶æ»úÐý×ª½Ç¶È»ñÈ¡ *
+  31:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		}
+  32:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** }
+  60              		.loc 1 32 1 view .LVU7
+  61 001c 38BD     		pop	{r3, r4, r5, pc}
+  62              	.L5:
+  23:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				Locate_angleY[KeyNum-5] = USL_GETPositionVal(servoUsart,sid_2);		/* ÉÏ¶æ»úÐý×ª½Ç¶È»ñÈ¡ */
+  63              		.loc 1 23 5 is_stmt 1 view .LVU8
+  23:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				Locate_angleY[KeyNum-5] = USL_GETPositionVal(servoUsart,sid_2);		/* ÉÏ¶æ»úÐý×ª½Ç¶È»ñÈ¡ */
+  64              		.loc 1 23 25 is_stmt 0 view .LVU9
+  65 001e 541F     		subs	r4, r2, #5
+  23:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				Locate_angleY[KeyNum-5] = USL_GETPositionVal(servoUsart,sid_2);		/* ÉÏ¶æ»úÐý×ª½Ç¶È»ñÈ¡ */
+  66              		.loc 1 23 31 view .LVU10
+  67 0020 164D     		ldr	r5, .L7+4
+  68 0022 174B     		ldr	r3, .L7+8
+  69 0024 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+  70 0026 2868     		ldr	r0, [r5]
+  71 0028 FFF7FEFF 		bl	USL_GETPositionVal
+  72              	.LVL0:
+  23:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				Locate_angleY[KeyNum-5] = USL_GETPositionVal(servoUsart,sid_2);		/* ÉÏ¶æ»úÐý×ª½Ç¶È»ñÈ¡ */
+  73              		.loc 1 23 29 view .LVU11
+  74 002c 154B     		ldr	r3, .L7+12
+  75 002e 23F81400 		strh	r0, [r3, r4, lsl #1]	@ movhi
+  24:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		}
+  76              		.loc 1 24 5 is_stmt 1 view .LVU12
+  24:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		}
+  77              		.loc 1 24 25 is_stmt 0 view .LVU13
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 3
+
+
+  78 0032 114B     		ldr	r3, .L7
+  79 0034 1C78     		ldrb	r4, [r3]	@ zero_extendqisi2
+  80 0036 053C     		subs	r4, r4, #5
+  24:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		}
+  81              		.loc 1 24 31 view .LVU14
+  82 0038 134B     		ldr	r3, .L7+16
+  83 003a 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+  84 003c 2868     		ldr	r0, [r5]
+  85 003e FFF7FEFF 		bl	USL_GETPositionVal
+  86              	.LVL1:
+  24:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		}
+  87              		.loc 1 24 29 view .LVU15
+  88 0042 124B     		ldr	r3, .L7+20
+  89 0044 23F81400 		strh	r0, [r3, r4, lsl #1]	@ movhi
+  90 0048 E1E7     		b	.L2
+  91              	.L6:
+  29:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				CenterLocate_angleY[KeyNum-13] = USL_GETPositionVal(servoUsart,sid_2);		/* ÉÏ¶æ»úÐý×ª½Ç¶È»ñÈ¡ *
+  92              		.loc 1 29 5 is_stmt 1 view .LVU16
+  29:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				CenterLocate_angleY[KeyNum-13] = USL_GETPositionVal(servoUsart,sid_2);		/* ÉÏ¶æ»úÐý×ª½Ç¶È»ñÈ¡ *
+  93              		.loc 1 29 31 is_stmt 0 view .LVU17
+  94 004a A2F10D04 		sub	r4, r2, #13
+  29:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				CenterLocate_angleY[KeyNum-13] = USL_GETPositionVal(servoUsart,sid_2);		/* ÉÏ¶æ»úÐý×ª½Ç¶È»ñÈ¡ *
+  95              		.loc 1 29 38 view .LVU18
+  96 004e 0B4D     		ldr	r5, .L7+4
+  97 0050 0B4B     		ldr	r3, .L7+8
+  98 0052 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+  99 0054 2868     		ldr	r0, [r5]
+ 100 0056 FFF7FEFF 		bl	USL_GETPositionVal
+ 101              	.LVL2:
+  29:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				CenterLocate_angleY[KeyNum-13] = USL_GETPositionVal(servoUsart,sid_2);		/* ÉÏ¶æ»úÐý×ª½Ç¶È»ñÈ¡ *
+ 102              		.loc 1 29 36 view .LVU19
+ 103 005a 0D4B     		ldr	r3, .L7+24
+ 104 005c 23F81400 		strh	r0, [r3, r4, lsl #1]	@ movhi
+  30:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		}
+ 105              		.loc 1 30 5 is_stmt 1 view .LVU20
+  30:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		}
+ 106              		.loc 1 30 31 is_stmt 0 view .LVU21
+ 107 0060 054B     		ldr	r3, .L7
+ 108 0062 1C78     		ldrb	r4, [r3]	@ zero_extendqisi2
+ 109 0064 0D3C     		subs	r4, r4, #13
+  30:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		}
+ 110              		.loc 1 30 38 view .LVU22
+ 111 0066 084B     		ldr	r3, .L7+16
+ 112 0068 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 113 006a 2868     		ldr	r0, [r5]
+ 114 006c FFF7FEFF 		bl	USL_GETPositionVal
+ 115              	.LVL3:
+  30:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		}
+ 116              		.loc 1 30 36 view .LVU23
+ 117 0070 084B     		ldr	r3, .L7+28
+ 118 0072 23F81400 		strh	r0, [r3, r4, lsl #1]	@ movhi
+ 119              		.loc 1 32 1 view .LVU24
+ 120 0076 D1E7     		b	.L1
+ 121              	.L8:
+ 122              		.align	2
+ 123              	.L7:
+ 124 0078 00000000 		.word	KeyNum
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 4
+
+
+ 125 007c 00000000 		.word	servoUsart
+ 126 0080 00000000 		.word	sid_1
+ 127 0084 00000000 		.word	.LANCHOR0
+ 128 0088 00000000 		.word	sid_2
+ 129 008c 00000000 		.word	.LANCHOR1
+ 130 0090 00000000 		.word	.LANCHOR2
+ 131 0094 00000000 		.word	.LANCHOR3
+ 132              		.cfi_endproc
+ 133              	.LFE135:
+ 135              		.global	__aeabi_i2d
+ 136              		.global	__aeabi_dmul
+ 137              		.global	__aeabi_dcmplt
+ 138              		.section	.text.Penstring_Moving_1,"ax",%progbits
+ 139              		.align	1
+ 140              		.global	Penstring_Moving_1
+ 141              		.syntax unified
+ 142              		.thumb
+ 143              		.thumb_func
+ 145              	Penstring_Moving_1:
+ 146              	.LFB136:
+  33:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+  34:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** /* Ç¦±ÊÏßÔË¶¯-·½°¸Ò»(ËÄ¶Ô½Ç²Éµã)*/
+  35:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** void Penstring_Moving_1(void)
+  36:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** {
+ 147              		.loc 1 36 1 is_stmt 1 view -0
+ 148              		.cfi_startproc
+ 149              		@ args = 0, pretend = 0, frame = 0
+ 150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 151 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 152              	.LCFI1:
+ 153              		.cfi_def_cfa_offset 24
+ 154              		.cfi_offset 3, -24
+ 155              		.cfi_offset 4, -20
+ 156              		.cfi_offset 5, -16
+ 157              		.cfi_offset 6, -12
+ 158              		.cfi_offset 7, -8
+ 159              		.cfi_offset 14, -4
+  37:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			for(uint16_t cnt=0;cnt<(Locate_angleY[1]-Locate_angleY[0])*0.2;cnt++)		/* ×ó±ß¿ò */
+ 160              		.loc 1 37 4 view .LVU26
+ 161              	.LBB2:
+ 162              		.loc 1 37 8 view .LVU27
+ 163              	.LVL4:
+ 164              		.loc 1 37 17 is_stmt 0 view .LVU28
+ 165 0002 0024     		movs	r4, #0
+ 166              		.loc 1 37 4 view .LVU29
+ 167 0004 04E0     		b	.L10
+ 168              	.LVL5:
+ 169              	.L11:
+  38:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+  39:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					USL_SetServoAngle(servoUsart, sid_1, (Locate_angleX[0]+Locate_angleX[1]+CenterLocate_angleX[0]
+  40:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[0]+5*(cnt+1), 0);
+  41:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+  42:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					if(cnt<=0) HAL_Delay(250);
+  43:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					else HAL_Delay(50);
+ 170              		.loc 1 43 11 is_stmt 1 view .LVU30
+ 171 0006 3220     		movs	r0, #50
+ 172 0008 FFF7FEFF 		bl	HAL_Delay
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 5
+
+
+ 173              	.LVL6:
+ 174              	.L12:
+  37:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			for(uint16_t cnt=0;cnt<(Locate_angleY[1]-Locate_angleY[0])*0.2;cnt++)		/* ×ó±ß¿ò */
+ 175              		.loc 1 37 67 discriminator 2 view .LVU31
+  37:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			for(uint16_t cnt=0;cnt<(Locate_angleY[1]-Locate_angleY[0])*0.2;cnt++)		/* ×ó±ß¿ò */
+ 176              		.loc 1 37 70 is_stmt 0 discriminator 2 view .LVU32
+ 177 000c 0134     		adds	r4, r4, #1
+ 178              	.LVL7:
+  37:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			for(uint16_t cnt=0;cnt<(Locate_angleY[1]-Locate_angleY[0])*0.2;cnt++)		/* ×ó±ß¿ò */
+ 179              		.loc 1 37 70 discriminator 2 view .LVU33
+ 180 000e A4B2     		uxth	r4, r4
+ 181              	.LVL8:
+ 182              	.L10:
+  37:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			for(uint16_t cnt=0;cnt<(Locate_angleY[1]-Locate_angleY[0])*0.2;cnt++)		/* ×ó±ß¿ò */
+ 183              		.loc 1 37 23 is_stmt 1 discriminator 1 view .LVU34
+  37:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			for(uint16_t cnt=0;cnt<(Locate_angleY[1]-Locate_angleY[0])*0.2;cnt++)		/* ×ó±ß¿ò */
+ 184              		.loc 1 37 26 is_stmt 0 discriminator 1 view .LVU35
+ 185 0010 2046     		mov	r0, r4
+ 186 0012 FFF7FEFF 		bl	__aeabi_i2d
+ 187              	.LVL9:
+ 188 0016 0646     		mov	r6, r0
+ 189 0018 0F46     		mov	r7, r1
+  37:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			for(uint16_t cnt=0;cnt<(Locate_angleY[1]-Locate_angleY[0])*0.2;cnt++)		/* ×ó±ß¿ò */
+ 190              		.loc 1 37 41 discriminator 1 view .LVU36
+ 191 001a 934B     		ldr	r3, .L31+8
+ 192 001c 5888     		ldrh	r0, [r3, #2]
+  37:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			for(uint16_t cnt=0;cnt<(Locate_angleY[1]-Locate_angleY[0])*0.2;cnt++)		/* ×ó±ß¿ò */
+ 193              		.loc 1 37 58 discriminator 1 view .LVU37
+ 194 001e 1B88     		ldrh	r3, [r3]
+  37:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			for(uint16_t cnt=0;cnt<(Locate_angleY[1]-Locate_angleY[0])*0.2;cnt++)		/* ×ó±ß¿ò */
+ 195              		.loc 1 37 62 discriminator 1 view .LVU38
+ 196 0020 C01A     		subs	r0, r0, r3
+ 197 0022 FFF7FEFF 		bl	__aeabi_i2d
+ 198              	.LVL10:
+ 199 0026 8EA3     		adr	r3, .L31
+ 200 0028 D3E90023 		ldrd	r2, [r3]
+ 201 002c FFF7FEFF 		bl	__aeabi_dmul
+ 202              	.LVL11:
+ 203 0030 0246     		mov	r2, r0
+ 204 0032 0B46     		mov	r3, r1
+  37:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			for(uint16_t cnt=0;cnt<(Locate_angleY[1]-Locate_angleY[0])*0.2;cnt++)		/* ×ó±ß¿ò */
+ 205              		.loc 1 37 4 discriminator 1 view .LVU39
+ 206 0034 3046     		mov	r0, r6
+ 207 0036 3946     		mov	r1, r7
+ 208 0038 FFF7FEFF 		bl	__aeabi_dcmplt
+ 209              	.LVL12:
+ 210 003c 60B3     		cbz	r0, .L27
+  39:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[0]+5*(cnt+1), 0);
+ 211              		.loc 1 39 6 is_stmt 1 view .LVU40
+  39:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[0]+5*(cnt+1), 0);
+ 212              		.loc 1 39 57 is_stmt 0 view .LVU41
+ 213 003e 8B4A     		ldr	r2, .L31+12
+ 214 0040 1388     		ldrh	r3, [r2]
+  39:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[0]+5*(cnt+1), 0);
+ 215              		.loc 1 39 74 view .LVU42
+ 216 0042 5288     		ldrh	r2, [r2, #2]
+  39:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[0]+5*(cnt+1), 0);
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 6
+
+
+ 217              		.loc 1 39 60 view .LVU43
+ 218 0044 1344     		add	r3, r3, r2
+  39:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[0]+5*(cnt+1), 0);
+ 219              		.loc 1 39 97 view .LVU44
+ 220 0046 8A4A     		ldr	r2, .L31+16
+ 221 0048 1288     		ldrh	r2, [r2]
+  39:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[0]+5*(cnt+1), 0);
+ 222              		.loc 1 39 77 view .LVU45
+ 223 004a 1344     		add	r3, r3, r2
+  39:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[0]+5*(cnt+1), 0);
+ 224              		.loc 1 39 101 view .LVU46
+ 225 004c 894A     		ldr	r2, .L31+20
+ 226 004e 82FB0323 		smull	r2, r3, r2, r3
+ 227 0052 00EE103A 		vmov	s0, r3	@ int
+  39:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[0]+5*(cnt+1), 0);
+ 228              		.loc 1 39 6 view .LVU47
+ 229 0056 884D     		ldr	r5, .L31+24
+ 230 0058 0022     		movs	r2, #0
+ 231 005a B8EEC00A 		vcvt.f32.s32	s0, s0
+ 232 005e 874B     		ldr	r3, .L31+28
+ 233 0060 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 234 0062 2868     		ldr	r0, [r5]
+ 235 0064 FFF7FEFF 		bl	USL_SetServoAngle
+ 236              	.LVL13:
+  40:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 237              		.loc 1 40 7 is_stmt 1 view .LVU48
+  40:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 238              		.loc 1 40 57 is_stmt 0 view .LVU49
+ 239 0068 7F4B     		ldr	r3, .L31+8
+ 240 006a 1A88     		ldrh	r2, [r3]
+  40:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 241              		.loc 1 40 67 view .LVU50
+ 242 006c 631C     		adds	r3, r4, #1
+  40:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 243              		.loc 1 40 62 view .LVU51
+ 244 006e 03EB8303 		add	r3, r3, r3, lsl #2
+  40:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 245              		.loc 1 40 60 view .LVU52
+ 246 0072 D318     		adds	r3, r2, r3
+ 247 0074 00EE103A 		vmov	s0, r3	@ int
+  40:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 248              		.loc 1 40 7 view .LVU53
+ 249 0078 0022     		movs	r2, #0
+ 250 007a B8EEC00A 		vcvt.f32.s32	s0, s0
+ 251 007e 804B     		ldr	r3, .L31+32
+ 252 0080 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 253 0082 2868     		ldr	r0, [r5]
+ 254 0084 FFF7FEFF 		bl	USL_SetServoAngle
+ 255              	.LVL14:
+  41:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					if(cnt<=0) HAL_Delay(250);
+ 256              		.loc 1 41 6 is_stmt 1 view .LVU54
+ 257 0088 FFF7FEFF 		bl	LASER_RESET_Start
+ 258              	.LVL15:
+  42:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					else HAL_Delay(50);
+ 259              		.loc 1 42 6 view .LVU55
+  42:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					else HAL_Delay(50);
+ 260              		.loc 1 42 8 is_stmt 0 view .LVU56
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 7
+
+
+ 261 008c 002C     		cmp	r4, #0
+ 262 008e BAD1     		bne	.L11
+  42:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					else HAL_Delay(50);
+ 263              		.loc 1 42 17 is_stmt 1 discriminator 1 view .LVU57
+ 264 0090 FA20     		movs	r0, #250
+ 265 0092 FFF7FEFF 		bl	HAL_Delay
+ 266              	.LVL16:
+ 267 0096 B9E7     		b	.L12
+ 268              	.L27:
+ 269              	.LBE2:
+ 270              	.LBB3:
+  44:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			}
+  45:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			for(uint16_t cnt=0;cnt<(Locate_angleX[1]-Locate_angleX[2])*0.2;cnt++)		/* ÉÏ±ß¿ò */		
+ 271              		.loc 1 45 17 is_stmt 0 view .LVU58
+ 272 0098 0024     		movs	r4, #0
+ 273              	.LVL17:
+ 274              		.loc 1 45 17 view .LVU59
+ 275 009a 04E0     		b	.L14
+ 276              	.LVL18:
+ 277              	.L15:
+  46:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+  47:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					USL_SetServoAngle(servoUsart, sid_1, Locate_angleX[1]-5*(cnt+1), 0);										
+  48:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, (Locate_angleY[1]+Locate_angleY[2]+CenterLocate_angleY[1
+  49:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+  50:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					if(cnt<=0) HAL_Delay(250);
+  51:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					else HAL_Delay(50);
+ 278              		.loc 1 51 11 is_stmt 1 view .LVU60
+ 279 009c 3220     		movs	r0, #50
+ 280 009e FFF7FEFF 		bl	HAL_Delay
+ 281              	.LVL19:
+ 282              	.L16:
+  45:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 283              		.loc 1 45 67 discriminator 2 view .LVU61
+  45:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 284              		.loc 1 45 70 is_stmt 0 discriminator 2 view .LVU62
+ 285 00a2 0134     		adds	r4, r4, #1
+ 286              	.LVL20:
+  45:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 287              		.loc 1 45 70 discriminator 2 view .LVU63
+ 288 00a4 A4B2     		uxth	r4, r4
+ 289              	.LVL21:
+ 290              	.L14:
+  45:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 291              		.loc 1 45 23 is_stmt 1 discriminator 1 view .LVU64
+  45:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 292              		.loc 1 45 26 is_stmt 0 discriminator 1 view .LVU65
+ 293 00a6 2046     		mov	r0, r4
+ 294 00a8 FFF7FEFF 		bl	__aeabi_i2d
+ 295              	.LVL22:
+ 296 00ac 0646     		mov	r6, r0
+ 297 00ae 0F46     		mov	r7, r1
+  45:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 298              		.loc 1 45 41 discriminator 1 view .LVU66
+ 299 00b0 6E4B     		ldr	r3, .L31+12
+ 300 00b2 5D88     		ldrh	r5, [r3, #2]
+  45:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 301              		.loc 1 45 58 discriminator 1 view .LVU67
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 8
+
+
+ 302 00b4 9888     		ldrh	r0, [r3, #4]
+  45:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 303              		.loc 1 45 62 discriminator 1 view .LVU68
+ 304 00b6 281A     		subs	r0, r5, r0
+ 305 00b8 FFF7FEFF 		bl	__aeabi_i2d
+ 306              	.LVL23:
+ 307 00bc 68A3     		adr	r3, .L31
+ 308 00be D3E90023 		ldrd	r2, [r3]
+ 309 00c2 FFF7FEFF 		bl	__aeabi_dmul
+ 310              	.LVL24:
+ 311 00c6 0246     		mov	r2, r0
+ 312 00c8 0B46     		mov	r3, r1
+  45:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 313              		.loc 1 45 4 discriminator 1 view .LVU69
+ 314 00ca 3046     		mov	r0, r6
+ 315 00cc 3946     		mov	r1, r7
+ 316 00ce FFF7FEFF 		bl	__aeabi_dcmplt
+ 317              	.LVL25:
+ 318 00d2 60B3     		cbz	r0, .L28
+  47:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, (Locate_angleY[1]+Locate_angleY[2]+CenterLocate_angleY[1
+ 319              		.loc 1 47 6 is_stmt 1 view .LVU70
+  47:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, (Locate_angleY[1]+Locate_angleY[2]+CenterLocate_angleY[1
+ 320              		.loc 1 47 66 is_stmt 0 view .LVU71
+ 321 00d4 631C     		adds	r3, r4, #1
+  47:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, (Locate_angleY[1]+Locate_angleY[2]+CenterLocate_angleY[1
+ 322              		.loc 1 47 61 view .LVU72
+ 323 00d6 C3EB8372 		rsb	r2, r3, r3, lsl #30
+ 324 00da C3EB8203 		rsb	r3, r3, r2, lsl #2
+  47:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, (Locate_angleY[1]+Locate_angleY[2]+CenterLocate_angleY[1
+ 325              		.loc 1 47 59 view .LVU73
+ 326 00de 2B44     		add	r3, r3, r5
+ 327 00e0 00EE103A 		vmov	s0, r3	@ int
+  47:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, (Locate_angleY[1]+Locate_angleY[2]+CenterLocate_angleY[1
+ 328              		.loc 1 47 6 view .LVU74
+ 329 00e4 644D     		ldr	r5, .L31+24
+ 330 00e6 0022     		movs	r2, #0
+ 331 00e8 B8EEC00A 		vcvt.f32.s32	s0, s0
+ 332 00ec 634B     		ldr	r3, .L31+28
+ 333 00ee 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 334 00f0 2868     		ldr	r0, [r5]
+ 335 00f2 FFF7FEFF 		bl	USL_SetServoAngle
+ 336              	.LVL26:
+  48:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 337              		.loc 1 48 7 is_stmt 1 view .LVU75
+  48:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 338              		.loc 1 48 58 is_stmt 0 view .LVU76
+ 339 00f6 5C4A     		ldr	r2, .L31+8
+ 340 00f8 5388     		ldrh	r3, [r2, #2]
+  48:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 341              		.loc 1 48 75 view .LVU77
+ 342 00fa 9288     		ldrh	r2, [r2, #4]
+  48:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 343              		.loc 1 48 61 view .LVU78
+ 344 00fc 1344     		add	r3, r3, r2
+  48:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 345              		.loc 1 48 98 view .LVU79
+ 346 00fe 614A     		ldr	r2, .L31+36
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 9
+
+
+ 347 0100 5288     		ldrh	r2, [r2, #2]
+  48:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 348              		.loc 1 48 78 view .LVU80
+ 349 0102 1344     		add	r3, r3, r2
+  48:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 350              		.loc 1 48 102 view .LVU81
+ 351 0104 5B4A     		ldr	r2, .L31+20
+ 352 0106 82FB0323 		smull	r2, r3, r2, r3
+ 353 010a 00EE103A 		vmov	s0, r3	@ int
+  48:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 354              		.loc 1 48 7 view .LVU82
+ 355 010e 0022     		movs	r2, #0
+ 356 0110 B8EEC00A 		vcvt.f32.s32	s0, s0
+ 357 0114 5A4B     		ldr	r3, .L31+32
+ 358 0116 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 359 0118 2868     		ldr	r0, [r5]
+ 360 011a FFF7FEFF 		bl	USL_SetServoAngle
+ 361              	.LVL27:
+  49:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					if(cnt<=0) HAL_Delay(250);
+ 362              		.loc 1 49 6 is_stmt 1 view .LVU83
+ 363 011e FFF7FEFF 		bl	LASER_RESET_Start
+ 364              	.LVL28:
+  50:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					else HAL_Delay(50);
+ 365              		.loc 1 50 6 view .LVU84
+  50:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					else HAL_Delay(50);
+ 366              		.loc 1 50 8 is_stmt 0 view .LVU85
+ 367 0122 002C     		cmp	r4, #0
+ 368 0124 BAD1     		bne	.L15
+  50:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					else HAL_Delay(50);
+ 369              		.loc 1 50 17 is_stmt 1 discriminator 1 view .LVU86
+ 370 0126 FA20     		movs	r0, #250
+ 371 0128 FFF7FEFF 		bl	HAL_Delay
+ 372              	.LVL29:
+ 373 012c B9E7     		b	.L16
+ 374              	.L28:
+ 375              	.LBE3:
+ 376              	.LBB4:
+  52:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			}	
+  53:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			for(uint16_t cnt=0;cnt<(Locate_angleY[2]-Locate_angleY[3])*0.2;cnt++)		/* ÓÒ±ß¿ò */
+ 377              		.loc 1 53 17 is_stmt 0 view .LVU87
+ 378 012e 0024     		movs	r4, #0
+ 379              	.LVL30:
+ 380              		.loc 1 53 17 view .LVU88
+ 381 0130 04E0     		b	.L18
+ 382              	.LVL31:
+ 383              	.L19:
+  54:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+  55:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					USL_SetServoAngle(servoUsart, sid_1, (Locate_angleX[2]+Locate_angleX[3]+CenterLocate_angleX[2]
+  56:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[2]-5*(cnt+1), 0);
+  57:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+  58:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					if(cnt<=0) HAL_Delay(250);
+  59:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					else HAL_Delay(50);
+ 384              		.loc 1 59 11 is_stmt 1 view .LVU89
+ 385 0132 3220     		movs	r0, #50
+ 386 0134 FFF7FEFF 		bl	HAL_Delay
+ 387              	.LVL32:
+ 388              	.L20:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 10
+
+
+  53:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 389              		.loc 1 53 67 discriminator 2 view .LVU90
+  53:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 390              		.loc 1 53 70 is_stmt 0 discriminator 2 view .LVU91
+ 391 0138 0134     		adds	r4, r4, #1
+ 392              	.LVL33:
+  53:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 393              		.loc 1 53 70 discriminator 2 view .LVU92
+ 394 013a A4B2     		uxth	r4, r4
+ 395              	.LVL34:
+ 396              	.L18:
+  53:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 397              		.loc 1 53 23 is_stmt 1 discriminator 1 view .LVU93
+  53:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 398              		.loc 1 53 26 is_stmt 0 discriminator 1 view .LVU94
+ 399 013c 2046     		mov	r0, r4
+ 400 013e FFF7FEFF 		bl	__aeabi_i2d
+ 401              	.LVL35:
+ 402 0142 0646     		mov	r6, r0
+ 403 0144 0F46     		mov	r7, r1
+  53:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 404              		.loc 1 53 41 discriminator 1 view .LVU95
+ 405 0146 484B     		ldr	r3, .L31+8
+ 406 0148 9888     		ldrh	r0, [r3, #4]
+  53:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 407              		.loc 1 53 58 discriminator 1 view .LVU96
+ 408 014a DB88     		ldrh	r3, [r3, #6]
+  53:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 409              		.loc 1 53 62 discriminator 1 view .LVU97
+ 410 014c C01A     		subs	r0, r0, r3
+ 411 014e FFF7FEFF 		bl	__aeabi_i2d
+ 412              	.LVL36:
+ 413 0152 43A3     		adr	r3, .L31
+ 414 0154 D3E90023 		ldrd	r2, [r3]
+ 415 0158 FFF7FEFF 		bl	__aeabi_dmul
+ 416              	.LVL37:
+ 417 015c 0246     		mov	r2, r0
+ 418 015e 0B46     		mov	r3, r1
+  53:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 419              		.loc 1 53 4 discriminator 1 view .LVU98
+ 420 0160 3046     		mov	r0, r6
+ 421 0162 3946     		mov	r1, r7
+ 422 0164 FFF7FEFF 		bl	__aeabi_dcmplt
+ 423              	.LVL38:
+ 424 0168 70B3     		cbz	r0, .L29
+  55:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[2]-5*(cnt+1), 0);
+ 425              		.loc 1 55 6 is_stmt 1 view .LVU99
+  55:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[2]-5*(cnt+1), 0);
+ 426              		.loc 1 55 57 is_stmt 0 view .LVU100
+ 427 016a 404A     		ldr	r2, .L31+12
+ 428 016c 9388     		ldrh	r3, [r2, #4]
+  55:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[2]-5*(cnt+1), 0);
+ 429              		.loc 1 55 74 view .LVU101
+ 430 016e D288     		ldrh	r2, [r2, #6]
+  55:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[2]-5*(cnt+1), 0);
+ 431              		.loc 1 55 60 view .LVU102
+ 432 0170 1344     		add	r3, r3, r2
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 11
+
+
+  55:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[2]-5*(cnt+1), 0);
+ 433              		.loc 1 55 97 view .LVU103
+ 434 0172 3F4A     		ldr	r2, .L31+16
+ 435 0174 9288     		ldrh	r2, [r2, #4]
+  55:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[2]-5*(cnt+1), 0);
+ 436              		.loc 1 55 77 view .LVU104
+ 437 0176 1344     		add	r3, r3, r2
+  55:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[2]-5*(cnt+1), 0);
+ 438              		.loc 1 55 101 view .LVU105
+ 439 0178 3E4A     		ldr	r2, .L31+20
+ 440 017a 82FB0323 		smull	r2, r3, r2, r3
+ 441 017e 00EE103A 		vmov	s0, r3	@ int
+  55:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, Locate_angleY[2]-5*(cnt+1), 0);
+ 442              		.loc 1 55 6 view .LVU106
+ 443 0182 3D4D     		ldr	r5, .L31+24
+ 444 0184 0022     		movs	r2, #0
+ 445 0186 B8EEC00A 		vcvt.f32.s32	s0, s0
+ 446 018a 3C4B     		ldr	r3, .L31+28
+ 447 018c 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 448 018e 2868     		ldr	r0, [r5]
+ 449 0190 FFF7FEFF 		bl	USL_SetServoAngle
+ 450              	.LVL39:
+  56:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 451              		.loc 1 56 7 is_stmt 1 view .LVU107
+  56:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 452              		.loc 1 56 57 is_stmt 0 view .LVU108
+ 453 0194 344B     		ldr	r3, .L31+8
+ 454 0196 9A88     		ldrh	r2, [r3, #4]
+  56:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 455              		.loc 1 56 67 view .LVU109
+ 456 0198 631C     		adds	r3, r4, #1
+  56:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 457              		.loc 1 56 62 view .LVU110
+ 458 019a C3EB8371 		rsb	r1, r3, r3, lsl #30
+ 459 019e C3EB8103 		rsb	r3, r3, r1, lsl #2
+  56:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 460              		.loc 1 56 60 view .LVU111
+ 461 01a2 D318     		adds	r3, r2, r3
+ 462 01a4 00EE103A 		vmov	s0, r3	@ int
+  56:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 463              		.loc 1 56 7 view .LVU112
+ 464 01a8 0022     		movs	r2, #0
+ 465 01aa B8EEC00A 		vcvt.f32.s32	s0, s0
+ 466 01ae 344B     		ldr	r3, .L31+32
+ 467 01b0 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 468 01b2 2868     		ldr	r0, [r5]
+ 469 01b4 FFF7FEFF 		bl	USL_SetServoAngle
+ 470              	.LVL40:
+  57:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					if(cnt<=0) HAL_Delay(250);
+ 471              		.loc 1 57 6 is_stmt 1 view .LVU113
+ 472 01b8 FFF7FEFF 		bl	LASER_RESET_Start
+ 473              	.LVL41:
+  58:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					else HAL_Delay(50);
+ 474              		.loc 1 58 6 view .LVU114
+  58:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					else HAL_Delay(50);
+ 475              		.loc 1 58 8 is_stmt 0 view .LVU115
+ 476 01bc 002C     		cmp	r4, #0
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 12
+
+
+ 477 01be B8D1     		bne	.L19
+  58:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					else HAL_Delay(50);
+ 478              		.loc 1 58 17 is_stmt 1 discriminator 1 view .LVU116
+ 479 01c0 FA20     		movs	r0, #250
+ 480 01c2 FFF7FEFF 		bl	HAL_Delay
+ 481              	.LVL42:
+ 482 01c6 B7E7     		b	.L20
+ 483              	.L29:
+ 484              	.LBE4:
+ 485              	.LBB5:
+  60:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			}
+  61:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			for(uint16_t cnt=0;cnt<(Locate_angleX[0]-Locate_angleX[3])*0.2;cnt++)		/* ÏÂ±ß¿ò */
+ 486              		.loc 1 61 17 is_stmt 0 view .LVU117
+ 487 01c8 0024     		movs	r4, #0
+ 488              	.LVL43:
+ 489              		.loc 1 61 17 view .LVU118
+ 490 01ca 04E0     		b	.L22
+ 491              	.LVL44:
+ 492              	.L23:
+  62:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+  63:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					USL_SetServoAngle(servoUsart, sid_1, Locate_angleX[3]+5*(cnt+1), 0);										
+  64:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, (Locate_angleY[3]+Locate_angleY[0]+CenterLocate_angleY[3
+  65:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+  66:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					if(cnt<=0) HAL_Delay(250);
+  67:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					else HAL_Delay(50);
+ 493              		.loc 1 67 11 is_stmt 1 view .LVU119
+ 494 01cc 3220     		movs	r0, #50
+ 495 01ce FFF7FEFF 		bl	HAL_Delay
+ 496              	.LVL45:
+ 497              	.L24:
+  61:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 498              		.loc 1 61 67 discriminator 2 view .LVU120
+  61:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 499              		.loc 1 61 70 is_stmt 0 discriminator 2 view .LVU121
+ 500 01d2 0134     		adds	r4, r4, #1
+ 501              	.LVL46:
+  61:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 502              		.loc 1 61 70 discriminator 2 view .LVU122
+ 503 01d4 A4B2     		uxth	r4, r4
+ 504              	.LVL47:
+ 505              	.L22:
+  61:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 506              		.loc 1 61 23 is_stmt 1 discriminator 1 view .LVU123
+  61:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 507              		.loc 1 61 26 is_stmt 0 discriminator 1 view .LVU124
+ 508 01d6 2046     		mov	r0, r4
+ 509 01d8 FFF7FEFF 		bl	__aeabi_i2d
+ 510              	.LVL48:
+ 511 01dc 0646     		mov	r6, r0
+ 512 01de 0F46     		mov	r7, r1
+  61:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 513              		.loc 1 61 41 discriminator 1 view .LVU125
+ 514 01e0 224B     		ldr	r3, .L31+12
+ 515 01e2 1888     		ldrh	r0, [r3]
+  61:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 516              		.loc 1 61 58 discriminator 1 view .LVU126
+ 517 01e4 DD88     		ldrh	r5, [r3, #6]
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 13
+
+
+  61:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 518              		.loc 1 61 62 discriminator 1 view .LVU127
+ 519 01e6 401B     		subs	r0, r0, r5
+ 520 01e8 FFF7FEFF 		bl	__aeabi_i2d
+ 521              	.LVL49:
+ 522 01ec 1CA3     		adr	r3, .L31
+ 523 01ee D3E90023 		ldrd	r2, [r3]
+ 524 01f2 FFF7FEFF 		bl	__aeabi_dmul
+ 525              	.LVL50:
+ 526 01f6 0246     		mov	r2, r0
+ 527 01f8 0B46     		mov	r3, r1
+  61:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 528              		.loc 1 61 4 discriminator 1 view .LVU128
+ 529 01fa 3046     		mov	r0, r6
+ 530 01fc 3946     		mov	r1, r7
+ 531 01fe FFF7FEFF 		bl	__aeabi_dcmplt
+ 532              	.LVL51:
+ 533 0202 50B3     		cbz	r0, .L30
+  63:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, (Locate_angleY[3]+Locate_angleY[0]+CenterLocate_angleY[3
+ 534              		.loc 1 63 6 is_stmt 1 view .LVU129
+  63:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, (Locate_angleY[3]+Locate_angleY[0]+CenterLocate_angleY[3
+ 535              		.loc 1 63 66 is_stmt 0 view .LVU130
+ 536 0204 631C     		adds	r3, r4, #1
+  63:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, (Locate_angleY[3]+Locate_angleY[0]+CenterLocate_angleY[3
+ 537              		.loc 1 63 61 view .LVU131
+ 538 0206 03EB8303 		add	r3, r3, r3, lsl #2
+  63:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, (Locate_angleY[3]+Locate_angleY[0]+CenterLocate_angleY[3
+ 539              		.loc 1 63 59 view .LVU132
+ 540 020a 2B44     		add	r3, r3, r5
+ 541 020c 00EE103A 		vmov	s0, r3	@ int
+  63:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				  USL_SetServoAngle(servoUsart, sid_2, (Locate_angleY[3]+Locate_angleY[0]+CenterLocate_angleY[3
+ 542              		.loc 1 63 6 view .LVU133
+ 543 0210 194D     		ldr	r5, .L31+24
+ 544 0212 0022     		movs	r2, #0
+ 545 0214 B8EEC00A 		vcvt.f32.s32	s0, s0
+ 546 0218 184B     		ldr	r3, .L31+28
+ 547 021a 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 548 021c 2868     		ldr	r0, [r5]
+ 549 021e FFF7FEFF 		bl	USL_SetServoAngle
+ 550              	.LVL52:
+  64:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 551              		.loc 1 64 7 is_stmt 1 view .LVU134
+  64:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 552              		.loc 1 64 58 is_stmt 0 view .LVU135
+ 553 0222 114A     		ldr	r2, .L31+8
+ 554 0224 D388     		ldrh	r3, [r2, #6]
+  64:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 555              		.loc 1 64 75 view .LVU136
+ 556 0226 1288     		ldrh	r2, [r2]
+  64:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 557              		.loc 1 64 61 view .LVU137
+ 558 0228 1344     		add	r3, r3, r2
+  64:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 559              		.loc 1 64 98 view .LVU138
+ 560 022a 164A     		ldr	r2, .L31+36
+ 561 022c D288     		ldrh	r2, [r2, #6]
+  64:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 14
+
+
+ 562              		.loc 1 64 78 view .LVU139
+ 563 022e 1344     		add	r3, r3, r2
+  64:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 564              		.loc 1 64 102 view .LVU140
+ 565 0230 104A     		ldr	r2, .L31+20
+ 566 0232 82FB0323 		smull	r2, r3, r2, r3
+ 567 0236 00EE103A 		vmov	s0, r3	@ int
+  64:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					LASER_RESET_Start();
+ 568              		.loc 1 64 7 view .LVU141
+ 569 023a 0022     		movs	r2, #0
+ 570 023c B8EEC00A 		vcvt.f32.s32	s0, s0
+ 571 0240 0F4B     		ldr	r3, .L31+32
+ 572 0242 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 573 0244 2868     		ldr	r0, [r5]
+ 574 0246 FFF7FEFF 		bl	USL_SetServoAngle
+ 575              	.LVL53:
+  65:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					if(cnt<=0) HAL_Delay(250);
+ 576              		.loc 1 65 6 is_stmt 1 view .LVU142
+ 577 024a FFF7FEFF 		bl	LASER_RESET_Start
+ 578              	.LVL54:
+  66:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					else HAL_Delay(50);
+ 579              		.loc 1 66 6 view .LVU143
+  66:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					else HAL_Delay(50);
+ 580              		.loc 1 66 8 is_stmt 0 view .LVU144
+ 581 024e 002C     		cmp	r4, #0
+ 582 0250 BCD1     		bne	.L23
+  66:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					else HAL_Delay(50);
+ 583              		.loc 1 66 17 is_stmt 1 discriminator 1 view .LVU145
+ 584 0252 FA20     		movs	r0, #250
+ 585 0254 FFF7FEFF 		bl	HAL_Delay
+ 586              	.LVL55:
+ 587 0258 BBE7     		b	.L24
+ 588              	.L30:
+ 589              	.LBE5:
+  68:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			}
+  69:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					
+  70:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** }
+ 590              		.loc 1 70 1 is_stmt 0 view .LVU146
+ 591 025a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 592              	.LVL56:
+ 593              	.L32:
+ 594              		.loc 1 70 1 view .LVU147
+ 595 025c AFF30080 		.align	3
+ 596              	.L31:
+ 597 0260 9A999999 		.word	-1717986918
+ 598 0264 9999C93F 		.word	1070176665
+ 599 0268 00000000 		.word	.LANCHOR1
+ 600 026c 00000000 		.word	.LANCHOR0
+ 601 0270 00000000 		.word	.LANCHOR2
+ 602 0274 56555555 		.word	1431655766
+ 603 0278 00000000 		.word	servoUsart
+ 604 027c 00000000 		.word	sid_1
+ 605 0280 00000000 		.word	sid_2
+ 606 0284 00000000 		.word	.LANCHOR3
+ 607              		.cfi_endproc
+ 608              	.LFE136:
+ 610              		.section	.text.Servo_Position_PID,"ax",%progbits
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 15
+
+
+ 611              		.align	1
+ 612              		.global	Servo_Position_PID
+ 613              		.syntax unified
+ 614              		.thumb
+ 615              		.thumb_func
+ 617              	Servo_Position_PID:
+ 618              	.LVL57:
+ 619              	.LFB137:
+  71:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+  72:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** /* ¶æ»úÎ»ÖÃ»·pid */
+  73:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** int Servo_Position_PID(int current_position, int target_position,float posi_kp,float posi_ki,float 
+ 620              		.loc 1 73 109 is_stmt 1 view -0
+ 621              		.cfi_startproc
+ 622              		@ args = 0, pretend = 0, frame = 0
+ 623              		@ frame_needed = 0, uses_anonymous_args = 0
+ 624              		@ link register save eliminated.
+  74:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c ****     static int last_error = 0;
+ 625              		.loc 1 74 5 view .LVU149
+  75:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 	// ÉÏÒ»´ÎµÄÎó²î
+  76:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c ****     static int integral = 0;  // »ý·ÖÏî
+ 626              		.loc 1 76 5 view .LVU150
+  77:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c ****     int error = target_position - current_position; // µ±Ç°Îó²î
+ 627              		.loc 1 77 5 view .LVU151
+ 628              		.loc 1 77 9 is_stmt 0 view .LVU152
+ 629 0000 091A     		subs	r1, r1, r0
+ 630              	.LVL58:
+  78:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c ****     integral += error;                              // »ý·ÖÏîÀÛ¼Ó
+ 631              		.loc 1 78 5 is_stmt 1 view .LVU153
+ 632              		.loc 1 78 14 is_stmt 0 view .LVU154
+ 633 0002 174A     		ldr	r2, .L38
+ 634 0004 1368     		ldr	r3, [r2]
+ 635 0006 0B44     		add	r3, r3, r1
+ 636 0008 1360     		str	r3, [r2]
+  79:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c ****     int derivative = error - last_error;            // Î¢·ÖÏî
+ 637              		.loc 1 79 5 is_stmt 1 view .LVU155
+ 638              		.loc 1 79 28 is_stmt 0 view .LVU156
+ 639 000a 1648     		ldr	r0, .L38+4
+ 640              	.LVL59:
+ 641              		.loc 1 79 28 view .LVU157
+ 642 000c 0268     		ldr	r2, [r0]
+ 643              		.loc 1 79 9 view .LVU158
+ 644 000e 8A1A     		subs	r2, r1, r2
+ 645              	.LVL60:
+  80:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c ****     last_error = error;                             // ¸üÐÂÉÏÒ»´ÎÎó²î
+ 646              		.loc 1 80 5 is_stmt 1 view .LVU159
+ 647              		.loc 1 80 16 is_stmt 0 view .LVU160
+ 648 0010 0160     		str	r1, [r0]
+  81:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c ****     int output = posi_kp * error + posi_ki * integral - posi_kd * derivative; // PIDÊä³ö
+ 649              		.loc 1 81 5 is_stmt 1 view .LVU161
+ 650              		.loc 1 81 26 is_stmt 0 view .LVU162
+ 651 0012 07EE901A 		vmov	s15, r1	@ int
+ 652 0016 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 653 001a 67EE807A 		vmul.f32	s15, s15, s0
+ 654              		.loc 1 81 44 view .LVU163
+ 655 001e 07EE103A 		vmov	s14, r3	@ int
+ 656 0022 B8EEC77A 		vcvt.f32.s32	s14, s14
+ 657 0026 27EE207A 		vmul.f32	s14, s14, s1
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 16
+
+
+ 658              		.loc 1 81 34 view .LVU164
+ 659 002a 77EE877A 		vadd.f32	s15, s15, s14
+ 660              		.loc 1 81 65 view .LVU165
+ 661 002e 07EE102A 		vmov	s14, r2	@ int
+ 662 0032 B8EEC77A 		vcvt.f32.s32	s14, s14
+ 663 0036 27EE017A 		vmul.f32	s14, s14, s2
+ 664              		.loc 1 81 55 view .LVU166
+ 665 003a 77EEC77A 		vsub.f32	s15, s15, s14
+ 666              		.loc 1 81 9 view .LVU167
+ 667 003e FDEEE77A 		vcvt.s32.f32	s15, s15
+ 668 0042 17EE900A 		vmov	r0, s15	@ int
+ 669              	.LVL61:
+  82:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		
+  83:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		if(output>300) output=300;				/* ÏÞ·ù²¿·Ö */
+ 670              		.loc 1 83 3 is_stmt 1 view .LVU168
+ 671              		.loc 1 83 5 is_stmt 0 view .LVU169
+ 672 0046 B0F5967F 		cmp	r0, #300
+ 673 004a 03DC     		bgt	.L35
+  84:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		else if(output<-300) output=-300;
+ 674              		.loc 1 84 8 is_stmt 1 view .LVU170
+ 675              		.loc 1 84 10 is_stmt 0 view .LVU171
+ 676 004c 10F5967F 		cmn	r0, #300
+ 677 0050 03DB     		blt	.L37
+ 678              	.LVL62:
+ 679              	.L33:
+  85:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		
+  86:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c ****     return output;
+  87:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** }
+ 680              		.loc 1 87 1 view .LVU172
+ 681 0052 7047     		bx	lr
+ 682              	.LVL63:
+ 683              	.L35:
+  83:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		else if(output<-300) output=-300;
+ 684              		.loc 1 83 24 view .LVU173
+ 685 0054 4FF49670 		mov	r0, #300
+ 686              	.LVL64:
+  83:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		else if(output<-300) output=-300;
+ 687              		.loc 1 83 24 view .LVU174
+ 688 0058 7047     		bx	lr
+ 689              	.LVL65:
+ 690              	.L37:
+  84:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		else if(output<-300) output=-300;
+ 691              		.loc 1 84 30 view .LVU175
+ 692 005a 0348     		ldr	r0, .L38+8
+ 693              	.LVL66:
+  86:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** }
+ 694              		.loc 1 86 5 is_stmt 1 view .LVU176
+  86:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** }
+ 695              		.loc 1 86 12 is_stmt 0 view .LVU177
+ 696 005c F9E7     		b	.L33
+ 697              	.L39:
+ 698 005e 00BF     		.align	2
+ 699              	.L38:
+ 700 0060 00000000 		.word	.LANCHOR4
+ 701 0064 00000000 		.word	.LANCHOR5
+ 702 0068 D4FEFFFF 		.word	-300
+ 703              		.cfi_endproc
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 17
+
+
+ 704              	.LFE137:
+ 706              		.section	.text.Servo_SetZeroAngle,"ax",%progbits
+ 707              		.align	1
+ 708              		.global	Servo_SetZeroAngle
+ 709              		.syntax unified
+ 710              		.thumb
+ 711              		.thumb_func
+ 713              	Servo_SetZeroAngle:
+ 714              	.LVL67:
+ 715              	.LFB138:
+  88:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+  89:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** uint16_t Servo_ZeroXY[2];
+  90:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** uint16_t Servo_OriginXY[2];
+  91:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+  92:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+  93:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** int rectangle_XY[8],Set_rectangle_XY[32];		/* ¾ØÐÎ¿ò×ø±ê(×óÉÏ¡¢ÓÒÉÏ¡¢×óÏÂ¡¢ÓÒÏÂ)  Ï¸·Ö³öµÄ12¸öµã */
+  94:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+  95:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+  96:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** int Laser_XY[2];		/* ¼¤¹âµã×ø±ê */
+  97:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+  98:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+  99:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** uint16_t Servo_OriginAngle[2];
+ 100:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 101:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** int Rectangle_TargetAngle[2];
+ 102:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 103:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** /* ¶æ»úÖÐÐÄÁãµãÐ£×¼ */
+ 104:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** void Servo_SetZeroAngle(uint16_t *X,uint16_t *Y)
+ 105:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** {
+ 716              		.loc 1 105 1 is_stmt 1 view -0
+ 717              		.cfi_startproc
+ 718              		@ args = 0, pretend = 0, frame = 0
+ 719              		@ frame_needed = 0, uses_anonymous_args = 0
+ 106:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 	
+ 107:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			if(Data_FinishGet)			/* ´®¿Ú½ÓÊÕÍêÒ»´ÎÊý¾Ýºó */
+ 720              		.loc 1 107 4 view .LVU179
+ 721              		.loc 1 107 7 is_stmt 0 view .LVU180
+ 722 0000 294B     		ldr	r3, .L53
+ 723 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 724              		.loc 1 107 6 view .LVU181
+ 725 0004 002B     		cmp	r3, #0
+ 726 0006 4DD0     		beq	.L50
+ 105:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 	
+ 727              		.loc 1 105 1 view .LVU182
+ 728 0008 10B5     		push	{r4, lr}
+ 729              	.LCFI2:
+ 730              		.cfi_def_cfa_offset 8
+ 731              		.cfi_offset 4, -8
+ 732              		.cfi_offset 14, -4
+ 108:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 109:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						if(GetOriginData_Flag)
+ 733              		.loc 1 109 7 is_stmt 1 view .LVU183
+ 734              		.loc 1 109 10 is_stmt 0 view .LVU184
+ 735 000a 284B     		ldr	r3, .L53+4
+ 736 000c 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 737              		.loc 1 109 9 view .LVU185
+ 738 000e F2B9     		cbnz	r2, .L48
+ 739              	.LBB6:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 18
+
+
+ 110:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						{
+ 111:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								/* 16Î»Êý¾Ý´¦Àí(ºÏ³É×ø±êÖµ) */
+ 112:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								for(uint8_t time=0;time<4;time++)
+ 113:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 114:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 										My_CoordinateData[time] = (ShijueRecv_Buffer[time*2+1]<<8)|ShijueRecv_Buffer[time*2];
+ 115:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 116:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		
+ 117:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								*X = My_CoordinateData[0];			/* X×ø±ê */
+ 118:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								*Y = My_CoordinateData[1];			/* Y×ø±ê */						
+ 119:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								
+ 120:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								Data_FinishGet=0;			/* ¼°Ê±Çå³ý½ÓÊÕÍê³É±êÖ¾Î» */
+ 121:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								Data_StartGet=0;
+ 122:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								
+ 123:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								GetOriginData_Flag=0;
+ 124:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						}
+ 125:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						else 
+ 126:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						{
+ 127:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								/* 16Î»Êý¾Ý´¦Àí(ºÏ³É×ø±êÖµ) */
+ 128:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								for(uint8_t time=0;time<10;time++)
+ 740              		.loc 1 128 21 view .LVU186
+ 741 0010 1346     		mov	r3, r2
+ 742 0012 2EE0     		b	.L43
+ 743              	.LVL68:
+ 744              	.L44:
+ 745              		.loc 1 128 21 view .LVU187
+ 746              	.LBE6:
+ 747              	.LBB7:
+ 114:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 748              		.loc 1 114 11 is_stmt 1 discriminator 3 view .LVU188
+ 114:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 749              		.loc 1 114 60 is_stmt 0 discriminator 3 view .LVU189
+ 750 0014 5A00     		lsls	r2, r3, #1
+ 114:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 751              		.loc 1 114 62 discriminator 3 view .LVU190
+ 752 0016 0132     		adds	r2, r2, #1
+ 114:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 753              		.loc 1 114 55 discriminator 3 view .LVU191
+ 754 0018 254C     		ldr	r4, .L53+8
+ 755 001a 14F802C0 		ldrb	ip, [r4, r2]	@ zero_extendqisi2
+ 114:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 756              		.loc 1 114 87 discriminator 3 view .LVU192
+ 757 001e 14F81320 		ldrb	r2, [r4, r3, lsl #1]	@ zero_extendqisi2
+ 114:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 758              		.loc 1 114 69 discriminator 3 view .LVU193
+ 759 0022 42EA0C22 		orr	r2, r2, ip, lsl #8
+ 114:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 760              		.loc 1 114 35 discriminator 3 view .LVU194
+ 761 0026 234C     		ldr	r4, .L53+12
+ 762 0028 24F81320 		strh	r2, [r4, r3, lsl #1]	@ movhi
+ 112:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 763              		.loc 1 112 35 is_stmt 1 discriminator 3 view .LVU195
+ 112:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 764              		.loc 1 112 39 is_stmt 0 discriminator 3 view .LVU196
+ 765 002c 0133     		adds	r3, r3, #1
+ 766              	.LVL69:
+ 112:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 767              		.loc 1 112 39 discriminator 3 view .LVU197
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 19
+
+
+ 768 002e DBB2     		uxtb	r3, r3
+ 769              	.LVL70:
+ 770              	.L42:
+ 112:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 771              		.loc 1 112 28 is_stmt 1 discriminator 1 view .LVU198
+ 112:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 772              		.loc 1 112 9 is_stmt 0 discriminator 1 view .LVU199
+ 773 0030 032B     		cmp	r3, #3
+ 774 0032 EFD9     		bls	.L44
+ 775              	.LBE7:
+ 117:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								*Y = My_CoordinateData[1];			/* Y×ø±ê */						
+ 776              		.loc 1 117 9 is_stmt 1 view .LVU200
+ 117:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								*Y = My_CoordinateData[1];			/* Y×ø±ê */						
+ 777              		.loc 1 117 31 is_stmt 0 view .LVU201
+ 778 0034 1F4B     		ldr	r3, .L53+12
+ 779              	.LVL71:
+ 117:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								*Y = My_CoordinateData[1];			/* Y×ø±ê */						
+ 780              		.loc 1 117 31 view .LVU202
+ 781 0036 1A88     		ldrh	r2, [r3]
+ 117:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								*Y = My_CoordinateData[1];			/* Y×ø±ê */						
+ 782              		.loc 1 117 12 view .LVU203
+ 783 0038 0280     		strh	r2, [r0]	@ movhi
+ 118:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								
+ 784              		.loc 1 118 9 is_stmt 1 view .LVU204
+ 118:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								
+ 785              		.loc 1 118 31 is_stmt 0 view .LVU205
+ 786 003a 5B88     		ldrh	r3, [r3, #2]
+ 118:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								
+ 787              		.loc 1 118 12 view .LVU206
+ 788 003c 0B80     		strh	r3, [r1]	@ movhi
+ 120:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								Data_StartGet=0;
+ 789              		.loc 1 120 9 is_stmt 1 view .LVU207
+ 120:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								Data_StartGet=0;
+ 790              		.loc 1 120 23 is_stmt 0 view .LVU208
+ 791 003e 0023     		movs	r3, #0
+ 792 0040 194A     		ldr	r2, .L53
+ 793 0042 1370     		strb	r3, [r2]
+ 121:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								
+ 794              		.loc 1 121 9 is_stmt 1 view .LVU209
+ 121:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								
+ 795              		.loc 1 121 22 is_stmt 0 view .LVU210
+ 796 0044 1C4A     		ldr	r2, .L53+16
+ 797 0046 1370     		strb	r3, [r2]
+ 123:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						}
+ 798              		.loc 1 123 9 is_stmt 1 view .LVU211
+ 123:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						}
+ 799              		.loc 1 123 27 is_stmt 0 view .LVU212
+ 800 0048 184A     		ldr	r2, .L53+4
+ 801 004a 1370     		strb	r3, [r2]
+ 802              	.LVL72:
+ 803              	.L40:
+ 129:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 130:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 										My_CoordinateData[time] = (ShijueRecv_Buffer[time*2+1]<<8)|ShijueRecv_Buffer[time*2];
+ 131:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 132:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		
+ 133:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								*X = My_CoordinateData[0];			/* X×ø±ê */
+ 134:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								*Y = My_CoordinateData[1];			/* Y×ø±ê */
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 20
+
+
+ 135:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 136:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								for(uint8_t time=0;time<8;time++)		/* ¾ØÐÎ¿òËÄµã×ø±ê»ñÈ¡ */
+ 137:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 138:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 										rectangle_XY[time] = My_CoordinateData[time+2];
+ 139:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 140:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								
+ 141:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								Data_FinishGet=0;			/* ¼°Ê±Çå³ý½ÓÊÕÍê³É±êÖ¾Î» */
+ 142:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								Data_StartGet=0;
+ 143:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 																
+ 144:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						}
+ 145:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						
+ 146:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			}
+ 147:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 	
+ 148:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** }
+ 804              		.loc 1 148 1 view .LVU213
+ 805 004c 10BD     		pop	{r4, pc}
+ 806              	.LVL73:
+ 807              	.L48:
+ 808              	.LBB8:
+ 112:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 809              		.loc 1 112 21 view .LVU214
+ 810 004e 0023     		movs	r3, #0
+ 811 0050 EEE7     		b	.L42
+ 812              	.LVL74:
+ 813              	.L45:
+ 112:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 814              		.loc 1 112 21 view .LVU215
+ 815              	.LBE8:
+ 816              	.LBB9:
+ 130:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 817              		.loc 1 130 11 is_stmt 1 discriminator 3 view .LVU216
+ 130:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 818              		.loc 1 130 60 is_stmt 0 discriminator 3 view .LVU217
+ 819 0052 4FEA430C 		lsl	ip, r3, #1
+ 130:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 820              		.loc 1 130 62 discriminator 3 view .LVU218
+ 821 0056 0CF1010C 		add	ip, ip, #1
+ 130:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 822              		.loc 1 130 55 discriminator 3 view .LVU219
+ 823 005a 154C     		ldr	r4, .L53+8
+ 824 005c 14F80CE0 		ldrb	lr, [r4, ip]	@ zero_extendqisi2
+ 130:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 825              		.loc 1 130 87 discriminator 3 view .LVU220
+ 826 0060 14F813C0 		ldrb	ip, [r4, r3, lsl #1]	@ zero_extendqisi2
+ 130:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 827              		.loc 1 130 69 discriminator 3 view .LVU221
+ 828 0064 4CEA0E2C 		orr	ip, ip, lr, lsl #8
+ 130:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 829              		.loc 1 130 35 discriminator 3 view .LVU222
+ 830 0068 124C     		ldr	r4, .L53+12
+ 831 006a 24F813C0 		strh	ip, [r4, r3, lsl #1]	@ movhi
+ 128:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 832              		.loc 1 128 36 is_stmt 1 discriminator 3 view .LVU223
+ 128:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 833              		.loc 1 128 40 is_stmt 0 discriminator 3 view .LVU224
+ 834 006e 0133     		adds	r3, r3, #1
+ 835              	.LVL75:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 21
+
+
+ 128:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 836              		.loc 1 128 40 discriminator 3 view .LVU225
+ 837 0070 DBB2     		uxtb	r3, r3
+ 838              	.LVL76:
+ 839              	.L43:
+ 128:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 840              		.loc 1 128 28 is_stmt 1 discriminator 1 view .LVU226
+ 128:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 841              		.loc 1 128 9 is_stmt 0 discriminator 1 view .LVU227
+ 842 0072 092B     		cmp	r3, #9
+ 843 0074 EDD9     		bls	.L45
+ 844              	.LBE9:
+ 133:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								*Y = My_CoordinateData[1];			/* Y×ø±ê */
+ 845              		.loc 1 133 9 is_stmt 1 view .LVU228
+ 133:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								*Y = My_CoordinateData[1];			/* Y×ø±ê */
+ 846              		.loc 1 133 31 is_stmt 0 view .LVU229
+ 847 0076 0F4B     		ldr	r3, .L53+12
+ 848              	.LVL77:
+ 133:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								*Y = My_CoordinateData[1];			/* Y×ø±ê */
+ 849              		.loc 1 133 31 view .LVU230
+ 850 0078 1C88     		ldrh	r4, [r3]
+ 133:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								*Y = My_CoordinateData[1];			/* Y×ø±ê */
+ 851              		.loc 1 133 12 view .LVU231
+ 852 007a 0480     		strh	r4, [r0]	@ movhi
+ 134:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 853              		.loc 1 134 9 is_stmt 1 view .LVU232
+ 134:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 854              		.loc 1 134 31 is_stmt 0 view .LVU233
+ 855 007c 5B88     		ldrh	r3, [r3, #2]
+ 134:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 856              		.loc 1 134 12 view .LVU234
+ 857 007e 0B80     		strh	r3, [r1]	@ movhi
+ 136:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 858              		.loc 1 136 9 is_stmt 1 view .LVU235
+ 859              	.LBB10:
+ 136:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 860              		.loc 1 136 13 view .LVU236
+ 861              	.LVL78:
+ 136:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 862              		.loc 1 136 9 is_stmt 0 view .LVU237
+ 863 0080 08E0     		b	.L46
+ 864              	.LVL79:
+ 865              	.L47:
+ 138:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 866              		.loc 1 138 11 is_stmt 1 discriminator 3 view .LVU238
+ 138:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 867              		.loc 1 138 54 is_stmt 0 discriminator 3 view .LVU239
+ 868 0082 911C     		adds	r1, r2, #2
+ 138:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 869              		.loc 1 138 49 discriminator 3 view .LVU240
+ 870 0084 0B4B     		ldr	r3, .L53+12
+ 871 0086 33F81110 		ldrh	r1, [r3, r1, lsl #1]
+ 138:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								}
+ 872              		.loc 1 138 30 discriminator 3 view .LVU241
+ 873 008a 0C4B     		ldr	r3, .L53+20
+ 874 008c 43F82210 		str	r1, [r3, r2, lsl #2]
+ 136:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 22
+
+
+ 875              		.loc 1 136 35 is_stmt 1 discriminator 3 view .LVU242
+ 136:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 876              		.loc 1 136 39 is_stmt 0 discriminator 3 view .LVU243
+ 877 0090 0132     		adds	r2, r2, #1
+ 878              	.LVL80:
+ 136:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 879              		.loc 1 136 39 discriminator 3 view .LVU244
+ 880 0092 D2B2     		uxtb	r2, r2
+ 881              	.LVL81:
+ 882              	.L46:
+ 136:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 883              		.loc 1 136 28 is_stmt 1 discriminator 1 view .LVU245
+ 136:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								{
+ 884              		.loc 1 136 9 is_stmt 0 discriminator 1 view .LVU246
+ 885 0094 072A     		cmp	r2, #7
+ 886 0096 F4D9     		bls	.L47
+ 887              	.LBE10:
+ 141:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								Data_StartGet=0;
+ 888              		.loc 1 141 9 is_stmt 1 view .LVU247
+ 141:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								Data_StartGet=0;
+ 889              		.loc 1 141 23 is_stmt 0 view .LVU248
+ 890 0098 0023     		movs	r3, #0
+ 891 009a 034A     		ldr	r2, .L53
+ 892              	.LVL82:
+ 141:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								Data_StartGet=0;
+ 893              		.loc 1 141 23 view .LVU249
+ 894 009c 1370     		strb	r3, [r2]
+ 142:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 																
+ 895              		.loc 1 142 9 is_stmt 1 view .LVU250
+ 142:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 																
+ 896              		.loc 1 142 22 is_stmt 0 view .LVU251
+ 897 009e 064A     		ldr	r2, .L53+16
+ 898 00a0 1370     		strb	r3, [r2]
+ 899              		.loc 1 148 1 view .LVU252
+ 900 00a2 D3E7     		b	.L40
+ 901              	.LVL83:
+ 902              	.L50:
+ 903              	.LCFI3:
+ 904              		.cfi_def_cfa_offset 0
+ 905              		.cfi_restore 4
+ 906              		.cfi_restore 14
+ 907              		.loc 1 148 1 view .LVU253
+ 908 00a4 7047     		bx	lr
+ 909              	.L54:
+ 910 00a6 00BF     		.align	2
+ 911              	.L53:
+ 912 00a8 00000000 		.word	Data_FinishGet
+ 913 00ac 00000000 		.word	GetOriginData_Flag
+ 914 00b0 00000000 		.word	ShijueRecv_Buffer
+ 915 00b4 00000000 		.word	My_CoordinateData
+ 916 00b8 00000000 		.word	Data_StartGet
+ 917 00bc 00000000 		.word	.LANCHOR6
+ 918              		.cfi_endproc
+ 919              	.LFE138:
+ 921              		.section	.text.Get_RectangleXY,"ax",%progbits
+ 922              		.align	1
+ 923              		.global	Get_RectangleXY
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 23
+
+
+ 924              		.syntax unified
+ 925              		.thumb
+ 926              		.thumb_func
+ 928              	Get_RectangleXY:
+ 929              	.LVL84:
+ 930              	.LFB139:
+ 149:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 150:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** void Get_RectangleXY(int* RectangleXY)			/* »ñÈ¡Ò»´Î¾ØÐÎ¿òËÄµãµÄ×ø±ê */
+ 151:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** {
+ 931              		.loc 1 151 1 is_stmt 1 view -0
+ 932              		.cfi_startproc
+ 933              		@ args = 0, pretend = 0, frame = 0
+ 934              		@ frame_needed = 0, uses_anonymous_args = 0
+ 935              		@ link register save eliminated.
+ 152:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 	
+ 153:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			if(Data_FinishGet)			/* ´®¿Ú½ÓÊÕÍêÒ»´ÎÊý¾Ýºó */
+ 936              		.loc 1 153 4 view .LVU255
+ 937              		.loc 1 153 7 is_stmt 0 view .LVU256
+ 938 0000 134B     		ldr	r3, .L66
+ 939 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 940              		.loc 1 153 6 view .LVU257
+ 941 0004 03B9     		cbnz	r3, .L59
+ 942 0006 7047     		bx	lr
+ 943              	.L59:
+ 944              	.LBB11:
+ 154:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			{
+ 155:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						/* 16Î»Êý¾Ý´¦Àí(ºÏ³É×ø±êÖµ) */
+ 156:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						for(uint8_t time=2;time<10;time++)
+ 945              		.loc 1 156 19 view .LVU258
+ 946 0008 0223     		movs	r3, #2
+ 947              	.LVL85:
+ 948              		.loc 1 156 26 is_stmt 1 view .LVU259
+ 949              		.loc 1 156 7 is_stmt 0 view .LVU260
+ 950 000a 092B     		cmp	r3, #9
+ 951 000c 1AD8     		bhi	.L65
+ 952              	.LBE11:
+ 151:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 	
+ 953              		.loc 1 151 1 view .LVU261
+ 954 000e 10B4     		push	{r4}
+ 955              	.LCFI4:
+ 956              		.cfi_def_cfa_offset 4
+ 957              		.cfi_offset 4, -4
+ 958              	.L58:
+ 959              	.LBB12:
+ 157:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						{
+ 158:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								RectangleXY[time-2] = (ShijueRecv_Buffer[time*2+1]<<8)|ShijueRecv_Buffer[time*2];
+ 960              		.loc 1 158 9 is_stmt 1 discriminator 3 view .LVU262
+ 961              		.loc 1 158 54 is_stmt 0 discriminator 3 view .LVU263
+ 962 0010 5A00     		lsls	r2, r3, #1
+ 963              		.loc 1 158 56 discriminator 3 view .LVU264
+ 964 0012 0132     		adds	r2, r2, #1
+ 965              		.loc 1 158 49 discriminator 3 view .LVU265
+ 966 0014 0F4C     		ldr	r4, .L66+4
+ 967 0016 14F802C0 		ldrb	ip, [r4, r2]	@ zero_extendqisi2
+ 968              		.loc 1 158 81 discriminator 3 view .LVU266
+ 969 001a 14F81310 		ldrb	r1, [r4, r3, lsl #1]	@ zero_extendqisi2
+ 970              		.loc 1 158 20 discriminator 3 view .LVU267
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 24
+
+
+ 971 001e 03F18042 		add	r2, r3, #1073741824
+ 972 0022 023A     		subs	r2, r2, #2
+ 973              		.loc 1 158 63 discriminator 3 view .LVU268
+ 974 0024 41EA0C21 		orr	r1, r1, ip, lsl #8
+ 975              		.loc 1 158 29 discriminator 3 view .LVU269
+ 976 0028 40F82210 		str	r1, [r0, r2, lsl #2]
+ 156:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						{
+ 977              		.loc 1 156 34 is_stmt 1 discriminator 3 view .LVU270
+ 156:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						{
+ 978              		.loc 1 156 38 is_stmt 0 discriminator 3 view .LVU271
+ 979 002c 0133     		adds	r3, r3, #1
+ 980              	.LVL86:
+ 156:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						{
+ 981              		.loc 1 156 38 discriminator 3 view .LVU272
+ 982 002e DBB2     		uxtb	r3, r3
+ 983              	.LVL87:
+ 156:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						{
+ 984              		.loc 1 156 26 is_stmt 1 discriminator 3 view .LVU273
+ 156:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						{
+ 985              		.loc 1 156 7 is_stmt 0 discriminator 3 view .LVU274
+ 986 0030 092B     		cmp	r3, #9
+ 987 0032 EDD9     		bls	.L58
+ 988              	.LBE12:
+ 159:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						}	
+ 160:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						
+ 161:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						Data_FinishGet=0;			/* ¼°Ê±Çå³ý½ÓÊÕÍê³É±êÖ¾Î» */
+ 989              		.loc 1 161 7 is_stmt 1 view .LVU275
+ 990              		.loc 1 161 21 is_stmt 0 view .LVU276
+ 991 0034 0023     		movs	r3, #0
+ 992              	.LVL88:
+ 993              		.loc 1 161 21 view .LVU277
+ 994 0036 064A     		ldr	r2, .L66
+ 995              	.LVL89:
+ 996              		.loc 1 161 21 view .LVU278
+ 997 0038 1370     		strb	r3, [r2]
+ 162:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						Data_StartGet=0;
+ 998              		.loc 1 162 7 is_stmt 1 view .LVU279
+ 999              		.loc 1 162 20 is_stmt 0 view .LVU280
+ 1000 003a 074A     		ldr	r2, .L66+8
+ 1001 003c 1370     		strb	r3, [r2]
+ 163:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						
+ 164:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			}
+ 165:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 	
+ 166:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** }
+ 1002              		.loc 1 166 1 view .LVU281
+ 1003 003e 5DF8044B 		ldr	r4, [sp], #4
+ 1004              	.LCFI5:
+ 1005              		.cfi_restore 4
+ 1006              		.cfi_def_cfa_offset 0
+ 1007 0042 7047     		bx	lr
+ 1008              	.LVL90:
+ 1009              	.L65:
+ 161:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						Data_StartGet=0;
+ 1010              		.loc 1 161 7 is_stmt 1 view .LVU282
+ 161:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						Data_StartGet=0;
+ 1011              		.loc 1 161 21 is_stmt 0 view .LVU283
+ 1012 0044 0023     		movs	r3, #0
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 25
+
+
+ 1013              	.LVL91:
+ 161:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						Data_StartGet=0;
+ 1014              		.loc 1 161 21 view .LVU284
+ 1015 0046 024A     		ldr	r2, .L66
+ 1016 0048 1370     		strb	r3, [r2]
+ 162:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						Data_StartGet=0;
+ 1017              		.loc 1 162 7 is_stmt 1 view .LVU285
+ 162:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						Data_StartGet=0;
+ 1018              		.loc 1 162 20 is_stmt 0 view .LVU286
+ 1019 004a 034A     		ldr	r2, .L66+8
+ 1020 004c 1370     		strb	r3, [r2]
+ 1021 004e 7047     		bx	lr
+ 1022              	.L67:
+ 1023              		.align	2
+ 1024              	.L66:
+ 1025 0050 00000000 		.word	Data_FinishGet
+ 1026 0054 00000000 		.word	ShijueRecv_Buffer
+ 1027 0058 00000000 		.word	Data_StartGet
+ 1028              		.cfi_endproc
+ 1029              	.LFE139:
+ 1031              		.section	.text.Set_RectangleXY,"ax",%progbits
+ 1032              		.align	1
+ 1033              		.global	Set_RectangleXY
+ 1034              		.syntax unified
+ 1035              		.thumb
+ 1036              		.thumb_func
+ 1038              	Set_RectangleXY:
+ 1039              	.LVL92:
+ 1040              	.LFB140:
+ 167:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 168:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 169:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** void Set_RectangleXY(int* RectangleXY,int* Set_RectangleXY)			/* ¾ØÐÎ¿ò±ß¿ò×ö×ø±êÏ¸·Ö(Á½µã¼ä·Ö¶àÈý¸
+ 170:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** {
+ 1041              		.loc 1 170 1 is_stmt 1 view -0
+ 1042              		.cfi_startproc
+ 1043              		@ args = 0, pretend = 0, frame = 0
+ 1044              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1045              		.loc 1 170 1 is_stmt 0 view .LVU288
+ 1046 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 1047              	.LCFI6:
+ 1048              		.cfi_def_cfa_offset 28
+ 1049              		.cfi_offset 4, -28
+ 1050              		.cfi_offset 5, -24
+ 1051              		.cfi_offset 6, -20
+ 1052              		.cfi_offset 7, -16
+ 1053              		.cfi_offset 8, -12
+ 1054              		.cfi_offset 9, -8
+ 1055              		.cfi_offset 14, -4
+ 171:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		/* ¶ÔÉÏ±ß¿ò */
+ 172:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[0] = rectangle_XY[0];				/* ÆðÊ¼µÚÒ»¸öµãX */
+ 1056              		.loc 1 172 3 is_stmt 1 view .LVU289
+ 1057              		.loc 1 172 36 is_stmt 0 view .LVU290
+ 1058 0004 524D     		ldr	r5, .L70
+ 1059 0006 2C68     		ldr	r4, [r5]
+ 1060              		.loc 1 172 22 view .LVU291
+ 1061 0008 0C60     		str	r4, [r1]
+ 173:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[1] = rectangle_XY[1];				/* ÆðÊ¼µÚÒ»¸öµãY */
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 26
+
+
+ 1062              		.loc 1 173 3 is_stmt 1 view .LVU292
+ 1063              		.loc 1 173 36 is_stmt 0 view .LVU293
+ 1064 000a 6868     		ldr	r0, [r5, #4]
+ 1065              	.LVL93:
+ 1066              		.loc 1 173 22 view .LVU294
+ 1067 000c 4860     		str	r0, [r1, #4]
+ 174:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 	
+ 175:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[4] = (rectangle_XY[0]+rectangle_XY[2])/2;				/* ÆðÊ¼ÖÐ¼äµãX */
+ 1068              		.loc 1 175 3 is_stmt 1 view .LVU295
+ 1069              		.loc 1 175 53 is_stmt 0 view .LVU296
+ 1070 000e AA68     		ldr	r2, [r5, #8]
+ 1071              		.loc 1 175 40 view .LVU297
+ 1072 0010 2244     		add	r2, r2, r4
+ 1073              		.loc 1 175 57 view .LVU298
+ 1074 0012 02EBD272 		add	r2, r2, r2, lsr #31
+ 1075 0016 5210     		asrs	r2, r2, #1
+ 1076              		.loc 1 175 22 view .LVU299
+ 1077 0018 0A61     		str	r2, [r1, #16]
+ 176:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[5] = (rectangle_XY[1]+rectangle_XY[3])/2;				/* ÆðÊ¼ÖÐ¼äµãY */
+ 1078              		.loc 1 176 3 is_stmt 1 view .LVU300
+ 1079              		.loc 1 176 53 is_stmt 0 view .LVU301
+ 1080 001a EB68     		ldr	r3, [r5, #12]
+ 1081              		.loc 1 176 40 view .LVU302
+ 1082 001c 0344     		add	r3, r3, r0
+ 1083              		.loc 1 176 57 view .LVU303
+ 1084 001e 03EBD373 		add	r3, r3, r3, lsr #31
+ 1085 0022 5B10     		asrs	r3, r3, #1
+ 1086              		.loc 1 176 22 view .LVU304
+ 1087 0024 4B61     		str	r3, [r1, #20]
+ 177:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 178:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[2] = (rectangle_XY[0]+Set_RectangleXY[4])/2;		/* Æð×óµãÖÐ¼äµãX */
+ 1088              		.loc 1 178 3 is_stmt 1 view .LVU305
+ 1089              		.loc 1 178 40 is_stmt 0 view .LVU306
+ 1090 0026 A618     		adds	r6, r4, r2
+ 1091              		.loc 1 178 60 view .LVU307
+ 1092 0028 06EBD676 		add	r6, r6, r6, lsr #31
+ 1093 002c 7610     		asrs	r6, r6, #1
+ 1094              		.loc 1 178 22 view .LVU308
+ 1095 002e 8E60     		str	r6, [r1, #8]
+ 179:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[3] = (rectangle_XY[1]+Set_RectangleXY[5])/2;		/* Æð×óµãÖÐ¼äµãY */
+ 1096              		.loc 1 179 3 is_stmt 1 view .LVU309
+ 1097              		.loc 1 179 40 is_stmt 0 view .LVU310
+ 1098 0030 C618     		adds	r6, r0, r3
+ 1099              		.loc 1 179 60 view .LVU311
+ 1100 0032 06EBD676 		add	r6, r6, r6, lsr #31
+ 1101 0036 7610     		asrs	r6, r6, #1
+ 1102              		.loc 1 179 22 view .LVU312
+ 1103 0038 CE60     		str	r6, [r1, #12]
+ 180:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 181:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[6] = (rectangle_XY[2]+Set_RectangleXY[4])/2;		/* ÆðÓÒµãÖÐ¼äµãX */
+ 1104              		.loc 1 181 3 is_stmt 1 view .LVU313
+ 1105              		.loc 1 181 37 is_stmt 0 view .LVU314
+ 1106 003a D5F80890 		ldr	r9, [r5, #8]
+ 1107              		.loc 1 181 40 view .LVU315
+ 1108 003e 4A44     		add	r2, r2, r9
+ 1109              		.loc 1 181 60 view .LVU316
+ 1110 0040 02EBD272 		add	r2, r2, r2, lsr #31
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 27
+
+
+ 1111 0044 5210     		asrs	r2, r2, #1
+ 1112              		.loc 1 181 22 view .LVU317
+ 1113 0046 8A61     		str	r2, [r1, #24]
+ 182:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[7] = (rectangle_XY[3]+Set_RectangleXY[5])/2;		/* ÆðÓÒµãÖÐ¼äµãY */
+ 1114              		.loc 1 182 3 is_stmt 1 view .LVU318
+ 1115              		.loc 1 182 37 is_stmt 0 view .LVU319
+ 1116 0048 D5F80C80 		ldr	r8, [r5, #12]
+ 1117              		.loc 1 182 40 view .LVU320
+ 1118 004c 4344     		add	r3, r3, r8
+ 1119              		.loc 1 182 60 view .LVU321
+ 1120 004e 03EBD373 		add	r3, r3, r3, lsr #31
+ 1121 0052 5B10     		asrs	r3, r3, #1
+ 1122              		.loc 1 182 22 view .LVU322
+ 1123 0054 CB61     		str	r3, [r1, #28]
+ 183:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 184:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 	
+ 185:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		/* ¶ÔÓÒ±ß¿ò */	
+ 186:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[8] = rectangle_XY[2];				/* ÆðÊ¼µÚ¶þ¸öµãX */
+ 1124              		.loc 1 186 3 is_stmt 1 view .LVU323
+ 1125              		.loc 1 186 22 is_stmt 0 view .LVU324
+ 1126 0056 C1F82090 		str	r9, [r1, #32]
+ 187:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[9] = rectangle_XY[3];				/* ÆðÊ¼µÚ¶þ¸öµãY */	
+ 1127              		.loc 1 187 3 is_stmt 1 view .LVU325
+ 1128              		.loc 1 187 22 is_stmt 0 view .LVU326
+ 1129 005a C1F82480 		str	r8, [r1, #36]
+ 188:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 	
+ 189:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[12] = (rectangle_XY[2]+rectangle_XY[6])/2;				/* ÆðÊ¼ÖÐ¼äµãX */
+ 1130              		.loc 1 189 3 is_stmt 1 view .LVU327
+ 1131              		.loc 1 189 54 is_stmt 0 view .LVU328
+ 1132 005e AF69     		ldr	r7, [r5, #24]
+ 1133              		.loc 1 189 41 view .LVU329
+ 1134 0060 09EB0703 		add	r3, r9, r7
+ 1135              		.loc 1 189 58 view .LVU330
+ 1136 0064 03EBD373 		add	r3, r3, r3, lsr #31
+ 1137 0068 4FEA630E 		asr	lr, r3, #1
+ 1138              		.loc 1 189 23 view .LVU331
+ 1139 006c C1F830E0 		str	lr, [r1, #48]
+ 190:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[13] = (rectangle_XY[3]+rectangle_XY[7])/2;				/* ÆðÊ¼ÖÐ¼äµãY */
+ 1140              		.loc 1 190 3 is_stmt 1 view .LVU332
+ 1141              		.loc 1 190 54 is_stmt 0 view .LVU333
+ 1142 0070 EE69     		ldr	r6, [r5, #28]
+ 1143              		.loc 1 190 41 view .LVU334
+ 1144 0072 08EB060C 		add	ip, r8, r6
+ 1145              		.loc 1 190 58 view .LVU335
+ 1146 0076 0CEBDC7C 		add	ip, ip, ip, lsr #31
+ 1147 007a 4FEA6C0C 		asr	ip, ip, #1
+ 1148              		.loc 1 190 23 view .LVU336
+ 1149 007e C1F834C0 		str	ip, [r1, #52]
+ 191:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 192:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[10] = (rectangle_XY[2]+Set_RectangleXY[12])/2;		/* Æð×óµãÖÐ¼äµãX */
+ 1150              		.loc 1 192 3 is_stmt 1 view .LVU337
+ 1151              		.loc 1 192 41 is_stmt 0 view .LVU338
+ 1152 0082 09EB0E02 		add	r2, r9, lr
+ 1153              		.loc 1 192 62 view .LVU339
+ 1154 0086 02EBD272 		add	r2, r2, r2, lsr #31
+ 1155 008a 5210     		asrs	r2, r2, #1
+ 1156              		.loc 1 192 23 view .LVU340
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 28
+
+
+ 1157 008c 8A62     		str	r2, [r1, #40]
+ 193:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[11] = (rectangle_XY[3]+Set_RectangleXY[13])/2;		/* Æð×óµãÖÐ¼äµãY */
+ 1158              		.loc 1 193 3 is_stmt 1 view .LVU341
+ 1159              		.loc 1 193 41 is_stmt 0 view .LVU342
+ 1160 008e 08EB0C03 		add	r3, r8, ip
+ 1161              		.loc 1 193 62 view .LVU343
+ 1162 0092 03EBD373 		add	r3, r3, r3, lsr #31
+ 1163 0096 5B10     		asrs	r3, r3, #1
+ 1164              		.loc 1 193 23 view .LVU344
+ 1165 0098 CB62     		str	r3, [r1, #44]
+ 194:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 195:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[14] = (rectangle_XY[6]+Set_RectangleXY[12])/2;		/* ÆðÓÒµãÖÐ¼äµãX */
+ 1166              		.loc 1 195 3 is_stmt 1 view .LVU345
+ 1167              		.loc 1 195 41 is_stmt 0 view .LVU346
+ 1168 009a 07EB0E03 		add	r3, r7, lr
+ 1169              		.loc 1 195 62 view .LVU347
+ 1170 009e 03EBD373 		add	r3, r3, r3, lsr #31
+ 1171 00a2 5B10     		asrs	r3, r3, #1
+ 1172              		.loc 1 195 23 view .LVU348
+ 1173 00a4 8B63     		str	r3, [r1, #56]
+ 196:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[15] = (rectangle_XY[7]+Set_RectangleXY[13])/2;		/* ÆðÓÒµãÖÐ¼äµãY */
+ 1174              		.loc 1 196 3 is_stmt 1 view .LVU349
+ 1175              		.loc 1 196 41 is_stmt 0 view .LVU350
+ 1176 00a6 B444     		add	ip, ip, r6
+ 1177              		.loc 1 196 62 view .LVU351
+ 1178 00a8 0CEBDC7C 		add	ip, ip, ip, lsr #31
+ 1179 00ac 4FEA6C03 		asr	r3, ip, #1
+ 1180              		.loc 1 196 23 view .LVU352
+ 1181 00b0 CB63     		str	r3, [r1, #60]
+ 197:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 198:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 199:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		/* ¶ÔÏÂ±ß¿ò */
+ 200:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[16] = rectangle_XY[4];				/* ÆðÊ¼µÚÈý¸öµãX */
+ 1182              		.loc 1 200 3 is_stmt 1 view .LVU353
+ 1183              		.loc 1 200 37 is_stmt 0 view .LVU354
+ 1184 00b2 2A69     		ldr	r2, [r5, #16]
+ 1185              		.loc 1 200 23 view .LVU355
+ 1186 00b4 0A64     		str	r2, [r1, #64]
+ 201:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[17] = rectangle_XY[5];				/* ÆðÊ¼µÚÈý¸öµãY */					
+ 1187              		.loc 1 201 3 is_stmt 1 view .LVU356
+ 1188              		.loc 1 201 37 is_stmt 0 view .LVU357
+ 1189 00b6 6B69     		ldr	r3, [r5, #20]
+ 1190              		.loc 1 201 23 view .LVU358
+ 1191 00b8 4B64     		str	r3, [r1, #68]
+ 202:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		
+ 203:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[20] = (rectangle_XY[6]+rectangle_XY[4])/2;				/* ÆðÊ¼ÖÐ¼äµãX */
+ 1192              		.loc 1 203 3 is_stmt 1 view .LVU359
+ 1193              		.loc 1 203 41 is_stmt 0 view .LVU360
+ 1194 00ba BD18     		adds	r5, r7, r2
+ 1195              		.loc 1 203 58 view .LVU361
+ 1196 00bc 05EBD575 		add	r5, r5, r5, lsr #31
+ 1197 00c0 6D10     		asrs	r5, r5, #1
+ 1198              		.loc 1 203 23 view .LVU362
+ 1199 00c2 0D65     		str	r5, [r1, #80]
+ 204:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[21] = (rectangle_XY[7]+rectangle_XY[5])/2;				/* ÆðÊ¼ÖÐ¼äµãY */
+ 1200              		.loc 1 204 3 is_stmt 1 view .LVU363
+ 1201              		.loc 1 204 41 is_stmt 0 view .LVU364
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 29
+
+
+ 1202 00c4 06EB030C 		add	ip, r6, r3
+ 1203              		.loc 1 204 58 view .LVU365
+ 1204 00c8 0CEBDC7C 		add	ip, ip, ip, lsr #31
+ 1205 00cc 4FEA6C0C 		asr	ip, ip, #1
+ 1206              		.loc 1 204 23 view .LVU366
+ 1207 00d0 C1F854C0 		str	ip, [r1, #84]
+ 205:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 206:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[18] = (rectangle_XY[6]+Set_RectangleXY[20])/2;		/* Æð×óµãÖÐ¼äµãX */
+ 1208              		.loc 1 206 3 is_stmt 1 view .LVU367
+ 1209              		.loc 1 206 41 is_stmt 0 view .LVU368
+ 1210 00d4 07EB050E 		add	lr, r7, r5
+ 1211              		.loc 1 206 62 view .LVU369
+ 1212 00d8 0EEBDE7E 		add	lr, lr, lr, lsr #31
+ 1213 00dc 4FEA6E0E 		asr	lr, lr, #1
+ 1214              		.loc 1 206 23 view .LVU370
+ 1215 00e0 C1F848E0 		str	lr, [r1, #72]
+ 207:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[19] = (rectangle_XY[7]+Set_RectangleXY[21])/2;		/* Æð×óµãÖÐ¼äµãY */
+ 1216              		.loc 1 207 3 is_stmt 1 view .LVU371
+ 1217              		.loc 1 207 41 is_stmt 0 view .LVU372
+ 1218 00e4 06EB0C0E 		add	lr, r6, ip
+ 1219              		.loc 1 207 62 view .LVU373
+ 1220 00e8 0EEBDE7E 		add	lr, lr, lr, lsr #31
+ 1221 00ec 4FEA6E0E 		asr	lr, lr, #1
+ 1222              		.loc 1 207 23 view .LVU374
+ 1223 00f0 C1F84CE0 		str	lr, [r1, #76]
+ 208:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 209:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[22] = (rectangle_XY[4]+Set_RectangleXY[20])/2;		/* ÆðÓÒµãÖÐ¼äµãX */
+ 1224              		.loc 1 209 3 is_stmt 1 view .LVU375
+ 1225              		.loc 1 209 41 is_stmt 0 view .LVU376
+ 1226 00f4 1544     		add	r5, r5, r2
+ 1227              		.loc 1 209 62 view .LVU377
+ 1228 00f6 05EBD575 		add	r5, r5, r5, lsr #31
+ 1229 00fa 6D10     		asrs	r5, r5, #1
+ 1230              		.loc 1 209 23 view .LVU378
+ 1231 00fc 8D65     		str	r5, [r1, #88]
+ 210:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[23] = (rectangle_XY[5]+Set_RectangleXY[21])/2;		/* ÆðÓÒµãÖÐ¼äµãY */		
+ 1232              		.loc 1 210 3 is_stmt 1 view .LVU379
+ 1233              		.loc 1 210 41 is_stmt 0 view .LVU380
+ 1234 00fe 9C44     		add	ip, ip, r3
+ 1235              		.loc 1 210 62 view .LVU381
+ 1236 0100 0CEBDC7C 		add	ip, ip, ip, lsr #31
+ 1237 0104 4FEA6C05 		asr	r5, ip, #1
+ 1238              		.loc 1 210 23 view .LVU382
+ 1239 0108 CD65     		str	r5, [r1, #92]
+ 211:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 212:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 213:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		/* ¶Ô×ó±ß¿ò */
+ 214:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[24] = rectangle_XY[6];				/* ÆðÊ¼µÚËÄ¸öµãX */
+ 1240              		.loc 1 214 3 is_stmt 1 view .LVU383
+ 1241              		.loc 1 214 23 is_stmt 0 view .LVU384
+ 1242 010a 0F66     		str	r7, [r1, #96]
+ 215:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[25] = rectangle_XY[7];				/* ÆðÊ¼µÚËÄ¸öµãY */			
+ 1243              		.loc 1 215 3 is_stmt 1 view .LVU385
+ 1244              		.loc 1 215 23 is_stmt 0 view .LVU386
+ 1245 010c 4E66     		str	r6, [r1, #100]
+ 216:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		
+ 217:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[28] = (rectangle_XY[4]+rectangle_XY[0])/2;				/* ÆðÊ¼ÖÐ¼äµãX */
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 30
+
+
+ 1246              		.loc 1 217 3 is_stmt 1 view .LVU387
+ 1247              		.loc 1 217 41 is_stmt 0 view .LVU388
+ 1248 010e A618     		adds	r6, r4, r2
+ 1249              		.loc 1 217 58 view .LVU389
+ 1250 0110 06EBD676 		add	r6, r6, r6, lsr #31
+ 1251 0114 7610     		asrs	r6, r6, #1
+ 1252              		.loc 1 217 23 view .LVU390
+ 1253 0116 0E67     		str	r6, [r1, #112]
+ 218:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[29] = (rectangle_XY[5]+rectangle_XY[1])/2;				/* ÆðÊ¼ÖÐ¼äµãY */
+ 1254              		.loc 1 218 3 is_stmt 1 view .LVU391
+ 1255              		.loc 1 218 41 is_stmt 0 view .LVU392
+ 1256 0118 C518     		adds	r5, r0, r3
+ 1257              		.loc 1 218 58 view .LVU393
+ 1258 011a 05EBD575 		add	r5, r5, r5, lsr #31
+ 1259 011e 6D10     		asrs	r5, r5, #1
+ 1260              		.loc 1 218 23 view .LVU394
+ 1261 0120 4D67     		str	r5, [r1, #116]
+ 219:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 220:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[26] = (rectangle_XY[4]+Set_RectangleXY[28])/2;		/* Æð×óµãÖÐ¼äµãX */
+ 1262              		.loc 1 220 3 is_stmt 1 view .LVU395
+ 1263              		.loc 1 220 41 is_stmt 0 view .LVU396
+ 1264 0122 3244     		add	r2, r2, r6
+ 1265              		.loc 1 220 62 view .LVU397
+ 1266 0124 02EBD272 		add	r2, r2, r2, lsr #31
+ 1267 0128 5210     		asrs	r2, r2, #1
+ 1268              		.loc 1 220 23 view .LVU398
+ 1269 012a 8A66     		str	r2, [r1, #104]
+ 221:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[27] = (rectangle_XY[5]+Set_RectangleXY[29])/2;		/* Æð×óµãÖÐ¼äµãY */
+ 1270              		.loc 1 221 3 is_stmt 1 view .LVU399
+ 1271              		.loc 1 221 41 is_stmt 0 view .LVU400
+ 1272 012c 2B44     		add	r3, r3, r5
+ 1273              		.loc 1 221 62 view .LVU401
+ 1274 012e 03EBD373 		add	r3, r3, r3, lsr #31
+ 1275 0132 5B10     		asrs	r3, r3, #1
+ 1276              		.loc 1 221 23 view .LVU402
+ 1277 0134 CB66     		str	r3, [r1, #108]
+ 222:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 223:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[30] = (rectangle_XY[0]+Set_RectangleXY[28])/2;		/* ÆðÓÒµãÖÐ¼äµãX */
+ 1278              		.loc 1 223 3 is_stmt 1 view .LVU403
+ 1279              		.loc 1 223 41 is_stmt 0 view .LVU404
+ 1280 0136 3444     		add	r4, r4, r6
+ 1281              		.loc 1 223 62 view .LVU405
+ 1282 0138 04EBD474 		add	r4, r4, r4, lsr #31
+ 1283 013c 6410     		asrs	r4, r4, #1
+ 1284              		.loc 1 223 23 view .LVU406
+ 1285 013e 8C67     		str	r4, [r1, #120]
+ 224:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		Set_RectangleXY[31] = (rectangle_XY[1]+Set_RectangleXY[29])/2;		/* ÆðÓÒµãÖÐ¼äµãY */	
+ 1286              		.loc 1 224 3 is_stmt 1 view .LVU407
+ 1287              		.loc 1 224 41 is_stmt 0 view .LVU408
+ 1288 0140 2844     		add	r0, r0, r5
+ 1289              		.loc 1 224 62 view .LVU409
+ 1290 0142 00EBD070 		add	r0, r0, r0, lsr #31
+ 1291 0146 4010     		asrs	r0, r0, #1
+ 1292              		.loc 1 224 23 view .LVU410
+ 1293 0148 C867     		str	r0, [r1, #124]
+ 225:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 226:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** }
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 31
+
+
+ 1294              		.loc 1 226 1 view .LVU411
+ 1295 014a BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 1296              	.L71:
+ 1297 014e 00BF     		.align	2
+ 1298              	.L70:
+ 1299 0150 00000000 		.word	.LANCHOR6
+ 1300              		.cfi_endproc
+ 1301              	.LFE140:
+ 1303              		.section	.text.Get_LaserXY_ALLtime,"ax",%progbits
+ 1304              		.align	1
+ 1305              		.global	Get_LaserXY_ALLtime
+ 1306              		.syntax unified
+ 1307              		.thumb
+ 1308              		.thumb_func
+ 1310              	Get_LaserXY_ALLtime:
+ 1311              	.LVL94:
+ 1312              	.LFB141:
+ 227:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 228:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 229:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** /* ÊµÊ±»ñÈ¡¼¤¹âµã×ø±ê */
+ 230:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** void Get_LaserXY_ALLtime(int* MyXY)
+ 231:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** {
+ 1313              		.loc 1 231 1 is_stmt 1 view -0
+ 1314              		.cfi_startproc
+ 1315              		@ args = 0, pretend = 0, frame = 0
+ 1316              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1317              		@ link register save eliminated.
+ 232:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		if(Data_FinishGet==1 && FinishRectangle_Flag==1)			/* ´®¿ÚÍê³ÉÁËÒ»´Î½ÓÊÕºó */
+ 1318              		.loc 1 232 3 view .LVU413
+ 1319              		.loc 1 232 20 is_stmt 0 view .LVU414
+ 1320 0000 0E4B     		ldr	r3, .L78
+ 1321 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1322              		.loc 1 232 5 view .LVU415
+ 1323 0004 012B     		cmp	r3, #1
+ 1324 0006 00D0     		beq	.L77
+ 1325              	.L72:
+ 233:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		{
+ 234:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				/* 16Î»Êý¾Ý´¦Àí(ºÏ³É×ø±êÖµ) */
+ 235:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				for(uint8_t time=0;time<2;time++)
+ 236:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				{
+ 237:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						MyXY[time] = (ShijueRecv_Buffer[time*2+1]<<8)|ShijueRecv_Buffer[time*2];
+ 238:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				}						
+ 239:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				
+ 240:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				Data_FinishGet=0;			/* ¼°Ê±Çå³ý½ÓÊÕÍê³É±êÖ¾Î» */
+ 241:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //				Data_StartGet=0;				
+ 242:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		}
+ 243:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** }
+ 1326              		.loc 1 243 1 view .LVU416
+ 1327 0008 7047     		bx	lr
+ 1328              	.L77:
+ 232:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		if(Data_FinishGet==1 && FinishRectangle_Flag==1)			/* ´®¿ÚÍê³ÉÁËÒ»´Î½ÓÊÕºó */
+ 1329              		.loc 1 232 47 discriminator 1 view .LVU417
+ 1330 000a 0D4B     		ldr	r3, .L78+4
+ 1331 000c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 232:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		if(Data_FinishGet==1 && FinishRectangle_Flag==1)			/* ´®¿ÚÍê³ÉÁËÒ»´Î½ÓÊÕºó */
+ 1332              		.loc 1 232 24 discriminator 1 view .LVU418
+ 1333 000e 012B     		cmp	r3, #1
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 32
+
+
+ 1334 0010 FAD1     		bne	.L72
+ 1335              	.LBB13:
+ 235:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				{
+ 1336              		.loc 1 235 17 view .LVU419
+ 1337 0012 0023     		movs	r3, #0
+ 1338 0014 0CE0     		b	.L74
+ 1339              	.LVL95:
+ 1340              	.L75:
+ 237:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				}						
+ 1341              		.loc 1 237 7 is_stmt 1 discriminator 3 view .LVU420
+ 237:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				}						
+ 1342              		.loc 1 237 43 is_stmt 0 discriminator 3 view .LVU421
+ 1343 0016 5A00     		lsls	r2, r3, #1
+ 237:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				}						
+ 1344              		.loc 1 237 45 discriminator 3 view .LVU422
+ 1345 0018 0132     		adds	r2, r2, #1
+ 237:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				}						
+ 1346              		.loc 1 237 38 discriminator 3 view .LVU423
+ 1347 001a 0A49     		ldr	r1, .L78+8
+ 1348 001c 11F802C0 		ldrb	ip, [r1, r2]	@ zero_extendqisi2
+ 237:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				}						
+ 1349              		.loc 1 237 70 discriminator 3 view .LVU424
+ 1350 0020 11F81320 		ldrb	r2, [r1, r3, lsl #1]	@ zero_extendqisi2
+ 237:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				}						
+ 1351              		.loc 1 237 52 discriminator 3 view .LVU425
+ 1352 0024 42EA0C22 		orr	r2, r2, ip, lsl #8
+ 237:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				}						
+ 1353              		.loc 1 237 18 discriminator 3 view .LVU426
+ 1354 0028 40F82320 		str	r2, [r0, r3, lsl #2]
+ 235:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				{
+ 1355              		.loc 1 235 31 is_stmt 1 discriminator 3 view .LVU427
+ 235:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				{
+ 1356              		.loc 1 235 35 is_stmt 0 discriminator 3 view .LVU428
+ 1357 002c 0133     		adds	r3, r3, #1
+ 1358              	.LVL96:
+ 235:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				{
+ 1359              		.loc 1 235 35 discriminator 3 view .LVU429
+ 1360 002e DBB2     		uxtb	r3, r3
+ 1361              	.LVL97:
+ 1362              	.L74:
+ 235:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				{
+ 1363              		.loc 1 235 24 is_stmt 1 discriminator 1 view .LVU430
+ 235:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				{
+ 1364              		.loc 1 235 5 is_stmt 0 discriminator 1 view .LVU431
+ 1365 0030 012B     		cmp	r3, #1
+ 1366 0032 F0D9     		bls	.L75
+ 1367              	.LBE13:
+ 240:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //				Data_StartGet=0;				
+ 1368              		.loc 1 240 5 is_stmt 1 view .LVU432
+ 240:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //				Data_StartGet=0;				
+ 1369              		.loc 1 240 19 is_stmt 0 view .LVU433
+ 1370 0034 014B     		ldr	r3, .L78
+ 1371              	.LVL98:
+ 240:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //				Data_StartGet=0;				
+ 1372              		.loc 1 240 19 view .LVU434
+ 1373 0036 0022     		movs	r2, #0
+ 1374 0038 1A70     		strb	r2, [r3]
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 33
+
+
+ 1375              		.loc 1 243 1 view .LVU435
+ 1376 003a E5E7     		b	.L72
+ 1377              	.L79:
+ 1378              		.align	2
+ 1379              	.L78:
+ 1380 003c 00000000 		.word	Data_FinishGet
+ 1381 0040 00000000 		.word	FinishRectangle_Flag
+ 1382 0044 00000000 		.word	ShijueRecv_Buffer
+ 1383              		.cfi_endproc
+ 1384              	.LFE141:
+ 1386              		.section	.text.limit_SetAngle,"ax",%progbits
+ 1387              		.align	1
+ 1388              		.global	limit_SetAngle
+ 1389              		.syntax unified
+ 1390              		.thumb
+ 1391              		.thumb_func
+ 1393              	limit_SetAngle:
+ 1394              	.LVL99:
+ 1395              	.LFB142:
+ 244:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 245:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** uint16_t Tracking_CNT,Tracking_Start_Flag,Tracking_Enable;			/* ½øÈë¸ú×Ù²¿·ÖµÄ¼ÆÊ± */
+ 246:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 247:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 248:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** int limit_SetAngle(int Now_Angle)
+ 249:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** {
+ 1396              		.loc 1 249 1 is_stmt 1 view -0
+ 1397              		.cfi_startproc
+ 1398              		@ args = 0, pretend = 0, frame = 0
+ 1399              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1400              		@ link register save eliminated.
+ 250:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		if(Now_Angle<1948) Now_Angle=1948;
+ 1401              		.loc 1 250 3 view .LVU437
+ 1402              		.loc 1 250 5 is_stmt 0 view .LVU438
+ 1403 0000 40F29B73 		movw	r3, #1947
+ 1404 0004 9842     		cmp	r0, r3
+ 1405 0006 04DD     		ble	.L82
+ 251:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		else if(Now_Angle>2248) Now_Angle=2248;
+ 1406              		.loc 1 251 8 is_stmt 1 view .LVU439
+ 1407              		.loc 1 251 10 is_stmt 0 view .LVU440
+ 1408 0008 40F6C803 		movw	r3, #2248
+ 1409 000c 9842     		cmp	r0, r3
+ 1410 000e 03DC     		bgt	.L83
+ 1411 0010 7047     		bx	lr
+ 1412              	.L82:
+ 250:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		if(Now_Angle<1948) Now_Angle=1948;
+ 1413              		.loc 1 250 31 view .LVU441
+ 1414 0012 40F29C70 		movw	r0, #1948
+ 1415              	.LVL100:
+ 250:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		if(Now_Angle<1948) Now_Angle=1948;
+ 1416              		.loc 1 250 31 view .LVU442
+ 1417 0016 7047     		bx	lr
+ 1418              	.LVL101:
+ 1419              	.L83:
+ 1420              		.loc 1 251 36 view .LVU443
+ 1421 0018 40F6C800 		movw	r0, #2248
+ 1422              	.LVL102:
+ 252:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 	
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 34
+
+
+ 253:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		return Now_Angle;
+ 1423              		.loc 1 253 3 is_stmt 1 view .LVU444
+ 254:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** }
+ 1424              		.loc 1 254 1 is_stmt 0 view .LVU445
+ 1425 001c 7047     		bx	lr
+ 1426              		.cfi_endproc
+ 1427              	.LFE142:
+ 1429              		.section	.text.Set_LaserTracking,"ax",%progbits
+ 1430              		.align	1
+ 1431              		.global	Set_LaserTracking
+ 1432              		.syntax unified
+ 1433              		.thumb
+ 1434              		.thumb_func
+ 1436              	Set_LaserTracking:
+ 1437              	.LVL103:
+ 1438              	.LFB143:
+ 255:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 256:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 257:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** /* ¼¤¹â¸ú×Ù¾ØÐÎ¿ò²¿·Ö */
+ 258:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 259:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** void Set_LaserTracking(int RECTANG_X,int RECTANG_Y)
+ 260:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** {
+ 1439              		.loc 1 260 1 is_stmt 1 view -0
+ 1440              		.cfi_startproc
+ 1441              		@ args = 0, pretend = 0, frame = 0
+ 1442              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1443              		.loc 1 260 1 is_stmt 0 view .LVU447
+ 1444 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 1445              	.LCFI7:
+ 1446              		.cfi_def_cfa_offset 32
+ 1447              		.cfi_offset 3, -32
+ 1448              		.cfi_offset 4, -28
+ 1449              		.cfi_offset 5, -24
+ 1450              		.cfi_offset 6, -20
+ 1451              		.cfi_offset 7, -16
+ 1452              		.cfi_offset 8, -12
+ 1453              		.cfi_offset 9, -8
+ 1454              		.cfi_offset 14, -4
+ 261:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //		while(1)
+ 262:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //		{
+ 263:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				static uint16_t Now_OriginAngle[2];
+ 1455              		.loc 1 263 5 is_stmt 1 view .LVU448
+ 264:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 			
+ 265:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //				if(Tracking_Enable==1 && Data_FinishGet==1)			/* 100ms¼ÆÊ±µ½ºó */
+ 266:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				if(Data_FinishGet==1)			/* 100ms¼ÆÊ±µ½ºó */
+ 1456              		.loc 1 266 5 view .LVU449
+ 1457              		.loc 1 266 22 is_stmt 0 view .LVU450
+ 1458 0004 3D4B     		ldr	r3, .L90
+ 1459 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1460              		.loc 1 266 7 view .LVU451
+ 1461 0008 012B     		cmp	r3, #1
+ 1462 000a 01D0     		beq	.L88
+ 1463              	.LVL104:
+ 1464              	.L84:
+ 267:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 				{
+ 268:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					
+ 269:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //						HAL_TIM_Base_Stop_IT(&htim7);			/* ¶¨Ê±ÖÐ¶ÏÊ§ÄÜ */
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 35
+
+
+ 270:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					
+ 271:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						Get_LaserXY_ALLtime(Laser_XY);		/* ÊµÊ±½ÓÊÕ¼¤¹â×ø±ê */
+ 272:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 273:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					
+ 274:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					
+ 275:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						if(Get_vofa_PID_Rxflag()==1)		/* ÅÐ¶Ï½ÓÊÕÊÇ·ñ³É¹¦ */	
+ 276:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						{			
+ 277:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								PID_index_1=Get_id_Flag_1();		
+ 278:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								PID_index_2=Get_id_Flag_2();
+ 279:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 							
+ 280:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								PID_Mode[PID_index_1-1].PID[PID_index_2]=RxPacket_Data_Handle(Get_Vofa_RxData);
+ 281:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						}
+ 282:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						
+ 283:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //						X_Pid.Kp = PID_Mode[0].PID[0];
+ 284:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //						X_Pid.Ki = PID_Mode[0].PID[1];
+ 285:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //						X_Pid.Kd = PID_Mode[0].PID[2];
+ 286:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //						
+ 287:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //						Y_Pid.Kp = PID_Mode[1].PID[0];
+ 288:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //						Y_Pid.Ki = PID_Mode[1].PID[1];
+ 289:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //						Y_Pid.Kd = PID_Mode[1].PID[2];
+ 290:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						
+ 291:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						X_Pid.Kp = 0.06;
+ 292:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						X_Pid.Ki = 0.00;
+ 293:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						X_Pid.Kd = 0.114;
+ 294:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //						
+ 295:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //						Y_Pid.Kp = 0.9;
+ 296:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //						Y_Pid.Ki = 0;
+ 297:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //						Y_Pid.Kd = 0.12;
+ 298:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						
+ 299:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						/* ½øÐÐÎ»ÖÃ»·pidÔËËã */
+ 300:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						RelaServo_Angle[0] = Servo_Position_PID(Laser_XY[0],RECTANG_X,X_Pid.Kp,X_Pid.Ki,X_Pid.Kd);
+ 301:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						RelaServo_Angle[1] = Servo_Position_PID(Laser_XY[1],RECTANG_Y,Y_Pid.Kp,Y_Pid.Ki,Y_Pid.Kd);
+ 302:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					
+ 303:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						Now_OriginAngle[0] = USL_GETPositionVal(servoUsart,sid_1);
+ 304:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						Now_OriginAngle[1] = USL_GETPositionVal(servoUsart,sid_2);
+ 305:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					
+ 306:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						HAL_Delay(100);
+ 307:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					
+ 308:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						USL_SetServoAngle(servoUsart,sid_1,limit_SetAngle(Now_OriginAngle[0]-RelaServo_Angle[0]),0);
+ 309:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						USL_SetServoAngle(servoUsart,sid_2,limit_SetAngle(Now_OriginAngle[1]-RelaServo_Angle[1]),0);
+ 310:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						
+ 311:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 312:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						
+ 313:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //						Tracking_Enable=0;
+ 314:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //						TIM7->CNT=0;		/* ¼ÆÊý¼Ä´æÆ÷ÇåÁã */
+ 315:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //						HAL_TIM_Base_Start_IT(&htim7);		/* ÖØÐÂÊ¹ÄÜ¶¨Ê±ÖÐ¶Ï */
+ 316:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 											
+ 317:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //				}
+ 318:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 		}
+ 319:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** }
+ 1465              		.loc 1 319 1 view .LVU452
+ 1466 000c BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 1467              	.LVL105:
+ 1468              	.L88:
+ 1469              		.loc 1 319 1 view .LVU453
+ 1470 0010 0546     		mov	r5, r0
+ 1471 0012 0C46     		mov	r4, r1
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 36
+
+
+ 271:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 1472              		.loc 1 271 7 is_stmt 1 view .LVU454
+ 1473 0014 3A48     		ldr	r0, .L90+4
+ 1474              	.LVL106:
+ 271:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 
+ 1475              		.loc 1 271 7 is_stmt 0 view .LVU455
+ 1476 0016 FFF7FEFF 		bl	Get_LaserXY_ALLtime
+ 1477              	.LVL107:
+ 275:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						{			
+ 1478              		.loc 1 275 7 is_stmt 1 view .LVU456
+ 275:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						{			
+ 1479              		.loc 1 275 10 is_stmt 0 view .LVU457
+ 1480 001a FFF7FEFF 		bl	Get_vofa_PID_Rxflag
+ 1481              	.LVL108:
+ 275:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						{			
+ 1482              		.loc 1 275 9 view .LVU458
+ 1483 001e 0128     		cmp	r0, #1
+ 1484 0020 55D0     		beq	.L89
+ 1485              	.L86:
+ 291:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						X_Pid.Ki = 0.00;
+ 1486              		.loc 1 291 7 is_stmt 1 view .LVU459
+ 291:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						X_Pid.Ki = 0.00;
+ 1487              		.loc 1 291 16 is_stmt 0 view .LVU460
+ 1488 0022 384B     		ldr	r3, .L90+8
+ 1489 0024 9FED380A 		vldr.32	s0, .L90+12
+ 1490 0028 83ED000A 		vstr.32	s0, [r3]
+ 292:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						X_Pid.Kd = 0.114;
+ 1491              		.loc 1 292 7 is_stmt 1 view .LVU461
+ 292:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						X_Pid.Kd = 0.114;
+ 1492              		.loc 1 292 16 is_stmt 0 view .LVU462
+ 1493 002c DFED370A 		vldr.32	s1, .L90+16
+ 1494 0030 C3ED010A 		vstr.32	s1, [r3, #4]
+ 293:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //						
+ 1495              		.loc 1 293 7 is_stmt 1 view .LVU463
+ 293:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** //						
+ 1496              		.loc 1 293 16 is_stmt 0 view .LVU464
+ 1497 0034 9FED361A 		vldr.32	s2, .L90+20
+ 1498 0038 83ED021A 		vstr.32	s2, [r3, #8]
+ 300:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						RelaServo_Angle[1] = Servo_Position_PID(Laser_XY[1],RECTANG_Y,Y_Pid.Kp,Y_Pid.Ki,Y_Pid.Kd);
+ 1499              		.loc 1 300 7 is_stmt 1 view .LVU465
+ 300:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						RelaServo_Angle[1] = Servo_Position_PID(Laser_XY[1],RECTANG_Y,Y_Pid.Kp,Y_Pid.Ki,Y_Pid.Kd);
+ 1500              		.loc 1 300 28 is_stmt 0 view .LVU466
+ 1501 003c 304E     		ldr	r6, .L90+4
+ 1502 003e 2946     		mov	r1, r5
+ 1503 0040 3068     		ldr	r0, [r6]
+ 1504 0042 FFF7FEFF 		bl	Servo_Position_PID
+ 1505              	.LVL109:
+ 300:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						RelaServo_Angle[1] = Servo_Position_PID(Laser_XY[1],RECTANG_Y,Y_Pid.Kp,Y_Pid.Ki,Y_Pid.Kd);
+ 1506              		.loc 1 300 26 view .LVU467
+ 1507 0046 334D     		ldr	r5, .L90+24
+ 1508              	.LVL110:
+ 300:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						RelaServo_Angle[1] = Servo_Position_PID(Laser_XY[1],RECTANG_Y,Y_Pid.Kp,Y_Pid.Ki,Y_Pid.Kd);
+ 1509              		.loc 1 300 26 view .LVU468
+ 1510 0048 2860     		str	r0, [r5]
+ 301:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					
+ 1511              		.loc 1 301 7 is_stmt 1 view .LVU469
+ 301:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 37
+
+
+ 1512              		.loc 1 301 28 is_stmt 0 view .LVU470
+ 1513 004a 334B     		ldr	r3, .L90+28
+ 1514 004c 93ED021A 		vldr.32	s2, [r3, #8]
+ 1515 0050 D3ED010A 		vldr.32	s1, [r3, #4]
+ 1516 0054 93ED000A 		vldr.32	s0, [r3]
+ 1517 0058 2146     		mov	r1, r4
+ 1518 005a 7068     		ldr	r0, [r6, #4]
+ 1519 005c FFF7FEFF 		bl	Servo_Position_PID
+ 1520              	.LVL111:
+ 301:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					
+ 1521              		.loc 1 301 26 view .LVU471
+ 1522 0060 6860     		str	r0, [r5, #4]
+ 303:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						Now_OriginAngle[1] = USL_GETPositionVal(servoUsart,sid_2);
+ 1523              		.loc 1 303 7 is_stmt 1 view .LVU472
+ 303:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						Now_OriginAngle[1] = USL_GETPositionVal(servoUsart,sid_2);
+ 1524              		.loc 1 303 28 is_stmt 0 view .LVU473
+ 1525 0062 DFF8D480 		ldr	r8, .L90+60
+ 1526 0066 2D4E     		ldr	r6, .L90+32
+ 1527 0068 98F80010 		ldrb	r1, [r8]	@ zero_extendqisi2
+ 1528 006c 3068     		ldr	r0, [r6]
+ 1529 006e FFF7FEFF 		bl	USL_GETPositionVal
+ 1530              	.LVL112:
+ 303:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						Now_OriginAngle[1] = USL_GETPositionVal(servoUsart,sid_2);
+ 1531              		.loc 1 303 26 view .LVU474
+ 1532 0072 2B4C     		ldr	r4, .L90+36
+ 1533              	.LVL113:
+ 303:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						Now_OriginAngle[1] = USL_GETPositionVal(servoUsart,sid_2);
+ 1534              		.loc 1 303 26 view .LVU475
+ 1535 0074 2080     		strh	r0, [r4]	@ movhi
+ 304:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					
+ 1536              		.loc 1 304 7 is_stmt 1 view .LVU476
+ 304:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					
+ 1537              		.loc 1 304 28 is_stmt 0 view .LVU477
+ 1538 0076 2B4F     		ldr	r7, .L90+40
+ 1539 0078 3978     		ldrb	r1, [r7]	@ zero_extendqisi2
+ 1540 007a 3068     		ldr	r0, [r6]
+ 1541 007c FFF7FEFF 		bl	USL_GETPositionVal
+ 1542              	.LVL114:
+ 304:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					
+ 1543              		.loc 1 304 26 view .LVU478
+ 1544 0080 6080     		strh	r0, [r4, #2]	@ movhi
+ 306:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 					
+ 1545              		.loc 1 306 7 is_stmt 1 view .LVU479
+ 1546 0082 6420     		movs	r0, #100
+ 1547 0084 FFF7FEFF 		bl	HAL_Delay
+ 1548              	.LVL115:
+ 308:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						USL_SetServoAngle(servoUsart,sid_2,limit_SetAngle(Now_OriginAngle[1]-RelaServo_Angle[1]),0);
+ 1549              		.loc 1 308 7 view .LVU480
+ 1550 0088 D6F80090 		ldr	r9, [r6]
+ 1551 008c 98F80080 		ldrb	r8, [r8]	@ zero_extendqisi2
+ 308:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						USL_SetServoAngle(servoUsart,sid_2,limit_SetAngle(Now_OriginAngle[1]-RelaServo_Angle[1]),0);
+ 1552              		.loc 1 308 72 is_stmt 0 view .LVU481
+ 1553 0090 2088     		ldrh	r0, [r4]
+ 308:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						USL_SetServoAngle(servoUsart,sid_2,limit_SetAngle(Now_OriginAngle[1]-RelaServo_Angle[1]),0);
+ 1554              		.loc 1 308 91 view .LVU482
+ 1555 0092 2B68     		ldr	r3, [r5]
+ 308:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						USL_SetServoAngle(servoUsart,sid_2,limit_SetAngle(Now_OriginAngle[1]-RelaServo_Angle[1]),0);
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 38
+
+
+ 1556              		.loc 1 308 42 view .LVU483
+ 1557 0094 C01A     		subs	r0, r0, r3
+ 1558 0096 FFF7FEFF 		bl	limit_SetAngle
+ 1559              	.LVL116:
+ 1560 009a 00EE100A 		vmov	s0, r0	@ int
+ 308:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						USL_SetServoAngle(servoUsart,sid_2,limit_SetAngle(Now_OriginAngle[1]-RelaServo_Angle[1]),0);
+ 1561              		.loc 1 308 7 view .LVU484
+ 1562 009e 0022     		movs	r2, #0
+ 1563 00a0 B8EEC00A 		vcvt.f32.s32	s0, s0
+ 1564 00a4 4146     		mov	r1, r8
+ 1565 00a6 4846     		mov	r0, r9
+ 1566 00a8 FFF7FEFF 		bl	USL_SetServoAngle
+ 1567              	.LVL117:
+ 309:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						
+ 1568              		.loc 1 309 7 is_stmt 1 view .LVU485
+ 1569 00ac 3668     		ldr	r6, [r6]
+ 1570 00ae 3F78     		ldrb	r7, [r7]	@ zero_extendqisi2
+ 309:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						
+ 1571              		.loc 1 309 72 is_stmt 0 view .LVU486
+ 1572 00b0 6088     		ldrh	r0, [r4, #2]
+ 309:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						
+ 1573              		.loc 1 309 91 view .LVU487
+ 1574 00b2 6B68     		ldr	r3, [r5, #4]
+ 309:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						
+ 1575              		.loc 1 309 42 view .LVU488
+ 1576 00b4 C01A     		subs	r0, r0, r3
+ 1577 00b6 FFF7FEFF 		bl	limit_SetAngle
+ 1578              	.LVL118:
+ 1579 00ba 00EE100A 		vmov	s0, r0	@ int
+ 309:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						
+ 1580              		.loc 1 309 7 view .LVU489
+ 1581 00be 0022     		movs	r2, #0
+ 1582 00c0 B8EEC00A 		vcvt.f32.s32	s0, s0
+ 1583 00c4 3946     		mov	r1, r7
+ 1584 00c6 3046     		mov	r0, r6
+ 1585 00c8 FFF7FEFF 		bl	USL_SetServoAngle
+ 1586              	.LVL119:
+ 1587              		.loc 1 319 1 view .LVU490
+ 1588 00cc 9EE7     		b	.L84
+ 1589              	.LVL120:
+ 1590              	.L89:
+ 277:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								PID_index_2=Get_id_Flag_2();
+ 1591              		.loc 1 277 9 is_stmt 1 view .LVU491
+ 277:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								PID_index_2=Get_id_Flag_2();
+ 1592              		.loc 1 277 21 is_stmt 0 view .LVU492
+ 1593 00ce FFF7FEFF 		bl	Get_id_Flag_1
+ 1594              	.LVL121:
+ 277:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 								PID_index_2=Get_id_Flag_2();
+ 1595              		.loc 1 277 20 view .LVU493
+ 1596 00d2 154F     		ldr	r7, .L90+44
+ 1597 00d4 3870     		strb	r0, [r7]
+ 278:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 							
+ 1598              		.loc 1 278 9 is_stmt 1 view .LVU494
+ 278:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 							
+ 1599              		.loc 1 278 21 is_stmt 0 view .LVU495
+ 1600 00d6 FFF7FEFF 		bl	Get_id_Flag_2
+ 1601              	.LVL122:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 39
+
+
+ 1602 00da 0646     		mov	r6, r0
+ 278:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 							
+ 1603              		.loc 1 278 20 view .LVU496
+ 1604 00dc 134B     		ldr	r3, .L90+48
+ 1605 00de 1870     		strb	r0, [r3]
+ 280:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						}
+ 1606              		.loc 1 280 9 is_stmt 1 view .LVU497
+ 280:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						}
+ 1607              		.loc 1 280 29 is_stmt 0 view .LVU498
+ 1608 00e0 3F78     		ldrb	r7, [r7]	@ zero_extendqisi2
+ 1609 00e2 013F     		subs	r7, r7, #1
+ 280:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						}
+ 1610              		.loc 1 280 50 view .LVU499
+ 1611 00e4 1248     		ldr	r0, .L90+52
+ 1612 00e6 FFF7FEFF 		bl	RxPacket_Data_Handle
+ 1613              	.LVL123:
+ 280:E:/MCU_Project/stm32/Target_tracking/user/Laser_Move\Servo_Move.c **** 						}
+ 1614              		.loc 1 280 49 view .LVU500
+ 1615 00ea 06EB8706 		add	r6, r6, r7, lsl #2
+ 1616 00ee 114B     		ldr	r3, .L90+56
+ 1617 00f0 03EB8606 		add	r6, r3, r6, lsl #2
+ 1618 00f4 86ED000A 		vstr.32	s0, [r6]
+ 1619 00f8 93E7     		b	.L86
+ 1620              	.L91:
+ 1621 00fa 00BF     		.align	2
+ 1622              	.L90:
+ 1623 00fc 00000000 		.word	Data_FinishGet
+ 1624 0100 00000000 		.word	.LANCHOR7
+ 1625 0104 00000000 		.word	.LANCHOR8
+ 1626 0108 8FC2753D 		.word	1031127695
+ 1627 010c 00000000 		.word	0
+ 1628 0110 D578E93D 		.word	1038710997
+ 1629 0114 00000000 		.word	.LANCHOR9
+ 1630 0118 00000000 		.word	.LANCHOR10
+ 1631 011c 00000000 		.word	servoUsart
+ 1632 0120 00000000 		.word	.LANCHOR11
+ 1633 0124 00000000 		.word	sid_2
+ 1634 0128 00000000 		.word	PID_index_1
+ 1635 012c 00000000 		.word	PID_index_2
+ 1636 0130 00000000 		.word	Get_Vofa_RxData
+ 1637 0134 00000000 		.word	PID_Mode
+ 1638 0138 00000000 		.word	sid_1
+ 1639              		.cfi_endproc
+ 1640              	.LFE143:
+ 1642              		.global	Tracking_Enable
+ 1643              		.global	Tracking_Start_Flag
+ 1644              		.global	Tracking_CNT
+ 1645              		.global	Rectangle_TargetAngle
+ 1646              		.global	Servo_OriginAngle
+ 1647              		.global	Laser_XY
+ 1648              		.global	Set_rectangle_XY
+ 1649              		.global	rectangle_XY
+ 1650              		.global	Servo_OriginXY
+ 1651              		.global	Servo_ZeroXY
+ 1652              		.global	RelaServo_Angle
+ 1653              		.global	Y_Pid
+ 1654              		.global	X_Pid
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 40
+
+
+ 1655              		.global	MoveStart_Flag
+ 1656              		.global	MoveStop_Flag
+ 1657              		.global	Delay_time
+ 1658              		.global	CenterLocate_angleY
+ 1659              		.global	CenterLocate_angleX
+ 1660              		.global	Locate_angleY
+ 1661              		.global	Locate_angleX
+ 1662              		.section	.bss.CenterLocate_angleX,"aw",%nobits
+ 1663              		.align	2
+ 1664              		.set	.LANCHOR2,. + 0
+ 1667              	CenterLocate_angleX:
+ 1668 0000 00000000 		.space	8
+ 1668      00000000 
+ 1669              		.section	.bss.CenterLocate_angleY,"aw",%nobits
+ 1670              		.align	2
+ 1671              		.set	.LANCHOR3,. + 0
+ 1674              	CenterLocate_angleY:
+ 1675 0000 00000000 		.space	8
+ 1675      00000000 
+ 1676              		.section	.bss.Delay_time,"aw",%nobits
+ 1677              		.align	1
+ 1680              	Delay_time:
+ 1681 0000 0000     		.space	2
+ 1682              		.section	.bss.Laser_XY,"aw",%nobits
+ 1683              		.align	2
+ 1684              		.set	.LANCHOR7,. + 0
+ 1687              	Laser_XY:
+ 1688 0000 00000000 		.space	8
+ 1688      00000000 
+ 1689              		.section	.bss.Locate_angleX,"aw",%nobits
+ 1690              		.align	2
+ 1691              		.set	.LANCHOR0,. + 0
+ 1694              	Locate_angleX:
+ 1695 0000 00000000 		.space	8
+ 1695      00000000 
+ 1696              		.section	.bss.Locate_angleY,"aw",%nobits
+ 1697              		.align	2
+ 1698              		.set	.LANCHOR1,. + 0
+ 1701              	Locate_angleY:
+ 1702 0000 00000000 		.space	8
+ 1702      00000000 
+ 1703              		.section	.bss.MoveStart_Flag,"aw",%nobits
+ 1704              		.align	1
+ 1707              	MoveStart_Flag:
+ 1708 0000 0000     		.space	2
+ 1709              		.section	.bss.MoveStop_Flag,"aw",%nobits
+ 1710              		.align	1
+ 1713              	MoveStop_Flag:
+ 1714 0000 0000     		.space	2
+ 1715              		.section	.bss.Now_OriginAngle.0,"aw",%nobits
+ 1716              		.align	2
+ 1717              		.set	.LANCHOR11,. + 0
+ 1720              	Now_OriginAngle.0:
+ 1721 0000 00000000 		.space	4
+ 1722              		.section	.bss.Rectangle_TargetAngle,"aw",%nobits
+ 1723              		.align	2
+ 1726              	Rectangle_TargetAngle:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 41
+
+
+ 1727 0000 00000000 		.space	8
+ 1727      00000000 
+ 1728              		.section	.bss.RelaServo_Angle,"aw",%nobits
+ 1729              		.align	2
+ 1730              		.set	.LANCHOR9,. + 0
+ 1733              	RelaServo_Angle:
+ 1734 0000 00000000 		.space	8
+ 1734      00000000 
+ 1735              		.section	.bss.Servo_OriginAngle,"aw",%nobits
+ 1736              		.align	2
+ 1739              	Servo_OriginAngle:
+ 1740 0000 00000000 		.space	4
+ 1741              		.section	.bss.Servo_OriginXY,"aw",%nobits
+ 1742              		.align	2
+ 1745              	Servo_OriginXY:
+ 1746 0000 00000000 		.space	4
+ 1747              		.section	.bss.Servo_ZeroXY,"aw",%nobits
+ 1748              		.align	2
+ 1751              	Servo_ZeroXY:
+ 1752 0000 00000000 		.space	4
+ 1753              		.section	.bss.Set_rectangle_XY,"aw",%nobits
+ 1754              		.align	2
+ 1757              	Set_rectangle_XY:
+ 1758 0000 00000000 		.space	128
+ 1758      00000000 
+ 1758      00000000 
+ 1758      00000000 
+ 1758      00000000 
+ 1759              		.section	.bss.Tracking_CNT,"aw",%nobits
+ 1760              		.align	1
+ 1763              	Tracking_CNT:
+ 1764 0000 0000     		.space	2
+ 1765              		.section	.bss.Tracking_Enable,"aw",%nobits
+ 1766              		.align	1
+ 1769              	Tracking_Enable:
+ 1770 0000 0000     		.space	2
+ 1771              		.section	.bss.Tracking_Start_Flag,"aw",%nobits
+ 1772              		.align	1
+ 1775              	Tracking_Start_Flag:
+ 1776 0000 0000     		.space	2
+ 1777              		.section	.bss.X_Pid,"aw",%nobits
+ 1778              		.align	2
+ 1779              		.set	.LANCHOR8,. + 0
+ 1782              	X_Pid:
+ 1783 0000 00000000 		.space	12
+ 1783      00000000 
+ 1783      00000000 
+ 1784              		.section	.bss.Y_Pid,"aw",%nobits
+ 1785              		.align	2
+ 1786              		.set	.LANCHOR10,. + 0
+ 1789              	Y_Pid:
+ 1790 0000 00000000 		.space	12
+ 1790      00000000 
+ 1790      00000000 
+ 1791              		.section	.bss.integral.2,"aw",%nobits
+ 1792              		.align	2
+ 1793              		.set	.LANCHOR4,. + 0
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 42
+
+
+ 1796              	integral.2:
+ 1797 0000 00000000 		.space	4
+ 1798              		.section	.bss.last_error.1,"aw",%nobits
+ 1799              		.align	2
+ 1800              		.set	.LANCHOR5,. + 0
+ 1803              	last_error.1:
+ 1804 0000 00000000 		.space	4
+ 1805              		.section	.bss.rectangle_XY,"aw",%nobits
+ 1806              		.align	2
+ 1807              		.set	.LANCHOR6,. + 0
+ 1810              	rectangle_XY:
+ 1811 0000 00000000 		.space	32
+ 1811      00000000 
+ 1811      00000000 
+ 1811      00000000 
+ 1811      00000000 
+ 1812              		.text
+ 1813              	.Letext0:
+ 1814              		.file 2 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1815              		.file 3 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1816              		.file 4 "Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g431xx.h"
+ 1817              		.file 5 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_def.h"
+ 1818              		.file 6 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_dma.h"
+ 1819              		.file 7 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h"
+ 1820              		.file 8 "Core/Inc/main.h"
+ 1821              		.file 9 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo/ring_buffer.h"
+ 1822              		.file 10 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo/uart_servo_lite.h"
+ 1823              		.file 11 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED/oled.h"
+ 1824              		.file 12 "E:/MCU_Project/stm32/Target_tracking/user/vofa_test/Variable.h"
+ 1825              		.file 13 "E:/MCU_Project/stm32/Target_tracking/user/Laser_Move/Servo_Move.h"
+ 1826              		.file 14 "E:/MCU_Project/stm32/Target_tracking/user/vofa_test/Master_PC.h"
+ 1827              		.file 15 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h"
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 43
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 Servo_Move.c
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:20     .text.Penstring_Locate:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:26     .text.Penstring_Locate:00000000 Penstring_Locate
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:124    .text.Penstring_Locate:00000078 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:139    .text.Penstring_Moving_1:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:145    .text.Penstring_Moving_1:00000000 Penstring_Moving_1
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:597    .text.Penstring_Moving_1:00000260 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:611    .text.Servo_Position_PID:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:617    .text.Servo_Position_PID:00000000 Servo_Position_PID
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:700    .text.Servo_Position_PID:00000060 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:707    .text.Servo_SetZeroAngle:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:713    .text.Servo_SetZeroAngle:00000000 Servo_SetZeroAngle
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:912    .text.Servo_SetZeroAngle:000000a8 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:922    .text.Get_RectangleXY:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:928    .text.Get_RectangleXY:00000000 Get_RectangleXY
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1025   .text.Get_RectangleXY:00000050 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1032   .text.Set_RectangleXY:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1038   .text.Set_RectangleXY:00000000 Set_RectangleXY
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1299   .text.Set_RectangleXY:00000150 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1304   .text.Get_LaserXY_ALLtime:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1310   .text.Get_LaserXY_ALLtime:00000000 Get_LaserXY_ALLtime
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1380   .text.Get_LaserXY_ALLtime:0000003c $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1387   .text.limit_SetAngle:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1393   .text.limit_SetAngle:00000000 limit_SetAngle
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1430   .text.Set_LaserTracking:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1436   .text.Set_LaserTracking:00000000 Set_LaserTracking
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1623   .text.Set_LaserTracking:000000fc $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1769   .bss.Tracking_Enable:00000000 Tracking_Enable
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1775   .bss.Tracking_Start_Flag:00000000 Tracking_Start_Flag
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1763   .bss.Tracking_CNT:00000000 Tracking_CNT
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1726   .bss.Rectangle_TargetAngle:00000000 Rectangle_TargetAngle
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1739   .bss.Servo_OriginAngle:00000000 Servo_OriginAngle
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1687   .bss.Laser_XY:00000000 Laser_XY
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1757   .bss.Set_rectangle_XY:00000000 Set_rectangle_XY
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1810   .bss.rectangle_XY:00000000 rectangle_XY
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1745   .bss.Servo_OriginXY:00000000 Servo_OriginXY
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1751   .bss.Servo_ZeroXY:00000000 Servo_ZeroXY
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1733   .bss.RelaServo_Angle:00000000 RelaServo_Angle
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1789   .bss.Y_Pid:00000000 Y_Pid
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1782   .bss.X_Pid:00000000 X_Pid
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1707   .bss.MoveStart_Flag:00000000 MoveStart_Flag
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1713   .bss.MoveStop_Flag:00000000 MoveStop_Flag
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1680   .bss.Delay_time:00000000 Delay_time
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1674   .bss.CenterLocate_angleY:00000000 CenterLocate_angleY
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1667   .bss.CenterLocate_angleX:00000000 CenterLocate_angleX
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1701   .bss.Locate_angleY:00000000 Locate_angleY
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1694   .bss.Locate_angleX:00000000 Locate_angleX
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1663   .bss.CenterLocate_angleX:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1670   .bss.CenterLocate_angleY:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1677   .bss.Delay_time:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1683   .bss.Laser_XY:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1690   .bss.Locate_angleX:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1697   .bss.Locate_angleY:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1704   .bss.MoveStart_Flag:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1710   .bss.MoveStop_Flag:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1716   .bss.Now_OriginAngle.0:00000000 $d
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cchrgarD.s 			page 44
+
+
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1720   .bss.Now_OriginAngle.0:00000000 Now_OriginAngle.0
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1723   .bss.Rectangle_TargetAngle:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1729   .bss.RelaServo_Angle:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1736   .bss.Servo_OriginAngle:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1742   .bss.Servo_OriginXY:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1748   .bss.Servo_ZeroXY:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1754   .bss.Set_rectangle_XY:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1760   .bss.Tracking_CNT:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1766   .bss.Tracking_Enable:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1772   .bss.Tracking_Start_Flag:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1778   .bss.X_Pid:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1785   .bss.Y_Pid:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1792   .bss.integral.2:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1796   .bss.integral.2:00000000 integral.2
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1799   .bss.last_error.1:00000000 $d
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1803   .bss.last_error.1:00000000 last_error.1
+C:\Users\86390\AppData\Local\Temp\cchrgarD.s:1806   .bss.rectangle_XY:00000000 $d
+
+UNDEFINED SYMBOLS
+USL_GETPositionVal
+KeyNum
+servoUsart
+sid_1
+sid_2
+__aeabi_i2d
+__aeabi_dmul
+__aeabi_dcmplt
+HAL_Delay
+USL_SetServoAngle
+LASER_RESET_Start
+Data_FinishGet
+GetOriginData_Flag
+ShijueRecv_Buffer
+My_CoordinateData
+Data_StartGet
+FinishRectangle_Flag
+Get_vofa_PID_Rxflag
+Get_id_Flag_1
+Get_id_Flag_2
+RxPacket_Data_Handle
+PID_index_1
+PID_index_2
+Get_Vofa_RxData
+PID_Mode

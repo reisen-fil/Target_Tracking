@@ -1,0 +1,1504 @@
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"ring_buffer.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.RingBuffer_Reset,"ax",%progbits
+  20              		.align	1
+  21              		.global	RingBuffer_Reset
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	RingBuffer_Reset:
+  27              	.LVL0:
+  28              	.LFB135:
+  29              		.file 1 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo/ring_buffer.c"
+   1:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** #include "ring_buffer.h"
+   2:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+   3:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 队列重置
+   4:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** void RingBuffer_Reset(RingBufferTypeDef *ringBuf){
+  30              		.loc 1 4 50 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+   5:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	// 队首指针跟队尾指针都指向buffer的首个地址
+   6:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	ringBuf->head = 0;
+  35              		.loc 1 6 2 view .LVU1
+  36              		.loc 1 6 16 is_stmt 0 view .LVU2
+  37 0000 0023     		movs	r3, #0
+  38 0002 8380     		strh	r3, [r0, #4]	@ movhi
+   7:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	ringBuf->tail = 0;
+  39              		.loc 1 7 2 is_stmt 1 view .LVU3
+  40              		.loc 1 7 16 is_stmt 0 view .LVU4
+  41 0004 C380     		strh	r3, [r0, #6]	@ movhi
+   8:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+  42              		.loc 1 8 1 view .LVU5
+  43 0006 7047     		bx	lr
+  44              		.cfi_endproc
+  45              	.LFE135:
+  47              		.section	.text.RingBuffer_Init,"ax",%progbits
+  48              		.align	1
+  49              		.global	RingBuffer_Init
+  50              		.syntax unified
+  51              		.thumb
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 2
+
+
+  52              		.thumb_func
+  54              	RingBuffer_Init:
+  55              	.LVL1:
+  56              	.LFB136:
+   9:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+  10:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 创建队列
+  11:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** void RingBuffer_Init(RingBufferTypeDef* ringBuf, uint16_t capacity, uint8_t *buffer){
+  57              		.loc 1 11 85 is_stmt 1 view -0
+  58              		.cfi_startproc
+  59              		@ args = 0, pretend = 0, frame = 0
+  60              		@ frame_needed = 0, uses_anonymous_args = 0
+  61              		@ link register save eliminated.
+  12:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c ****     // RingBufferTypeDef *ringBuf = (RingBufferTypeDef *)malloc(sizeof(RingBufferTypeDef));
+  13:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	// Buffer内存申请成功
+  14:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	ringBuf->buffer = buffer;// (uint8_t *)malloc(ringBuf->size);
+  62              		.loc 1 14 2 view .LVU7
+  63              		.loc 1 14 18 is_stmt 0 view .LVU8
+  64 0000 0260     		str	r2, [r0]
+  15:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	ringBuf->head = 0;
+  65              		.loc 1 15 2 is_stmt 1 view .LVU9
+  66              		.loc 1 15 16 is_stmt 0 view .LVU10
+  67 0002 0023     		movs	r3, #0
+  68 0004 8380     		strh	r3, [r0, #4]	@ movhi
+  16:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	ringBuf->tail = 0;
+  69              		.loc 1 16 2 is_stmt 1 view .LVU11
+  70              		.loc 1 16 16 is_stmt 0 view .LVU12
+  71 0006 C380     		strh	r3, [r0, #6]	@ movhi
+  17:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	// 尺寸size需要比容量capacity大一
+  18:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	ringBuf->size = capacity + 1;
+  72              		.loc 1 18 2 is_stmt 1 view .LVU13
+  73              		.loc 1 18 27 is_stmt 0 view .LVU14
+  74 0008 0131     		adds	r1, r1, #1
+  75              	.LVL2:
+  76              		.loc 1 18 16 view .LVU15
+  77 000a 0181     		strh	r1, [r0, #8]	@ movhi
+  19:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	// 数值初始化置为0
+  20:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	for (uint16_t i=0; i<ringBuf->size; i++){
+  78              		.loc 1 20 2 is_stmt 1 view .LVU16
+  79              	.LBB2:
+  80              		.loc 1 20 7 view .LVU17
+  81              	.LVL3:
+  82              		.loc 1 20 2 is_stmt 0 view .LVU18
+  83 000c 04E0     		b	.L3
+  84              	.LVL4:
+  85              	.L4:
+  21:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		ringBuf->buffer[i] = 0;
+  86              		.loc 1 21 3 is_stmt 1 discriminator 3 view .LVU19
+  87              		.loc 1 21 10 is_stmt 0 discriminator 3 view .LVU20
+  88 000e 0268     		ldr	r2, [r0]
+  89              		.loc 1 21 22 discriminator 3 view .LVU21
+  90 0010 0021     		movs	r1, #0
+  91 0012 D154     		strb	r1, [r2, r3]
+  20:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		ringBuf->buffer[i] = 0;
+  92              		.loc 1 20 38 is_stmt 1 discriminator 3 view .LVU22
+  20:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		ringBuf->buffer[i] = 0;
+  93              		.loc 1 20 39 is_stmt 0 discriminator 3 view .LVU23
+  94 0014 0133     		adds	r3, r3, #1
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 3
+
+
+  95              	.LVL5:
+  20:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		ringBuf->buffer[i] = 0;
+  96              		.loc 1 20 39 discriminator 3 view .LVU24
+  97 0016 9BB2     		uxth	r3, r3
+  98              	.LVL6:
+  99              	.L3:
+  20:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		ringBuf->buffer[i] = 0;
+ 100              		.loc 1 20 21 is_stmt 1 discriminator 1 view .LVU25
+  20:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		ringBuf->buffer[i] = 0;
+ 101              		.loc 1 20 30 is_stmt 0 discriminator 1 view .LVU26
+ 102 0018 0289     		ldrh	r2, [r0, #8]
+  20:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		ringBuf->buffer[i] = 0;
+ 103              		.loc 1 20 2 discriminator 1 view .LVU27
+ 104 001a 9A42     		cmp	r2, r3
+ 105 001c F7D8     		bhi	.L4
+ 106              	.LBE2:
+  22:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	}
+  23:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	// printf("[RingBuffer_Init] ring buffer init pbuffer=%p\n", ringBuf->buffer);
+  24:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 107              		.loc 1 24 1 view .LVU28
+ 108 001e 7047     		bx	lr
+ 109              		.cfi_endproc
+ 110              	.LFE136:
+ 112              		.section	.text.RingBuffer_GetCapacity,"ax",%progbits
+ 113              		.align	1
+ 114              		.global	RingBuffer_GetCapacity
+ 115              		.syntax unified
+ 116              		.thumb
+ 117              		.thumb_func
+ 119              	RingBuffer_GetCapacity:
+ 120              	.LVL7:
+ 121              	.LFB137:
+  25:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+  26:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 销毁队列
+  27:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** //void RingBuffer_Destory(RingBufferTypeDef *ringBuf){
+  28:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** //	free(ringBuf->buffer);
+  29:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** //	free(ringBuf);
+  30:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** //}
+  31:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+  32:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 获得环形队列的容量
+  33:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** uint16_t RingBuffer_GetCapacity(RingBufferTypeDef *ringBuf){
+ 122              		.loc 1 33 60 is_stmt 1 view -0
+ 123              		.cfi_startproc
+ 124              		@ args = 0, pretend = 0, frame = 0
+ 125              		@ frame_needed = 0, uses_anonymous_args = 0
+ 126              		@ link register save eliminated.
+  34:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	return ringBuf->size - 1;
+ 127              		.loc 1 34 2 view .LVU30
+ 128              		.loc 1 34 16 is_stmt 0 view .LVU31
+ 129 0000 0089     		ldrh	r0, [r0, #8]
+ 130              	.LVL8:
+ 131              		.loc 1 34 23 view .LVU32
+ 132 0002 0138     		subs	r0, r0, #1
+  35:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 133              		.loc 1 35 1 view .LVU33
+ 134 0004 80B2     		uxth	r0, r0
+ 135 0006 7047     		bx	lr
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 4
+
+
+ 136              		.cfi_endproc
+ 137              	.LFE137:
+ 139              		.section	.text.RingBuffer_GetByteUsed,"ax",%progbits
+ 140              		.align	1
+ 141              		.global	RingBuffer_GetByteUsed
+ 142              		.syntax unified
+ 143              		.thumb
+ 144              		.thumb_func
+ 146              	RingBuffer_GetByteUsed:
+ 147              	.LVL9:
+ 148              	.LFB138:
+  36:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+  37:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 获取环形队列已经存好的字节数
+  38:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** uint16_t RingBuffer_GetByteUsed(RingBufferTypeDef *ringBuf){
+ 149              		.loc 1 38 60 is_stmt 1 view -0
+ 150              		.cfi_startproc
+ 151              		@ args = 0, pretend = 0, frame = 0
+ 152              		@ frame_needed = 0, uses_anonymous_args = 0
+ 153              		.loc 1 38 60 is_stmt 0 view .LVU35
+ 154 0000 38B5     		push	{r3, r4, r5, lr}
+ 155              	.LCFI0:
+ 156              		.cfi_def_cfa_offset 16
+ 157              		.cfi_offset 3, -16
+ 158              		.cfi_offset 4, -12
+ 159              		.cfi_offset 5, -8
+ 160              		.cfi_offset 14, -4
+  39:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	if (ringBuf->head > ringBuf->tail){
+ 161              		.loc 1 39 2 is_stmt 1 view .LVU36
+ 162              		.loc 1 39 13 is_stmt 0 view .LVU37
+ 163 0002 8588     		ldrh	r5, [r0, #4]
+ 164              		.loc 1 39 29 view .LVU38
+ 165 0004 C488     		ldrh	r4, [r0, #6]
+ 166              		.loc 1 39 5 view .LVU39
+ 167 0006 A542     		cmp	r5, r4
+ 168 0008 07D9     		bls	.L7
+  40:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		return RingBuffer_GetCapacity(ringBuf) - (ringBuf->head - ringBuf->tail - 1);
+ 169              		.loc 1 40 3 is_stmt 1 view .LVU40
+ 170              		.loc 1 40 10 is_stmt 0 view .LVU41
+ 171 000a FFF7FEFF 		bl	RingBuffer_GetCapacity
+ 172              	.LVL10:
+ 173              		.loc 1 40 75 view .LVU42
+ 174 000e 641B     		subs	r4, r4, r5
+ 175              		.loc 1 40 42 view .LVU43
+ 176 0010 10FA84F0 		uxtah	r0, r0, r4
+ 177 0014 0130     		adds	r0, r0, #1
+ 178 0016 80B2     		uxth	r0, r0
+ 179              	.L8:
+  41:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	}else{
+  42:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		return ringBuf->tail - ringBuf->head;
+  43:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	}
+  44:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 180              		.loc 1 44 1 view .LVU44
+ 181 0018 38BD     		pop	{r3, r4, r5, pc}
+ 182              	.LVL11:
+ 183              	.L7:
+  42:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	}
+ 184              		.loc 1 42 3 is_stmt 1 view .LVU45
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 5
+
+
+  42:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	}
+ 185              		.loc 1 42 24 is_stmt 0 view .LVU46
+ 186 001a 641B     		subs	r4, r4, r5
+ 187 001c A0B2     		uxth	r0, r4
+ 188              	.LVL12:
+  42:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	}
+ 189              		.loc 1 42 24 view .LVU47
+ 190 001e FBE7     		b	.L8
+ 191              		.cfi_endproc
+ 192              	.LFE138:
+ 194              		.section	.text.RingBuffer_GetByteFree,"ax",%progbits
+ 195              		.align	1
+ 196              		.global	RingBuffer_GetByteFree
+ 197              		.syntax unified
+ 198              		.thumb
+ 199              		.thumb_func
+ 201              	RingBuffer_GetByteFree:
+ 202              	.LVL13:
+ 203              	.LFB139:
+  45:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+  46:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 获取队列的剩余容量
+  47:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** uint16_t RingBuffer_GetByteFree(RingBufferTypeDef *ringBuf){
+ 204              		.loc 1 47 60 is_stmt 1 view -0
+ 205              		.cfi_startproc
+ 206              		@ args = 0, pretend = 0, frame = 0
+ 207              		@ frame_needed = 0, uses_anonymous_args = 0
+ 208              		.loc 1 47 60 is_stmt 0 view .LVU49
+ 209 0000 38B5     		push	{r3, r4, r5, lr}
+ 210              	.LCFI1:
+ 211              		.cfi_def_cfa_offset 16
+ 212              		.cfi_offset 3, -16
+ 213              		.cfi_offset 4, -12
+ 214              		.cfi_offset 5, -8
+ 215              		.cfi_offset 14, -4
+ 216 0002 0546     		mov	r5, r0
+  48:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	return RingBuffer_GetCapacity(ringBuf) - RingBuffer_GetByteUsed(ringBuf);
+ 217              		.loc 1 48 2 is_stmt 1 view .LVU50
+ 218              		.loc 1 48 9 is_stmt 0 view .LVU51
+ 219 0004 FFF7FEFF 		bl	RingBuffer_GetCapacity
+ 220              	.LVL14:
+ 221              		.loc 1 48 9 view .LVU52
+ 222 0008 0446     		mov	r4, r0
+ 223              		.loc 1 48 43 view .LVU53
+ 224 000a 2846     		mov	r0, r5
+ 225 000c FFF7FEFF 		bl	RingBuffer_GetByteUsed
+ 226              	.LVL15:
+ 227              		.loc 1 48 41 view .LVU54
+ 228 0010 201A     		subs	r0, r4, r0
+  49:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 229              		.loc 1 49 1 view .LVU55
+ 230 0012 80B2     		uxth	r0, r0
+ 231 0014 38BD     		pop	{r3, r4, r5, pc}
+ 232              		.loc 1 49 1 view .LVU56
+ 233              		.cfi_endproc
+ 234              	.LFE139:
+ 236              		.section	.text.RingBuffer_IsEmpty,"ax",%progbits
+ 237              		.align	1
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 6
+
+
+ 238              		.global	RingBuffer_IsEmpty
+ 239              		.syntax unified
+ 240              		.thumb
+ 241              		.thumb_func
+ 243              	RingBuffer_IsEmpty:
+ 244              	.LVL16:
+ 245              	.LFB140:
+  50:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+  51:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 判断环形队列是否为空
+  52:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** uint8_t RingBuffer_IsEmpty(RingBufferTypeDef *ringBuf){
+ 246              		.loc 1 52 55 is_stmt 1 view -0
+ 247              		.cfi_startproc
+ 248              		@ args = 0, pretend = 0, frame = 0
+ 249              		@ frame_needed = 0, uses_anonymous_args = 0
+ 250              		.loc 1 52 55 is_stmt 0 view .LVU58
+ 251 0000 38B5     		push	{r3, r4, r5, lr}
+ 252              	.LCFI2:
+ 253              		.cfi_def_cfa_offset 16
+ 254              		.cfi_offset 3, -16
+ 255              		.cfi_offset 4, -12
+ 256              		.cfi_offset 5, -8
+ 257              		.cfi_offset 14, -4
+ 258 0002 0546     		mov	r5, r0
+  53:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	return RingBuffer_GetByteFree(ringBuf) == RingBuffer_GetCapacity(ringBuf);
+ 259              		.loc 1 53 2 is_stmt 1 view .LVU59
+ 260              		.loc 1 53 9 is_stmt 0 view .LVU60
+ 261 0004 FFF7FEFF 		bl	RingBuffer_GetByteFree
+ 262              	.LVL17:
+ 263              		.loc 1 53 9 view .LVU61
+ 264 0008 0446     		mov	r4, r0
+ 265              		.loc 1 53 44 view .LVU62
+ 266 000a 2846     		mov	r0, r5
+ 267 000c FFF7FEFF 		bl	RingBuffer_GetCapacity
+ 268              	.LVL18:
+  54:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 269              		.loc 1 54 1 view .LVU63
+ 270 0010 8442     		cmp	r4, r0
+ 271 0012 14BF     		ite	ne
+ 272 0014 0020     		movne	r0, #0
+ 273 0016 0120     		moveq	r0, #1
+ 274 0018 38BD     		pop	{r3, r4, r5, pc}
+ 275              		.loc 1 54 1 view .LVU64
+ 276              		.cfi_endproc
+ 277              	.LFE140:
+ 279              		.section	.text.RingBuffer_IsFull,"ax",%progbits
+ 280              		.align	1
+ 281              		.global	RingBuffer_IsFull
+ 282              		.syntax unified
+ 283              		.thumb
+ 284              		.thumb_func
+ 286              	RingBuffer_IsFull:
+ 287              	.LVL19:
+ 288              	.LFB141:
+  55:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+  56:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 判断环形队列是否已满
+  57:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** uint8_t RingBuffer_IsFull(RingBufferTypeDef *ringBuf){
+ 289              		.loc 1 57 54 is_stmt 1 view -0
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 7
+
+
+ 290              		.cfi_startproc
+ 291              		@ args = 0, pretend = 0, frame = 0
+ 292              		@ frame_needed = 0, uses_anonymous_args = 0
+ 293              		.loc 1 57 54 is_stmt 0 view .LVU66
+ 294 0000 08B5     		push	{r3, lr}
+ 295              	.LCFI3:
+ 296              		.cfi_def_cfa_offset 8
+ 297              		.cfi_offset 3, -8
+ 298              		.cfi_offset 14, -4
+  58:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	return RingBuffer_GetByteFree(ringBuf) == 0;
+ 299              		.loc 1 58 2 is_stmt 1 view .LVU67
+ 300              		.loc 1 58 9 is_stmt 0 view .LVU68
+ 301 0002 FFF7FEFF 		bl	RingBuffer_GetByteFree
+ 302              	.LVL20:
+  59:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 303              		.loc 1 59 1 view .LVU69
+ 304 0006 B0FA80F0 		clz	r0, r0
+ 305 000a 4009     		lsrs	r0, r0, #5
+ 306 000c 08BD     		pop	{r3, pc}
+ 307              		.cfi_endproc
+ 308              	.LFE141:
+ 310              		.section	.text.RingBuffer_GetValueByIndex,"ax",%progbits
+ 311              		.align	1
+ 312              		.global	RingBuffer_GetValueByIndex
+ 313              		.syntax unified
+ 314              		.thumb
+ 315              		.thumb_func
+ 317              	RingBuffer_GetValueByIndex:
+ 318              	.LVL21:
+ 319              	.LFB142:
+  60:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+  61:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 根据索引号读取第i个元素
+  62:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** uint8_t RingBuffer_GetValueByIndex(RingBufferTypeDef *ringBuf, uint16_t index){
+ 320              		.loc 1 62 79 is_stmt 1 view -0
+ 321              		.cfi_startproc
+ 322              		@ args = 0, pretend = 0, frame = 0
+ 323              		@ frame_needed = 0, uses_anonymous_args = 0
+ 324              		.loc 1 62 79 is_stmt 0 view .LVU71
+ 325 0000 38B5     		push	{r3, r4, r5, lr}
+ 326              	.LCFI4:
+ 327              		.cfi_def_cfa_offset 16
+ 328              		.cfi_offset 3, -16
+ 329              		.cfi_offset 4, -12
+ 330              		.cfi_offset 5, -8
+ 331              		.cfi_offset 14, -4
+ 332 0002 0546     		mov	r5, r0
+ 333 0004 0C46     		mov	r4, r1
+  63:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	if (index >= RingBuffer_GetByteUsed(ringBuf)){
+ 334              		.loc 1 63 2 is_stmt 1 view .LVU72
+ 335              		.loc 1 63 15 is_stmt 0 view .LVU73
+ 336 0006 FFF7FEFF 		bl	RingBuffer_GetByteUsed
+ 337              	.LVL22:
+ 338              		.loc 1 63 5 view .LVU74
+ 339 000a A042     		cmp	r0, r4
+ 340 000c 0BD9     		bls	.L18
+  64:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		// 索引号超出了范围
+  65:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		return 0;
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 8
+
+
+  66:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	}
+  67:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	uint16_t rbIdx = (ringBuf->head + index + 1) % ringBuf->size;
+ 341              		.loc 1 67 2 is_stmt 1 view .LVU75
+ 342              		.loc 1 67 27 is_stmt 0 view .LVU76
+ 343 000e A988     		ldrh	r1, [r5, #4]
+ 344              		.loc 1 67 34 view .LVU77
+ 345 0010 0C44     		add	r4, r4, r1
+ 346              		.loc 1 67 42 view .LVU78
+ 347 0012 0134     		adds	r4, r4, #1
+ 348              		.loc 1 67 56 view .LVU79
+ 349 0014 2B89     		ldrh	r3, [r5, #8]
+ 350              		.loc 1 67 47 view .LVU80
+ 351 0016 94FBF3F2 		sdiv	r2, r4, r3
+ 352 001a 03FB1244 		mls	r4, r3, r2, r4
+ 353              	.LVL23:
+  68:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	return ringBuf->buffer[rbIdx];
+ 354              		.loc 1 68 2 is_stmt 1 view .LVU81
+ 355              		.loc 1 68 16 is_stmt 0 view .LVU82
+ 356 001e 2B68     		ldr	r3, [r5]
+ 357              		.loc 1 68 24 view .LVU83
+ 358 0020 A4B2     		uxth	r4, r4
+ 359              		.loc 1 68 24 view .LVU84
+ 360 0022 185D     		ldrb	r0, [r3, r4]	@ zero_extendqisi2
+ 361              	.LVL24:
+ 362              	.L17:
+  69:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 363              		.loc 1 69 1 view .LVU85
+ 364 0024 38BD     		pop	{r3, r4, r5, pc}
+ 365              	.LVL25:
+ 366              	.L18:
+  65:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	}
+ 367              		.loc 1 65 10 view .LVU86
+ 368 0026 0020     		movs	r0, #0
+ 369 0028 FCE7     		b	.L17
+ 370              		.cfi_endproc
+ 371              	.LFE142:
+ 373              		.section	.text.RingBuffer_Pop,"ax",%progbits
+ 374              		.align	1
+ 375              		.global	RingBuffer_Pop
+ 376              		.syntax unified
+ 377              		.thumb
+ 378              		.thumb_func
+ 380              	RingBuffer_Pop:
+ 381              	.LVL26:
+ 382              	.LFB143:
+  70:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+  71:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 弹出队首元素
+  72:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** uint8_t RingBuffer_Pop(RingBufferTypeDef *ringBuf){
+ 383              		.loc 1 72 51 is_stmt 1 view -0
+ 384              		.cfi_startproc
+ 385              		@ args = 0, pretend = 0, frame = 0
+ 386              		@ frame_needed = 0, uses_anonymous_args = 0
+ 387              		.loc 1 72 51 is_stmt 0 view .LVU88
+ 388 0000 10B5     		push	{r4, lr}
+ 389              	.LCFI5:
+ 390              		.cfi_def_cfa_offset 8
+ 391              		.cfi_offset 4, -8
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 9
+
+
+ 392              		.cfi_offset 14, -4
+ 393 0002 0446     		mov	r4, r0
+  73:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	uint8_t temp;
+ 394              		.loc 1 73 2 is_stmt 1 view .LVU89
+  74:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	if(RingBuffer_IsEmpty(ringBuf)){
+ 395              		.loc 1 74 2 view .LVU90
+ 396              		.loc 1 74 5 is_stmt 0 view .LVU91
+ 397 0004 FFF7FEFF 		bl	RingBuffer_IsEmpty
+ 398              	.LVL27:
+ 399              		.loc 1 74 4 view .LVU92
+ 400 0008 68B9     		cbnz	r0, .L22
+  75:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		return 0;
+  76:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	}
+  77:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	else{
+  78:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		ringBuf->head =(ringBuf->head + 1)%ringBuf->size;
+ 401              		.loc 1 78 3 is_stmt 1 view .LVU93
+ 402              		.loc 1 78 26 is_stmt 0 view .LVU94
+ 403 000a A388     		ldrh	r3, [r4, #4]
+ 404              		.loc 1 78 33 view .LVU95
+ 405 000c 0133     		adds	r3, r3, #1
+ 406              		.loc 1 78 45 view .LVU96
+ 407 000e 2289     		ldrh	r2, [r4, #8]
+ 408              		.loc 1 78 37 view .LVU97
+ 409 0010 93FBF2F1 		sdiv	r1, r3, r2
+ 410 0014 02FB1133 		mls	r3, r2, r1, r3
+ 411              		.loc 1 78 17 view .LVU98
+ 412 0018 9BB2     		uxth	r3, r3
+ 413 001a A380     		strh	r3, [r4, #4]	@ movhi
+  79:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		temp = ringBuf->buffer[ringBuf->head];
+ 414              		.loc 1 79 3 is_stmt 1 view .LVU99
+ 415              		.loc 1 79 17 is_stmt 0 view .LVU100
+ 416 001c 2268     		ldr	r2, [r4]
+ 417              		.loc 1 79 8 view .LVU101
+ 418 001e D05C     		ldrb	r0, [r2, r3]	@ zero_extendqisi2
+ 419              	.LVL28:
+  80:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		ringBuf->buffer[ringBuf->head] = 0;
+ 420              		.loc 1 80 3 is_stmt 1 view .LVU102
+ 421              		.loc 1 80 34 is_stmt 0 view .LVU103
+ 422 0020 0021     		movs	r1, #0
+ 423 0022 D154     		strb	r1, [r2, r3]
+  81:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		return temp;
+ 424              		.loc 1 81 3 is_stmt 1 view .LVU104
+ 425              	.LVL29:
+ 426              	.L21:
+  82:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	}
+  83:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	
+  84:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 427              		.loc 1 84 1 is_stmt 0 view .LVU105
+ 428 0024 10BD     		pop	{r4, pc}
+ 429              	.LVL30:
+ 430              	.L22:
+  75:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	}
+ 431              		.loc 1 75 10 view .LVU106
+ 432 0026 0020     		movs	r0, #0
+ 433 0028 FCE7     		b	.L21
+ 434              		.cfi_endproc
+ 435              	.LFE143:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 10
+
+
+ 437              		.section	.text.RingBuffer_Push,"ax",%progbits
+ 438              		.align	1
+ 439              		.global	RingBuffer_Push
+ 440              		.syntax unified
+ 441              		.thumb
+ 442              		.thumb_func
+ 444              	RingBuffer_Push:
+ 445              	.LVL31:
+ 446              	.LFB144:
+  85:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+  86:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+  87:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 写入队尾元素
+  88:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** void RingBuffer_Push(RingBufferTypeDef *ringBuf, uint8_t value){
+ 447              		.loc 1 88 64 is_stmt 1 view -0
+ 448              		.cfi_startproc
+ 449              		@ args = 0, pretend = 0, frame = 0
+ 450              		@ frame_needed = 0, uses_anonymous_args = 0
+ 451              		.loc 1 88 64 is_stmt 0 view .LVU108
+ 452 0000 38B5     		push	{r3, r4, r5, lr}
+ 453              	.LCFI6:
+ 454              		.cfi_def_cfa_offset 16
+ 455              		.cfi_offset 3, -16
+ 456              		.cfi_offset 4, -12
+ 457              		.cfi_offset 5, -8
+ 458              		.cfi_offset 14, -4
+ 459 0002 0446     		mov	r4, r0
+ 460 0004 0D46     		mov	r5, r1
+  89:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	//printf("[RingBuffer_Push] before detect isFull\n");
+  90:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	if (RingBuffer_IsFull(ringBuf)){
+ 461              		.loc 1 90 2 is_stmt 1 view .LVU109
+ 462              		.loc 1 90 6 is_stmt 0 view .LVU110
+ 463 0006 FFF7FEFF 		bl	RingBuffer_IsFull
+ 464              	.LVL32:
+ 465              		.loc 1 90 5 view .LVU111
+ 466 000a 58B9     		cbnz	r0, .L27
+ 467              	.L25:
+  91:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		// 队列已经写满了, 只能先弹出队首的元素
+  92:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		RingBuffer_Pop(ringBuf);
+  93:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	}
+  94:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	ringBuf->tail =(ringBuf->tail + 1)%ringBuf->size;
+ 468              		.loc 1 94 2 is_stmt 1 view .LVU112
+ 469              		.loc 1 94 25 is_stmt 0 view .LVU113
+ 470 000c E388     		ldrh	r3, [r4, #6]
+ 471              		.loc 1 94 32 view .LVU114
+ 472 000e 0133     		adds	r3, r3, #1
+ 473              		.loc 1 94 44 view .LVU115
+ 474 0010 2289     		ldrh	r2, [r4, #8]
+ 475              		.loc 1 94 36 view .LVU116
+ 476 0012 93FBF2F1 		sdiv	r1, r3, r2
+ 477 0016 02FB1133 		mls	r3, r2, r1, r3
+ 478              		.loc 1 94 16 view .LVU117
+ 479 001a 9BB2     		uxth	r3, r3
+ 480 001c E380     		strh	r3, [r4, #6]	@ movhi
+  95:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	//printf("[RingBuffer_Push]  ringBuf tail index: %d\n", ringBuf->tail);
+  96:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	ringBuf->buffer[ringBuf->tail] = value;
+ 481              		.loc 1 96 2 is_stmt 1 view .LVU118
+ 482              		.loc 1 96 9 is_stmt 0 view .LVU119
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 11
+
+
+ 483 001e 2268     		ldr	r2, [r4]
+ 484              		.loc 1 96 33 view .LVU120
+ 485 0020 D554     		strb	r5, [r2, r3]
+  97:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	//printf("[RingBuffer_Push] tail %d\n", ringBuf->buffer[ringBuf->tail]);
+  98:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+  99:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 486              		.loc 1 99 1 view .LVU121
+ 487 0022 38BD     		pop	{r3, r4, r5, pc}
+ 488              	.LVL33:
+ 489              	.L27:
+  92:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	}
+ 490              		.loc 1 92 3 is_stmt 1 view .LVU122
+ 491 0024 2046     		mov	r0, r4
+ 492 0026 FFF7FEFF 		bl	RingBuffer_Pop
+ 493              	.LVL34:
+ 494 002a EFE7     		b	.L25
+ 495              		.cfi_endproc
+ 496              	.LFE144:
+ 498              		.section	.text.RingBuffer_ReadByte,"ax",%progbits
+ 499              		.align	1
+ 500              		.global	RingBuffer_ReadByte
+ 501              		.syntax unified
+ 502              		.thumb
+ 503              		.thumb_func
+ 505              	RingBuffer_ReadByte:
+ 506              	.LVL35:
+ 507              	.LFB145:
+ 100:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+ 101:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 读取单个字节
+ 102:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** uint8_t RingBuffer_ReadByte(RingBufferTypeDef *ringBuf){
+ 508              		.loc 1 102 56 view -0
+ 509              		.cfi_startproc
+ 510              		@ args = 0, pretend = 0, frame = 0
+ 511              		@ frame_needed = 0, uses_anonymous_args = 0
+ 512              		.loc 1 102 56 is_stmt 0 view .LVU124
+ 513 0000 08B5     		push	{r3, lr}
+ 514              	.LCFI7:
+ 515              		.cfi_def_cfa_offset 8
+ 516              		.cfi_offset 3, -8
+ 517              		.cfi_offset 14, -4
+ 103:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	return RingBuffer_Pop(ringBuf);
+ 518              		.loc 1 103 2 is_stmt 1 view .LVU125
+ 519              		.loc 1 103 9 is_stmt 0 view .LVU126
+ 520 0002 FFF7FEFF 		bl	RingBuffer_Pop
+ 521              	.LVL36:
+ 104:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 522              		.loc 1 104 1 view .LVU127
+ 523 0006 08BD     		pop	{r3, pc}
+ 524              		.cfi_endproc
+ 525              	.LFE145:
+ 527              		.section	.text.RingBuffer_ReadByteArray,"ax",%progbits
+ 528              		.align	1
+ 529              		.global	RingBuffer_ReadByteArray
+ 530              		.syntax unified
+ 531              		.thumb
+ 532              		.thumb_func
+ 534              	RingBuffer_ReadByteArray:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 12
+
+
+ 535              	.LVL37:
+ 536              	.LFB146:
+ 105:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+ 106:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 读取字节数组
+ 107:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** void RingBuffer_ReadByteArray(RingBufferTypeDef *ringBuf, uint8_t* dest, uint16_t size){
+ 537              		.loc 1 107 88 is_stmt 1 view -0
+ 538              		.cfi_startproc
+ 539              		@ args = 0, pretend = 0, frame = 0
+ 540              		@ frame_needed = 0, uses_anonymous_args = 0
+ 541              		.loc 1 107 88 is_stmt 0 view .LVU129
+ 542 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 543              	.LCFI8:
+ 544              		.cfi_def_cfa_offset 24
+ 545              		.cfi_offset 3, -24
+ 546              		.cfi_offset 4, -20
+ 547              		.cfi_offset 5, -16
+ 548              		.cfi_offset 6, -12
+ 549              		.cfi_offset 7, -8
+ 550              		.cfi_offset 14, -4
+ 551 0002 0746     		mov	r7, r0
+ 552 0004 0E46     		mov	r6, r1
+ 553 0006 1546     		mov	r5, r2
+ 108:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	for(uint16_t idx=0; idx<size; idx++){
+ 554              		.loc 1 108 2 is_stmt 1 view .LVU130
+ 555              	.LBB3:
+ 556              		.loc 1 108 6 view .LVU131
+ 557              	.LVL38:
+ 558              		.loc 1 108 15 is_stmt 0 view .LVU132
+ 559 0008 0024     		movs	r4, #0
+ 560              		.loc 1 108 2 view .LVU133
+ 561 000a 05E0     		b	.L31
+ 562              	.LVL39:
+ 563              	.L32:
+ 109:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		dest[idx] = RingBuffer_Pop(ringBuf);
+ 564              		.loc 1 109 3 is_stmt 1 discriminator 3 view .LVU134
+ 565              		.loc 1 109 15 is_stmt 0 discriminator 3 view .LVU135
+ 566 000c 3846     		mov	r0, r7
+ 567 000e FFF7FEFF 		bl	RingBuffer_Pop
+ 568              	.LVL40:
+ 569              		.loc 1 109 13 discriminator 3 view .LVU136
+ 570 0012 3055     		strb	r0, [r6, r4]
+ 108:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	for(uint16_t idx=0; idx<size; idx++){
+ 571              		.loc 1 108 32 is_stmt 1 discriminator 3 view .LVU137
+ 108:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	for(uint16_t idx=0; idx<size; idx++){
+ 572              		.loc 1 108 35 is_stmt 0 discriminator 3 view .LVU138
+ 573 0014 0134     		adds	r4, r4, #1
+ 574              	.LVL41:
+ 108:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	for(uint16_t idx=0; idx<size; idx++){
+ 575              		.loc 1 108 35 discriminator 3 view .LVU139
+ 576 0016 A4B2     		uxth	r4, r4
+ 577              	.LVL42:
+ 578              	.L31:
+ 108:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	for(uint16_t idx=0; idx<size; idx++){
+ 579              		.loc 1 108 22 is_stmt 1 discriminator 1 view .LVU140
+ 108:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	for(uint16_t idx=0; idx<size; idx++){
+ 580              		.loc 1 108 2 is_stmt 0 discriminator 1 view .LVU141
+ 581 0018 AC42     		cmp	r4, r5
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 13
+
+
+ 582 001a F7D3     		bcc	.L32
+ 583              	.LBE3:
+ 110:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	}
+ 111:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 584              		.loc 1 111 1 view .LVU142
+ 585 001c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 586              		.loc 1 111 1 view .LVU143
+ 587              		.cfi_endproc
+ 588              	.LFE146:
+ 590              		.section	.text.RingBuffer_ReadShort,"ax",%progbits
+ 591              		.align	1
+ 592              		.global	RingBuffer_ReadShort
+ 593              		.syntax unified
+ 594              		.thumb
+ 595              		.thumb_func
+ 597              	RingBuffer_ReadShort:
+ 598              	.LVL43:
+ 599              	.LFB147:
+ 112:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+ 113:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 读取有符号Short整数(两个字节)
+ 114:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** int16_t RingBuffer_ReadShort(RingBufferTypeDef *ringBuf){
+ 600              		.loc 1 114 57 is_stmt 1 view -0
+ 601              		.cfi_startproc
+ 602              		@ args = 0, pretend = 0, frame = 8
+ 603              		@ frame_needed = 0, uses_anonymous_args = 0
+ 604              		.loc 1 114 57 is_stmt 0 view .LVU145
+ 605 0000 00B5     		push	{lr}
+ 606              	.LCFI9:
+ 607              		.cfi_def_cfa_offset 4
+ 608              		.cfi_offset 14, -4
+ 609 0002 83B0     		sub	sp, sp, #12
+ 610              	.LCFI10:
+ 611              		.cfi_def_cfa_offset 16
+ 115:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	int16_t value;
+ 612              		.loc 1 115 2 is_stmt 1 view .LVU146
+ 116:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	uint8_t *p = (uint8_t *)&value;
+ 613              		.loc 1 116 2 view .LVU147
+ 614              	.LVL44:
+ 117:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	RingBuffer_ReadByteArray(ringBuf, p, 2);
+ 615              		.loc 1 117 2 view .LVU148
+ 616 0004 0222     		movs	r2, #2
+ 617 0006 0DF10601 		add	r1, sp, #6
+ 618              	.LVL45:
+ 619              		.loc 1 117 2 is_stmt 0 view .LVU149
+ 620 000a FFF7FEFF 		bl	RingBuffer_ReadByteArray
+ 621              	.LVL46:
+ 118:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	return value;
+ 622              		.loc 1 118 2 is_stmt 1 view .LVU150
+ 119:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 623              		.loc 1 119 1 is_stmt 0 view .LVU151
+ 624 000e BDF90600 		ldrsh	r0, [sp, #6]
+ 625 0012 03B0     		add	sp, sp, #12
+ 626              	.LCFI11:
+ 627              		.cfi_def_cfa_offset 4
+ 628              		@ sp needed
+ 629 0014 5DF804FB 		ldr	pc, [sp], #4
+ 630              		.loc 1 119 1 view .LVU152
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 14
+
+
+ 631              		.cfi_endproc
+ 632              	.LFE147:
+ 634              		.section	.text.RingBuffer_ReadUShort,"ax",%progbits
+ 635              		.align	1
+ 636              		.global	RingBuffer_ReadUShort
+ 637              		.syntax unified
+ 638              		.thumb
+ 639              		.thumb_func
+ 641              	RingBuffer_ReadUShort:
+ 642              	.LVL47:
+ 643              	.LFB148:
+ 120:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+ 121:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 读取无符号Short整数(两个字节)
+ 122:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** uint16_t RingBuffer_ReadUShort(RingBufferTypeDef *ringBuf){
+ 644              		.loc 1 122 59 is_stmt 1 view -0
+ 645              		.cfi_startproc
+ 646              		@ args = 0, pretend = 0, frame = 8
+ 647              		@ frame_needed = 0, uses_anonymous_args = 0
+ 648              		.loc 1 122 59 is_stmt 0 view .LVU154
+ 649 0000 00B5     		push	{lr}
+ 650              	.LCFI12:
+ 651              		.cfi_def_cfa_offset 4
+ 652              		.cfi_offset 14, -4
+ 653 0002 83B0     		sub	sp, sp, #12
+ 654              	.LCFI13:
+ 655              		.cfi_def_cfa_offset 16
+ 123:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	uint16_t value;
+ 656              		.loc 1 123 2 is_stmt 1 view .LVU155
+ 124:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	uint8_t *p = (uint8_t *)&value;
+ 657              		.loc 1 124 2 view .LVU156
+ 658              	.LVL48:
+ 125:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	RingBuffer_ReadByteArray(ringBuf, p, 2);
+ 659              		.loc 1 125 2 view .LVU157
+ 660 0004 0222     		movs	r2, #2
+ 661 0006 0DF10601 		add	r1, sp, #6
+ 662              	.LVL49:
+ 663              		.loc 1 125 2 is_stmt 0 view .LVU158
+ 664 000a FFF7FEFF 		bl	RingBuffer_ReadByteArray
+ 665              	.LVL50:
+ 126:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	return value;
+ 666              		.loc 1 126 2 is_stmt 1 view .LVU159
+ 127:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 667              		.loc 1 127 1 is_stmt 0 view .LVU160
+ 668 000e BDF80600 		ldrh	r0, [sp, #6]
+ 669 0012 03B0     		add	sp, sp, #12
+ 670              	.LCFI14:
+ 671              		.cfi_def_cfa_offset 4
+ 672              		@ sp needed
+ 673 0014 5DF804FB 		ldr	pc, [sp], #4
+ 674              		.loc 1 127 1 view .LVU161
+ 675              		.cfi_endproc
+ 676              	.LFE148:
+ 678              		.section	.text.RingBuffer_ReadLong,"ax",%progbits
+ 679              		.align	1
+ 680              		.global	RingBuffer_ReadLong
+ 681              		.syntax unified
+ 682              		.thumb
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 15
+
+
+ 683              		.thumb_func
+ 685              	RingBuffer_ReadLong:
+ 686              	.LVL51:
+ 687              	.LFB149:
+ 128:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+ 129:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 读取有符号Long类型的整数(四个字节)
+ 130:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** int32_t RingBuffer_ReadLong(RingBufferTypeDef *ringBuf){
+ 688              		.loc 1 130 56 is_stmt 1 view -0
+ 689              		.cfi_startproc
+ 690              		@ args = 0, pretend = 0, frame = 8
+ 691              		@ frame_needed = 0, uses_anonymous_args = 0
+ 692              		.loc 1 130 56 is_stmt 0 view .LVU163
+ 693 0000 00B5     		push	{lr}
+ 694              	.LCFI15:
+ 695              		.cfi_def_cfa_offset 4
+ 696              		.cfi_offset 14, -4
+ 697 0002 83B0     		sub	sp, sp, #12
+ 698              	.LCFI16:
+ 699              		.cfi_def_cfa_offset 16
+ 131:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	int32_t value;
+ 700              		.loc 1 131 2 is_stmt 1 view .LVU164
+ 132:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	uint8_t *p = (uint8_t *)&value;
+ 701              		.loc 1 132 2 view .LVU165
+ 702              	.LVL52:
+ 133:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	RingBuffer_ReadByteArray(ringBuf, p, 4);
+ 703              		.loc 1 133 2 view .LVU166
+ 704 0004 0422     		movs	r2, #4
+ 705 0006 0DEB0201 		add	r1, sp, r2
+ 706 000a FFF7FEFF 		bl	RingBuffer_ReadByteArray
+ 707              	.LVL53:
+ 134:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	return value;
+ 708              		.loc 1 134 2 view .LVU167
+ 135:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 709              		.loc 1 135 1 is_stmt 0 view .LVU168
+ 710 000e 0198     		ldr	r0, [sp, #4]
+ 711 0010 03B0     		add	sp, sp, #12
+ 712              	.LCFI17:
+ 713              		.cfi_def_cfa_offset 4
+ 714              		@ sp needed
+ 715 0012 5DF804FB 		ldr	pc, [sp], #4
+ 716              		.loc 1 135 1 view .LVU169
+ 717              		.cfi_endproc
+ 718              	.LFE149:
+ 720              		.section	.text.RingBuffer_ReadULong,"ax",%progbits
+ 721              		.align	1
+ 722              		.global	RingBuffer_ReadULong
+ 723              		.syntax unified
+ 724              		.thumb
+ 725              		.thumb_func
+ 727              	RingBuffer_ReadULong:
+ 728              	.LVL54:
+ 729              	.LFB150:
+ 136:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+ 137:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 读取无符号Long类型的整数(四个字节)
+ 138:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** uint32_t RingBuffer_ReadULong(RingBufferTypeDef *ringBuf){
+ 730              		.loc 1 138 58 is_stmt 1 view -0
+ 731              		.cfi_startproc
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 16
+
+
+ 732              		@ args = 0, pretend = 0, frame = 8
+ 733              		@ frame_needed = 0, uses_anonymous_args = 0
+ 734              		.loc 1 138 58 is_stmt 0 view .LVU171
+ 735 0000 00B5     		push	{lr}
+ 736              	.LCFI18:
+ 737              		.cfi_def_cfa_offset 4
+ 738              		.cfi_offset 14, -4
+ 739 0002 83B0     		sub	sp, sp, #12
+ 740              	.LCFI19:
+ 741              		.cfi_def_cfa_offset 16
+ 139:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	uint32_t value;
+ 742              		.loc 1 139 2 is_stmt 1 view .LVU172
+ 140:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	uint8_t *p = (uint8_t *)&value;
+ 743              		.loc 1 140 2 view .LVU173
+ 744              	.LVL55:
+ 141:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	RingBuffer_ReadByteArray(ringBuf, p, 4);
+ 745              		.loc 1 141 2 view .LVU174
+ 746 0004 0422     		movs	r2, #4
+ 747 0006 0DEB0201 		add	r1, sp, r2
+ 748 000a FFF7FEFF 		bl	RingBuffer_ReadByteArray
+ 749              	.LVL56:
+ 142:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	return value;
+ 750              		.loc 1 142 2 view .LVU175
+ 143:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 751              		.loc 1 143 1 is_stmt 0 view .LVU176
+ 752 000e 0198     		ldr	r0, [sp, #4]
+ 753 0010 03B0     		add	sp, sp, #12
+ 754              	.LCFI20:
+ 755              		.cfi_def_cfa_offset 4
+ 756              		@ sp needed
+ 757 0012 5DF804FB 		ldr	pc, [sp], #4
+ 758              		.loc 1 143 1 view .LVU177
+ 759              		.cfi_endproc
+ 760              	.LFE150:
+ 762              		.section	.text.RingBuffer_ReadFloat,"ax",%progbits
+ 763              		.align	1
+ 764              		.global	RingBuffer_ReadFloat
+ 765              		.syntax unified
+ 766              		.thumb
+ 767              		.thumb_func
+ 769              	RingBuffer_ReadFloat:
+ 770              	.LVL57:
+ 771              	.LFB151:
+ 144:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+ 145:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 读取浮点数(四个字节)
+ 146:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** float RingBuffer_ReadFloat(RingBufferTypeDef *ringBuf){
+ 772              		.loc 1 146 55 is_stmt 1 view -0
+ 773              		.cfi_startproc
+ 774              		@ args = 0, pretend = 0, frame = 8
+ 775              		@ frame_needed = 0, uses_anonymous_args = 0
+ 776              		.loc 1 146 55 is_stmt 0 view .LVU179
+ 777 0000 00B5     		push	{lr}
+ 778              	.LCFI21:
+ 779              		.cfi_def_cfa_offset 4
+ 780              		.cfi_offset 14, -4
+ 781 0002 83B0     		sub	sp, sp, #12
+ 782              	.LCFI22:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 17
+
+
+ 783              		.cfi_def_cfa_offset 16
+ 147:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	float value;
+ 784              		.loc 1 147 2 is_stmt 1 view .LVU180
+ 148:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	uint8_t *p = (uint8_t *)&value;
+ 785              		.loc 1 148 2 view .LVU181
+ 786              	.LVL58:
+ 149:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	RingBuffer_ReadByteArray(ringBuf, p, 4);
+ 787              		.loc 1 149 2 view .LVU182
+ 788 0004 0422     		movs	r2, #4
+ 789 0006 0DEB0201 		add	r1, sp, r2
+ 790 000a FFF7FEFF 		bl	RingBuffer_ReadByteArray
+ 791              	.LVL59:
+ 150:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	return value;
+ 792              		.loc 1 150 2 view .LVU183
+ 151:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 793              		.loc 1 151 1 is_stmt 0 view .LVU184
+ 794 000e 9DED010A 		vldr.32	s0, [sp, #4]
+ 795 0012 03B0     		add	sp, sp, #12
+ 796              	.LCFI23:
+ 797              		.cfi_def_cfa_offset 4
+ 798              		@ sp needed
+ 799 0014 5DF804FB 		ldr	pc, [sp], #4
+ 800              		.loc 1 151 1 view .LVU185
+ 801              		.cfi_endproc
+ 802              	.LFE151:
+ 804              		.section	.text.RingBuffer_WriteByte,"ax",%progbits
+ 805              		.align	1
+ 806              		.global	RingBuffer_WriteByte
+ 807              		.syntax unified
+ 808              		.thumb
+ 809              		.thumb_func
+ 811              	RingBuffer_WriteByte:
+ 812              	.LVL60:
+ 813              	.LFB152:
+ 152:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+ 153:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 写入单个字节
+ 154:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** void RingBuffer_WriteByte(RingBufferTypeDef *ringBuf, uint8_t value){
+ 814              		.loc 1 154 69 is_stmt 1 view -0
+ 815              		.cfi_startproc
+ 816              		@ args = 0, pretend = 0, frame = 0
+ 817              		@ frame_needed = 0, uses_anonymous_args = 0
+ 818              		.loc 1 154 69 is_stmt 0 view .LVU187
+ 819 0000 08B5     		push	{r3, lr}
+ 820              	.LCFI24:
+ 821              		.cfi_def_cfa_offset 8
+ 822              		.cfi_offset 3, -8
+ 823              		.cfi_offset 14, -4
+ 155:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	RingBuffer_Push(ringBuf, value);
+ 824              		.loc 1 155 2 is_stmt 1 view .LVU188
+ 825 0002 FFF7FEFF 		bl	RingBuffer_Push
+ 826              	.LVL61:
+ 156:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 827              		.loc 1 156 1 is_stmt 0 view .LVU189
+ 828 0006 08BD     		pop	{r3, pc}
+ 829              		.cfi_endproc
+ 830              	.LFE152:
+ 832              		.section	.text.RingBuffer_WriteByteArray,"ax",%progbits
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 18
+
+
+ 833              		.align	1
+ 834              		.global	RingBuffer_WriteByteArray
+ 835              		.syntax unified
+ 836              		.thumb
+ 837              		.thumb_func
+ 839              	RingBuffer_WriteByteArray:
+ 840              	.LVL62:
+ 841              	.LFB153:
+ 157:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+ 158:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 写入字节数组
+ 159:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** void RingBuffer_WriteByteArray(RingBufferTypeDef *ringBuf, uint8_t* src, uint16_t size){
+ 842              		.loc 1 159 88 is_stmt 1 view -0
+ 843              		.cfi_startproc
+ 844              		@ args = 0, pretend = 0, frame = 0
+ 845              		@ frame_needed = 0, uses_anonymous_args = 0
+ 846              		.loc 1 159 88 is_stmt 0 view .LVU191
+ 847 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 848              	.LCFI25:
+ 849              		.cfi_def_cfa_offset 24
+ 850              		.cfi_offset 3, -24
+ 851              		.cfi_offset 4, -20
+ 852              		.cfi_offset 5, -16
+ 853              		.cfi_offset 6, -12
+ 854              		.cfi_offset 7, -8
+ 855              		.cfi_offset 14, -4
+ 856 0002 0746     		mov	r7, r0
+ 857 0004 0E46     		mov	r6, r1
+ 858 0006 1546     		mov	r5, r2
+ 160:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	for(uint16_t idx=0; idx<size; idx++){
+ 859              		.loc 1 160 2 is_stmt 1 view .LVU192
+ 860              	.LBB4:
+ 861              		.loc 1 160 6 view .LVU193
+ 862              	.LVL63:
+ 863              		.loc 1 160 15 is_stmt 0 view .LVU194
+ 864 0008 0024     		movs	r4, #0
+ 865              		.loc 1 160 2 view .LVU195
+ 866 000a 05E0     		b	.L47
+ 867              	.LVL64:
+ 868              	.L48:
+ 161:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		RingBuffer_Push(ringBuf, src[idx]);
+ 869              		.loc 1 161 3 is_stmt 1 discriminator 3 view .LVU196
+ 870 000c 315D     		ldrb	r1, [r6, r4]	@ zero_extendqisi2
+ 871 000e 3846     		mov	r0, r7
+ 872 0010 FFF7FEFF 		bl	RingBuffer_Push
+ 873              	.LVL65:
+ 160:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	for(uint16_t idx=0; idx<size; idx++){
+ 874              		.loc 1 160 32 discriminator 3 view .LVU197
+ 160:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	for(uint16_t idx=0; idx<size; idx++){
+ 875              		.loc 1 160 35 is_stmt 0 discriminator 3 view .LVU198
+ 876 0014 0134     		adds	r4, r4, #1
+ 877              	.LVL66:
+ 160:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	for(uint16_t idx=0; idx<size; idx++){
+ 878              		.loc 1 160 35 discriminator 3 view .LVU199
+ 879 0016 A4B2     		uxth	r4, r4
+ 880              	.LVL67:
+ 881              	.L47:
+ 160:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	for(uint16_t idx=0; idx<size; idx++){
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 19
+
+
+ 882              		.loc 1 160 22 is_stmt 1 discriminator 1 view .LVU200
+ 160:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	for(uint16_t idx=0; idx<size; idx++){
+ 883              		.loc 1 160 2 is_stmt 0 discriminator 1 view .LVU201
+ 884 0018 AC42     		cmp	r4, r5
+ 885 001a F7D3     		bcc	.L48
+ 886              	.LBE4:
+ 162:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	}
+ 163:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 887              		.loc 1 163 1 view .LVU202
+ 888 001c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 889              		.loc 1 163 1 view .LVU203
+ 890              		.cfi_endproc
+ 891              	.LFE153:
+ 893              		.section	.text.RingBuffer_WriteShort,"ax",%progbits
+ 894              		.align	1
+ 895              		.global	RingBuffer_WriteShort
+ 896              		.syntax unified
+ 897              		.thumb
+ 898              		.thumb_func
+ 900              	RingBuffer_WriteShort:
+ 901              	.LVL68:
+ 902              	.LFB154:
+ 164:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 写入有符号Short整数(两个字节)
+ 165:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** void RingBuffer_WriteShort(RingBufferTypeDef *ringBuf, int16_t value){
+ 903              		.loc 1 165 70 is_stmt 1 view -0
+ 904              		.cfi_startproc
+ 905              		@ args = 0, pretend = 0, frame = 8
+ 906              		@ frame_needed = 0, uses_anonymous_args = 0
+ 907              		.loc 1 165 70 is_stmt 0 view .LVU205
+ 908 0000 00B5     		push	{lr}
+ 909              	.LCFI26:
+ 910              		.cfi_def_cfa_offset 4
+ 911              		.cfi_offset 14, -4
+ 912 0002 83B0     		sub	sp, sp, #12
+ 913              	.LCFI27:
+ 914              		.cfi_def_cfa_offset 16
+ 915 0004 ADF80610 		strh	r1, [sp, #6]	@ movhi
+ 166:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	uint8_t *p= (uint8_t *)&value;
+ 916              		.loc 1 166 2 is_stmt 1 view .LVU206
+ 917              	.LVL69:
+ 167:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	RingBuffer_WriteByteArray(ringBuf, p, 2);
+ 918              		.loc 1 167 2 view .LVU207
+ 919 0008 0222     		movs	r2, #2
+ 920 000a 0DF10601 		add	r1, sp, #6
+ 921              	.LVL70:
+ 922              		.loc 1 167 2 is_stmt 0 view .LVU208
+ 923 000e FFF7FEFF 		bl	RingBuffer_WriteByteArray
+ 924              	.LVL71:
+ 168:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 925              		.loc 1 168 1 view .LVU209
+ 926 0012 03B0     		add	sp, sp, #12
+ 927              	.LCFI28:
+ 928              		.cfi_def_cfa_offset 4
+ 929              		@ sp needed
+ 930 0014 5DF804FB 		ldr	pc, [sp], #4
+ 931              		.loc 1 168 1 view .LVU210
+ 932              		.cfi_endproc
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 20
+
+
+ 933              	.LFE154:
+ 935              		.section	.text.RingBuffer_WriteUShort,"ax",%progbits
+ 936              		.align	1
+ 937              		.global	RingBuffer_WriteUShort
+ 938              		.syntax unified
+ 939              		.thumb
+ 940              		.thumb_func
+ 942              	RingBuffer_WriteUShort:
+ 943              	.LVL72:
+ 944              	.LFB155:
+ 169:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+ 170:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 写入无符号Short整数(两个字节)
+ 171:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** void RingBuffer_WriteUShort(RingBufferTypeDef *ringBuf, uint16_t value){
+ 945              		.loc 1 171 72 is_stmt 1 view -0
+ 946              		.cfi_startproc
+ 947              		@ args = 0, pretend = 0, frame = 8
+ 948              		@ frame_needed = 0, uses_anonymous_args = 0
+ 949              		.loc 1 171 72 is_stmt 0 view .LVU212
+ 950 0000 00B5     		push	{lr}
+ 951              	.LCFI29:
+ 952              		.cfi_def_cfa_offset 4
+ 953              		.cfi_offset 14, -4
+ 954 0002 83B0     		sub	sp, sp, #12
+ 955              	.LCFI30:
+ 956              		.cfi_def_cfa_offset 16
+ 957 0004 ADF80610 		strh	r1, [sp, #6]	@ movhi
+ 172:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	uint8_t *p= (uint8_t *)&value;
+ 958              		.loc 1 172 2 is_stmt 1 view .LVU213
+ 959              	.LVL73:
+ 173:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	RingBuffer_WriteByteArray(ringBuf, p, 2);
+ 960              		.loc 1 173 2 view .LVU214
+ 961 0008 0222     		movs	r2, #2
+ 962 000a 0DF10601 		add	r1, sp, #6
+ 963              	.LVL74:
+ 964              		.loc 1 173 2 is_stmt 0 view .LVU215
+ 965 000e FFF7FEFF 		bl	RingBuffer_WriteByteArray
+ 966              	.LVL75:
+ 174:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 967              		.loc 1 174 1 view .LVU216
+ 968 0012 03B0     		add	sp, sp, #12
+ 969              	.LCFI31:
+ 970              		.cfi_def_cfa_offset 4
+ 971              		@ sp needed
+ 972 0014 5DF804FB 		ldr	pc, [sp], #4
+ 973              		.loc 1 174 1 view .LVU217
+ 974              		.cfi_endproc
+ 975              	.LFE155:
+ 977              		.section	.text.RingBuffer_WriteLong,"ax",%progbits
+ 978              		.align	1
+ 979              		.global	RingBuffer_WriteLong
+ 980              		.syntax unified
+ 981              		.thumb
+ 982              		.thumb_func
+ 984              	RingBuffer_WriteLong:
+ 985              	.LVL76:
+ 986              	.LFB156:
+ 175:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 21
+
+
+ 176:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 写入有符号Long类型的整数(四个字节)
+ 177:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** void RingBuffer_WriteLong(RingBufferTypeDef *ringBuf, int32_t value){
+ 987              		.loc 1 177 69 is_stmt 1 view -0
+ 988              		.cfi_startproc
+ 989              		@ args = 0, pretend = 0, frame = 8
+ 990              		@ frame_needed = 0, uses_anonymous_args = 0
+ 991              		.loc 1 177 69 is_stmt 0 view .LVU219
+ 992 0000 00B5     		push	{lr}
+ 993              	.LCFI32:
+ 994              		.cfi_def_cfa_offset 4
+ 995              		.cfi_offset 14, -4
+ 996 0002 83B0     		sub	sp, sp, #12
+ 997              	.LCFI33:
+ 998              		.cfi_def_cfa_offset 16
+ 999 0004 0191     		str	r1, [sp, #4]
+ 178:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	uint8_t *p= (uint8_t *)&value;
+ 1000              		.loc 1 178 2 is_stmt 1 view .LVU220
+ 1001              	.LVL77:
+ 179:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	RingBuffer_WriteByteArray(ringBuf, p, 4);
+ 1002              		.loc 1 179 2 view .LVU221
+ 1003 0006 0422     		movs	r2, #4
+ 1004 0008 0DEB0201 		add	r1, sp, r2
+ 1005              	.LVL78:
+ 1006              		.loc 1 179 2 is_stmt 0 view .LVU222
+ 1007 000c FFF7FEFF 		bl	RingBuffer_WriteByteArray
+ 1008              	.LVL79:
+ 180:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 1009              		.loc 1 180 1 view .LVU223
+ 1010 0010 03B0     		add	sp, sp, #12
+ 1011              	.LCFI34:
+ 1012              		.cfi_def_cfa_offset 4
+ 1013              		@ sp needed
+ 1014 0012 5DF804FB 		ldr	pc, [sp], #4
+ 1015              		.loc 1 180 1 view .LVU224
+ 1016              		.cfi_endproc
+ 1017              	.LFE156:
+ 1019              		.section	.text.RingBuffer_WriteULong,"ax",%progbits
+ 1020              		.align	1
+ 1021              		.global	RingBuffer_WriteULong
+ 1022              		.syntax unified
+ 1023              		.thumb
+ 1024              		.thumb_func
+ 1026              	RingBuffer_WriteULong:
+ 1027              	.LVL80:
+ 1028              	.LFB157:
+ 181:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+ 182:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 写入无符号Long类型的整数(四个字节)
+ 183:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** void RingBuffer_WriteULong(RingBufferTypeDef *ringBuf, uint32_t value){
+ 1029              		.loc 1 183 71 is_stmt 1 view -0
+ 1030              		.cfi_startproc
+ 1031              		@ args = 0, pretend = 0, frame = 8
+ 1032              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1033              		.loc 1 183 71 is_stmt 0 view .LVU226
+ 1034 0000 00B5     		push	{lr}
+ 1035              	.LCFI35:
+ 1036              		.cfi_def_cfa_offset 4
+ 1037              		.cfi_offset 14, -4
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 22
+
+
+ 1038 0002 83B0     		sub	sp, sp, #12
+ 1039              	.LCFI36:
+ 1040              		.cfi_def_cfa_offset 16
+ 1041 0004 0191     		str	r1, [sp, #4]
+ 184:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	uint8_t *p= (uint8_t *)&value;
+ 1042              		.loc 1 184 2 is_stmt 1 view .LVU227
+ 1043              	.LVL81:
+ 185:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	RingBuffer_WriteByteArray(ringBuf, p, 4);
+ 1044              		.loc 1 185 2 view .LVU228
+ 1045 0006 0422     		movs	r2, #4
+ 1046 0008 0DEB0201 		add	r1, sp, r2
+ 1047              	.LVL82:
+ 1048              		.loc 1 185 2 is_stmt 0 view .LVU229
+ 1049 000c FFF7FEFF 		bl	RingBuffer_WriteByteArray
+ 1050              	.LVL83:
+ 186:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 1051              		.loc 1 186 1 view .LVU230
+ 1052 0010 03B0     		add	sp, sp, #12
+ 1053              	.LCFI37:
+ 1054              		.cfi_def_cfa_offset 4
+ 1055              		@ sp needed
+ 1056 0012 5DF804FB 		ldr	pc, [sp], #4
+ 1057              		.loc 1 186 1 view .LVU231
+ 1058              		.cfi_endproc
+ 1059              	.LFE157:
+ 1061              		.section	.text.RingBuffer_WriteFloat,"ax",%progbits
+ 1062              		.align	1
+ 1063              		.global	RingBuffer_WriteFloat
+ 1064              		.syntax unified
+ 1065              		.thumb
+ 1066              		.thumb_func
+ 1068              	RingBuffer_WriteFloat:
+ 1069              	.LVL84:
+ 1070              	.LFB158:
+ 187:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+ 188:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 写入浮点数(四个字节)
+ 189:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** void RingBuffer_WriteFloat(RingBufferTypeDef *ringBuf, float value){
+ 1071              		.loc 1 189 68 is_stmt 1 view -0
+ 1072              		.cfi_startproc
+ 1073              		@ args = 0, pretend = 0, frame = 8
+ 1074              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1075              		.loc 1 189 68 is_stmt 0 view .LVU233
+ 1076 0000 00B5     		push	{lr}
+ 1077              	.LCFI38:
+ 1078              		.cfi_def_cfa_offset 4
+ 1079              		.cfi_offset 14, -4
+ 1080 0002 83B0     		sub	sp, sp, #12
+ 1081              	.LCFI39:
+ 1082              		.cfi_def_cfa_offset 16
+ 1083 0004 8DED010A 		vstr.32	s0, [sp, #4]
+ 190:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	uint8_t *p= (uint8_t *)&value;
+ 1084              		.loc 1 190 2 is_stmt 1 view .LVU234
+ 1085              	.LVL85:
+ 191:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	RingBuffer_WriteByteArray(ringBuf, p, 4);
+ 1086              		.loc 1 191 2 view .LVU235
+ 1087 0008 0422     		movs	r2, #4
+ 1088 000a 0DEB0201 		add	r1, sp, r2
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 23
+
+
+ 1089 000e FFF7FEFF 		bl	RingBuffer_WriteByteArray
+ 1090              	.LVL86:
+ 192:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 1091              		.loc 1 192 1 is_stmt 0 view .LVU236
+ 1092 0012 03B0     		add	sp, sp, #12
+ 1093              	.LCFI40:
+ 1094              		.cfi_def_cfa_offset 4
+ 1095              		@ sp needed
+ 1096 0014 5DF804FB 		ldr	pc, [sp], #4
+ 1097              		.loc 1 192 1 view .LVU237
+ 1098              		.cfi_endproc
+ 1099              	.LFE158:
+ 1101              		.section	.text.RingBuffer_GetChecksum,"ax",%progbits
+ 1102              		.align	1
+ 1103              		.global	RingBuffer_GetChecksum
+ 1104              		.syntax unified
+ 1105              		.thumb
+ 1106              		.thumb_func
+ 1108              	RingBuffer_GetChecksum:
+ 1109              	.LVL87:
+ 1110              	.LFB159:
+ 193:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+ 194:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 
+ 195:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** // 计算校验和
+ 196:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** uint8_t RingBuffer_GetChecksum(RingBufferTypeDef *ringBuf){
+ 1111              		.loc 1 196 59 is_stmt 1 view -0
+ 1112              		.cfi_startproc
+ 1113              		@ args = 0, pretend = 0, frame = 0
+ 1114              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1115              		.loc 1 196 59 is_stmt 0 view .LVU239
+ 1116 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 1117              	.LCFI41:
+ 1118              		.cfi_def_cfa_offset 24
+ 1119              		.cfi_offset 3, -24
+ 1120              		.cfi_offset 4, -20
+ 1121              		.cfi_offset 5, -16
+ 1122              		.cfi_offset 6, -12
+ 1123              		.cfi_offset 7, -8
+ 1124              		.cfi_offset 14, -4
+ 1125 0002 0746     		mov	r7, r0
+ 197:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	uint16_t nByte = RingBuffer_GetByteUsed(ringBuf);
+ 1126              		.loc 1 197 2 is_stmt 1 view .LVU240
+ 1127              		.loc 1 197 19 is_stmt 0 view .LVU241
+ 1128 0004 FFF7FEFF 		bl	RingBuffer_GetByteUsed
+ 1129              	.LVL88:
+ 1130              		.loc 1 197 19 view .LVU242
+ 1131 0008 0646     		mov	r6, r0
+ 1132              	.LVL89:
+ 198:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	uint32_t bSum=0;
+ 1133              		.loc 1 198 2 is_stmt 1 view .LVU243
+ 199:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	// printf("[RingBuffer_GetChecksum] \r\n");
+ 200:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	// 设置指针初始化位置
+ 201:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** //	printf("ringBUF nbyte %d  \r\n ", nByte);
+ 202:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	for(int i=2; i < nByte; i++){
+ 1134              		.loc 1 202 2 view .LVU244
+ 1135              	.LBB5:
+ 1136              		.loc 1 202 6 view .LVU245
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 24
+
+
+ 1137              		.loc 1 202 10 is_stmt 0 view .LVU246
+ 1138 000a 0224     		movs	r4, #2
+ 1139              	.LBE5:
+ 198:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	uint32_t bSum=0;
+ 1140              		.loc 1 198 11 view .LVU247
+ 1141 000c 0025     		movs	r5, #0
+ 1142              	.LBB6:
+ 1143              		.loc 1 202 2 view .LVU248
+ 1144 000e 05E0     		b	.L61
+ 1145              	.LVL90:
+ 1146              	.L62:
+ 203:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		// 指针逐次右移
+ 204:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		bSum = (bSum + RingBuffer_GetValueByIndex(ringBuf, i));
+ 1147              		.loc 1 204 3 is_stmt 1 discriminator 3 view .LVU249
+ 1148              		.loc 1 204 18 is_stmt 0 discriminator 3 view .LVU250
+ 1149 0010 A1B2     		uxth	r1, r4
+ 1150 0012 3846     		mov	r0, r7
+ 1151 0014 FFF7FEFF 		bl	RingBuffer_GetValueByIndex
+ 1152              	.LVL91:
+ 1153              		.loc 1 204 8 discriminator 3 view .LVU251
+ 1154 0018 0544     		add	r5, r5, r0
+ 1155              	.LVL92:
+ 202:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		// 指针逐次右移
+ 1156              		.loc 1 202 26 is_stmt 1 discriminator 3 view .LVU252
+ 202:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		// 指针逐次右移
+ 1157              		.loc 1 202 27 is_stmt 0 discriminator 3 view .LVU253
+ 1158 001a 0134     		adds	r4, r4, #1
+ 1159              	.LVL93:
+ 1160              	.L61:
+ 202:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		// 指针逐次右移
+ 1161              		.loc 1 202 15 is_stmt 1 discriminator 1 view .LVU254
+ 202:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		// 指针逐次右移
+ 1162              		.loc 1 202 2 is_stmt 0 discriminator 1 view .LVU255
+ 1163 001c A642     		cmp	r6, r4
+ 1164 001e F7DC     		bgt	.L62
+ 1165              	.LBE6:
+ 205:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** //		printf("ringBUF  %d  \r\n ", (uint8_t)RingBuffer_GetValueByIndex(ringBuf, i));
+ 206:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 		
+ 207:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	}
+ 208:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	bSum = ~(bSum)&0xFF;
+ 1166              		.loc 1 208 2 is_stmt 1 view .LVU256
+ 1167              		.loc 1 208 9 is_stmt 0 view .LVU257
+ 1168 0020 E843     		mvns	r0, r5
+ 1169              	.LVL94:
+ 209:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	//计算校验和
+ 210:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** 	return bSum;
+ 1170              		.loc 1 210 2 is_stmt 1 view .LVU258
+ 211:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo\ring_buffer.c **** }
+ 1171              		.loc 1 211 1 is_stmt 0 view .LVU259
+ 1172 0022 C0B2     		uxtb	r0, r0
+ 1173              	.LVL95:
+ 1174              		.loc 1 211 1 view .LVU260
+ 1175 0024 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1176              		.loc 1 211 1 view .LVU261
+ 1177              		.cfi_endproc
+ 1178              	.LFE159:
+ 1180              		.text
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 25
+
+
+ 1181              	.Letext0:
+ 1182              		.file 2 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1183              		.file 3 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1184              		.file 4 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo/ring_buffer.h"
+ARM GAS  C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s 			page 26
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ring_buffer.c
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:20     .text.RingBuffer_Reset:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:26     .text.RingBuffer_Reset:00000000 RingBuffer_Reset
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:48     .text.RingBuffer_Init:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:54     .text.RingBuffer_Init:00000000 RingBuffer_Init
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:113    .text.RingBuffer_GetCapacity:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:119    .text.RingBuffer_GetCapacity:00000000 RingBuffer_GetCapacity
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:140    .text.RingBuffer_GetByteUsed:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:146    .text.RingBuffer_GetByteUsed:00000000 RingBuffer_GetByteUsed
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:195    .text.RingBuffer_GetByteFree:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:201    .text.RingBuffer_GetByteFree:00000000 RingBuffer_GetByteFree
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:237    .text.RingBuffer_IsEmpty:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:243    .text.RingBuffer_IsEmpty:00000000 RingBuffer_IsEmpty
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:280    .text.RingBuffer_IsFull:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:286    .text.RingBuffer_IsFull:00000000 RingBuffer_IsFull
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:311    .text.RingBuffer_GetValueByIndex:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:317    .text.RingBuffer_GetValueByIndex:00000000 RingBuffer_GetValueByIndex
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:374    .text.RingBuffer_Pop:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:380    .text.RingBuffer_Pop:00000000 RingBuffer_Pop
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:438    .text.RingBuffer_Push:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:444    .text.RingBuffer_Push:00000000 RingBuffer_Push
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:499    .text.RingBuffer_ReadByte:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:505    .text.RingBuffer_ReadByte:00000000 RingBuffer_ReadByte
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:528    .text.RingBuffer_ReadByteArray:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:534    .text.RingBuffer_ReadByteArray:00000000 RingBuffer_ReadByteArray
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:591    .text.RingBuffer_ReadShort:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:597    .text.RingBuffer_ReadShort:00000000 RingBuffer_ReadShort
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:635    .text.RingBuffer_ReadUShort:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:641    .text.RingBuffer_ReadUShort:00000000 RingBuffer_ReadUShort
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:679    .text.RingBuffer_ReadLong:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:685    .text.RingBuffer_ReadLong:00000000 RingBuffer_ReadLong
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:721    .text.RingBuffer_ReadULong:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:727    .text.RingBuffer_ReadULong:00000000 RingBuffer_ReadULong
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:763    .text.RingBuffer_ReadFloat:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:769    .text.RingBuffer_ReadFloat:00000000 RingBuffer_ReadFloat
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:805    .text.RingBuffer_WriteByte:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:811    .text.RingBuffer_WriteByte:00000000 RingBuffer_WriteByte
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:833    .text.RingBuffer_WriteByteArray:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:839    .text.RingBuffer_WriteByteArray:00000000 RingBuffer_WriteByteArray
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:894    .text.RingBuffer_WriteShort:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:900    .text.RingBuffer_WriteShort:00000000 RingBuffer_WriteShort
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:936    .text.RingBuffer_WriteUShort:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:942    .text.RingBuffer_WriteUShort:00000000 RingBuffer_WriteUShort
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:978    .text.RingBuffer_WriteLong:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:984    .text.RingBuffer_WriteLong:00000000 RingBuffer_WriteLong
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:1020   .text.RingBuffer_WriteULong:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:1026   .text.RingBuffer_WriteULong:00000000 RingBuffer_WriteULong
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:1062   .text.RingBuffer_WriteFloat:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:1068   .text.RingBuffer_WriteFloat:00000000 RingBuffer_WriteFloat
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:1102   .text.RingBuffer_GetChecksum:00000000 $t
+C:\Users\86390\AppData\Local\Temp\cccEyCQ8.s:1108   .text.RingBuffer_GetChecksum:00000000 RingBuffer_GetChecksum
+
+NO UNDEFINED SYMBOLS

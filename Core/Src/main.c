@@ -64,7 +64,8 @@ uint8_t Monitor_Flag,MovingReset_flag;				/* 在任意位置均可复位部分 */
 uint16_t My_CoordinateData[10];						/* 传过来的计算坐标值 */
 uint8_t ShijueRecv_Buffer[20];						/* 传过来的原始数据 */
 
-uint8_t Rectangle_Send=0x66;				/* 接收到四点矩形框数据后向摄像头发送的数据 */
+uint8_t Rectangle_Send=0x66,FinishRectangle_Flag;				
+/* 接收到四点矩形框数据后向摄像头发送的数据  四点矩形框数据接收完成标志位*/
 
 float My_Angle;
 uint8_t Data_FinishGet,Data_StartGet=0;			/* 接收完成标志位  启动接收标志位 */
@@ -148,7 +149,7 @@ int main(void)
 	
 	/* 串行舵机初始化部分 */
 //	HAL_TIM_Base_Start_IT(&htim6);
-  HAL_UART_Receive_IT(&huart1,&RxData, sizeof(RxData));				
+  	HAL_UART_Receive_IT(&huart1,&RxData, sizeof(RxData));				
 	Tick_DelayMs(1000);
 
 //	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_8,GPIO_PIN_SET);			/* 点亮LED灯 */
@@ -157,6 +158,9 @@ int main(void)
 
 	HAL_UART_Receive_IT(&huart2,(uint8_t*)&Rx_Byte,sizeof(Rx_Byte));		/* 调试串口 */
 	HAL_UART_Receive_DMA(&huart3,(uint8_t*)&shijue_RxData,1);
+	
+	USL_SetServoAngle(servoUsart,sid_1,2048,0);
+	USL_SetServoAngle(servoUsart,sid_2,2048,0);
 	
 	
 //	Test = USL_GETPositionVal(servoUsart,sid_1);
@@ -205,11 +209,41 @@ int main(void)
 											Set_RectangleXY(rectangle_XY,Set_rectangle_XY);			/* 获取细分坐标 */
 											Data_StartGet=1;		/* 实时接收激光坐标 */
 										
-											TIM7->CNT=0;		/* 计数值清零 */
-											Tracking_Start_Flag=1;											
-											HAL_TIM_Base_Start_IT(&htim7);
+//											HAL_TIM_Base_Start_IT(&htim7);
+//											Tracking_Start_Flag=1;
+										
 												
-											Set_LaserTracking(rectangle_XY[0],rectangle_XY[1]);			/* 启动矩形框巡线 */
+//											for(uint8_t Rec_time=0;Rec_time<16;Rec_time++)
+//											{
+//													while(1)
+//													{
+////															Set_LaserTracking(Set_rectangle_XY[Rec_time*2],Set_rectangle_XY[Rec_time*2+1]);			/* 启动矩形框巡线 */
+////														
+////															if( 	((Set_rectangle_XY[Rec_time*2]<Laser_XY[0]+1)&&(Set_rectangle_XY[Rec_time*2+1]<Laser_XY[1]+1))|| 
+////																		((Set_rectangle_XY[Rec_time*2]+1>Laser_XY[0])&&(Set_rectangle_XY[Rec_time*2+1]+1>Laser_XY[1]))|| 
+////																		((Set_rectangle_XY[Rec_time*2]<Laser_XY[0]+1)&&(Set_rectangle_XY[Rec_time*2+1]+1>Laser_XY[1]))||
+////																		((Set_rectangle_XY[Rec_time*2]+1>Laser_XY[0])&&(Set_rectangle_XY[Rec_time*2+1]<Laser_XY[1]+1)) )
+////															{
+////																		break;
+////															}
+//																
+//																Set_LaserTracking(Set_rectangle_XY[Rec_time*2],Set_rectangle_XY[Rec_time*2+1]);
+//																if(Tracking_Enable) 
+//																{
+//																		Tracking_Enable=0;
+//																		break;
+//																}
+//													}	
+//											}
+//											
+//											HAL_TIM_Base_Stop_IT(&htim7);	
+//											Tracking_Start_Flag=0;
+//											Tracking_CNT=0;
+
+												while(1)
+												{
+												Set_LaserTracking(Set_rectangle_XY[0],Set_rectangle_XY[1]);
+												}
 
 									}
 									
@@ -426,7 +460,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 						
 				}
 				
-				if(DataRecv_Flag == 1 )
+				if(DataRecv_Flag == 1 && FinishRectangle_Flag == 0)			/* 四点矩形框坐标接收 */
 				{
 						if(Recv_time++>=1)
 						{							
@@ -440,6 +474,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 									
 										Data_FinishGet=1;
 									
+										FinishRectangle_Flag=1;			/* 置开始接收激光坐标标志位 */
+									
 //										/* 16位数据处理(合成坐标值) */
 //										for(uint8_t time=0;time<10;time++)
 //										{
@@ -448,6 +484,28 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 								}		
 						}						
 					
+				}
+				else if(DataRecv_Flag == 1 && FinishRectangle_Flag == 1)	/* 红色激光坐标接收 */	
+				{
+						if(Recv_time++>=1)
+						{							
+								ShijueRecv_Buffer[pRxPacket++] = shijue_RxData;
+								
+								if(pRxPacket>=4)		/* 判断数据接收完后 */
+								{
+										pRxPacket=0;			/* 清零 */
+										DataRecv_Flag=0;
+										Recv_time=0;
+									
+										Data_FinishGet=1;
+									
+//										/* 16位数据处理(合成坐标值) */
+//										for(uint8_t time=0;time<10;time++)
+//										{
+//												My_CoordinateData[time] = (ShijueRecv_Buffer[time*2+1]<<8)|ShijueRecv_Buffer[time*2];
+//										}
+								}		
+						}									
 				}
 			}
 
@@ -494,7 +552,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 				 if(Tracking_Start_Flag)			/* 开始1ms计次 */
 				 {
 						Tracking_CNT++;
-						if(Tracking_CNT>=100)			/* 记到100ms时 */
+						if(Tracking_CNT>=6000)			/* 记到100ms时 */
 						{
 								Tracking_CNT=0;
 								Tracking_Enable=1;
