@@ -51,6 +51,7 @@ extern int menu2,menu3,menu4;
  
 extern uint8_t GetOriginData_Flag;
 extern uint8_t Rectangle_Send;
+extern uint8_t MenuReturn_Flag;			/* 菜单返回标志位 */
 
 void Rectangle_Reladistan_menu(void);
 

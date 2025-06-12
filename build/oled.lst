@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
   27:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** void OLED_Init(void)
   28:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** {
   29:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	HAL_Delay(200);
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 2
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 2
 
 
   30:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c ****  
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
   65              	.L3:
   66 0028 00000000 		.word	hi2c1
   67              		.cfi_endproc
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 3
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 3
 
 
   68              	.LFE136:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  113              		.loc 1 32 11 is_stmt 1 discriminator 1 view .LVU15
   32:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	{
  114              		.loc 1 32 2 is_stmt 0 discriminator 1 view .LVU16
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 4
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 4
 
 
  115 0018 162C     		cmp	r4, #22
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  159 001a 7821     		movs	r1, #120
  160 001c 0248     		ldr	r0, .L13
  161              	.LVL10:
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 5
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 5
 
 
  162              		.loc 1 58 2 is_stmt 0 view .LVU22
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
   70:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	{
   71:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		OLED_WR_CMD(0xb0+i);    //设置页地址（0~7）
   72:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		OLED_WR_CMD(0x00);      //设置显示位置—列低地址
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 6
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 6
 
 
   73:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		OLED_WR_CMD(0x10);      //设置显示位置—列高地址
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  245 002e 1020     		movs	r0, #16
  246 0030 FFF7FEFF 		bl	OLED_WR_CMD
  247              	.LVL21:
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 7
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 7
 
 
   74:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			OLED_WR_DATA(1);
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  288              	.LVL24:
  289              	.L25:
   89:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	{
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 8
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 8
 
 
   90:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		OLED_WR_CMD(0xb0+i);    //设置页地址（0~7）
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
   92:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		for(n=0;n<128;n++)
  327              		.loc 1 92 3 view .LVU66
  328 002e 1020     		movs	r0, #16
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 9
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 9
 
 
  329 0030 FFF7FEFF 		bl	OLED_WR_CMD
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  107:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	OLED_WR_CMD(0XAF);  //DISPLAY ON,打开显示
  370              		.loc 1 107 2 view .LVU75
  371 000e AF20     		movs	r0, #175
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 10
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 10
 
 
  372 0010 FFF7FEFF 		bl	OLED_WR_CMD
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  415              		.align	1
  416              		.global	OLED_Set_Pos
  417              		.syntax unified
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 11
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 11
 
 
  418              		.thumb
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  461              		.syntax unified
  462              		.thumb
  463              		.thumb_func
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 12
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 12
 
 
  465              	oled_pow:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  504              		.cfi_endproc
  505              	.LFE143:
  507              		.section	.text.OLED_ShowChar,"ax",%progbits
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 13
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 13
 
 
  508              		.align	1
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  547              	.LVL56:
  548              	.L39:
  165:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		if(Char_Size ==16)
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 14
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 14
 
 
  549              		.loc 1 165 3 is_stmt 1 view .LVU113
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  167:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			for(i=0;i<8;i++)
  576              		.loc 1 167 4 is_stmt 1 view .LVU123
  577 0030 3946     		mov	r1, r7
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 15
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 15
 
 
  578 0032 4046     		mov	r0, r8
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  616              		.loc 1 171 27 view .LVU139
  617 0058 1F4A     		ldr	r2, .L58
  618 005a D05C     		ldrb	r0, [r2, r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 16
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 16
 
 
  171:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				  else
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  659              		.loc 1 176 4 is_stmt 0 discriminator 1 view .LVU153
  660 0086 072C     		cmp	r4, #7
  661 0088 24D8     		bhi	.L38
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 17
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 17
 
 
  178:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					  OLED_WR_DATA(~F8X16[c*16+i+8]);
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  699 00b6 052C     		cmp	r4, #5
  700 00b8 0CD8     		bhi	.L38
  190:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					  OLED_WR_DATA(~F6x8[c][i]);
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 18
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 18
 
 
  701              		.loc 1 190 7 is_stmt 1 view .LVU167
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  207:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c ****  */
  208:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** void OLED_ShowString(uint8_t x,uint8_t y,char*chr,uint8_t Char_Size, uint8_t Color_Turn)
  209:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** {
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 19
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 19
 
 
  740              		.loc 1 209 1 is_stmt 1 view -0
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  782              		.loc 1 220 5 is_stmt 1 view .LVU184
  783              	.LVL83:
  221:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				y++;
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 20
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 20
 
 
  784              		.loc 1 221 5 view .LVU185
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  216:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c ****  
  822              		.loc 1 216 7 view .LVU200
  823 0046 E4B2     		uxtb	r4, r4
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 21
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 21
 
 
  824              	.LVL90:
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  866              		.align	1
  867              		.global	OLED_ShowNum
  868              		.syntax unified
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 22
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 22
 
 
  869              		.thumb
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  906 0016 0027     		movs	r7, #0
  907              		.loc 1 247 7 view .LVU220
  908 0018 3C46     		mov	r4, r7
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 23
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 23
 
 
  909              		.loc 1 247 2 view .LVU221
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  247:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	{
  951              		.loc 1 247 16 is_stmt 1 discriminator 2 view .LVU232
  247:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	{
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 24
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 24
 
 
  952              		.loc 1 247 17 is_stmt 0 discriminator 2 view .LVU233
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  252:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
  993              		.loc 1 252 4 is_stmt 1 view .LVU247
  252:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 25
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 25
 
 
  994              		.loc 1 252 6 is_stmt 0 view .LVU248
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  1030              		.cfi_startproc
  1031              		@ args = 8, pretend = 0, frame = 8
  1032              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 26
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 26
 
 
  1033              		.loc 1 277 1 is_stmt 0 view .LVU254
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  286:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	}
  287:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	z_temp=(int)num;
  1077              		.loc 1 287 2 is_stmt 1 view .LVU262
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 27
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 27
 
 
  1078              		.loc 1 287 8 is_stmt 0 view .LVU263
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  1121 005e B4FBF0F0 		udiv	r0, r4, r0
  1122              		.loc 1 291 39 view .LVU278
  1123 0062 3C4A     		ldr	r2, .L96
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 28
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 28
 
 
  1124 0064 A2FB0032 		umull	r3, r2, r2, r0
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  303:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	}
  304:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	//小数点
  305:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	OLED_ShowChar(x+(size2/2)*(z_len),y,'.',size2, Color_Turn);
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 29
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 29
 
 
  1162              		.loc 1 305 27 view .LVU291
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  1210 00e6 391B     		subs	r1, r7, r4
  1211 00e8 C9B2     		uxtb	r1, r1
  1212              		.loc 1 311 16 discriminator 3 view .LVU306
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 30
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 30
 
 
  1213 00ea 0139     		subs	r1, r1, #1
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  1261 0130 D9D3     		bcc	.L88
  313:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	}
  314:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	if(i==1)//如果为负，就将最前的一位赋值‘-’
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 31
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 31
 
 
  1262              		.loc 1 314 2 is_stmt 1 view .LVU320
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  1311              	.LFB148:
  320:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c ****  
  321:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c ****  
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 32
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 32
 
 
  322:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c ****  
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  1346 001c FFF7FEFF 		bl	OLED_WR_DATA
  1347              	.LVL149:
  1348              	.L101:
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 33
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 33
 
 
  336:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c ****     for(t=0;t<16;t++)
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  1389              	.L104:
  346:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		{
  347:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				if (Color_Turn)
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 34
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 34
 
 
  348:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					OLED_WR_DATA(~Hzk[2*no+1][t]); //显示汉字的上半部分
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  1429 0076 C0B2     		uxtb	r0, r0
  1430 0078 FFF7FEFF 		bl	OLED_WR_DATA
  1431              	.LVL158:
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 35
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 35
 
 
  1432 007c EEE7     		b	.L105
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  1471              		.cfi_offset 14, -4
  1472 0004 83B0     		sub	sp, sp, #12
  1473              	.LCFI27:
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 36
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 36
 
 
  1474              		.cfi_def_cfa_offset 48
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  1509              	.L114:
  378:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		{
  1510              		.loc 1 378 14 is_stmt 1 discriminator 1 view .LVU379
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 37
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 37
 
 
  378:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		{
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  1551              	.LVL173:
  378:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		{
  1552              		.loc 1 378 5 view .LVU394
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 38
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 38
 
 
  378:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		{
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  1592 0006 FFF7FEFF 		bl	OLED_WR_CMD
  1593              	.LVL177:
  400:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	OLED_WR_CMD(direction);//设置滚动方向
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 39
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 39
 
 
  1594              		.loc 1 400 2 is_stmt 1 view .LVU402
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  410:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c ****  
  411:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** /**
  412:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c ****  * @function: void OLED_Some_HorizontalShift(uint8_t direction,uint8_t start,uint8_t end)
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 40
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 40
 
 
  413:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c ****  * @description: 屏幕部分内容水平滚动播放
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  1681              	.LVL193:
  427:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	OLED_WR_CMD(0x00);//虚拟字节设置，默认为0x00
  1682              		.loc 1 427 2 view .LVU420
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 41
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 41
 
 
  1683 002c 0020     		movs	r0, #0
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  1724 0006 FFF7FEFF 		bl	OLED_WR_CMD
  1725              	.LVL199:
  443:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	OLED_WR_CMD(direction);//设置滚动方向
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 42
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 42
 
 
  1726              		.loc 1 443 2 is_stmt 1 view .LVU428
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  1772              		.thumb_func
  1774              	OLED_DisplayMode:
  1775              	.LVL209:
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 43
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 43
 
 
  1776              	.LFB153:
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  1811              	.LCFI33:
  1812              		.cfi_def_cfa_offset 8
  1813              		.cfi_offset 4, -8
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 44
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 44
 
 
  1814              		.cfi_offset 14, -4
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  488:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** {
  1850              		.loc 1 488 1 is_stmt 1 view -0
  1851              		.cfi_startproc
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 45
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 45
 
 
  1852              		@ args = 0, pretend = 0, frame = 0
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  499:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				
  500:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				if(KeyNum == 1)		/* *向下移动 */
  501:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				{
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 46
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 46
 
 
  502:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						menu1_flag++;
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  526:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						case 2:
  527:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						{
  528:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 								OLED_ShowChar(0,0,' ',16,0);
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 47
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 47
 
 
  1925              		.loc 1 528 9 is_stmt 1 view .LVU466
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  1969 0084 DBD0     		beq	.L146
  1970              	.LVL231:
  1971              	.L135:
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 48
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 48
 
 
  510:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				{
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  2015 00ca 2022     		movs	r2, #32
  2016 00cc 2946     		mov	r1, r5
  2017 00ce 2846     		mov	r0, r5
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 49
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 49
 
 
  2018 00d0 FFF7FEFF 		bl	OLED_ShowChar
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  2064              	.LC3:
  2065 0000 28253464 		.ascii	"(%4d,%4d)\000"
  2065      2C253464 
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 50
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 50
 
 
  2065      2900
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  570:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
  571:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				memset(point_3.XY_Pos,'\0',9);
  572:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				sprintf(point_3.XY_Pos,"(%4d,%4d)",Locate_angleX[2],Locate_angleY[2]);
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 51
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 51
 
 
  573:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				OLED_ShowString(0,4,point_3.XY_Pos,16, 0);
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  623:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						USL_SetServoAngle(servoUsart,sid_2,Now_Angle,0);
  624:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
  625:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 52
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 52
 
 
  626:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** //				if(Data_StartGet)
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  602:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
  2136              		.loc 1 602 7 is_stmt 0 view .LVU503
  2137              	.LBE2:
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 53
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 53
 
 
  558:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		{
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  2181              		.loc 1 569 5 view .LVU514
  2182 0082 0094     		str	r4, [sp]
  2183 0084 1023     		movs	r3, #16
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 54
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 54
 
 
  2184 0086 2A46     		mov	r2, r5
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  2231 00da 2046     		mov	r0, r4
  2232 00dc FFF7FEFF 		bl	Key_Scan
  2233              	.LVL255:
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 55
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 55
 
 
  582:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				{
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  622:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						USL_SetServoAngle(servoUsart,sid_2,Now_Angle,0);
  2272              		.loc 1 622 7 is_stmt 1 view .LVU538
  2273 0106 6420     		movs	r0, #100
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 56
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 56
 
 
  2274 0108 FFF7FEFF 		bl	HAL_Delay
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  2319              	.LVL267:
  2320              	.L161:
  2321              	.LBB5:
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 57
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 57
 
 
  613:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						Now_Angle=Now_Angle+17;
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  2370              		.global	__aeabi_d2uiz
  2371              		.section	.text.LASER_RESET,"ax",%progbits
  2372              		.align	1
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 58
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 58
 
 
  2373              		.global	LASER_RESET
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  2420              	.LVL276:
  2421 002c 0022     		movs	r2, #0
  2422 002e 0F4B     		ldr	r3, .L166+4
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 59
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 59
 
 
  2423 0030 FFF7FEFF 		bl	__aeabi_dmul
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  646:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
  647:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** void LASER_RESET_Start(void)
  648:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** {
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 60
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 60
 
 
  2475              		.loc 1 648 1 is_stmt 1 view -0
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  2499 000e 0E4A     		ldr	r2, .L179+4
  2500 0010 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  2501 0012 DB43     		mvns	r3, r3
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 61
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 61
 
 
  2502 0014 DBB2     		uxtb	r3, r3
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  2542              	.L177:
  2543              	.LBB8:
  660:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 										break;
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 62
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 62
 
 
  2544              		.loc 1 660 11 is_stmt 1 view .LVU594
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  684:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		LASER_RESET_Start();
  2588              		.loc 1 684 3 view .LVU599
  2589 0004 FFF7FEFF 		bl	LASER_RESET_Start
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 63
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 63
 
 
  2590              	.LVL284:
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  2632              		.loc 1 696 7 view .LVU610
  2633 0046 042B     		cmp	r3, #4
  2634 0048 DED1     		bne	.L182
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 64
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 64
 
 
  697:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				{
@@ -3829,18 +3829,20 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  2669              	LASER_MOVE_Menu:
  2670              	.LFB160:
  704:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
- 705:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** /* 进入运动菜单选择 */
- 706:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** int LASER_MOVE_Menu(void)
- 707:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** {
- 2671              		.loc 1 707 1 is_stmt 1 view -0
+ 705:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** uint8_t MenuReturn_Flag;			/* 菜单返回标志位 */
+ 706:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
+ 707:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** /* 进入运动菜单选择 */
+ 708:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** int LASER_MOVE_Menu(void)
+ 709:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** {
+ 2671              		.loc 1 709 1 is_stmt 1 view -0
  2672              		.cfi_startproc
  2673              		@ args = 0, pretend = 0, frame = 0
  2674              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 65
+
+
  2675 0000 30B5     		push	{r4, r5, lr}
  2676              	.LCFI46:
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 65
-
-
  2677              		.cfi_def_cfa_offset 12
  2678              		.cfi_offset 4, -12
  2679              		.cfi_offset 5, -8
@@ -3848,99 +3850,100 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  2681 0002 83B0     		sub	sp, sp, #12
  2682              	.LCFI47:
  2683              		.cfi_def_cfa_offset 24
- 708:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		int menu2_flag=1;			/* 模式选择标志 */
- 2684              		.loc 1 708 3 view .LVU615
+ 710:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		int menu2_flag=1;			/* 模式选择标志 */
+ 2684              		.loc 1 710 3 view .LVU615
  2685              	.LVL290:
- 709:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	
- 710:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		OLED_ShowString(16,0,"PENSTRING_MOVE",16,0);
- 2686              		.loc 1 710 3 view .LVU616
+ 711:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	
+ 712:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		OLED_ShowString(16,0,"PENSTRING_MOVE",16,0);
+ 2686              		.loc 1 712 3 view .LVU616
  2687 0004 0024     		movs	r4, #0
  2688 0006 0094     		str	r4, [sp]
  2689 0008 1023     		movs	r3, #16
- 2690 000a 244A     		ldr	r2, .L199
+ 2690 000a 264A     		ldr	r2, .L199
  2691 000c 2146     		mov	r1, r4
  2692 000e 1846     		mov	r0, r3
  2693 0010 FFF7FEFF 		bl	OLED_ShowString
  2694              	.LVL291:
- 711:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		OLED_ShowString(16,2,"RECTANGLE_MOVE",16,0);
- 2695              		.loc 1 711 3 view .LVU617
+ 713:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		OLED_ShowString(16,2,"RECTANGLE_MOVE",16,0);
+ 2695              		.loc 1 713 3 view .LVU617
  2696 0014 0094     		str	r4, [sp]
  2697 0016 1023     		movs	r3, #16
- 2698 0018 214A     		ldr	r2, .L199+4
+ 2698 0018 234A     		ldr	r2, .L199+4
  2699 001a 0221     		movs	r1, #2
  2700 001c 1846     		mov	r0, r3
  2701 001e FFF7FEFF 		bl	OLED_ShowString
  2702              	.LVL292:
- 708:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		int menu2_flag=1;			/* 模式选择标志 */
- 2703              		.loc 1 708 7 is_stmt 0 view .LVU618
+ 710:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		int menu2_flag=1;			/* 模式选择标志 */
+ 2703              		.loc 1 710 7 is_stmt 0 view .LVU618
  2704 0022 0124     		movs	r4, #1
- 2705 0024 1BE0     		b	.L187
+ 2705 0024 1EE0     		b	.L187
  2706              	.LVL293:
  2707              	.L196:
- 712:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
- 713:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		while(1)
- 714:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		{
- 715:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			Key_Scan(&KeyNum);			/* 获取键码值 */	
- 716:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
- 717:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			if(KeyNum == 1)			/* *下移 */
- 718:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 719:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					menu2_flag++;
- 2708              		.loc 1 719 6 is_stmt 1 view .LVU619
- 2709              		.loc 1 719 16 is_stmt 0 view .LVU620
+ 714:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
+ 715:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		while(1)
+ 716:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		{
+ 717:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			Key_Scan(&KeyNum);			/* 获取键码值 */	
+ 718:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
+ 719:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			if(KeyNum == 1)			/* *下移 */
+ 720:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 721:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					menu2_flag++;
+ 2708              		.loc 1 721 6 is_stmt 1 view .LVU619
+ 2709              		.loc 1 721 16 is_stmt 0 view .LVU620
  2710 0026 0134     		adds	r4, r4, #1
  2711              	.LVL294:
- 720:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					if(menu2_flag>=3) menu2_flag=1;
- 2712              		.loc 1 720 6 is_stmt 1 view .LVU621
- 2713              		.loc 1 720 8 is_stmt 0 view .LVU622
+ 722:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					if(menu2_flag>=3) menu2_flag=1;
+ 2712              		.loc 1 722 6 is_stmt 1 view .LVU621
+ 2713              		.loc 1 722 8 is_stmt 0 view .LVU622
  2714 0028 022C     		cmp	r4, #2
- 2715 002a 1FDD     		ble	.L188
- 2716              		.loc 1 720 34 view .LVU623
+ 2715 002a 22DD     		ble	.L188
+ 2716              		.loc 1 722 34 view .LVU623
  2717 002c 0124     		movs	r4, #1
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 66
+
+
  2718              	.LVL295:
- 2719              		.loc 1 720 34 view .LVU624
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 66
-
-
- 2720 002e 1DE0     		b	.L188
+ 2719              		.loc 1 722 34 view .LVU624
+ 2720 002e 20E0     		b	.L188
  2721              	.LVL296:
  2722              	.L197:
- 721:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}
- 722:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			
- 723:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			if(KeyNum == 3)			/* 选择确定 */
- 724:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 725:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					OLED_Clear();
- 2723              		.loc 1 725 6 is_stmt 1 view .LVU625
+ 723:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}
+ 724:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			
+ 725:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			if(KeyNum == 3)			/* 选择确定 */
+ 726:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 727:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					OLED_Clear();
+ 2723              		.loc 1 727 6 is_stmt 1 view .LVU625
  2724 0030 FFF7FEFF 		bl	OLED_Clear
  2725              	.LVL297:
- 726:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					return(menu2_flag);
- 2726              		.loc 1 726 6 view .LVU626
+ 728:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					return(menu2_flag);
+ 2726              		.loc 1 728 6 view .LVU626
  2727              	.L186:
- 727:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}
- 728:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			
- 729:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			if(KeyNum == 4)			/* 返回上一级菜单 */
- 730:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 731:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					OLED_Clear();
- 732:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					break;
- 733:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}
- 734:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			
- 735:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			switch(menu2_flag)
- 736:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 737:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				case 1:
- 738:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				{
- 739:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,0,'*',16,0);
- 740:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,2,' ',16,0);	
- 741:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						break;
- 742:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
- 743:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				case 2:
- 744:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				{
- 745:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,0,' ',16,0);
- 746:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,2,'*',16,0);	
- 747:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						break;						
- 748:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
- 749:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}
- 750:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		}
- 751:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** }
- 2728              		.loc 1 751 1 is_stmt 0 view .LVU627
+ 729:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}
+ 730:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			
+ 731:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			if(KeyNum == 4)			/* 返回上一级菜单 */
+ 732:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 733:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					OLED_Clear();
+ 734:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					MenuReturn_Flag=1;		/* 作为退出该循环外的那一层循环的退出标志位(回退到上一级菜单) */
+ 735:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					break;
+ 736:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}
+ 737:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			
+ 738:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			switch(menu2_flag)
+ 739:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 740:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				case 1:
+ 741:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				{
+ 742:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,0,'*',16,0);
+ 743:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,2,' ',16,0);	
+ 744:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						break;
+ 745:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
+ 746:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				case 2:
+ 747:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				{
+ 748:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,0,' ',16,0);
+ 749:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,2,'*',16,0);	
+ 750:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						break;						
+ 751:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
+ 752:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}
+ 753:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		}
+ 754:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** }
+ 2728              		.loc 1 754 1 is_stmt 0 view .LVU627
  2729 0034 2046     		mov	r0, r4
  2730 0036 03B0     		add	sp, sp, #12
  2731              	.LCFI48:
@@ -3952,793 +3955,814 @@ ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 1
  2737              	.L198:
  2738              	.LCFI49:
  2739              		.cfi_restore_state
- 731:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					break;
- 2740              		.loc 1 731 6 is_stmt 1 view .LVU628
+ 733:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					MenuReturn_Flag=1;		/* 作为退出该循环外的那一层循环的退出标志位(回退到上一级菜单) */
+ 2740              		.loc 1 733 6 is_stmt 1 view .LVU628
  2741 003a FFF7FEFF 		bl	OLED_Clear
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 67
+
+
  2742              	.LVL299:
- 732:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}
- 2743              		.loc 1 732 6 view .LVU629
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 67
+ 734:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					break;
+ 2743              		.loc 1 734 6 view .LVU629
+ 734:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					break;
+ 2744              		.loc 1 734 21 is_stmt 0 view .LVU630
+ 2745 003e 1B4B     		ldr	r3, .L199+8
+ 2746 0040 0122     		movs	r2, #1
+ 2747 0042 1A70     		strb	r2, [r3]
+ 735:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}
+ 2748              		.loc 1 735 6 is_stmt 1 view .LVU631
+ 2749              	.LVL300:
+ 2750              		.loc 1 754 1 is_stmt 0 view .LVU632
+ 2751 0044 F6E7     		b	.L186
+ 2752              	.LVL301:
+ 2753              	.L191:
+ 742:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,2,' ',16,0);	
+ 2754              		.loc 1 742 7 is_stmt 1 view .LVU633
+ 2755 0046 0025     		movs	r5, #0
+ 2756 0048 0095     		str	r5, [sp]
+ 2757 004a 1023     		movs	r3, #16
+ 2758 004c 2A22     		movs	r2, #42
+ 2759 004e 2946     		mov	r1, r5
+ 2760 0050 2846     		mov	r0, r5
+ 2761 0052 FFF7FEFF 		bl	OLED_ShowChar
+ 2762              	.LVL302:
+ 743:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						break;
+ 2763              		.loc 1 743 7 view .LVU634
+ 2764 0056 0095     		str	r5, [sp]
+ 2765 0058 1023     		movs	r3, #16
+ 2766 005a 2022     		movs	r2, #32
+ 2767 005c 0221     		movs	r1, #2
+ 2768 005e 2846     		mov	r0, r5
+ 2769 0060 FFF7FEFF 		bl	OLED_ShowChar
+ 2770              	.LVL303:
+ 744:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
+ 2771              		.loc 1 744 7 view .LVU635
+ 2772              	.L187:
+ 715:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		{
+ 2773              		.loc 1 715 3 view .LVU636
+ 717:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
+ 2774              		.loc 1 717 4 view .LVU637
+ 2775 0064 124D     		ldr	r5, .L199+12
+ 2776 0066 2846     		mov	r0, r5
+ 2777 0068 FFF7FEFF 		bl	Key_Scan
+ 2778              	.LVL304:
+ 719:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 2779              		.loc 1 719 4 view .LVU638
+ 719:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 2780              		.loc 1 719 14 is_stmt 0 view .LVU639
+ 2781 006c 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 719:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 2782              		.loc 1 719 6 view .LVU640
+ 2783 006e 012B     		cmp	r3, #1
+ 2784 0070 D9D0     		beq	.L196
+ 2785              	.LVL305:
+ 2786              	.L188:
+ 725:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 68
 
 
- 2744              	.LVL300:
- 2745              		.loc 1 751 1 is_stmt 0 view .LVU630
- 2746 003e F9E7     		b	.L186
- 2747              	.LVL301:
- 2748              	.L191:
- 739:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,2,' ',16,0);	
- 2749              		.loc 1 739 7 is_stmt 1 view .LVU631
- 2750 0040 0025     		movs	r5, #0
- 2751 0042 0095     		str	r5, [sp]
- 2752 0044 1023     		movs	r3, #16
- 2753 0046 2A22     		movs	r2, #42
- 2754 0048 2946     		mov	r1, r5
- 2755 004a 2846     		mov	r0, r5
- 2756 004c FFF7FEFF 		bl	OLED_ShowChar
- 2757              	.LVL302:
- 740:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						break;
- 2758              		.loc 1 740 7 view .LVU632
- 2759 0050 0095     		str	r5, [sp]
- 2760 0052 1023     		movs	r3, #16
- 2761 0054 2022     		movs	r2, #32
- 2762 0056 0221     		movs	r1, #2
- 2763 0058 2846     		mov	r0, r5
- 2764 005a FFF7FEFF 		bl	OLED_ShowChar
- 2765              	.LVL303:
- 741:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
- 2766              		.loc 1 741 7 view .LVU633
- 2767              	.L187:
- 713:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		{
- 2768              		.loc 1 713 3 view .LVU634
- 715:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
- 2769              		.loc 1 715 4 view .LVU635
- 2770 005e 114D     		ldr	r5, .L199+8
- 2771 0060 2846     		mov	r0, r5
- 2772 0062 FFF7FEFF 		bl	Key_Scan
- 2773              	.LVL304:
- 717:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 2774              		.loc 1 717 4 view .LVU636
- 717:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 2775              		.loc 1 717 14 is_stmt 0 view .LVU637
- 2776 0066 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
- 717:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 2777              		.loc 1 717 6 view .LVU638
- 2778 0068 012B     		cmp	r3, #1
- 2779 006a DCD0     		beq	.L196
- 2780              	.LVL305:
- 2781              	.L188:
- 723:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 2782              		.loc 1 723 4 is_stmt 1 view .LVU639
- 723:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 2783              		.loc 1 723 6 is_stmt 0 view .LVU640
- 2784 006c 032B     		cmp	r3, #3
- 2785 006e DFD0     		beq	.L197
- 729:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 2786              		.loc 1 729 4 is_stmt 1 view .LVU641
- 729:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 2787              		.loc 1 729 6 is_stmt 0 view .LVU642
- 2788 0070 042B     		cmp	r3, #4
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 68
+ 2787              		.loc 1 725 4 is_stmt 1 view .LVU641
+ 725:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 2788              		.loc 1 725 6 is_stmt 0 view .LVU642
+ 2789 0072 032B     		cmp	r3, #3
+ 2790 0074 DCD0     		beq	.L197
+ 731:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 2791              		.loc 1 731 4 is_stmt 1 view .LVU643
+ 731:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 2792              		.loc 1 731 6 is_stmt 0 view .LVU644
+ 2793 0076 042B     		cmp	r3, #4
+ 2794 0078 DFD0     		beq	.L198
+ 738:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 2795              		.loc 1 738 4 is_stmt 1 view .LVU645
+ 2796 007a 012C     		cmp	r4, #1
+ 2797 007c E3D0     		beq	.L191
+ 2798 007e 022C     		cmp	r4, #2
+ 2799 0080 F0D1     		bne	.L187
+ 748:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,2,'*',16,0);	
+ 2800              		.loc 1 748 7 view .LVU646
+ 2801 0082 0025     		movs	r5, #0
+ 2802 0084 0095     		str	r5, [sp]
+ 2803 0086 1023     		movs	r3, #16
+ 2804 0088 2022     		movs	r2, #32
+ 2805 008a 2946     		mov	r1, r5
+ 2806 008c 2846     		mov	r0, r5
+ 2807 008e FFF7FEFF 		bl	OLED_ShowChar
+ 2808              	.LVL306:
+ 749:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						break;						
+ 2809              		.loc 1 749 7 view .LVU647
+ 2810 0092 0095     		str	r5, [sp]
+ 2811 0094 1023     		movs	r3, #16
+ 2812 0096 2A22     		movs	r2, #42
+ 2813 0098 0221     		movs	r1, #2
+ 2814 009a 2846     		mov	r0, r5
+ 2815 009c FFF7FEFF 		bl	OLED_ShowChar
+ 2816              	.LVL307:
+ 750:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
+ 2817              		.loc 1 750 7 view .LVU648
+ 2818 00a0 E0E7     		b	.L187
+ 2819              	.L200:
+ 2820 00a2 00BF     		.align	2
+ 2821              	.L199:
+ 2822 00a4 00000000 		.word	.LC5
+ 2823 00a8 10000000 		.word	.LC6
+ 2824 00ac 00000000 		.word	.LANCHOR7
+ 2825 00b0 00000000 		.word	KeyNum
+ 2826              		.cfi_endproc
+ 2827              	.LFE160:
+ 2829              		.section	.rodata.RECTANGLE_MOVE_Menu.str1.4,"aMS",%progbits,1
+ 2830              		.align	2
+ 2831              	.LC7:
+ 2832 0000 5345545F 		.ascii	"SET_RECTANGLE\000"
+ 2832      52454354 
+ 2832      414E474C 
+ 2832      4500
+ 2833 000e 0000     		.align	2
+ 2834              	.LC8:
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 69
 
 
- 2789 0072 E2D0     		beq	.L198
- 735:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 2790              		.loc 1 735 4 is_stmt 1 view .LVU643
- 2791 0074 012C     		cmp	r4, #1
- 2792 0076 E3D0     		beq	.L191
- 2793 0078 022C     		cmp	r4, #2
- 2794 007a F0D1     		bne	.L187
- 745:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,2,'*',16,0);	
- 2795              		.loc 1 745 7 view .LVU644
- 2796 007c 0025     		movs	r5, #0
- 2797 007e 0095     		str	r5, [sp]
- 2798 0080 1023     		movs	r3, #16
- 2799 0082 2022     		movs	r2, #32
- 2800 0084 2946     		mov	r1, r5
- 2801 0086 2846     		mov	r0, r5
- 2802 0088 FFF7FEFF 		bl	OLED_ShowChar
- 2803              	.LVL306:
- 746:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						break;						
- 2804              		.loc 1 746 7 view .LVU645
- 2805 008c 0095     		str	r5, [sp]
- 2806 008e 1023     		movs	r3, #16
- 2807 0090 2A22     		movs	r2, #42
- 2808 0092 0221     		movs	r1, #2
- 2809 0094 2846     		mov	r0, r5
- 2810 0096 FFF7FEFF 		bl	OLED_ShowChar
- 2811              	.LVL307:
- 747:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
- 2812              		.loc 1 747 7 view .LVU646
- 2813 009a E0E7     		b	.L187
- 2814              	.L200:
- 2815              		.align	2
- 2816              	.L199:
- 2817 009c 00000000 		.word	.LC5
- 2818 00a0 10000000 		.word	.LC6
- 2819 00a4 00000000 		.word	KeyNum
- 2820              		.cfi_endproc
- 2821              	.LFE160:
- 2823              		.section	.rodata.RECTANGLE_MOVE_Menu.str1.4,"aMS",%progbits,1
- 2824              		.align	2
- 2825              	.LC7:
- 2826 0000 5345545F 		.ascii	"SET_RECTANGLE\000"
- 2826      52454354 
- 2826      414E474C 
- 2826      4500
- 2827 000e 0000     		.align	2
- 2828              	.LC8:
- 2829 0010 53544152 		.ascii	"START_MOVE\000"
- 2829      545F4D4F 
- 2829      564500
- 2830              		.section	.text.RECTANGLE_MOVE_Menu,"ax",%progbits
- 2831              		.align	1
- 2832              		.global	RECTANGLE_MOVE_Menu
- 2833              		.syntax unified
- 2834              		.thumb
- 2835              		.thumb_func
- 2837              	RECTANGLE_MOVE_Menu:
- 2838              	.LFB161:
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 69
-
-
- 752:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
- 753:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
- 754:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
- 755:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** /* 三级菜单部分 */
+ 2835 0010 53544152 		.ascii	"START_MOVE\000"
+ 2835      545F4D4F 
+ 2835      564500
+ 2836              		.section	.text.RECTANGLE_MOVE_Menu,"ax",%progbits
+ 2837              		.align	1
+ 2838              		.global	RECTANGLE_MOVE_Menu
+ 2839              		.syntax unified
+ 2840              		.thumb
+ 2841              		.thumb_func
+ 2843              	RECTANGLE_MOVE_Menu:
+ 2844              	.LFB161:
+ 755:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
  756:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
- 757:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** /* 矩形框运动控制菜单 */
- 758:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** int RECTANGLE_MOVE_Menu(void)			
- 759:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** {
- 2839              		.loc 1 759 1 view -0
- 2840              		.cfi_startproc
- 2841              		@ args = 0, pretend = 0, frame = 0
- 2842              		@ frame_needed = 0, uses_anonymous_args = 0
- 2843 0000 30B5     		push	{r4, r5, lr}
- 2844              	.LCFI50:
- 2845              		.cfi_def_cfa_offset 12
- 2846              		.cfi_offset 4, -12
- 2847              		.cfi_offset 5, -8
- 2848              		.cfi_offset 14, -4
- 2849 0002 83B0     		sub	sp, sp, #12
- 2850              	.LCFI51:
- 2851              		.cfi_def_cfa_offset 24
- 760:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		int menu3_flag=1;			/* 模式选择标志 */ 
- 2852              		.loc 1 760 3 view .LVU648
- 2853              	.LVL308:
- 761:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
- 762:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		OLED_ShowString(16,0,"SET_RECTANGLE",16,0);
- 2854              		.loc 1 762 3 view .LVU649
- 2855 0004 0024     		movs	r4, #0
- 2856 0006 0094     		str	r4, [sp]
- 2857 0008 1023     		movs	r3, #16
- 2858 000a 244A     		ldr	r2, .L214
- 2859 000c 2146     		mov	r1, r4
- 2860 000e 1846     		mov	r0, r3
- 2861 0010 FFF7FEFF 		bl	OLED_ShowString
- 2862              	.LVL309:
- 763:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		OLED_ShowString(16,2,"START_MOVE",16,0);
- 2863              		.loc 1 763 3 view .LVU650
- 2864 0014 0094     		str	r4, [sp]
- 2865 0016 1023     		movs	r3, #16
- 2866 0018 214A     		ldr	r2, .L214+4
- 2867 001a 0221     		movs	r1, #2
- 2868 001c 1846     		mov	r0, r3
- 2869 001e FFF7FEFF 		bl	OLED_ShowString
- 2870              	.LVL310:
- 760:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		int menu3_flag=1;			/* 模式选择标志 */ 
- 2871              		.loc 1 760 7 is_stmt 0 view .LVU651
- 2872 0022 0124     		movs	r4, #1
- 2873 0024 1BE0     		b	.L202
- 2874              	.LVL311:
- 2875              	.L211:
+ 757:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
+ 758:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** /* 三级菜单部分 */
+ 759:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
+ 760:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** /* 矩形框运动控制菜单 */
+ 761:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** int RECTANGLE_MOVE_Menu(void)			
+ 762:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** {
+ 2845              		.loc 1 762 1 view -0
+ 2846              		.cfi_startproc
+ 2847              		@ args = 0, pretend = 0, frame = 0
+ 2848              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2849 0000 30B5     		push	{r4, r5, lr}
+ 2850              	.LCFI50:
+ 2851              		.cfi_def_cfa_offset 12
+ 2852              		.cfi_offset 4, -12
+ 2853              		.cfi_offset 5, -8
+ 2854              		.cfi_offset 14, -4
+ 2855 0002 83B0     		sub	sp, sp, #12
+ 2856              	.LCFI51:
+ 2857              		.cfi_def_cfa_offset 24
+ 763:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		int menu3_flag=1;			/* 模式选择标志 */ 
+ 2858              		.loc 1 763 3 view .LVU650
+ 2859              	.LVL308:
  764:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
- 765:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		while(1)
- 766:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		{
- 767:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			Key_Scan(&KeyNum);			/* 获取键码值 */	
- 768:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
- 769:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			if(KeyNum == 1)			/* *下移 */
- 770:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 70
+ 765:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		OLED_ShowString(16,0,"SET_RECTANGLE",16,0);
+ 2860              		.loc 1 765 3 view .LVU651
+ 2861 0004 0024     		movs	r4, #0
+ 2862 0006 0094     		str	r4, [sp]
+ 2863 0008 1023     		movs	r3, #16
+ 2864 000a 254A     		ldr	r2, .L215
+ 2865 000c 2146     		mov	r1, r4
+ 2866 000e 1846     		mov	r0, r3
+ 2867 0010 FFF7FEFF 		bl	OLED_ShowString
+ 2868              	.LVL309:
+ 766:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		OLED_ShowString(16,2,"START_MOVE",16,0);
+ 2869              		.loc 1 766 3 view .LVU652
+ 2870 0014 0094     		str	r4, [sp]
+ 2871 0016 1023     		movs	r3, #16
+ 2872 0018 224A     		ldr	r2, .L215+4
+ 2873 001a 0221     		movs	r1, #2
+ 2874 001c 1846     		mov	r0, r3
+ 2875 001e FFF7FEFF 		bl	OLED_ShowString
+ 2876              	.LVL310:
+ 763:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		int menu3_flag=1;			/* 模式选择标志 */ 
+ 2877              		.loc 1 763 7 is_stmt 0 view .LVU653
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 70
 
 
- 771:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					menu3_flag++;
- 2876              		.loc 1 771 6 is_stmt 1 view .LVU652
- 2877              		.loc 1 771 16 is_stmt 0 view .LVU653
- 2878 0026 0134     		adds	r4, r4, #1
- 2879              	.LVL312:
- 772:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					if(menu3_flag>=3) menu3_flag=1;
- 2880              		.loc 1 772 6 is_stmt 1 view .LVU654
- 2881              		.loc 1 772 8 is_stmt 0 view .LVU655
- 2882 0028 022C     		cmp	r4, #2
- 2883 002a 1FDD     		ble	.L203
- 2884              		.loc 1 772 34 view .LVU656
- 2885 002c 0124     		movs	r4, #1
- 2886              	.LVL313:
- 2887              		.loc 1 772 34 view .LVU657
- 2888 002e 1DE0     		b	.L203
- 2889              	.LVL314:
- 2890              	.L212:
- 773:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}
- 774:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			
- 775:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			if(KeyNum == 3)			/* 选择确定 */
- 776:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 777:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					OLED_Clear();
- 2891              		.loc 1 777 6 is_stmt 1 view .LVU658
- 2892 0030 FFF7FEFF 		bl	OLED_Clear
- 2893              	.LVL315:
- 778:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					return(menu3_flag);
- 2894              		.loc 1 778 6 view .LVU659
- 2895              	.L201:
- 779:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}
- 780:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			
- 781:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			if(KeyNum == 4)			/* 返回上一级菜单 */
- 782:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 783:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					OLED_Clear();
- 784:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					break;
- 785:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}			
- 786:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			
- 787:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			switch(menu3_flag)
- 788:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 789:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				case 1:
- 790:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				{
- 791:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,0,'*',16,0);
- 792:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,2,' ',16,0);	
- 793:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						break;
- 794:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
- 795:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				case 2:
+ 2878 0022 0124     		movs	r4, #1
+ 2879 0024 1CE0     		b	.L202
+ 2880              	.LVL311:
+ 2881              	.L212:
+ 767:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
+ 768:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		while(1)
+ 769:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		{
+ 770:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			Key_Scan(&KeyNum);			/* 获取键码值 */	
+ 771:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
+ 772:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			if(KeyNum == 1)			/* *下移 */
+ 773:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 774:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					menu3_flag++;
+ 2882              		.loc 1 774 6 is_stmt 1 view .LVU654
+ 2883              		.loc 1 774 16 is_stmt 0 view .LVU655
+ 2884 0026 0134     		adds	r4, r4, #1
+ 2885              	.LVL312:
+ 775:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					if(menu3_flag>=3) menu3_flag=1;
+ 2886              		.loc 1 775 6 is_stmt 1 view .LVU656
+ 2887              		.loc 1 775 8 is_stmt 0 view .LVU657
+ 2888 0028 022C     		cmp	r4, #2
+ 2889 002a 20DD     		ble	.L203
+ 2890              		.loc 1 775 34 view .LVU658
+ 2891 002c 0124     		movs	r4, #1
+ 2892              	.LVL313:
+ 2893              		.loc 1 775 34 view .LVU659
+ 2894 002e 1EE0     		b	.L203
+ 2895              	.LVL314:
+ 2896              	.L213:
+ 776:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}
+ 777:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			
+ 778:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			if(KeyNum == 3)			/* 选择确定 */
+ 779:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 780:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					OLED_Clear();
+ 2897              		.loc 1 780 6 is_stmt 1 view .LVU660
+ 2898 0030 FFF7FEFF 		bl	OLED_Clear
+ 2899              	.LVL315:
+ 781:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					return(menu3_flag);
+ 2900              		.loc 1 781 6 view .LVU661
+ 2901              	.L201:
+ 782:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}
+ 783:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			
+ 784:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			if(KeyNum == 4)			/* 返回上一级菜单 */
+ 785:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 786:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					// OLED_Clear();
+ 787:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					// break;
+ 788:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					OLED_Clear();
+ 789:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					menu3_flag=0;
+ 790:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					return(menu3_flag);
+ 791:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}			
+ 792:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			
+ 793:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			switch(menu3_flag)
+ 794:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 795:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				case 1:
  796:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				{
- 797:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,0,' ',16,0);
- 798:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,2,'*',16,0);	
- 799:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						break;						
+ 797:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,0,'*',16,0);
+ 798:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,2,' ',16,0);	
+ 799:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						break;
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 71
+
+
  800:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
- 801:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}
- 802:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		}	
- 803:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
- 804:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** }
- 2896              		.loc 1 804 1 is_stmt 0 view .LVU660
- 2897 0034 2046     		mov	r0, r4
- 2898 0036 03B0     		add	sp, sp, #12
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 71
-
-
- 2899              	.LCFI52:
- 2900              		.cfi_remember_state
- 2901              		.cfi_def_cfa_offset 12
- 2902              		@ sp needed
- 2903 0038 30BD     		pop	{r4, r5, pc}
- 2904              	.LVL316:
- 2905              	.L213:
- 2906              	.LCFI53:
- 2907              		.cfi_restore_state
- 783:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					break;
- 2908              		.loc 1 783 6 is_stmt 1 view .LVU661
- 2909 003a FFF7FEFF 		bl	OLED_Clear
- 2910              	.LVL317:
- 784:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}			
- 2911              		.loc 1 784 6 view .LVU662
- 2912              	.LVL318:
- 2913              		.loc 1 804 1 is_stmt 0 view .LVU663
- 2914 003e F9E7     		b	.L201
- 2915              	.LVL319:
- 2916              	.L206:
- 791:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,2,' ',16,0);	
- 2917              		.loc 1 791 7 is_stmt 1 view .LVU664
- 2918 0040 0025     		movs	r5, #0
- 2919 0042 0095     		str	r5, [sp]
- 2920 0044 1023     		movs	r3, #16
- 2921 0046 2A22     		movs	r2, #42
- 2922 0048 2946     		mov	r1, r5
- 2923 004a 2846     		mov	r0, r5
- 2924 004c FFF7FEFF 		bl	OLED_ShowChar
- 2925              	.LVL320:
- 792:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						break;
- 2926              		.loc 1 792 7 view .LVU665
- 2927 0050 0095     		str	r5, [sp]
- 2928 0052 1023     		movs	r3, #16
- 2929 0054 2022     		movs	r2, #32
- 2930 0056 0221     		movs	r1, #2
- 2931 0058 2846     		mov	r0, r5
- 2932 005a FFF7FEFF 		bl	OLED_ShowChar
- 2933              	.LVL321:
- 793:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
- 2934              		.loc 1 793 7 view .LVU666
- 2935              	.L202:
- 765:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		{
- 2936              		.loc 1 765 3 view .LVU667
- 767:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
- 2937              		.loc 1 767 4 view .LVU668
- 2938 005e 114D     		ldr	r5, .L214+8
- 2939 0060 2846     		mov	r0, r5
- 2940 0062 FFF7FEFF 		bl	Key_Scan
- 2941              	.LVL322:
- 769:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 2942              		.loc 1 769 4 view .LVU669
- 769:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 2943              		.loc 1 769 14 is_stmt 0 view .LVU670
- 2944 0066 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
- 769:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 2945              		.loc 1 769 6 view .LVU671
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 72
-
-
- 2946 0068 012B     		cmp	r3, #1
- 2947 006a DCD0     		beq	.L211
- 2948              	.LVL323:
- 2949              	.L203:
- 775:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 2950              		.loc 1 775 4 is_stmt 1 view .LVU672
- 775:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 2951              		.loc 1 775 6 is_stmt 0 view .LVU673
- 2952 006c 032B     		cmp	r3, #3
- 2953 006e DFD0     		beq	.L212
- 781:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 2954              		.loc 1 781 4 is_stmt 1 view .LVU674
- 781:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 2955              		.loc 1 781 6 is_stmt 0 view .LVU675
- 2956 0070 042B     		cmp	r3, #4
- 2957 0072 E2D0     		beq	.L213
- 787:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
- 2958              		.loc 1 787 4 is_stmt 1 view .LVU676
- 2959 0074 012C     		cmp	r4, #1
- 2960 0076 E3D0     		beq	.L206
- 2961 0078 022C     		cmp	r4, #2
- 2962 007a F0D1     		bne	.L202
- 797:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,2,'*',16,0);	
- 2963              		.loc 1 797 7 view .LVU677
- 2964 007c 0025     		movs	r5, #0
- 2965 007e 0095     		str	r5, [sp]
- 2966 0080 1023     		movs	r3, #16
- 2967 0082 2022     		movs	r2, #32
- 2968 0084 2946     		mov	r1, r5
- 2969 0086 2846     		mov	r0, r5
- 2970 0088 FFF7FEFF 		bl	OLED_ShowChar
- 2971              	.LVL324:
- 798:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						break;						
- 2972              		.loc 1 798 7 view .LVU678
- 2973 008c 0095     		str	r5, [sp]
- 2974 008e 1023     		movs	r3, #16
- 2975 0090 2A22     		movs	r2, #42
- 2976 0092 0221     		movs	r1, #2
- 2977 0094 2846     		mov	r0, r5
- 2978 0096 FFF7FEFF 		bl	OLED_ShowChar
- 2979              	.LVL325:
+ 801:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				case 2:
+ 802:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				{
+ 803:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,0,' ',16,0);
+ 804:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,2,'*',16,0);	
+ 805:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						break;						
+ 806:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
+ 807:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}
+ 808:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		}	
+ 809:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
+ 810:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** }
+ 2902              		.loc 1 810 1 is_stmt 0 view .LVU662
+ 2903 0034 2046     		mov	r0, r4
+ 2904 0036 03B0     		add	sp, sp, #12
+ 2905              	.LCFI52:
+ 2906              		.cfi_remember_state
+ 2907              		.cfi_def_cfa_offset 12
+ 2908              		@ sp needed
+ 2909 0038 30BD     		pop	{r4, r5, pc}
+ 2910              	.LVL316:
+ 2911              	.L214:
+ 2912              	.LCFI53:
+ 2913              		.cfi_restore_state
+ 788:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					menu3_flag=0;
+ 2914              		.loc 1 788 6 is_stmt 1 view .LVU663
+ 2915 003a FFF7FEFF 		bl	OLED_Clear
+ 2916              	.LVL317:
+ 789:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					return(menu3_flag);
+ 2917              		.loc 1 789 6 view .LVU664
+ 790:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}			
+ 2918              		.loc 1 790 6 view .LVU665
+ 790:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			}			
+ 2919              		.loc 1 790 12 is_stmt 0 view .LVU666
+ 2920 003e 0024     		movs	r4, #0
+ 2921 0040 F8E7     		b	.L201
+ 2922              	.LVL318:
+ 2923              	.L207:
+ 797:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,2,' ',16,0);	
+ 2924              		.loc 1 797 7 is_stmt 1 view .LVU667
+ 2925 0042 0025     		movs	r5, #0
+ 2926 0044 0095     		str	r5, [sp]
+ 2927 0046 1023     		movs	r3, #16
+ 2928 0048 2A22     		movs	r2, #42
+ 2929 004a 2946     		mov	r1, r5
+ 2930 004c 2846     		mov	r0, r5
+ 2931 004e FFF7FEFF 		bl	OLED_ShowChar
+ 2932              	.LVL319:
+ 798:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						break;
+ 2933              		.loc 1 798 7 view .LVU668
+ 2934 0052 0095     		str	r5, [sp]
+ 2935 0054 1023     		movs	r3, #16
+ 2936 0056 2022     		movs	r2, #32
+ 2937 0058 0221     		movs	r1, #2
+ 2938 005a 2846     		mov	r0, r5
+ 2939 005c FFF7FEFF 		bl	OLED_ShowChar
+ 2940              	.LVL320:
  799:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
- 2980              		.loc 1 799 7 view .LVU679
- 2981 009a E0E7     		b	.L202
- 2982              	.L215:
- 2983              		.align	2
- 2984              	.L214:
- 2985 009c 00000000 		.word	.LC7
- 2986 00a0 10000000 		.word	.LC8
- 2987 00a4 00000000 		.word	KeyNum
- 2988              		.cfi_endproc
- 2989              	.LFE161:
- 2991              		.section	.text.GET_RECTANGLE_menu,"ax",%progbits
- 2992              		.align	1
- 2993              		.global	GET_RECTANGLE_menu
- 2994              		.syntax unified
- 2995              		.thumb
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 73
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 72
 
 
- 2996              		.thumb_func
- 2998              	GET_RECTANGLE_menu:
- 2999              	.LFB162:
- 805:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
- 806:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** /* 四级菜单部分 */
- 807:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
- 808:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** void GET_RECTANGLE_menu(void)
- 809:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** {
- 3000              		.loc 1 809 1 view -0
- 3001              		.cfi_startproc
- 3002              		@ args = 0, pretend = 0, frame = 48
- 3003              		@ frame_needed = 0, uses_anonymous_args = 0
- 3004 0000 70B5     		push	{r4, r5, r6, lr}
- 3005              	.LCFI54:
- 3006              		.cfi_def_cfa_offset 16
- 3007              		.cfi_offset 4, -16
- 3008              		.cfi_offset 5, -12
- 3009              		.cfi_offset 6, -8
- 3010              		.cfi_offset 14, -4
- 3011 0002 8EB0     		sub	sp, sp, #56
- 3012              	.LCFI55:
- 3013              		.cfi_def_cfa_offset 72
- 810:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	
- 811:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		char Point1_XY[10],Point2_XY[10],Point3_XY[10],Point4_XY[10];	
- 3014              		.loc 1 811 3 view .LVU681
- 812:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
- 813:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		Data_StartGet=1;
- 3015              		.loc 1 813 3 view .LVU682
- 3016              		.loc 1 813 16 is_stmt 0 view .LVU683
- 3017 0004 334B     		ldr	r3, .L220
- 3018 0006 0122     		movs	r2, #1
- 3019 0008 1A70     		strb	r2, [r3]
- 3020              	.L217:
- 814:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
- 815:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		while(1)
- 3021              		.loc 1 815 3 is_stmt 1 view .LVU684
- 816:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		{
- 817:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				Get_RectangleXY(rectangle_XY);			/* 获取四点原始坐标 */
- 3022              		.loc 1 817 5 view .LVU685
- 3023 000a 3348     		ldr	r0, .L220+4
- 3024 000c FFF7FEFF 		bl	Get_RectangleXY
- 3025              	.LVL326:
- 818:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					
- 819:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				if(Data_FinishGet == 0 && Data_StartGet == 0)		/* 接收完成后 */
- 3026              		.loc 1 819 5 view .LVU686
- 3027              		.loc 1 819 23 is_stmt 0 view .LVU687
- 3028 0010 324B     		ldr	r3, .L220+8
- 3029 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 3030              		.loc 1 819 7 view .LVU688
- 3031 0014 002B     		cmp	r3, #0
- 3032 0016 F8D1     		bne	.L217
- 3033              		.loc 1 819 45 discriminator 1 view .LVU689
- 3034 0018 2E4B     		ldr	r3, .L220
- 3035 001a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 3036              		.loc 1 819 28 discriminator 1 view .LVU690
- 3037 001c 002B     		cmp	r3, #0
- 3038 001e F4D1     		bne	.L217
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 74
+ 2941              		.loc 1 799 7 view .LVU669
+ 2942              	.L202:
+ 768:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		{
+ 2943              		.loc 1 768 3 view .LVU670
+ 770:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
+ 2944              		.loc 1 770 4 view .LVU671
+ 2945 0060 114D     		ldr	r5, .L215+8
+ 2946 0062 2846     		mov	r0, r5
+ 2947 0064 FFF7FEFF 		bl	Key_Scan
+ 2948              	.LVL321:
+ 772:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 2949              		.loc 1 772 4 view .LVU672
+ 772:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 2950              		.loc 1 772 14 is_stmt 0 view .LVU673
+ 2951 0068 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 772:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 2952              		.loc 1 772 6 view .LVU674
+ 2953 006a 012B     		cmp	r3, #1
+ 2954 006c DBD0     		beq	.L212
+ 2955              	.LVL322:
+ 2956              	.L203:
+ 778:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 2957              		.loc 1 778 4 is_stmt 1 view .LVU675
+ 778:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 2958              		.loc 1 778 6 is_stmt 0 view .LVU676
+ 2959 006e 032B     		cmp	r3, #3
+ 2960 0070 DED0     		beq	.L213
+ 784:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 2961              		.loc 1 784 4 is_stmt 1 view .LVU677
+ 784:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 2962              		.loc 1 784 6 is_stmt 0 view .LVU678
+ 2963 0072 042B     		cmp	r3, #4
+ 2964 0074 E1D0     		beq	.L214
+ 793:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			{
+ 2965              		.loc 1 793 4 is_stmt 1 view .LVU679
+ 2966 0076 012C     		cmp	r4, #1
+ 2967 0078 E3D0     		beq	.L207
+ 2968 007a 022C     		cmp	r4, #2
+ 2969 007c F0D1     		bne	.L202
+ 803:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowChar(0,2,'*',16,0);	
+ 2970              		.loc 1 803 7 view .LVU680
+ 2971 007e 0025     		movs	r5, #0
+ 2972 0080 0095     		str	r5, [sp]
+ 2973 0082 1023     		movs	r3, #16
+ 2974 0084 2022     		movs	r2, #32
+ 2975 0086 2946     		mov	r1, r5
+ 2976 0088 2846     		mov	r0, r5
+ 2977 008a FFF7FEFF 		bl	OLED_ShowChar
+ 2978              	.LVL323:
+ 804:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						break;						
+ 2979              		.loc 1 804 7 view .LVU681
+ 2980 008e 0095     		str	r5, [sp]
+ 2981 0090 1023     		movs	r3, #16
+ 2982 0092 2A22     		movs	r2, #42
+ 2983 0094 0221     		movs	r1, #2
+ 2984 0096 2846     		mov	r0, r5
+ 2985 0098 FFF7FEFF 		bl	OLED_ShowChar
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 73
 
 
- 820:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				{
- 821:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						HAL_UART_Transmit(&huart3,(uint8_t*)&Rectangle_Send,sizeof(Rectangle_Send),HAL_MAX_DELAY);		/
- 3039              		.loc 1 821 7 is_stmt 1 view .LVU691
- 3040 0020 4FF0FF33 		mov	r3, #-1
- 3041 0024 0122     		movs	r2, #1
- 3042 0026 2E49     		ldr	r1, .L220+12
- 3043 0028 2E48     		ldr	r0, .L220+16
- 3044 002a FFF7FEFF 		bl	HAL_UART_Transmit
- 3045              	.LVL327:
- 822:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					
- 823:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						memset(Point1_XY,'\0',10);
- 3046              		.loc 1 823 7 view .LVU692
- 3047 002e 0024     		movs	r4, #0
- 3048 0030 0B94     		str	r4, [sp, #44]
- 3049 0032 0C94     		str	r4, [sp, #48]
- 3050 0034 ADF83440 		strh	r4, [sp, #52]	@ movhi
- 824:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						sprintf(Point1_XY,"(%4d,%4d)",rectangle_XY[0],rectangle_XY[1]);
- 3051              		.loc 1 824 7 view .LVU693
- 3052 0038 274D     		ldr	r5, .L220+4
- 3053 003a 2B4E     		ldr	r6, .L220+20
- 3054 003c 6B68     		ldr	r3, [r5, #4]
- 3055 003e 2A68     		ldr	r2, [r5]
- 3056 0040 3146     		mov	r1, r6
- 3057 0042 0BA8     		add	r0, sp, #44
- 3058 0044 FFF7FEFF 		bl	sprintf
- 3059              	.LVL328:
- 825:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowString(0,0,Point1_XY,16,0);	
- 3060              		.loc 1 825 7 view .LVU694
- 3061 0048 0094     		str	r4, [sp]
- 3062 004a 1023     		movs	r3, #16
- 3063 004c 0BAA     		add	r2, sp, #44
- 3064 004e 2146     		mov	r1, r4
- 3065 0050 2046     		mov	r0, r4
- 3066 0052 FFF7FEFF 		bl	OLED_ShowString
- 3067              	.LVL329:
- 826:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					
- 827:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						memset(Point2_XY,'\0',10);
- 3068              		.loc 1 827 7 view .LVU695
- 3069 0056 0894     		str	r4, [sp, #32]
- 3070 0058 0994     		str	r4, [sp, #36]
- 3071 005a ADF82840 		strh	r4, [sp, #40]	@ movhi
- 828:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						sprintf(Point2_XY,"(%4d,%4d)",rectangle_XY[2],rectangle_XY[3]);
- 3072              		.loc 1 828 7 view .LVU696
- 3073 005e EB68     		ldr	r3, [r5, #12]
- 3074 0060 AA68     		ldr	r2, [r5, #8]
- 3075 0062 3146     		mov	r1, r6
- 3076 0064 08A8     		add	r0, sp, #32
- 3077 0066 FFF7FEFF 		bl	sprintf
- 3078              	.LVL330:
- 829:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowString(0,2,Point2_XY,16,0);
- 3079              		.loc 1 829 7 view .LVU697
- 3080 006a 0094     		str	r4, [sp]
- 3081 006c 1023     		movs	r3, #16
- 3082 006e 08AA     		add	r2, sp, #32
- 3083 0070 0221     		movs	r1, #2
- 3084 0072 2046     		mov	r0, r4
- 3085 0074 FFF7FEFF 		bl	OLED_ShowString
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 75
+ 2986              	.LVL324:
+ 805:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
+ 2987              		.loc 1 805 7 view .LVU682
+ 2988 009c E0E7     		b	.L202
+ 2989              	.L216:
+ 2990 009e 00BF     		.align	2
+ 2991              	.L215:
+ 2992 00a0 00000000 		.word	.LC7
+ 2993 00a4 10000000 		.word	.LC8
+ 2994 00a8 00000000 		.word	KeyNum
+ 2995              		.cfi_endproc
+ 2996              	.LFE161:
+ 2998              		.section	.text.GET_RECTANGLE_menu,"ax",%progbits
+ 2999              		.align	1
+ 3000              		.global	GET_RECTANGLE_menu
+ 3001              		.syntax unified
+ 3002              		.thumb
+ 3003              		.thumb_func
+ 3005              	GET_RECTANGLE_menu:
+ 3006              	.LFB162:
+ 811:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
+ 812:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** /* 四级菜单部分 */
+ 813:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 
+ 814:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** void GET_RECTANGLE_menu(void)
+ 815:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** {
+ 3007              		.loc 1 815 1 view -0
+ 3008              		.cfi_startproc
+ 3009              		@ args = 0, pretend = 0, frame = 48
+ 3010              		@ frame_needed = 0, uses_anonymous_args = 0
+ 3011 0000 70B5     		push	{r4, r5, r6, lr}
+ 3012              	.LCFI54:
+ 3013              		.cfi_def_cfa_offset 16
+ 3014              		.cfi_offset 4, -16
+ 3015              		.cfi_offset 5, -12
+ 3016              		.cfi_offset 6, -8
+ 3017              		.cfi_offset 14, -4
+ 3018 0002 8EB0     		sub	sp, sp, #56
+ 3019              	.LCFI55:
+ 3020              		.cfi_def_cfa_offset 72
+ 816:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 	
+ 817:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		char Point1_XY[10],Point2_XY[10],Point3_XY[10],Point4_XY[10];	
+ 3021              		.loc 1 817 3 view .LVU684
+ 818:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
+ 819:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		Data_StartGet=1;
+ 3022              		.loc 1 819 3 view .LVU685
+ 3023              		.loc 1 819 16 is_stmt 0 view .LVU686
+ 3024 0004 334B     		ldr	r3, .L221
+ 3025 0006 0122     		movs	r2, #1
+ 3026 0008 1A70     		strb	r2, [r3]
+ 3027              	.L218:
+ 820:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
+ 821:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		while(1)
+ 3028              		.loc 1 821 3 is_stmt 1 view .LVU687
+ 822:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		{
+ 823:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				Get_RectangleXY(rectangle_XY);			/* 获取四点原始坐标 */
+ 3029              		.loc 1 823 5 view .LVU688
+ 3030 000a 3348     		ldr	r0, .L221+4
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 74
 
 
- 3086              	.LVL331:
- 830:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
- 831:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						memset(Point3_XY,'\0',10);
- 3087              		.loc 1 831 7 view .LVU698
- 3088 0078 0594     		str	r4, [sp, #20]
- 3089 007a 0694     		str	r4, [sp, #24]
- 3090 007c ADF81C40 		strh	r4, [sp, #28]	@ movhi
- 832:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						sprintf(Point3_XY,"(%4d,%4d)",rectangle_XY[4],rectangle_XY[5]);
- 3091              		.loc 1 832 7 view .LVU699
- 3092 0080 6B69     		ldr	r3, [r5, #20]
- 3093 0082 2A69     		ldr	r2, [r5, #16]
- 3094 0084 3146     		mov	r1, r6
- 3095 0086 05A8     		add	r0, sp, #20
- 3096 0088 FFF7FEFF 		bl	sprintf
- 3097              	.LVL332:
- 833:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowString(0,4,Point3_XY,16,0);
- 3098              		.loc 1 833 7 view .LVU700
- 3099 008c 0094     		str	r4, [sp]
- 3100 008e 1023     		movs	r3, #16
- 3101 0090 05AA     		add	r2, sp, #20
- 3102 0092 0421     		movs	r1, #4
- 3103 0094 2046     		mov	r0, r4
- 3104 0096 FFF7FEFF 		bl	OLED_ShowString
- 3105              	.LVL333:
- 834:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
- 835:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						memset(Point4_XY,'\0',10);
- 3106              		.loc 1 835 7 view .LVU701
- 3107 009a 0294     		str	r4, [sp, #8]
- 3108 009c 0394     		str	r4, [sp, #12]
- 3109 009e ADF81040 		strh	r4, [sp, #16]	@ movhi
- 836:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						sprintf(Point4_XY,"(%4d,%4d)",rectangle_XY[6],rectangle_XY[7]);
- 3110              		.loc 1 836 7 view .LVU702
- 3111 00a2 EB69     		ldr	r3, [r5, #28]
- 3112 00a4 AA69     		ldr	r2, [r5, #24]
- 3113 00a6 3146     		mov	r1, r6
- 3114 00a8 02A8     		add	r0, sp, #8
- 3115 00aa FFF7FEFF 		bl	sprintf
- 3116              	.LVL334:
- 837:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowString(0,6,Point4_XY,16,0);			
- 3117              		.loc 1 837 7 view .LVU703
- 3118 00ae 0094     		str	r4, [sp]
- 3119 00b0 1023     		movs	r3, #16
- 3120 00b2 02AA     		add	r2, sp, #8
- 3121 00b4 0621     		movs	r1, #6
- 3122 00b6 2046     		mov	r0, r4
- 3123 00b8 FFF7FEFF 		bl	OLED_ShowString
- 3124              	.LVL335:
- 838:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
- 839:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						Key_Scan(&KeyNum);			/* 获取键码值 */
- 3125              		.loc 1 839 7 view .LVU704
- 3126 00bc 0B4C     		ldr	r4, .L220+24
- 3127 00be 2046     		mov	r0, r4
- 3128 00c0 FFF7FEFF 		bl	Key_Scan
- 3129              	.LVL336:
- 840:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					
- 841:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						if(KeyNum == 4)
- 3130              		.loc 1 841 7 view .LVU705
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 76
+ 3031 000c FFF7FEFF 		bl	Get_RectangleXY
+ 3032              	.LVL325:
+ 824:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					
+ 825:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				if(Data_FinishGet == 0 && Data_StartGet == 0)		/* 接收完成后 */
+ 3033              		.loc 1 825 5 view .LVU689
+ 3034              		.loc 1 825 23 is_stmt 0 view .LVU690
+ 3035 0010 324B     		ldr	r3, .L221+8
+ 3036 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 3037              		.loc 1 825 7 view .LVU691
+ 3038 0014 002B     		cmp	r3, #0
+ 3039 0016 F8D1     		bne	.L218
+ 3040              		.loc 1 825 45 discriminator 1 view .LVU692
+ 3041 0018 2E4B     		ldr	r3, .L221
+ 3042 001a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 3043              		.loc 1 825 28 discriminator 1 view .LVU693
+ 3044 001c 002B     		cmp	r3, #0
+ 3045 001e F4D1     		bne	.L218
+ 826:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				{
+ 827:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						HAL_UART_Transmit(&huart3,(uint8_t*)&Rectangle_Send,sizeof(Rectangle_Send),HAL_MAX_DELAY);		/
+ 3046              		.loc 1 827 7 is_stmt 1 view .LVU694
+ 3047 0020 4FF0FF33 		mov	r3, #-1
+ 3048 0024 0122     		movs	r2, #1
+ 3049 0026 2E49     		ldr	r1, .L221+12
+ 3050 0028 2E48     		ldr	r0, .L221+16
+ 3051 002a FFF7FEFF 		bl	HAL_UART_Transmit
+ 3052              	.LVL326:
+ 828:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					
+ 829:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						memset(Point1_XY,'\0',10);
+ 3053              		.loc 1 829 7 view .LVU695
+ 3054 002e 0024     		movs	r4, #0
+ 3055 0030 0B94     		str	r4, [sp, #44]
+ 3056 0032 0C94     		str	r4, [sp, #48]
+ 3057 0034 ADF83440 		strh	r4, [sp, #52]	@ movhi
+ 830:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						sprintf(Point1_XY,"(%4d,%4d)",rectangle_XY[0],rectangle_XY[1]);
+ 3058              		.loc 1 830 7 view .LVU696
+ 3059 0038 274D     		ldr	r5, .L221+4
+ 3060 003a 2B4E     		ldr	r6, .L221+20
+ 3061 003c 6B68     		ldr	r3, [r5, #4]
+ 3062 003e 2A68     		ldr	r2, [r5]
+ 3063 0040 3146     		mov	r1, r6
+ 3064 0042 0BA8     		add	r0, sp, #44
+ 3065 0044 FFF7FEFF 		bl	sprintf
+ 3066              	.LVL327:
+ 831:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowString(0,0,Point1_XY,16,0);	
+ 3067              		.loc 1 831 7 view .LVU697
+ 3068 0048 0094     		str	r4, [sp]
+ 3069 004a 1023     		movs	r3, #16
+ 3070 004c 0BAA     		add	r2, sp, #44
+ 3071 004e 2146     		mov	r1, r4
+ 3072 0050 2046     		mov	r0, r4
+ 3073 0052 FFF7FEFF 		bl	OLED_ShowString
+ 3074              	.LVL328:
+ 832:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					
+ 833:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						memset(Point2_XY,'\0',10);
+ 3075              		.loc 1 833 7 view .LVU698
+ 3076 0056 0894     		str	r4, [sp, #32]
+ 3077 0058 0994     		str	r4, [sp, #36]
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 75
 
 
- 3131              		.loc 1 841 17 is_stmt 0 view .LVU706
- 3132 00c4 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
- 3133              		.loc 1 841 9 view .LVU707
- 3134 00c6 042B     		cmp	r3, #4
- 3135 00c8 9FD1     		bne	.L217
- 842:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						{
- 843:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 								OLED_Clear();
- 3136              		.loc 1 843 9 is_stmt 1 view .LVU708
- 3137 00ca FFF7FEFF 		bl	OLED_Clear
- 3138              	.LVL337:
- 844:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 								break;
- 3139              		.loc 1 844 9 view .LVU709
- 845:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						}
- 846:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
- 847:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			
- 848:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		}
- 849:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** }
- 3140              		.loc 1 849 1 is_stmt 0 view .LVU710
- 3141 00ce 0EB0     		add	sp, sp, #56
- 3142              	.LCFI56:
- 3143              		.cfi_def_cfa_offset 16
- 3144              		@ sp needed
- 3145 00d0 70BD     		pop	{r4, r5, r6, pc}
- 3146              	.L221:
- 3147 00d2 00BF     		.align	2
- 3148              	.L220:
- 3149 00d4 00000000 		.word	Data_StartGet
- 3150 00d8 00000000 		.word	rectangle_XY
- 3151 00dc 00000000 		.word	Data_FinishGet
- 3152 00e0 00000000 		.word	Rectangle_Send
- 3153 00e4 00000000 		.word	huart3
- 3154 00e8 00000000 		.word	.LC3
- 3155 00ec 00000000 		.word	KeyNum
- 3156              		.cfi_endproc
- 3157              	.LFE162:
- 3159              		.global	My_ResetXY
- 3160              		.global	GetOriginData_Flag
- 3161              		.global	point_4
- 3162              		.global	point_3
- 3163              		.global	point_2
- 3164              		.global	point_1
- 3165              		.global	menu4
- 3166              		.global	menu3
- 3167              		.global	menu2
- 3168              		.global	CMD_Data
- 3169              		.section	.bss.GetOriginData_Flag,"aw",%nobits
- 3172              	GetOriginData_Flag:
- 3173 0000 00       		.space	1
- 3174              		.section	.bss.My_ResetXY,"aw",%nobits
- 3175              		.align	2
- 3176              		.set	.LANCHOR5,. + 0
- 3179              	My_ResetXY:
- 3180 0000 00000000 		.space	4
- 3181              		.section	.bss.Restart_Flag.0,"aw",%nobits
- 3182              		.set	.LANCHOR6,. + 0
- 3185              	Restart_Flag.0:
- 3186 0000 00       		.space	1
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 77
+ 3078 005a ADF82840 		strh	r4, [sp, #40]	@ movhi
+ 834:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						sprintf(Point2_XY,"(%4d,%4d)",rectangle_XY[2],rectangle_XY[3]);
+ 3079              		.loc 1 834 7 view .LVU699
+ 3080 005e EB68     		ldr	r3, [r5, #12]
+ 3081 0060 AA68     		ldr	r2, [r5, #8]
+ 3082 0062 3146     		mov	r1, r6
+ 3083 0064 08A8     		add	r0, sp, #32
+ 3084 0066 FFF7FEFF 		bl	sprintf
+ 3085              	.LVL329:
+ 835:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowString(0,2,Point2_XY,16,0);
+ 3086              		.loc 1 835 7 view .LVU700
+ 3087 006a 0094     		str	r4, [sp]
+ 3088 006c 1023     		movs	r3, #16
+ 3089 006e 08AA     		add	r2, sp, #32
+ 3090 0070 0221     		movs	r1, #2
+ 3091 0072 2046     		mov	r0, r4
+ 3092 0074 FFF7FEFF 		bl	OLED_ShowString
+ 3093              	.LVL330:
+ 836:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
+ 837:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						memset(Point3_XY,'\0',10);
+ 3094              		.loc 1 837 7 view .LVU701
+ 3095 0078 0594     		str	r4, [sp, #20]
+ 3096 007a 0694     		str	r4, [sp, #24]
+ 3097 007c ADF81C40 		strh	r4, [sp, #28]	@ movhi
+ 838:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						sprintf(Point3_XY,"(%4d,%4d)",rectangle_XY[4],rectangle_XY[5]);
+ 3098              		.loc 1 838 7 view .LVU702
+ 3099 0080 6B69     		ldr	r3, [r5, #20]
+ 3100 0082 2A69     		ldr	r2, [r5, #16]
+ 3101 0084 3146     		mov	r1, r6
+ 3102 0086 05A8     		add	r0, sp, #20
+ 3103 0088 FFF7FEFF 		bl	sprintf
+ 3104              	.LVL331:
+ 839:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowString(0,4,Point3_XY,16,0);
+ 3105              		.loc 1 839 7 view .LVU703
+ 3106 008c 0094     		str	r4, [sp]
+ 3107 008e 1023     		movs	r3, #16
+ 3108 0090 05AA     		add	r2, sp, #20
+ 3109 0092 0421     		movs	r1, #4
+ 3110 0094 2046     		mov	r0, r4
+ 3111 0096 FFF7FEFF 		bl	OLED_ShowString
+ 3112              	.LVL332:
+ 840:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
+ 841:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						memset(Point4_XY,'\0',10);
+ 3113              		.loc 1 841 7 view .LVU704
+ 3114 009a 0294     		str	r4, [sp, #8]
+ 3115 009c 0394     		str	r4, [sp, #12]
+ 3116 009e ADF81040 		strh	r4, [sp, #16]	@ movhi
+ 842:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						sprintf(Point4_XY,"(%4d,%4d)",rectangle_XY[6],rectangle_XY[7]);
+ 3117              		.loc 1 842 7 view .LVU705
+ 3118 00a2 EB69     		ldr	r3, [r5, #28]
+ 3119 00a4 AA69     		ldr	r2, [r5, #24]
+ 3120 00a6 3146     		mov	r1, r6
+ 3121 00a8 02A8     		add	r0, sp, #8
+ 3122 00aa FFF7FEFF 		bl	sprintf
+ 3123              	.LVL333:
+ 843:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						OLED_ShowString(0,6,Point4_XY,16,0);			
+ 3124              		.loc 1 843 7 view .LVU706
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 76
 
 
- 3187              		.section	.bss.menu2,"aw",%nobits
- 3188              		.align	2
- 3191              	menu2:
- 3192 0000 00000000 		.space	4
- 3193              		.section	.bss.menu3,"aw",%nobits
- 3194              		.align	2
- 3197              	menu3:
- 3198 0000 00000000 		.space	4
- 3199              		.section	.bss.menu4,"aw",%nobits
- 3200              		.align	2
- 3203              	menu4:
- 3204 0000 00000000 		.space	4
- 3205              		.section	.bss.point_1,"aw",%nobits
- 3206              		.align	2
- 3207              		.set	.LANCHOR1,. + 0
- 3210              	point_1:
- 3211 0000 00000000 		.space	9
- 3211      00000000 
- 3211      00
- 3212              		.section	.bss.point_2,"aw",%nobits
- 3213              		.align	2
- 3214              		.set	.LANCHOR2,. + 0
- 3217              	point_2:
- 3218 0000 00000000 		.space	9
- 3218      00000000 
- 3218      00
- 3219              		.section	.bss.point_3,"aw",%nobits
+ 3125 00ae 0094     		str	r4, [sp]
+ 3126 00b0 1023     		movs	r3, #16
+ 3127 00b2 02AA     		add	r2, sp, #8
+ 3128 00b4 0621     		movs	r1, #6
+ 3129 00b6 2046     		mov	r0, r4
+ 3130 00b8 FFF7FEFF 		bl	OLED_ShowString
+ 3131              	.LVL334:
+ 844:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		
+ 845:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						Key_Scan(&KeyNum);			/* 获取键码值 */
+ 3132              		.loc 1 845 7 view .LVU707
+ 3133 00bc 0B4C     		ldr	r4, .L221+24
+ 3134 00be 2046     		mov	r0, r4
+ 3135 00c0 FFF7FEFF 		bl	Key_Scan
+ 3136              	.LVL335:
+ 846:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 					
+ 847:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						if(KeyNum == 4)
+ 3137              		.loc 1 847 7 view .LVU708
+ 3138              		.loc 1 847 17 is_stmt 0 view .LVU709
+ 3139 00c4 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 3140              		.loc 1 847 9 view .LVU710
+ 3141 00c6 042B     		cmp	r3, #4
+ 3142 00c8 9FD1     		bne	.L218
+ 848:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						{
+ 849:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 								OLED_Clear();
+ 3143              		.loc 1 849 9 is_stmt 1 view .LVU711
+ 3144 00ca FFF7FEFF 		bl	OLED_Clear
+ 3145              	.LVL336:
+ 850:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 								break;
+ 3146              		.loc 1 850 9 view .LVU712
+ 851:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 						}
+ 852:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 				}
+ 853:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 			
+ 854:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** 		}
+ 855:E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED\oled.c **** }
+ 3147              		.loc 1 855 1 is_stmt 0 view .LVU713
+ 3148 00ce 0EB0     		add	sp, sp, #56
+ 3149              	.LCFI56:
+ 3150              		.cfi_def_cfa_offset 16
+ 3151              		@ sp needed
+ 3152 00d0 70BD     		pop	{r4, r5, r6, pc}
+ 3153              	.L222:
+ 3154 00d2 00BF     		.align	2
+ 3155              	.L221:
+ 3156 00d4 00000000 		.word	Data_StartGet
+ 3157 00d8 00000000 		.word	rectangle_XY
+ 3158 00dc 00000000 		.word	Data_FinishGet
+ 3159 00e0 00000000 		.word	Rectangle_Send
+ 3160 00e4 00000000 		.word	huart3
+ 3161 00e8 00000000 		.word	.LC3
+ 3162 00ec 00000000 		.word	KeyNum
+ 3163              		.cfi_endproc
+ 3164              	.LFE162:
+ 3166              		.global	MenuReturn_Flag
+ 3167              		.global	My_ResetXY
+ 3168              		.global	GetOriginData_Flag
+ 3169              		.global	point_4
+ 3170              		.global	point_3
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 77
+
+
+ 3171              		.global	point_2
+ 3172              		.global	point_1
+ 3173              		.global	menu4
+ 3174              		.global	menu3
+ 3175              		.global	menu2
+ 3176              		.global	CMD_Data
+ 3177              		.section	.bss.GetOriginData_Flag,"aw",%nobits
+ 3180              	GetOriginData_Flag:
+ 3181 0000 00       		.space	1
+ 3182              		.section	.bss.MenuReturn_Flag,"aw",%nobits
+ 3183              		.set	.LANCHOR7,. + 0
+ 3186              	MenuReturn_Flag:
+ 3187 0000 00       		.space	1
+ 3188              		.section	.bss.My_ResetXY,"aw",%nobits
+ 3189              		.align	2
+ 3190              		.set	.LANCHOR5,. + 0
+ 3193              	My_ResetXY:
+ 3194 0000 00000000 		.space	4
+ 3195              		.section	.bss.Restart_Flag.0,"aw",%nobits
+ 3196              		.set	.LANCHOR6,. + 0
+ 3199              	Restart_Flag.0:
+ 3200 0000 00       		.space	1
+ 3201              		.section	.bss.menu2,"aw",%nobits
+ 3202              		.align	2
+ 3205              	menu2:
+ 3206 0000 00000000 		.space	4
+ 3207              		.section	.bss.menu3,"aw",%nobits
+ 3208              		.align	2
+ 3211              	menu3:
+ 3212 0000 00000000 		.space	4
+ 3213              		.section	.bss.menu4,"aw",%nobits
+ 3214              		.align	2
+ 3217              	menu4:
+ 3218 0000 00000000 		.space	4
+ 3219              		.section	.bss.point_1,"aw",%nobits
  3220              		.align	2
- 3221              		.set	.LANCHOR3,. + 0
- 3224              	point_3:
+ 3221              		.set	.LANCHOR1,. + 0
+ 3224              	point_1:
  3225 0000 00000000 		.space	9
  3225      00000000 
  3225      00
- 3226              		.section	.bss.point_4,"aw",%nobits
+ 3226              		.section	.bss.point_2,"aw",%nobits
  3227              		.align	2
- 3228              		.set	.LANCHOR4,. + 0
- 3231              	point_4:
+ 3228              		.set	.LANCHOR2,. + 0
+ 3231              	point_2:
  3232 0000 00000000 		.space	9
  3232      00000000 
  3232      00
- 3233              		.section	.data.CMD_Data,"aw"
+ 3233              		.section	.bss.point_3,"aw",%nobits
  3234              		.align	2
- 3235              		.set	.LANCHOR0,. + 0
- 3238              	CMD_Data:
- 3239 0000 AED580A8 		.ascii	"\256\325\200\250?\323\000@\241\310\332\022\201\317\331"
- 3239      3FD30040 
- 3239      A1C8DA12 
- 3239      81CFD9
- 3240 000f F1DB40A4 		.ascii	"\361\333@\244\246\215\024\257"
- 3240      A68D14AF 
- 3241              		.text
- 3242              	.Letext0:
- 3243              		.file 2 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\machine\\_default_types.h"
- 3244              		.file 3 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\sys\\_stdint.h"
- 3245              		.file 4 "Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g431xx.h"
- 3246              		.file 5 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_def.h"
- 3247              		.file 6 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_dma.h"
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 78
+ 3235              		.set	.LANCHOR3,. + 0
+ 3238              	point_3:
+ 3239 0000 00000000 		.space	9
+ 3239      00000000 
+ 3239      00
+ 3240              		.section	.bss.point_4,"aw",%nobits
+ 3241              		.align	2
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 78
 
 
- 3248              		.file 7 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_i2c.h"
- 3249              		.file 8 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h"
- 3250              		.file 9 "Core/Inc/main.h"
- 3251              		.file 10 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED/oledfont.h"
- 3252              		.file 11 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo/ring_buffer.h"
- 3253              		.file 12 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo/uart_servo_lite.h"
- 3254              		.file 13 "E:/MCU_Project/stm32/Target_tracking/user/Laser_Move/Servo_Move.h"
- 3255              		.file 14 "Core/Inc/usart.h"
- 3256              		.file 15 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED/oled.h"
- 3257              		.file 16 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\stdio.h"
- 3258              		.file 17 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard/My_KeyBoard.h"
- 3259              		.file 18 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h"
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 79
+ 3242              		.set	.LANCHOR4,. + 0
+ 3245              	point_4:
+ 3246 0000 00000000 		.space	9
+ 3246      00000000 
+ 3246      00
+ 3247              		.section	.data.CMD_Data,"aw"
+ 3248              		.align	2
+ 3249              		.set	.LANCHOR0,. + 0
+ 3252              	CMD_Data:
+ 3253 0000 AED580A8 		.ascii	"\256\325\200\250?\323\000@\241\310\332\022\201\317\331"
+ 3253      3FD30040 
+ 3253      A1C8DA12 
+ 3253      81CFD9
+ 3254 000f F1DB40A4 		.ascii	"\361\333@\244\246\215\024\257"
+ 3254      A68D14AF 
+ 3255              		.text
+ 3256              	.Letext0:
+ 3257              		.file 2 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 3258              		.file 3 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 3259              		.file 4 "Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g431xx.h"
+ 3260              		.file 5 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_def.h"
+ 3261              		.file 6 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_dma.h"
+ 3262              		.file 7 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_i2c.h"
+ 3263              		.file 8 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h"
+ 3264              		.file 9 "Core/Inc/main.h"
+ 3265              		.file 10 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED/oledfont.h"
+ 3266              		.file 11 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo/ring_buffer.h"
+ 3267              		.file 12 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/Servo/uart_servo_lite.h"
+ 3268              		.file 13 "E:/MCU_Project/stm32/Target_tracking/user/Laser_Move/Servo_Move.h"
+ 3269              		.file 14 "Core/Inc/usart.h"
+ 3270              		.file 15 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/OLED/oled.h"
+ 3271              		.file 16 "d:\\stm32_vscode_bag\\gnu\\arm-none-eabi\\include\\stdio.h"
+ 3272              		.file 17 "E:/MCU_Project/stm32/Target_tracking/user/My_Peripheral/KeyBoard/My_KeyBoard.h"
+ 3273              		.file 18 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h"
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 79
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 oled.c
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:20     .text.OLED_WR_CMD:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:26     .text.OLED_WR_CMD:00000000 OLED_WR_CMD
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:66     .text.OLED_WR_CMD:00000028 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:71     .text.OLED_Init:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:77     .text.OLED_Init:00000000 OLED_Init
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:124    .text.OLED_Init:00000020 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:129    .text.OLED_WR_DATA:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:135    .text.OLED_WR_DATA:00000000 OLED_WR_DATA
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:174    .text.OLED_WR_DATA:00000028 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:179    .text.OLED_On:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:185    .text.OLED_On:00000000 OLED_On
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:262    .text.OLED_Clear:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:268    .text.OLED_Clear:00000000 OLED_Clear
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:345    .text.OLED_Display_On:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:351    .text.OLED_Display_On:00000000 OLED_Display_On
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:380    .text.OLED_Display_Off:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:386    .text.OLED_Display_Off:00000000 OLED_Display_Off
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:415    .text.OLED_Set_Pos:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:421    .text.OLED_Set_Pos:00000000 OLED_Set_Pos
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:459    .text.oled_pow:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:465    .text.oled_pow:00000000 oled_pow
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:508    .text.OLED_ShowChar:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:514    .text.OLED_ShowChar:00000000 OLED_ShowChar
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:725    .text.OLED_ShowChar:000000d8 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:731    .text.OLED_ShowString:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:737    .text.OLED_ShowString:00000000 OLED_ShowString
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:866    .text.OLED_ShowNum:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:872    .text.OLED_ShowNum:00000000 OLED_ShowNum
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1015   .text.OLED_ShowNum:00000098 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1020   .text.OLED_Showdecimal:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1026   .text.OLED_Showdecimal:00000000 OLED_Showdecimal
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1298   .text.OLED_Showdecimal:00000154 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1303   .text.OLED_ShowCHinese:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1309   .text.OLED_ShowCHinese:00000000 OLED_ShowCHinese
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1441   .text.OLED_ShowCHinese:00000084 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1446   .text.OLED_DrawBMP:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1452   .text.OLED_DrawBMP:00000000 OLED_DrawBMP
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1568   .text.OLED_HorizontalShift:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1574   .text.OLED_HorizontalShift:00000000 OLED_HorizontalShift
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1632   .text.OLED_Some_HorizontalShift:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1638   .text.OLED_Some_HorizontalShift:00000000 OLED_Some_HorizontalShift
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1700   .text.OLED_VerticalAndHorizontalShift:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1706   .text.OLED_VerticalAndHorizontalShift:00000000 OLED_VerticalAndHorizontalShift
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1768   .text.OLED_DisplayMode:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1774   .text.OLED_DisplayMode:00000000 OLED_DisplayMode
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1796   .text.OLED_IntensityControl:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1802   .text.OLED_IntensityControl:00000000 OLED_IntensityControl
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1832   .rodata.menu1.str1.4:00000000 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1842   .text.menu1:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:1848   .text.menu1:00000000 menu1
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2055   .text.menu1:000000fc $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2063   .rodata.LOCATE_MODE_Menu.str1.4:00000000 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2067   .text.LOCATE_MODE_Menu:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2073   .text.LOCATE_MODE_Menu:00000000 LOCATE_MODE_Menu
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2354   .text.LOCATE_MODE_Menu:00000174 $d
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 80
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:20     .text.OLED_WR_CMD:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:26     .text.OLED_WR_CMD:00000000 OLED_WR_CMD
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:66     .text.OLED_WR_CMD:00000028 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:71     .text.OLED_Init:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:77     .text.OLED_Init:00000000 OLED_Init
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:124    .text.OLED_Init:00000020 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:129    .text.OLED_WR_DATA:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:135    .text.OLED_WR_DATA:00000000 OLED_WR_DATA
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:174    .text.OLED_WR_DATA:00000028 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:179    .text.OLED_On:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:185    .text.OLED_On:00000000 OLED_On
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:262    .text.OLED_Clear:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:268    .text.OLED_Clear:00000000 OLED_Clear
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:345    .text.OLED_Display_On:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:351    .text.OLED_Display_On:00000000 OLED_Display_On
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:380    .text.OLED_Display_Off:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:386    .text.OLED_Display_Off:00000000 OLED_Display_Off
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:415    .text.OLED_Set_Pos:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:421    .text.OLED_Set_Pos:00000000 OLED_Set_Pos
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:459    .text.oled_pow:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:465    .text.oled_pow:00000000 oled_pow
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:508    .text.OLED_ShowChar:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:514    .text.OLED_ShowChar:00000000 OLED_ShowChar
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:725    .text.OLED_ShowChar:000000d8 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:731    .text.OLED_ShowString:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:737    .text.OLED_ShowString:00000000 OLED_ShowString
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:866    .text.OLED_ShowNum:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:872    .text.OLED_ShowNum:00000000 OLED_ShowNum
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1015   .text.OLED_ShowNum:00000098 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1020   .text.OLED_Showdecimal:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1026   .text.OLED_Showdecimal:00000000 OLED_Showdecimal
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1298   .text.OLED_Showdecimal:00000154 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1303   .text.OLED_ShowCHinese:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1309   .text.OLED_ShowCHinese:00000000 OLED_ShowCHinese
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1441   .text.OLED_ShowCHinese:00000084 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1446   .text.OLED_DrawBMP:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1452   .text.OLED_DrawBMP:00000000 OLED_DrawBMP
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1568   .text.OLED_HorizontalShift:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1574   .text.OLED_HorizontalShift:00000000 OLED_HorizontalShift
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1632   .text.OLED_Some_HorizontalShift:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1638   .text.OLED_Some_HorizontalShift:00000000 OLED_Some_HorizontalShift
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1700   .text.OLED_VerticalAndHorizontalShift:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1706   .text.OLED_VerticalAndHorizontalShift:00000000 OLED_VerticalAndHorizontalShift
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1768   .text.OLED_DisplayMode:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1774   .text.OLED_DisplayMode:00000000 OLED_DisplayMode
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1796   .text.OLED_IntensityControl:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1802   .text.OLED_IntensityControl:00000000 OLED_IntensityControl
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1832   .rodata.menu1.str1.4:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1842   .text.menu1:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:1848   .text.menu1:00000000 menu1
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2055   .text.menu1:000000fc $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2063   .rodata.LOCATE_MODE_Menu.str1.4:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2067   .text.LOCATE_MODE_Menu:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2073   .text.LOCATE_MODE_Menu:00000000 LOCATE_MODE_Menu
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2354   .text.LOCATE_MODE_Menu:00000174 $d
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 80
 
 
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2372   .text.LASER_RESET:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2378   .text.LASER_RESET:00000000 LASER_RESET
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2456   .text.LASER_RESET:00000068 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2467   .text.LASER_RESET_Start:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2473   .text.LASER_RESET_Start:00000000 LASER_RESET_Start
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2554   .text.LASER_RESET_Start:00000044 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2563   .rodata.LASER_RESET_Menu.str1.4:00000000 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2567   .text.LASER_RESET_Menu:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2573   .text.LASER_RESET_Menu:00000000 LASER_RESET_Menu
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2648   .text.LASER_RESET_Menu:00000054 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2656   .rodata.LASER_MOVE_Menu.str1.4:00000000 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2663   .text.LASER_MOVE_Menu:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2669   .text.LASER_MOVE_Menu:00000000 LASER_MOVE_Menu
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2817   .text.LASER_MOVE_Menu:0000009c $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2824   .rodata.RECTANGLE_MOVE_Menu.str1.4:00000000 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2831   .text.RECTANGLE_MOVE_Menu:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2837   .text.RECTANGLE_MOVE_Menu:00000000 RECTANGLE_MOVE_Menu
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2985   .text.RECTANGLE_MOVE_Menu:0000009c $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2992   .text.GET_RECTANGLE_menu:00000000 $t
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:2998   .text.GET_RECTANGLE_menu:00000000 GET_RECTANGLE_menu
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3149   .text.GET_RECTANGLE_menu:000000d4 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3179   .bss.My_ResetXY:00000000 My_ResetXY
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3172   .bss.GetOriginData_Flag:00000000 GetOriginData_Flag
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3231   .bss.point_4:00000000 point_4
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3224   .bss.point_3:00000000 point_3
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3217   .bss.point_2:00000000 point_2
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3210   .bss.point_1:00000000 point_1
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3203   .bss.menu4:00000000 menu4
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3197   .bss.menu3:00000000 menu3
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3191   .bss.menu2:00000000 menu2
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3238   .data.CMD_Data:00000000 CMD_Data
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3173   .bss.GetOriginData_Flag:00000000 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3175   .bss.My_ResetXY:00000000 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3185   .bss.Restart_Flag.0:00000000 Restart_Flag.0
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3186   .bss.Restart_Flag.0:00000000 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3188   .bss.menu2:00000000 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3194   .bss.menu3:00000000 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3200   .bss.menu4:00000000 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3206   .bss.point_1:00000000 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3213   .bss.point_2:00000000 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3220   .bss.point_3:00000000 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3227   .bss.point_4:00000000 $d
-C:\Users\86390\AppData\Local\Temp\cc0lOyie.s:3234   .data.CMD_Data:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2372   .text.LASER_RESET:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2378   .text.LASER_RESET:00000000 LASER_RESET
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2456   .text.LASER_RESET:00000068 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2467   .text.LASER_RESET_Start:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2473   .text.LASER_RESET_Start:00000000 LASER_RESET_Start
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2554   .text.LASER_RESET_Start:00000044 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2563   .rodata.LASER_RESET_Menu.str1.4:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2567   .text.LASER_RESET_Menu:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2573   .text.LASER_RESET_Menu:00000000 LASER_RESET_Menu
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2648   .text.LASER_RESET_Menu:00000054 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2656   .rodata.LASER_MOVE_Menu.str1.4:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2663   .text.LASER_MOVE_Menu:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2669   .text.LASER_MOVE_Menu:00000000 LASER_MOVE_Menu
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2822   .text.LASER_MOVE_Menu:000000a4 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2830   .rodata.RECTANGLE_MOVE_Menu.str1.4:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2837   .text.RECTANGLE_MOVE_Menu:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2843   .text.RECTANGLE_MOVE_Menu:00000000 RECTANGLE_MOVE_Menu
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2992   .text.RECTANGLE_MOVE_Menu:000000a0 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:2999   .text.GET_RECTANGLE_menu:00000000 $t
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3005   .text.GET_RECTANGLE_menu:00000000 GET_RECTANGLE_menu
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3156   .text.GET_RECTANGLE_menu:000000d4 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3186   .bss.MenuReturn_Flag:00000000 MenuReturn_Flag
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3193   .bss.My_ResetXY:00000000 My_ResetXY
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3180   .bss.GetOriginData_Flag:00000000 GetOriginData_Flag
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3245   .bss.point_4:00000000 point_4
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3238   .bss.point_3:00000000 point_3
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3231   .bss.point_2:00000000 point_2
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3224   .bss.point_1:00000000 point_1
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3217   .bss.menu4:00000000 menu4
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3211   .bss.menu3:00000000 menu3
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3205   .bss.menu2:00000000 menu2
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3252   .data.CMD_Data:00000000 CMD_Data
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3181   .bss.GetOriginData_Flag:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3187   .bss.MenuReturn_Flag:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3189   .bss.My_ResetXY:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3199   .bss.Restart_Flag.0:00000000 Restart_Flag.0
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3200   .bss.Restart_Flag.0:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3202   .bss.menu2:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3208   .bss.menu3:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3214   .bss.menu4:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3220   .bss.point_1:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3227   .bss.point_2:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3234   .bss.point_3:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3241   .bss.point_4:00000000 $d
+C:\Users\86390\AppData\Local\Temp\ccywNIfM.s:3248   .data.CMD_Data:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_I2C_Mem_Write
@@ -4751,11 +4775,11 @@ Key_Scan
 KeyNum
 USL_GETPositionVal
 USL_SetServoAngle
+ARM GAS  C:\Users\86390\AppData\Local\Temp\ccywNIfM.s 			page 81
+
+
 Penstring_Locate
 sprintf
-ARM GAS  C:\Users\86390\AppData\Local\Temp\cc0lOyie.s 			page 81
-
-
 sid_1
 servoUsart
 Locate_angleX

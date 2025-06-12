@@ -34,7 +34,7 @@ extern uint16_t Servo_OriginAngle[2];
 
 extern uint16_t Tracking_CNT,Tracking_Start_Flag,Tracking_Enable;
 
-extern int RelaServo_Angle[2];
+extern float RelaServo_Angle[2];
 
 extern int Laser_XY[2];		/* ¼¤¹âµã×ø±ê */
 

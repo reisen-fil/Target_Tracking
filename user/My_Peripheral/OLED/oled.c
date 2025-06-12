@@ -702,6 +702,8 @@ void LASER_RESET_Menu(void)
 		
 }
 
+uint8_t MenuReturn_Flag;			/* 菜单返回标志位 */
+
 /* 进入运动菜单选择 */
 int LASER_MOVE_Menu(void)
 {
@@ -729,6 +731,7 @@ int LASER_MOVE_Menu(void)
 			if(KeyNum == 4)			/* 返回上一级菜单 */
 			{
 					OLED_Clear();
+					MenuReturn_Flag=1;		/* 作为退出该循环外的那一层循环的退出标志位(回退到上一级菜单) */
 					break;
 			}
 			
@@ -780,8 +783,11 @@ int RECTANGLE_MOVE_Menu(void)
 			
 			if(KeyNum == 4)			/* 返回上一级菜单 */
 			{
+					// OLED_Clear();
+					// break;
 					OLED_Clear();
-					break;
+					menu3_flag=0;
+					return(menu3_flag);
 			}			
 			
 			switch(menu3_flag)

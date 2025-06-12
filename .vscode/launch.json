@@ -15,7 +15,11 @@
 			"configFiles": [
                     "D:/stm32_vscode_bag/openocd-20240820/OpenOCD-20240820-0.12.0/share/openocd/scripts/interface/cmsis-dap.cfg",
                     "D:/stm32_vscode_bag/openocd-20240820/OpenOCD-20240820-0.12.0/share/openocd/scripts/target/stm32g4x.cfg"
-			]
+			],
+			"liveWatch": {
+            "enabled": true,
+            "samplesPerSecond": 4
+           }
 		}	
     ]
 }

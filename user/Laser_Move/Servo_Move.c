@@ -10,7 +10,7 @@ uint16_t Delay_time,MoveStop_Flag=0,MoveStart_Flag=0;
 posi_pid X_Pid;		/* 下舵机pid */
 posi_pid Y_Pid;		/* 上舵机pid */
 
-int RelaServo_Angle[2];
+float RelaServo_Angle[2];
 
 
 /* 铅笔线框四点记录 */
@@ -70,18 +70,20 @@ void Penstring_Moving_1(void)
 }
 
 /* 舵机位置环pid */
-int Servo_Position_PID(int current_position, int target_position,float posi_kp,float posi_ki,float posi_kd) {
-    static int last_error = 0;
-	// 上一次的误差
+float Servo_Position_PID(float current_position, float target_position,float posi_kp,float posi_ki,float posi_kd) {
+    static float last_error,before_error = 0;
     static int integral = 0;  // 积分项
-    int error = target_position - current_position; // 当前误差
+    float error = target_position - current_position; // 当前误差
     integral += error;                              // 积分项累加
-    int derivative = error - last_error;            // 微分项
+
+	float derivative = error - last_error;		/* 微分项 */
+
+    float output = posi_kp * -error + posi_ki * integral - posi_kd * derivative; // PID输出
+	
     last_error = error;                             // 更新上一次误差
-    int output = posi_kp * error + posi_ki * integral - posi_kd * derivative; // PID输出
-		
-		if(output>300) output=300;				/* 限幅部分 */
-		else if(output<-300) output=-300;
+
+		if(output>500) output=500;				/* 限幅部分 */
+		else if(output<-500) output=-500;
 		
     return output;
 }
@@ -245,10 +247,10 @@ void Get_LaserXY_ALLtime(int* MyXY)
 uint16_t Tracking_CNT,Tracking_Start_Flag,Tracking_Enable;			/* 进入跟踪部分的计时 */
 
 
-int limit_SetAngle(int Now_Angle)
+float limit_SetAngle(int Now_Angle)
 {
-		if(Now_Angle<1948) Now_Angle=1948;
-		else if(Now_Angle>2248) Now_Angle=2248;
+		if(Now_Angle<1348) Now_Angle=1348;
+		else if(Now_Angle>2748) Now_Angle=2748;
 	
 		return Now_Angle;
 }
@@ -260,14 +262,11 @@ void Set_LaserTracking(int RECTANG_X,int RECTANG_Y)
 {
 //		while(1)
 //		{
-				static uint16_t Now_OriginAngle[2];
+				static float Now_OriginAngle[2];
 			
 //				if(Tracking_Enable==1 && Data_FinishGet==1)			/* 100ms计时到后 */
 				if(Data_FinishGet==1)			/* 100ms计时到后 */
 				{
-					
-//						HAL_TIM_Base_Stop_IT(&htim7);			/* 定时中断失能 */
-					
 						Get_LaserXY_ALLtime(Laser_XY);		/* 实时接收激光坐标 */
 
 					
@@ -280,21 +279,21 @@ void Set_LaserTracking(int RECTANG_X,int RECTANG_Y)
 								PID_Mode[PID_index_1-1].PID[PID_index_2]=RxPacket_Data_Handle(Get_Vofa_RxData);
 						}
 						
-//						X_Pid.Kp = PID_Mode[0].PID[0];
-//						X_Pid.Ki = PID_Mode[0].PID[1];
-//						X_Pid.Kd = PID_Mode[0].PID[2];
-//						
-//						Y_Pid.Kp = PID_Mode[1].PID[0];
-//						Y_Pid.Ki = PID_Mode[1].PID[1];
-//						Y_Pid.Kd = PID_Mode[1].PID[2];
+						// X_Pid.Kp = PID_Mode[0].PID[0];
+						// X_Pid.Ki = PID_Mode[0].PID[1];
+						// X_Pid.Kd = PID_Mode[0].PID[2];
 						
-						X_Pid.Kp = 0.06;
-						X_Pid.Ki = 0.00;
-						X_Pid.Kd = 0.114;
+						// Y_Pid.Kp = PID_Mode[1].PID[0];
+						// Y_Pid.Ki = PID_Mode[1].PID[1];
+						// Y_Pid.Kd = PID_Mode[1].PID[2];
+						
+						X_Pid.Kp = 0.49;
+						// X_Pid.Ki = 0.01;
+						X_Pid.Kd = 0.1;
 //						
-//						Y_Pid.Kp = 0.9;
+						Y_Pid.Kp = 0.39;
 //						Y_Pid.Ki = 0;
-//						Y_Pid.Kd = 0.12;
+						Y_Pid.Kd = 0.1;
 						
 						/* 进行位置环pid运算 */
 						RelaServo_Angle[0] = Servo_Position_PID(Laser_XY[0],RECTANG_X,X_Pid.Kp,X_Pid.Ki,X_Pid.Kd);
@@ -303,11 +302,11 @@ void Set_LaserTracking(int RECTANG_X,int RECTANG_Y)
 						Now_OriginAngle[0] = USL_GETPositionVal(servoUsart,sid_1);
 						Now_OriginAngle[1] = USL_GETPositionVal(servoUsart,sid_2);
 					
-						HAL_Delay(100);
+						HAL_Delay(10);
 					
-						USL_SetServoAngle(servoUsart,sid_1,limit_SetAngle(Now_OriginAngle[0]-RelaServo_Angle[0]),0);
-						USL_SetServoAngle(servoUsart,sid_2,limit_SetAngle(Now_OriginAngle[1]-RelaServo_Angle[1]),0);
-						
+						USL_SetServoAngle(servoUsart,sid_1,limit_SetAngle(Now_OriginAngle[0]+RelaServo_Angle[0]),0);
+						USL_SetServoAngle(servoUsart,sid_2,limit_SetAngle(Now_OriginAngle[1]+RelaServo_Angle[1]),0);
+				}						
 
 						
 //						Tracking_Enable=0;
@@ -315,7 +314,7 @@ void Set_LaserTracking(int RECTANG_X,int RECTANG_Y)
 //						HAL_TIM_Base_Start_IT(&htim7);		/* 重新使能定时中断 */
 											
 //				}
-		}
+
 }
 
 

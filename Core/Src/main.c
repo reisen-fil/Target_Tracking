@@ -159,8 +159,8 @@ int main(void)
 	HAL_UART_Receive_IT(&huart2,(uint8_t*)&Rx_Byte,sizeof(Rx_Byte));		/* 调试串口 */
 	HAL_UART_Receive_DMA(&huart3,(uint8_t*)&shijue_RxData,1);
 	
-	USL_SetServoAngle(servoUsart,sid_1,2048,0);
-	USL_SetServoAngle(servoUsart,sid_2,2048,0);
+	// USL_SetServoAngle(servoUsart,sid_1,1848,0);
+	// USL_SetServoAngle(servoUsart,sid_2,1848,0);
 	
 	
 //	Test = USL_GETPositionVal(servoUsart,sid_1);
@@ -187,6 +187,12 @@ int main(void)
 					while(1)
 					{
 							menu3 = LASER_MOVE_Menu();
+							if(MenuReturn_Flag)		/* 返回上一级菜单 */
+							{
+								MenuReturn_Flag=0;
+								break;
+							}
+
 							if(menu3 == 1)		/* 铅笔框运动 */
 							{
 										Monitor_Flag=1;				/* 运动过程中复位功能使能 */
@@ -248,11 +254,11 @@ int main(void)
 									}
 									
 							}
-							else if(menu3 == 0)		/* 回到前级菜单 */
-							{
-									OLED_Clear();	
-									break;
-							}
+							// else if(menu3 == 0)		/* 回到前级菜单 */
+							// {
+							// 		OLED_Clear();	
+							// 		break;
+							// }
 					}
 			}			
 
@@ -442,8 +448,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 		if(huart->Instance == USART3)				/* 摄像头串口接收部分 (16位数据接收)*/
 		{
 				static uint8_t HeadBagRecv_Flag,DataRecv_Flag,Recv_time;
-//				static uint8_t ShijueRecv_Buffer[20];
-			
 				HAL_UART_Receive_DMA(&huart3,(uint8_t*)&shijue_RxData,1);
 				
 			if(Data_FinishGet==0 && Data_StartGet==1)
@@ -475,12 +479,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 										Data_FinishGet=1;
 									
 										FinishRectangle_Flag=1;			/* 置开始接收激光坐标标志位 */
-									
-//										/* 16位数据处理(合成坐标值) */
-//										for(uint8_t time=0;time<10;time++)
-//										{
-//												My_CoordinateData[time] = (ShijueRecv_Buffer[time*2+1]<<8)|ShijueRecv_Buffer[time*2];
-//										}
 								}		
 						}						
 					
@@ -499,11 +497,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 									
 										Data_FinishGet=1;
 									
-//										/* 16位数据处理(合成坐标值) */
-//										for(uint8_t time=0;time<10;time++)
-//										{
-//												My_CoordinateData[time] = (ShijueRecv_Buffer[time*2+1]<<8)|ShijueRecv_Buffer[time*2];
-//										}
 								}		
 						}									
 				}
